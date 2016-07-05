@@ -8,15 +8,25 @@
 
 import UIKit
 
+/// The animator object that handles the coordination of frame shifts from a source to a destination.
 public struct FrameShiftAnimator {
     
+    /// The source object, conforms to `FrameShiftable`.
     let source: FrameShiftable
+    
+    /// The destination object, conforms to `FrameShiftable`.
     let destination: FrameShiftable
     
-    let frameShifts: [FrameShift]
-    var destinationSnapshots: [Shiftable: Snapshot]?
-    
-    ///Defer snapshotting essentially means when true snapshots will be taken just in time. When false, will be taken at initalization time.
+    private let frameShifts: [FrameShift]
+    private var destinationSnapshots: [Shiftable: Snapshot]?
+
+    /** 
+     Initialize an animator with a pre-determined source and destination.
+     
+     - parameter source: The source of the shift.
+     - parameter destination: The destination of the shift.
+     - parameter deferSnapshotting: A boolean value indicating when view snapshotting will take place. A value of true means that the positional state of the view at it's destination will be determined just in time. A value of value means that these state's will be determined at initialization time.
+    */
     public init(source: FrameShiftable, destination: FrameShiftable, deferSnapshotting: Bool = true) {
         
         let initialStates = source.shiftablesForTransitionWith(destination.viewController)
@@ -35,6 +45,13 @@ public struct FrameShiftAnimator {
         }
     }
     
+    /** 
+     Perform the frame shifting animation inside the container.
+     
+     - parameter containerView: The view which contains the transition. This view will be used as the shiftingView's superview.
+     - parameter destinationView: The destination view of the transition. This view will be laid out before shifts are completed.
+     - parameter duration: An optional duration for the shift. If this value is `nil` the shift will take place over a default duration (0.3s).
+    */
     public func performFrameShiftAnimationsIn(_ containerView: UIView, with destinationView: UIView, over duration: TimeInterval?) {
         
         for shift in frameShifts {
@@ -70,7 +87,7 @@ public struct FrameShiftAnimator {
 }
 
 //MARK: Private Helpers
-extension FrameShiftAnimator {
+private extension FrameShiftAnimator {
     
     private func performDefaultShiftAnimationFor(_ shiftingView: UIView, in containerView: UIView, for shift: FrameShift, over duration: TimeInterval?) {
         

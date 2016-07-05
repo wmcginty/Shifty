@@ -8,10 +8,15 @@
 
 import Foundation
 
+/// Represents the frame shift of a single `UIView` object.
 struct FrameShift {
     
     //MARK: Properties
+    
+    /// The initial state of the shift.
     let initial: Shiftable
+    
+    /// The final state of the shift
     let final: Shiftable
     
     //MARK: Initializers
