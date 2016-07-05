@@ -1,6 +1,9 @@
 # Shifty
 
+<!---
 #[![CI Status](http://img.shields.io/travis/William McGinty/Shifty.svg?style=flat)](https://travis-ci.org/William McGinty/Shifty)
+-->
+
 [![Version](https://img.shields.io/cocoapods/v/Shifty.svg?style=flat)](http://cocoapods.org/pods/Shifty)
 [![License](https://img.shields.io/cocoapods/l/Shifty.svg?style=flat)](http://cocoapods.org/pods/Shifty)
 [![Platform](https://img.shields.io/cocoapods/p/Shifty.svg?style=flat)](http://cocoapods.org/pods/Shifty)
