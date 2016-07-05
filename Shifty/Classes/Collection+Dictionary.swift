@@ -1,5 +1,5 @@
 //
-//  CollectionType+Dictionary.swift
+//  Collection+Dictionary.swift
 //  ShiftKit
 //
 //  Created by William McGinty on 6/8/16.
