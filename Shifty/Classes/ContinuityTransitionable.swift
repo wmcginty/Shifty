@@ -1,6 +1,6 @@
 //
 //  ContinuityTransitionable.swift
-//  ShiftKit
+//  Shifty
 //
 //  Created by Will McGinty on 4/27/16.
 //  Copyright © 2016 will.mcginty. All rights reserved.

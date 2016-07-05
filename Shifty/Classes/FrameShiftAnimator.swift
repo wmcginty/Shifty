@@ -1,6 +1,6 @@
 //
 //  FrameShiftAnimator.swift
-//  ShiftKit
+//  Shifty
 //
 //  Created by Will McGinty on 4/28/16.
 //  Copyright © 2016 will.mcginty. All rights reserved.
@@ -21,11 +21,11 @@ public struct FrameShiftAnimator {
     private var destinationSnapshots: [Shiftable: Snapshot]?
 
     /** 
-     Initialize an animator with a pre-determined source and destination.
+    Initialize an animator with a pre-determined source and destination.
      
-     - parameter source: The source of the shift.
-     - parameter destination: The destination of the shift.
-     - parameter deferSnapshotting: A boolean value indicating when view snapshotting will take place. A value of true means that the positional state of the view at it's destination will be determined just in time. A value of value means that these state's will be determined at initialization time.
+    - parameter source: The source of the shift.
+    - parameter destination: The destination of the shift.
+    - parameter deferSnapshotting: A boolean value indicating when view snapshotting will take place. A value of true means that the positional state of the view at it's destination will be determined just in time. A value of value means that these state's will be determined at initialization time.
     */
     public init(source: FrameShiftable, destination: FrameShiftable, deferSnapshotting: Bool = true) {
         
@@ -46,13 +46,15 @@ public struct FrameShiftAnimator {
     }
     
     /** 
-     Perform the frame shifting animation inside the container.
+    Perform the frame shifting animation inside the container.
      
-     - parameter containerView: The view which contains the transition. This view will be used as the shiftingView's superview.
-     - parameter destinationView: The destination view of the transition. This view will be laid out before shifts are completed.
-     - parameter duration: An optional duration for the shift. If this value is `nil` the shift will take place over a default duration (0.3s).
+    - parameter containerView: The view which contains the transition. This view will be used as the shiftingView's superview.
+    - parameter destinationView: The destination view of the transition. This view will be laid out before shifts are completed.
+    - parameter duration: An optional duration for the shift. If this value is `nil` the shift will take place over a default duration (0.3s).
     */
     public func performFrameShiftAnimationsIn(_ containerView: UIView, with destinationView: UIView, over duration: TimeInterval?) {
+        
+        //TODO: Utilize UIViewPropertyAnimator for easy interuptilibity and interaction.
         
         for shift in frameShifts {
             

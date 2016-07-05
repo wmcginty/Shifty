@@ -1,6 +1,6 @@
 //
 //  Shiftable.swift
-//  ShiftKit
+//  Shifty
 //
 //  Created by Will McGinty on 5/2/16.
 //  Copyright © 2016 will.mcginty. All rights reserved.

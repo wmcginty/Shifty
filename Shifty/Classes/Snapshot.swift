@@ -1,6 +1,6 @@
 //
 //  Snapshot.swift
-//  ShiftKit
+//  Shifty
 //
 //  Created by William McGinty on 6/3/16.
 //  Copyright © 2016 will.mcginty. All rights reserved.
