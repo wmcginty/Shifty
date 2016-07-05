@@ -10,15 +10,8 @@ Pod::Spec.new do |s|
   s.name             = 'Shifty'
   s.version          = '0.1.0'
   s.summary          = 'A small transitioning library that aims to make performing frame shifts easier.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
   s.description      = <<-DESC
-A small transitioning library that aims to make performing frame shifts easier. Written entirely in Swift, Shifty abstracts away the match and coordinate space conversion involved in frame shift transitions, allowing you to focus on the code custom to your app.
+Shifty is a small transitioning library designed to make creating frame shift view controller transitions much simpler. Written entirely in Swift, Shifty aims to abstract away the boilerplate math and coordinate space conversions needed to make these transitions seamless. This, combined with a multiple of customization points and options allows you to focus on creating the transition that is custom to your app.
                        DESC
 
   s.homepage         = 'https://github.com/wmcginty/Shifty'
