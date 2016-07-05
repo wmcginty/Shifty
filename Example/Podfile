@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'Shifty_Example' do
+  pod 'Shifty', :path => '../'
+
+  target 'Shifty_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
