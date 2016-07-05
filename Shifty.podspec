@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'Shifty'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of Shifty.'
+  s.summary          = 'A small transitioning library that aims to make performing frame shifts easier.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,25 +18,19 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+A small transitioning library that aims to make performing frame shifts easier. Written entirely in Swift, Shifty abstracts away the match and coordinate space conversion involved in frame shift transitions, allowing you to focus on the code custom to your app.
                        DESC
 
-  s.homepage         = 'https://github.com/<GITHUB_USERNAME>/Shifty'
+  s.homepage         = 'https://github.com/wmcginty/Shifty'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'William McGinty' => 'mcgintw@gmail.com' }
-  s.source           = { :git => 'https://github.com/<GITHUB_USERNAME>/Shifty.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => 'https://github.com/wmcginty/Shifty.git', :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/wwmcginty'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
   s.source_files = 'Shifty/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'Shifty' => ['Shifty/Assets/*.png']
-  # }
+  s.frameworks = 'UIKit'
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end
