@@ -15,11 +15,11 @@ public class FrameShiftPropertyAnimator: FrameShiftAnimatorType {
     public let source: FrameShiftable
     public let destination: FrameShiftable
     
-    public private(set)var propertyAnimator: UIViewPropertyAnimator?
+    public fileprivate(set)var propertyAnimator: UIViewPropertyAnimator?
     
     //MARK: Private Properties
-    private let frameShifts: [FrameShift]
-    private var destinationSnapshots: [Shiftable: Snapshot]?
+    fileprivate let frameShifts: [FrameShift]
+    fileprivate var destinationSnapshots: [Shiftable: Snapshot]?
     
     //MARK: Initializers
     public required init(source: FrameShiftable, destination: FrameShiftable, deferSnapshotting: Bool = true) {
@@ -68,9 +68,9 @@ public class FrameShiftPropertyAnimator: FrameShiftAnimatorType {
 
 //MARK: Private Helpers
 @available(iOS 10.0, *)
-private extension FrameShiftPropertyAnimator {
+fileprivate extension FrameShiftPropertyAnimator {
     
-    private func defaultShiftAnimationBlockFor(_ shiftingView: UIView, in containerView: UIView, for shift: FrameShift, over duration: TimeInterval?) -> () -> Void {
+    func defaultShiftAnimationBlockFor(_ shiftingView: UIView, in containerView: UIView, for shift: FrameShift, over duration: TimeInterval?) -> () -> Void {
         //Force the destination to layout - so the position we calculate is up to date.
         shift.final.superview.layoutIfNeeded()
         
@@ -81,7 +81,7 @@ private extension FrameShiftPropertyAnimator {
         }
     }
     
-    private func performDefaultShiftAnimationFor(_ shiftingView: UIView, in containerView: UIView, for shift: FrameShift, over duration: TimeInterval?) {
+    func performDefaultShiftAnimationFor(_ shiftingView: UIView, in containerView: UIView, for shift: FrameShift, over duration: TimeInterval?) {
         
         let final = shift.final
         
@@ -93,7 +93,7 @@ private extension FrameShiftPropertyAnimator {
         animator.addCompletion { [unowned self] in self.defaultShiftAnimationCleanupFor($0, shiftingView: shiftingView, shift: shift) }
     }
     
-    private func defaultShiftAnimationCleanupFor(_ finalState: UIViewAnimatingPosition, shiftingView: UIView, shift: FrameShift) {
+    func defaultShiftAnimationCleanupFor(_ finalState: UIViewAnimatingPosition, shiftingView: UIView, shift: FrameShift) {
         switch finalState {
         case .start: performAnimationCleanupFor(shiftingView, shift: shift)
         case .current: assert(false, "WIP")
@@ -101,7 +101,7 @@ private extension FrameShiftPropertyAnimator {
         }
     }
     
-    private func currentDefaultPropertyAnimatorFor(_ duration: TimeInterval?) -> UIViewPropertyAnimator {
+    func currentDefaultPropertyAnimatorFor(_ duration: TimeInterval?) -> UIViewPropertyAnimator {
         if let animator = propertyAnimator {
             return animator
         } else {

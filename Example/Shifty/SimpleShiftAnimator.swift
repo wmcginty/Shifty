@@ -18,13 +18,13 @@ class SimpleShiftAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         
         //Begin by ensuring the transitionContext is configured correctly, and that our source + destination can power the transition
-        guard let sourceViewController = transitionContext.viewController(forKey: UITransitionContextFromViewControllerKey),
-            let destinationViewController = transitionContext.viewController(forKey: UITransitionContextToViewControllerKey) else {
+        guard let sourceViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from),
+            let destinationViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) else {
             fatalError("Improperly configured transition context: \(transitionContext)")
         }
         
-        guard let sourceView = transitionContext.view(forKey: UITransitionContextFromViewKey),
-            let destinationView = transitionContext.view(forKey: UITransitionContextToViewKey) else {
+        guard let sourceView = transitionContext.view(forKey: UITransitionContextViewKey.from),
+            let destinationView = transitionContext.view(forKey: UITransitionContextViewKey.to) else {
             fatalError("Improperly configured transition context: \(transitionContext)")
         }
         
@@ -32,7 +32,7 @@ class SimpleShiftAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             fatalError("Can not perform a shift animation with non ContinuityTransitionable controllers")
         }
         
-        let containerView = transitionContext.containerView()
+        let containerView = transitionContext.containerView
         
         //Configure the destination ahead of it's presentation
         destinationView.frame = transitionContext.finalFrame(for: destinationViewController)

@@ -34,7 +34,7 @@ extension ViewControllerB: ContinuityTransitionPreparable {
 }
 
 extension ViewControllerB: ContinuityTransitionable {
-    func prepareForTransitionTo(_ destination: UIViewController, with duration: TimeInterval, completion: (Bool) -> Void) {
+    func prepareForTransitionTo(_ destination: UIViewController, with duration: TimeInterval, completion: @escaping (Bool) -> Void) {
         UIView.animate(withDuration: 0.3, animations: { 
             self.backButton.transform = CGAffineTransform(translationX: 0, y: 200)
             }) { (finished) in

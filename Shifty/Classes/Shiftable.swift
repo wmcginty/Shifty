@@ -13,7 +13,7 @@ import UIKit
 /// Represents a single state of a shifting `UIView`.
 public struct Shiftable {
     
-    public typealias ShiftingViewConfigurator = (shiftable: Shiftable, forView: UIView, containerView: UIView) -> UIView
+    public typealias ShiftingViewConfigurator = (_ shiftable: Shiftable, _ forView: UIView, _ containerView: UIView) -> UIView
     
     //MARK: Properties
     
@@ -64,12 +64,12 @@ public extension Shiftable {
         
         guard !ProcessInfo.processInfo.arguments.contains("-snapshot_debug") else {
             let view = UIView()
-            view.backgroundColor = UIColor.red()
+            view.backgroundColor = .red
             applyPositionalStateTo(view, in: containerView)
             return view
         }
         
-        guard let view = shiftingViewConfigurator?(shiftable: self, forView: self.view, containerView: containerView) ?? self.view.snapshotView(afterScreenUpdates: true) else {
+        guard let view = shiftingViewConfigurator?(self, self.view, containerView) ?? self.view.snapshotView(afterScreenUpdates: true) else {
             fatalError("Unable to create a view for the frame shift for Shiftable: \(self)")
         }
 

@@ -16,8 +16,8 @@ public class FrameShiftAnimator: FrameShiftAnimatorType {
     public let destination: FrameShiftable
     
     //MARK: Private Properties
-    private let frameShifts: [FrameShift]
-    private var destinationSnapshots: [Shiftable: Snapshot]?
+    fileprivate let frameShifts: [FrameShift]
+    fileprivate var destinationSnapshots: [Shiftable: Snapshot]?
 
     //MARK: Initializers
     public required init(source: FrameShiftable, destination: FrameShiftable, deferSnapshotting: Bool = true) {
@@ -68,9 +68,9 @@ public class FrameShiftAnimator: FrameShiftAnimatorType {
 }
 
 //MARK: Private Helpers
-private extension FrameShiftAnimator {
+fileprivate extension FrameShiftAnimator {
     
-    private func performDefaultShiftAnimationFor(_ shiftingView: UIView, in containerView: UIView, for shift: FrameShift, over duration: TimeInterval?) {
+    func performDefaultShiftAnimationFor(_ shiftingView: UIView, in containerView: UIView, for shift: FrameShift, over duration: TimeInterval?) {
         
         let final = shift.final
         

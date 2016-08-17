@@ -41,7 +41,7 @@ extension ViewControllerA: ContinuityTransitionPreparable {
 }
 
 extension ViewControllerA: ContinuityTransitionable {
-    func prepareForTransitionTo(_ destination: UIViewController, with duration: TimeInterval, completion: (Bool) -> Void) {
+    func prepareForTransitionTo(_ destination: UIViewController, with duration: TimeInterval, completion: @escaping (Bool) -> Void) {
         UIView.animate(withDuration: 0.3, animations: {
             self.shiftButton.transform = CGAffineTransform(translationX: 0, y: 200)
         }) { (finished) in
