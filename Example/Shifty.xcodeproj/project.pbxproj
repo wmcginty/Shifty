@@ -8,11 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		B477DD691D2E0F4400651077 /* ViewControllerA.swift in Sources */ = {isa = PBXBuildFile; fileRef = B477DD681D2E0F4400651077 /* ViewControllerA.swift */; };
+		B477DD6B1D2E0F4900651077 /* ViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B477DD6A1D2E0F4900651077 /* ViewControllerB.swift */; };
+		B477DD701D2E120C00651077 /* SimpleTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B477DD6F1D2E120C00651077 /* SimpleTransitioningDelegate.swift */; };
+		B477DD731D2E121500651077 /* SimpleShiftAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B477DD721D2E121500651077 /* SimpleShiftAnimator.swift */; };
+		B4B6F17D1D3498EB0014EF7A /* NavTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B6F17C1D3498EB0014EF7A /* NavTransitioningDelegate.swift */; };
 		CF4D6F220D09CAC96EF8965C /* Pods_Shifty_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63FADE7377C13CC4C4C04646 /* Pods_Shifty_Tests.framework */; };
 		CF7D0493066FB2769203D4DF /* Pods_Shifty_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9396B34D2254E80A9AC607D5 /* Pods_Shifty_Example.framework */; };
 /* End PBXBuildFile section */
@@ -34,7 +38,6 @@
 		607FACD01AFB9204008FA782 /* Shifty_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shifty_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -44,6 +47,11 @@
 		63FADE7377C13CC4C4C04646 /* Pods_Shifty_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shifty_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9396B34D2254E80A9AC607D5 /* Pods_Shifty_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shifty_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DCC910BB5ED158E33F46626 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		B477DD681D2E0F4400651077 /* ViewControllerA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerA.swift; sourceTree = "<group>"; };
+		B477DD6A1D2E0F4900651077 /* ViewControllerB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerB.swift; sourceTree = "<group>"; };
+		B477DD6F1D2E120C00651077 /* SimpleTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTransitioningDelegate.swift; sourceTree = "<group>"; };
+		B477DD721D2E121500651077 /* SimpleShiftAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleShiftAnimator.swift; sourceTree = "<group>"; };
+		B4B6F17C1D3498EB0014EF7A /* NavTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavTransitioningDelegate.swift; sourceTree = "<group>"; };
 		D1A5DE282137D43D5F1CA167 /* Pods-Shifty_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifty_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shifty_Example/Pods-Shifty_Example.release.xcconfig"; sourceTree = "<group>"; };
 		E42C535C3EA119CA43F56AC2 /* Shifty.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Shifty.podspec; path = ../Shifty.podspec; sourceTree = "<group>"; };
 		E8B657BB3CD2E1594F92DD01 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -103,8 +111,9 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
-				607FACD91AFB9204008FA782 /* Main.storyboard */,
+				B477DD671D2E0F3C00651077 /* View Controllers */,
+				B477DD6D1D2E11F900651077 /* Transitioning */,
+				B477DD6C1D2E11F200651077 /* Storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
@@ -157,6 +166,49 @@
 				445B06F01EDC49EB0210A66C /* Pods-Shifty_Tests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		B477DD671D2E0F3C00651077 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B477DD681D2E0F4400651077 /* ViewControllerA.swift */,
+				B477DD6A1D2E0F4900651077 /* ViewControllerB.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		B477DD6C1D2E11F200651077 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				607FACD91AFB9204008FA782 /* Main.storyboard */,
+			);
+			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		B477DD6D1D2E11F900651077 /* Transitioning */ = {
+			isa = PBXGroup;
+			children = (
+				B477DD6E1D2E120000651077 /* Delegates */,
+				B477DD711D2E120E00651077 /* Animators */,
+			);
+			name = Transitioning;
+			sourceTree = "<group>";
+		};
+		B477DD6E1D2E120000651077 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				B477DD6F1D2E120C00651077 /* SimpleTransitioningDelegate.swift */,
+				B4B6F17C1D3498EB0014EF7A /* NavTransitioningDelegate.swift */,
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
+		B477DD711D2E120E00651077 /* Animators */ = {
+			isa = PBXGroup;
+			children = (
+				B477DD721D2E121500651077 /* SimpleShiftAnimator.swift */,
+			);
+			name = Animators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,8 +417,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				B477DD6B1D2E0F4900651077 /* ViewControllerB.swift in Sources */,
+				B477DD691D2E0F4400651077 /* ViewControllerA.swift in Sources */,
+				B4B6F17D1D3498EB0014EF7A /* NavTransitioningDelegate.swift in Sources */,
+				B477DD701D2E120C00651077 /* SimpleTransitioningDelegate.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				B477DD731D2E121500651077 /* SimpleShiftAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +552,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Shifty/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -511,6 +568,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Shifty/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;

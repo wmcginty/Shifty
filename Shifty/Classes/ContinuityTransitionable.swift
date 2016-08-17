@@ -38,6 +38,7 @@ public protocol ContinuityTransitionable {
 /** An object that is capable of performing preparations and cleanup for a 'Continuity' transition.
  */
 public protocol ContinuityTransitionPreparable: ContinuityTransitionable {
+    
     /**
      The opportunity for the destination to prepare itself for an incoming transition. Called after the view is loaded and laid out, but before it is visible to the user. For instance, if an object wants to animate it's content into place, it could use this function to move it's content into position so it can animated on screen.
      
@@ -54,14 +55,21 @@ public protocol ContinuityTransitionPreparable: ContinuityTransitionable {
 }
 
 //MARK: Default UIViewController Extension for ContinuityTransitionable
-extension ContinuityTransitionable where Self: UIViewController {
+public extension ContinuityTransitionable where Self: UIViewController {
     
-    func prepareForTransitionTo(_ destination: UIViewController, with duration: TimeInterval, completion: (Bool) -> Void) {
+    public func prepareForTransitionTo(_ destination: UIViewController, with duration: TimeInterval, completion: (Bool) -> Void) {
         completion(true)
     }
     
-    func completeTransitionFrom(_ source: UIViewController) {
+    public func completeTransitionFrom(_ source: UIViewController) {
         //No op - it is entirely feasible to not have any entrance animations to perform when transitioning from a certain view controller
     }
+}
+
+//MARK: Default UIViewController Extension for ContinuityTransitionPreparable
+public extension ContinuityTransitionable where Self: UIViewController {
+    
+    public func prepareForTransitionFrom(_ source: UIViewController) { /* No op */ }
+    public func completeTransitionTo(_ destination: UIViewController) { /* No op */ }
 }
 

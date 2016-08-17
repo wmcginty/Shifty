@@ -62,12 +62,19 @@ public extension Shiftable {
     */
     func viewForShiftWithRespectTo(_ containerView: UIView) -> UIView {
         
-        let view = shiftingViewConfigurator?(shiftable: self, forView: self.view, containerView: containerView) ?? self.view.snapshotView(afterScreenUpdates: false)
-        guard let shiftView = view else { fatalError("Unable to create a view for the frame shift for Shiftable: \(self)") }
+        guard !ProcessInfo.processInfo.arguments.contains("-snapshot_debug") else {
+            let view = UIView()
+            view.backgroundColor = UIColor.red()
+            applyPositionalStateTo(view, in: containerView)
+            return view
+        }
         
-        applyPositionalStateTo(shiftView, in: containerView)
-        
-        return shiftView
+        guard let view = shiftingViewConfigurator?(shiftable: self, forView: self.view, containerView: containerView) ?? self.view.snapshotView(afterScreenUpdates: true) else {
+            fatalError("Unable to create a view for the frame shift for Shiftable: \(self)")
+        }
+
+        applyPositionalStateTo(view, in: containerView)
+        return view
     }
     
     /**
