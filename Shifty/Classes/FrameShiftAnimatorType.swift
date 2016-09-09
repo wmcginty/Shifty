@@ -32,7 +32,7 @@ public protocol FrameShiftAnimatorType {
      - parameter destinationView: The destination view of the transition. This view will be laid out before shifts are completed.
      - parameter duration: An optional duration for the shift. If this value is `nil` the shift will take place over a default duration (0.3s).
      */
-    func performFrameShiftAnimationsIn(_ containerView: UIView, with destinationView: UIView, over duration: TimeInterval?)
+    func performFrameShiftAnimations(in containerView: UIView, with destinationView: UIView, over duration: TimeInterval?)
 }
 
 //TODO: I think this would work better as a inheritance tree PropertyAnimator: Animator (the code reuse would be better)
@@ -51,13 +51,13 @@ extension FrameShiftAnimatorType {
         shift.final.view.isHidden = true
     }
     
-    func performAnimationCleanupFor(_ shiftingView: UIView, shift: FrameShift) {
+    func performAnimationCleanup(for shiftingView: UIView, shift: FrameShift) {
         shift.initial.view.isHidden = false
         shift.final.view.isHidden = false
         shiftingView.removeFromSuperview()
     }
     
     func configuredSnapshotsFor(_ states: [Shiftable]) -> [Shiftable: Snapshot] {
-        return states.dictionary(){ ($0, $0.snapshot()) }
+        return states.toDictionary(){ ($0, $0.snapshot()) }
     }
 }

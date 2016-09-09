@@ -57,7 +57,7 @@ extension ViewControllerA: ContinuityTransitionable {
 }
 
 extension ViewControllerA: FrameShiftable {
-    func shiftablesForTransitionWith(_ viewController: UIViewController) -> [Shiftable] {
+    func shiftablesForTransition(with viewController: UIViewController) -> [Shiftable] {
         //TODO: can we use the name of the ivar as a default identifier?
         return [Shiftable(view: yellowView, identifier: "yellow"),
                 Shiftable(view: orangeView, identifier: "orange"),

@@ -24,7 +24,7 @@ public protocol FrameShiftable {
      - parameter viewController: The view controller being transitioned to.
      - returns: An array of `Shiftable`s that designates the views eligible for frame shifting.
     */
-    func shiftablesForTransitionWith(_ viewController: UIViewController) -> [Shiftable]
+    func shiftablesForTransition(with viewController: UIViewController) -> [Shiftable]
 }
 
 //MARK: CustomFrameShiftable Protocol Declaration
@@ -43,11 +43,8 @@ public protocol CustomFrameShiftable: FrameShiftable {
      - parameter duration: Optional duration of the transition. If nil, any duration can be used.
      - parameter completion: The closure to be executed at the end of the custom shifting animation.
      */
-    func performShiftWith(_ shiftingView: UIView,
-                          in containerView: UIView,
-                          with finalState: Snapshot,
-                          duration: TimeInterval?,
-                          completion: () -> Void)
+    func performShift(with shiftingView: UIView, in containerView: UIView, with finalState: Snapshot,
+                      duration: TimeInterval?, completion: () -> Void)
 }
 
 //MARK: Extensions

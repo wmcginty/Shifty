@@ -23,14 +23,14 @@ public protocol ContinuityTransitionable {
      - parameter duration: The duration of the transition alloted to the preparation. Not obeying this duration can lead to visual glitches.
      - parameter completion: The closure to be executed at the end of the preparations. Failure to execute this closure will break the transition.
     */
-    func prepareForTransitionTo(_ destination: UIViewController, with duration: TimeInterval, completion: (Bool) -> Void)
+    func prepareForTransition(to destination: UIViewController, withDuration duration: TimeInterval, completion: (Bool) -> Void)
     
     /**
     The opportunity for the object (as the destination) to perform any actions that need to be done to complete a transition. For instance, this method can be used to perform entrance animations on a view controller's content.
  
     - parameter source: The view controller being transitioned from.
     */
-    func completeTransitionFrom(_ source: UIViewController)
+    func completeTransition(from source: UIViewController)
 }
 
 //MARK: ContinuityTransitionPreparable Protocol Declaration
@@ -44,24 +44,24 @@ public protocol ContinuityTransitionPreparable: ContinuityTransitionable {
      
      - parameter source: The view controller being transitioned from.
      */
-    func prepareForTransitionFrom(_ source: UIViewController)
+    func prepareForTransition(from source: UIViewController)
     
     /**
      The opportunity for the source to clean itself up after an outgoing transition. Called after the view has been hidden from the user. For instance, the object could use this function to reset it's state to before the exit animations in the case that object must display it's content again.
      
      - parameter destination: The view controller being transitioned to.
      */
-    func completeTransitionTo(_ destination: UIViewController)
+    func completeTransition(to destination: UIViewController)
 }
 
 //MARK: Default UIViewController Extension for ContinuityTransitionable
 public extension ContinuityTransitionable where Self: UIViewController {
     
-    public func prepareForTransitionTo(_ destination: UIViewController, with duration: TimeInterval, completion: (Bool) -> Void) {
+    public func prepareForTransition(to destination: UIViewController, withDuration duration: TimeInterval, completion: (Bool) -> Void) {
         completion(true)
     }
     
-    public func completeTransitionFrom(_ source: UIViewController) {
+    public func completeTransition(from source: UIViewController) {
         //No op - it is entirely feasible to not have any entrance animations to perform when transitioning from a certain view controller
     }
 }
@@ -69,7 +69,7 @@ public extension ContinuityTransitionable where Self: UIViewController {
 //MARK: Default UIViewController Extension for ContinuityTransitionPreparable
 public extension ContinuityTransitionable where Self: UIViewController {
     
-    public func prepareForTransitionFrom(_ source: UIViewController) { /* No op */ }
-    public func completeTransitionTo(_ destination: UIViewController) { /* No op */ }
+    public func prepareForTransition(from source: UIViewController) { /* No op */ }
+    public func completeTransition(to destination: UIViewController) { /* No op */ }
 }
 

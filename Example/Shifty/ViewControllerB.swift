@@ -28,13 +28,13 @@ class ViewControllerB: UIViewController {
 }
 
 extension ViewControllerB: ContinuityTransitionPreparable {
-    func prepareForTransitionFrom(_ source: UIViewController) {
+    func prepareForTransition(from source: UIViewController) {
         backButton.transform = CGAffineTransform(translationX: 0, y: 200)
     }
 }
 
 extension ViewControllerB: ContinuityTransitionable {
-    func prepareForTransitionTo(_ destination: UIViewController, with duration: TimeInterval, completion: @escaping (Bool) -> Void) {
+    func prepareForTransition(to destination: UIViewController, with duration: TimeInterval, completion: @escaping (Bool) -> Void) {
         UIView.animate(withDuration: 0.3, animations: { 
             self.backButton.transform = CGAffineTransform(translationX: 0, y: 200)
             }) { (finished) in
@@ -42,7 +42,7 @@ extension ViewControllerB: ContinuityTransitionable {
         }
     }
     
-    func completeTransitionFrom(_ source: UIViewController) {
+    func completeTransition(to source: UIViewController) {
         UIView.animate(withDuration: 0.3) {
             self.backButton.transform = CGAffineTransform.identity
         }
@@ -50,7 +50,7 @@ extension ViewControllerB: ContinuityTransitionable {
 }
 
 extension ViewControllerB: FrameShiftable {
-    func shiftablesForTransitionWith(_ viewController: UIViewController) -> [Shiftable] {
+    func shiftablesForTransition(with viewController: UIViewController) -> [Shiftable] {
         return [Shiftable(view: yellowView, identifier: "yellow"),
                 Shiftable(view: orangeView, identifier: "orange"),
                 Shiftable(view: titleLabel, identifier: "title")]

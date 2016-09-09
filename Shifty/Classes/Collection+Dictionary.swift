@@ -16,7 +16,7 @@ extension Collection {
         - parameter transformer: The function that converts each element (of type `Generator.Element`) into a key, value tuple. Note that the key type must conform to `Hashable`.
         - returns: A dictionary representation of `self` created by applying `transformer`. If 'self' is empty, an empty dictionary is returned.
      */
-    func dictionary<T: Hashable, V>(_ transformer: @noescape (Generator.Element) -> (key: T, value: V)) -> Dictionary<T, V> {
+    func toDictionary<T: Hashable, V>(_ transformer: (Generator.Element) -> (key: T, value: V)) -> Dictionary<T, V> {
         return self.reduce([:]) { dictionary, element in
             var dict = dictionary
             

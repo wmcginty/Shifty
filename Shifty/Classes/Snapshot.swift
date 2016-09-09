@@ -38,7 +38,7 @@ public struct Snapshot {
      
      - returns: The center of `view` in the coordinate space of `containerView`.
      */
-    func centerOf(_ view: UIView, withRespectTo containerView: UIView) -> CGPoint {
+    func center(of view: UIView, withRespectTo containerView: UIView) -> CGPoint {
         return containerView.convert(center, from: view.superview)
     }
     
@@ -48,9 +48,9 @@ public struct Snapshot {
      - parameter newView: The view to apply the Snapshot too.
      - parameter containerView: The superview of `newView`.
      */
-    func applyPositionalStateTo(_ newView: UIView, in containerView: UIView) {
+    func applyPositionalState(to newView: UIView, in containerView: UIView) {
         newView.bounds = bounds
-        newView.center = centerOf(newView, withRespectTo: containerView)
+        newView.center = center(of: newView, withRespectTo: containerView)
         newView.transform = transform
         newView.layer.transform = transform3d
     }

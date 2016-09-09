@@ -22,9 +22,9 @@ public class FrameShiftAnimator: FrameShiftAnimatorType {
     //MARK: Initializers
     public required init(source: FrameShiftable, destination: FrameShiftable, deferSnapshotting: Bool = true) {
         
-        let initialStates = source.shiftablesForTransitionWith(destination.viewController)
-        let finalStates = destination.shiftablesForTransitionWith(source.viewController)
-        let finalReference = finalStates.dictionary() { ($0.identifier, $0) }
+        let initialStates = source.shiftablesForTransition(with: destination.viewController)
+        let finalStates = destination.shiftablesForTransition(with: source.viewController)
+        let finalReference = finalStates.toDictionary { ($0.identifier, $0) }
         
         self.source = source
         self.destination = destination
@@ -39,7 +39,7 @@ public class FrameShiftAnimator: FrameShiftAnimatorType {
     }
     
     //MARK: FrameShiftAnimatorType
-    public func performFrameShiftAnimationsIn(_ containerView: UIView, with destinationView: UIView, over duration: TimeInterval?) {
+    public func performFrameShiftAnimations(in containerView: UIView, with destinationView: UIView, over duration: TimeInterval?) {
         precondition(Thread.isMainThread, "Frame Shift Animation must be called from the main thread")
         
         frameShifts.forEach { shift in
@@ -48,18 +48,18 @@ public class FrameShiftAnimator: FrameShiftAnimatorType {
             let final = shift.final
             
             //Create a copy of the sourceView according to initialState
-            let shiftingView = initial.viewForShiftWithRespectTo(containerView)
+            let shiftingView = initial.viewForShiftWithRespect(to: containerView)
             insert(shiftingView, into: containerView, for: shift)
   
             destinationView.layoutIfNeeded()
             
             //If the destination is of the correct type - request a customized animation. If not, then use the default.
             if let destination = self.destination as? CustomFrameShiftable {
-                destination.performShiftWith(shiftingView, in: containerView, with: final.snapshot(), duration: duration) {
-                    self.performAnimationCleanupFor(shiftingView, shift: shift)
+                destination.performShift(with: shiftingView, in: containerView, with: final.snapshot(), duration: duration) {
+                    self.performAnimationCleanup(for: shiftingView, shift: shift)
                 }
             } else {
-                performDefaultShiftAnimationFor(shiftingView, in: containerView, for: shift, over: duration)
+                performDefaultShiftAnimation(for: shiftingView, in: containerView, for: shift, over: duration)
             }
         }
         
@@ -70,7 +70,7 @@ public class FrameShiftAnimator: FrameShiftAnimatorType {
 //MARK: Private Helpers
 fileprivate extension FrameShiftAnimator {
     
-    func performDefaultShiftAnimationFor(_ shiftingView: UIView, in containerView: UIView, for shift: FrameShift, over duration: TimeInterval?) {
+    func performDefaultShiftAnimation(for shiftingView: UIView, in containerView: UIView, for shift: FrameShift, over duration: TimeInterval?) {
         
         let final = shift.final
         
@@ -82,11 +82,11 @@ fileprivate extension FrameShiftAnimator {
             
             //the problem is here
             let finalSnapshot = self.destinationSnapshots?[final] ?? final.snapshot()
-            finalSnapshot.applyPositionalStateTo(shiftingView, in: containerView)
+            finalSnapshot.applyPositionalState(to: shiftingView, in: containerView)
             
             }, completion: { finished in
                 //The shift is complete - remove our animating view and show the originals
-                self.performAnimationCleanupFor(shiftingView, shift: shift)
+                self.performAnimationCleanup(for: shiftingView, shift: shift)
         })
     }
 }

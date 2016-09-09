@@ -36,10 +36,10 @@ class SimpleShiftAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         
         //Configure the destination ahead of it's presentation
         destinationView.frame = transitionContext.finalFrame(for: destinationViewController)
-        (destinationVC as? ContinuityTransitionPreparable)?.prepareForTransitionFrom(sourceViewController)
+        (destinationVC as? ContinuityTransitionPreparable)?.prepareForTransition(from: sourceViewController)
         
         //Begin the transitioning process by tellign the source to prepare
-        sourceVC.prepareForTransitionTo(destinationViewController, with:transitionDuration(using: transitionContext)) { [unowned self] (finished) in
+        sourceVC.prepareForTransition(to: destinationViewController, withDuration: transitionDuration(using: transitionContext)) { [unowned self] (finished) in
         
             //As soon as the source has finished preparations, add the (hidden) destination view so that we can properly place our shifting views.
             destinationView.isHidden = true
@@ -47,12 +47,12 @@ class SimpleShiftAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         
             //Next, we will begin the frame shift animation and unhide the destination view - because the continuity transition is designed for view controllers with identical backgrounds - this is imperceptible.
             let frameShiftAnimator = self.initializeFrameShiftAnimatorWith(sourceViewController, destinationViewController: destinationViewController)
-            frameShiftAnimator?.performFrameShiftAnimationsIn(containerView, with: destinationView, over: self.transitionDuration(using: transitionContext))
+            frameShiftAnimator?.performFrameShiftAnimations(in: containerView, with: destinationView, over: self.transitionDuration(using: transitionContext))
             destinationView.isHidden = false
             
             //At this point, we can tell the destination to complete the transition and provide the source a chance to clean up before cleaning up the context itself.
-            destinationVC.completeTransitionFrom(sourceViewController)
-            (sourceVC as? ContinuityTransitionPreparable)?.completeTransitionTo(destinationViewController)
+            destinationVC.completeTransition(from: sourceViewController)
+            (sourceVC as? ContinuityTransitionPreparable)?.completeTransition(to: destinationViewController)
             
             transitionContext.completeTransition(true)
         }

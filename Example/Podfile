@@ -6,7 +6,6 @@ target 'Shifty_Example' do
   target 'Shifty_Tests' do
     inherit! :search_paths
 
-    
   end
 end
 

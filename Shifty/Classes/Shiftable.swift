@@ -60,20 +60,23 @@ public extension Shiftable {
      
     - parameter containerView: The container which should house the shiftingView.
     */
-    func viewForShiftWithRespectTo(_ containerView: UIView) -> UIView {
+    func viewForShiftWithRespect(to containerView: UIView) -> UIView {
         
         guard !ProcessInfo.processInfo.arguments.contains("-snapshot_debug") else {
             let view = UIView()
             view.backgroundColor = .red
-            applyPositionalStateTo(view, in: containerView)
+            applyPositionalState(to: view, in: containerView)
             return view
         }
-        
-        guard let view = shiftingViewConfigurator?(self, self.view, containerView) ?? self.view.snapshotView(afterScreenUpdates: true) else {
+                
+        guard let snapshotView = shiftingViewConfigurator?(self, view, containerView) ?? view.snapshotView(afterScreenUpdates: true) else {
             fatalError("Unable to create a view for the frame shift for Shiftable: \(self)")
         }
+        
+        let a = view.snapshotView(afterScreenUpdates: true)
+        let b = view.snapshotView(afterScreenUpdates: false)
 
-        applyPositionalStateTo(view, in: containerView)
+        applyPositionalState(to: snapshotView, in: containerView)
         return view
     }
     
@@ -83,10 +86,10 @@ public extension Shiftable {
      - parameter newView: The view to apply the Snapshot too.
      - parameter containerView: The superview of `newView`.
     */
-    func applyPositionalStateTo(_ newView: UIView, in containerView: UIView) {
+    func applyPositionalState(to newView: UIView, in containerView: UIView) {
         
         let currentSnapshot = snapshot()
-        currentSnapshot.applyPositionalStateTo(newView, in: containerView)
+        currentSnapshot.applyPositionalState(to: newView, in: containerView)
     }
 }
 
