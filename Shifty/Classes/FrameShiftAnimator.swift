@@ -42,6 +42,9 @@ public class FrameShiftAnimator: FrameShiftAnimatorType {
     public func performFrameShiftAnimations(in containerView: UIView, with destinationView: UIView, over duration: TimeInterval?) {
         precondition(Thread.isMainThread, "Frame Shift Animation must be called from the main thread")
         
+        //Force layout pass on destinationView so final shift positions are accurate
+        destinationView.layoutIfNeeded()
+        
         frameShifts.forEach { shift in
             
             let initial = shift.initial
@@ -50,8 +53,6 @@ public class FrameShiftAnimator: FrameShiftAnimatorType {
             //Create a copy of the sourceView according to initialState
             let shiftingView = initial.viewForShiftWithRespect(to: containerView)
             insert(shiftingView, into: containerView, for: shift)
-  
-            destinationView.layoutIfNeeded()
             
             //If the destination is of the correct type - request a customized animation. If not, then use the default.
             if let destination = self.destination as? CustomFrameShiftable {
@@ -62,8 +63,6 @@ public class FrameShiftAnimator: FrameShiftAnimatorType {
                 performDefaultShiftAnimation(for: shiftingView, in: containerView, for: shift, over: duration)
             }
         }
-        
-        print()
     }
 }
 
@@ -73,9 +72,6 @@ fileprivate extension FrameShiftAnimator {
     func performDefaultShiftAnimation(for shiftingView: UIView, in containerView: UIView, for shift: FrameShift, over duration: TimeInterval?) {
         
         let final = shift.final
-        
-        //Force the destination to layout - so the position we calculate is up to date (in case it's been invalidated since destinationView laid out).
-        final.superview.layoutIfNeeded()
         
         //Animate this shifting view from it's current position to that dictated by finalState
         UIView.animate(withDuration: duration ?? FrameShiftAnimator.defaultAnimationDuration, delay: 0.0, options: [.beginFromCurrentState, .layoutSubviews], animations: {

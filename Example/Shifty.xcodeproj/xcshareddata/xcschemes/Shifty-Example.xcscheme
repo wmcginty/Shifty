@@ -87,7 +87,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-snapshot_debug"
+            argument = "-shifty_snapshot_debug"
             isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>

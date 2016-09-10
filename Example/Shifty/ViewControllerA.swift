@@ -19,29 +19,41 @@ class ViewControllerA: UIViewController {
     var navTransitioningDelegate = NavTransitioningDelegate()
     var frameShiftTransitioningDelegate = SimpleTransitioningDelegate()
     
+    //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.delegate = navTransitioningDelegate
+        definesPresentationContext = true
     }
     
+    //MARK: IBActions
     @IBAction func shiftItButtonPressed(sender: AnyObject) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "ViewControllerB")
-        controller.transitioningDelegate = frameShiftTransitioningDelegate
         
-        navigationController?.pushViewController(controller, animated: true)
-        //present(controller, animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "ViewControllerB") as! ViewControllerB
+
+        if let navController = navigationController {
+            navController.pushViewController(controller, animated: true)
+        } else {
+            controller.modalPresentationStyle = .currentContext
+            controller.otherTransitioningDelegate = frameShiftTransitioningDelegate
+            
+            present(controller, animated: true, completion: nil)
+        }
     }
 }
 
+//MARK: ContinuityTransitionPreparable
 extension ViewControllerA: ContinuityTransitionPreparable {
     func prepareForTransitionFrom(_ source: UIViewController) {
         shiftButton.transform = CGAffineTransform(translationX: 0, y: 200)
     }
 }
 
+//MARK: ContinuityTransitionable
 extension ViewControllerA: ContinuityTransitionable {
-    func prepareForTransitionTo(_ destination: UIViewController, with duration: TimeInterval, completion: @escaping (Bool) -> Void) {
+    
+    func prepareForTransition(to destination: UIViewController, withDuration duration: TimeInterval, completion: @escaping (Bool) -> Void) {
         UIView.animate(withDuration: 0.3, animations: {
             self.shiftButton.transform = CGAffineTransform(translationX: 0, y: 200)
         }) { (finished) in
@@ -49,16 +61,16 @@ extension ViewControllerA: ContinuityTransitionable {
         }
     }
     
-    func completeTransitionFrom(_ source: UIViewController) {
+    func completeTransition(from source: UIViewController) {
         UIView.animate(withDuration: 0.3) { 
             self.shiftButton.transform = CGAffineTransform.identity
         }
     }
 }
 
+//MARK: FrameShiftable
 extension ViewControllerA: FrameShiftable {
     func shiftablesForTransition(with viewController: UIViewController) -> [Shiftable] {
-        //TODO: can we use the name of the ivar as a default identifier?
         return [Shiftable(view: yellowView, identifier: "yellow"),
                 Shiftable(view: orangeView, identifier: "orange"),
                 Shiftable(view: titleLabel, identifier: "title")]

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11163.2" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YPz-Fa-6WR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="CtO-YG-bNA">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11133"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View ControllerA-->
+        <!--Modal-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewControllerA" customModule="Shifty_Example" customModuleProvider="target" sceneMemberID="viewController">
@@ -57,17 +57,18 @@
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="uPH-Rx-nSS" secondAttribute="bottom" constant="20" id="tTN-lN-PkJ"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Modal" id="bZf-mv-Iup"/>
                     <navigationItem key="navigationItem" id="PaG-s4-ndJ"/>
                     <connections>
-                        <outlet property="orangeView" destination="xZk-Jb-kDz" id="Cig-pa-Zgx"/>
-                        <outlet property="shiftButton" destination="uPH-Rx-nSS" id="adM-NG-M0r"/>
-                        <outlet property="titleLabel" destination="adb-PJ-IhT" id="W2m-iu-5H1"/>
-                        <outlet property="yellowView" destination="iwI-nW-faV" id="1tZ-3A-MI6"/>
+                        <outlet property="orangeView" destination="xZk-Jb-kDz" id="GnV-Pb-Ret"/>
+                        <outlet property="shiftButton" destination="uPH-Rx-nSS" id="OR3-fH-9MK"/>
+                        <outlet property="titleLabel" destination="adb-PJ-IhT" id="blE-H0-qbA"/>
+                        <outlet property="yellowView" destination="iwI-nW-faV" id="BBm-25-7t5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="772" y="139.880059970015"/>
+            <point key="canvasLocation" x="46" y="-204"/>
         </scene>
         <!--View ControllerB-->
         <scene sceneID="8bB-dW-pFL">
@@ -103,37 +104,57 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uiu-h3-97r">
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <action selector="dismiss" destination="cIo-1l-Agt" eventType="touchUpInside" id="c6Q-AZ-TjT"/>
+                                    <action selector="dismiss" destination="cIo-1l-Agt" eventType="touchUpInside" id="C1y-re-Az1"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="a7s-a0-Pre" firstAttribute="top" secondItem="uiu-h3-97r" secondAttribute="bottom" constant="50" id="3FW-KD-AvB"/>
                             <constraint firstItem="kbg-6B-WzB" firstAttribute="trailing" secondItem="qd9-Wx-K1L" secondAttribute="trailing" id="Bn9-Eu-hVD"/>
                             <constraint firstItem="Kjk-jZ-vzg" firstAttribute="centerX" secondItem="vti-Nd-Aep" secondAttribute="centerX" id="DaS-Mg-Xhg"/>
                             <constraint firstItem="uiu-h3-97r" firstAttribute="centerX" secondItem="vti-Nd-Aep" secondAttribute="centerX" id="Phc-4w-eUJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qd9-Wx-K1L" secondAttribute="trailing" constant="2" id="d8T-WA-etq"/>
-                            <constraint firstItem="a7s-a0-Pre" firstAttribute="top" secondItem="uiu-h3-97r" secondAttribute="bottom" constant="20" id="dht-hA-gFc"/>
                             <constraint firstItem="uiu-h3-97r" firstAttribute="top" secondItem="Kjk-jZ-vzg" secondAttribute="bottom" constant="100" id="ihL-bO-b3V"/>
                             <constraint firstItem="kbg-6B-WzB" firstAttribute="top" secondItem="qd9-Wx-K1L" secondAttribute="bottom" constant="20" id="t1I-9X-oIi"/>
                             <constraint firstItem="qd9-Wx-K1L" firstAttribute="top" secondItem="BWJ-Va-OOc" secondAttribute="bottom" constant="20" id="xSv-Ug-4x8"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="backButton" destination="uiu-h3-97r" id="cC2-8B-anE"/>
-                        <outlet property="orangeView" destination="kbg-6B-WzB" id="E26-JL-nfm"/>
-                        <outlet property="titleLabel" destination="Kjk-jZ-vzg" id="GZz-l7-2hu"/>
-                        <outlet property="yellowView" destination="qd9-Wx-K1L" id="IsJ-Ul-wlg"/>
+                        <outlet property="backButton" destination="uiu-h3-97r" id="c5d-wj-460"/>
+                        <outlet property="orangeView" destination="kbg-6B-WzB" id="Zc5-cX-jOH"/>
+                        <outlet property="titleLabel" destination="Kjk-jZ-vzg" id="E64-f4-ob5"/>
+                        <outlet property="yellowView" destination="qd9-Wx-K1L" id="K5O-Af-gWT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ndw-df-YOd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1548" y="139.880059970015"/>
+            <point key="canvasLocation" x="745" y="-205"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="71P-ej-K0X">
+            <objects>
+                <tabBarController id="CtO-YG-bNA" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="QXp-0v-Dgl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="YPz-Fa-6WR" kind="relationship" relationship="viewControllers" id="30u-VL-j23"/>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="HVg-0d-vea"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fyk-vA-dT7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1865" y="-186"/>
+        </scene>
+        <!--Nav-->
         <scene sceneID="CZy-i4-2DJ">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="San-Pv-vft" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YPz-Fa-6WR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Nav" id="aS3-Ya-pIX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tj8-z1-Jnk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -144,9 +165,11 @@
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="dHg-9B-xFJ"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="San-Pv-vft" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-167.19999999999999" y="139.880059970015"/>
+            <point key="canvasLocation" x="-897" y="-627"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="HVg-0d-vea"/>
+    </inferredMetricsTieBreakers>
 </document>

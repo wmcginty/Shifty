@@ -23,7 +23,7 @@ public protocol ContinuityTransitionable {
      - parameter duration: The duration of the transition alloted to the preparation. Not obeying this duration can lead to visual glitches.
      - parameter completion: The closure to be executed at the end of the preparations. Failure to execute this closure will break the transition.
     */
-    func prepareForTransition(to destination: UIViewController, withDuration duration: TimeInterval, completion: (Bool) -> Void)
+    func prepareForTransition(to destination: UIViewController, withDuration duration: TimeInterval, completion: @escaping (Bool) -> Void)
     
     /**
     The opportunity for the object (as the destination) to perform any actions that need to be done to complete a transition. For instance, this method can be used to perform entrance animations on a view controller's content.
@@ -55,7 +55,7 @@ public protocol ContinuityTransitionPreparable: ContinuityTransitionable {
 }
 
 //MARK: Default UIViewController Extension for ContinuityTransitionable
-public extension ContinuityTransitionable where Self: UIViewController {
+extension ContinuityTransitionable {
     
     public func prepareForTransition(to destination: UIViewController, withDuration duration: TimeInterval, completion: (Bool) -> Void) {
         completion(true)
@@ -67,7 +67,7 @@ public extension ContinuityTransitionable where Self: UIViewController {
 }
 
 //MARK: Default UIViewController Extension for ContinuityTransitionPreparable
-public extension ContinuityTransitionable where Self: UIViewController {
+extension ContinuityTransitionPreparable {
     
     public func prepareForTransition(from source: UIViewController) { /* No op */ }
     public func completeTransition(to destination: UIViewController) { /* No op */ }

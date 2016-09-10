@@ -10,11 +10,13 @@ import UIKit
 
 class SimpleTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
     
+    let currentAnimator = SimpleShiftAnimator()
+    
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return SimpleShiftAnimator()
+        return currentAnimator
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return SimpleShiftAnimator()
+        return currentAnimator
     }
 }

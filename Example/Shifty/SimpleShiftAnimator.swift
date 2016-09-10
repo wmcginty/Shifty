@@ -18,6 +18,7 @@ class SimpleShiftAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         
         //Begin by ensuring the transitionContext is configured correctly, and that our source + destination can power the transition
+        //This being a basic example - exit if this fails. YMMV with more complicated examples.
         guard let sourceViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from),
             let destinationViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) else {
             fatalError("Improperly configured transition context: \(transitionContext)")
@@ -39,13 +40,13 @@ class SimpleShiftAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         (destinationVC as? ContinuityTransitionPreparable)?.prepareForTransition(from: sourceViewController)
         
         //Begin the transitioning process by tellign the source to prepare
-        sourceVC.prepareForTransition(to: destinationViewController, withDuration: transitionDuration(using: transitionContext)) { [unowned self] (finished) in
+        sourceVC.prepareForTransition(to: destinationViewController, withDuration: transitionDuration(using: transitionContext)) { [unowned self] finished in
         
             //As soon as the source has finished preparations, add the (hidden) destination view so that we can properly place our shifting views.
             destinationView.isHidden = true
             containerView.insertSubview(destinationView, aboveSubview: sourceView)
         
-            //Next, we will begin the frame shift animation and unhide the destination view - because the continuity transition is designed for view controllers with identical backgrounds - this is imperceptible.
+            //Next, we will begin the frame shift animation and unhide the destination view - because the continuity transition is designed for view controllers with identical backgrounds - this is imperceptible. Note that doesn't have to be the case - use defersSnapshotting to move the frame shifts and views simultaneously.
             let frameShiftAnimator = self.initializeFrameShiftAnimatorWith(sourceViewController, destinationViewController: destinationViewController)
             frameShiftAnimator?.performFrameShiftAnimations(in: containerView, with: destinationView, over: self.transitionDuration(using: transitionContext))
             destinationView.isHidden = false
@@ -54,7 +55,9 @@ class SimpleShiftAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             destinationVC.completeTransition(from: sourceViewController)
             (sourceVC as? ContinuityTransitionPreparable)?.completeTransition(to: destinationViewController)
             
-            transitionContext.completeTransition(true)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: NSEC_PER_SEC * 1), execute: {
+                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+            })
         }
     }
 }

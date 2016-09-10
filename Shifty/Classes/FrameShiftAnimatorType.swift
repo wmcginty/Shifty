@@ -39,7 +39,6 @@ public protocol FrameShiftAnimatorType {
 //TODO: Complete the property frame shift animator
 //TODO: Add a transitional animation from source/destination view to the shifting view, customizable.
 //TODO: Add transitional state properties (color, image, etc)
-//TODO: Debug mode using 50% alpha red views intead of snapshots (snapshot debug mode)
 
 extension FrameShiftAnimatorType {
     
