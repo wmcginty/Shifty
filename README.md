@@ -12,7 +12,7 @@ Shifty is a simple but powerful framework designed to make it simple to create s
 
 ## Example
 
-![Shifty](https://raw.githubusercontent.com/mcgintw/Shifty/master/Shifty.gif)
+![Shifty](https://raw.githubusercontent.com/wmcginty/Shifty/master/Shifty.gif)
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
@@ -118,7 +118,7 @@ You should open the `{Project}.xcworkspace` instead of the `{Project}.xcodeproj`
 
 William McGinty, mcgintw@gmail.com
 
-If you find an issue or want to request a feature, please [raise an issue](https://github.com/mcgintw/Shifty/issues/new). Pull requests are always welcome!
+If you find an issue or want to request a feature, please [raise an issue](https://github.com/wmcginty/Shifty/issues/new). Pull requests are always welcome!
 
 ## License
 
