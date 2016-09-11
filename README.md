@@ -118,7 +118,7 @@ You should open the `{Project}.xcworkspace` instead of the `{Project}.xcodeproj`
 
 William McGinty, mcgintw@gmail.com
 
-If you find an issue or want to request a feature, please [raise an issue](https://github.com/mcgintw/Shifty/issues/new). Pull requests are always welcome!
+If you find an issue or want to request a feature, please [raise an issue](https://github.com/wmcginty/Shifty/issues/new). Pull requests are always welcome!
 
 ## License
 
