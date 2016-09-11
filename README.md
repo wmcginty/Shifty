@@ -12,7 +12,7 @@ Shifty is a simple but powerful framework designed to make it simple to create s
 
 ## Example
 
-![Shifty](https://raw.githubusercontent.com/mcgintw/Shifty/Shifty.gif)
+![Shifty](https://raw.githubusercontent.com/mcgintw/Shifty/master/Shifty.gif)
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
@@ -24,7 +24,7 @@ Shifty revolves around two protocols, *ContinuityTransitionable* and *FrameShift
 
 For example, animate a view's title off screen before transitioning. But don't forget to bring it back on screen when transitioning back!
 
-''' swift
+``` swift
 extension ViewControllerA: ContinuityTransitionable {
     
     func prepareForTransition(to destination: UIViewController, withDuration duration: TimeInterval, completion: @escaping (Bool) -> Void) {
@@ -41,22 +41,22 @@ extension ViewControllerA: ContinuityTransitionable {
         }
     }
 }
-'''
+```
 
 Need some place to prepare your views for incoming or outgoing transitions? Use the *ContinuityTransitionPreparable* protocol for that:
 
-''' swift
+``` swift
 public protocol ContinuityTransitionPreparable: ContinuityTransitionable {
     
     func prepareForTransition(from source: UIViewController)
     func completeTransition(to destination: UIViewController)
     
 }
-'''
+```
 
 But what if you want to take that awesome view you designed from screen A, and show it someplace else on screen B? What if you could just pick it up from screen A and move it to screen B when you needed to? Enter, *FrameShiftable*:
 
-'''swift
+``` swift
 extension ViewControllerA: FrameShiftable {
     func shiftablesForTransition(with viewController: UIViewController) -> [Shiftable] {
         return [Shiftable(view: yellowView, identifier: "yellow"),
@@ -64,23 +64,24 @@ extension ViewControllerA: FrameShiftable {
                 Shiftable(view: titleLabel, identifier: "title")]
     }
 }
-'''
+```
 
 Just tell Shifty what views you want to move, and it will do the rest. When you ask Shifty to do it's thing, it'll check the source and the destination and find all the views with common identifiers. Then, Shifty will figure out where those views are, and where they need to get to. All you need to do is tell Shifty to do it's thing:
 
-'''swift
- let shiftAnimator = self.initializeFrameShiftAnimatorWith(sourceViewController, destinationViewController: destinationViewController)
- shiftAnimator?.performFrameShiftAnimations(in: containerView, with: destinationView, over: self.transitionDuration(using: transitionContext)) {
-                //Completion
-            }
-'''
+``` swift
+let shiftAnimator = self.initializeFrameShiftAnimatorWith(sourceViewController, destinationViewController: destinationViewController)
+shiftAnimator?.performFrameShiftAnimations(in: containerView, with: destinationView, over: self.transitionDuration(using: transitionContext)) {
+    //Completion
+}
+```
 
 Finally, what if the default ease in, ease out shift animation isn't good enough? That's where *CustomFrameShiftable* comes in. This allows you to provide your own custom animations - and they don't have to be UIView based:
 
-'''swift
-    func performShift(with shiftingView: UIView, in containerView: UIView, with finalState: Snapshot,
-                      duration: TimeInterval?, completion: () -> Void)
-'''
+``` swift
+public protocol CustomFrameShiftable: FrameShiftable {
+    func performShift(with shiftingView: UIView, in containerView: UIView, with finalState: Snapshot, duration: TimeInterval?, completion: () -> Void)
+}
+```
 
 ## Requirements
 
