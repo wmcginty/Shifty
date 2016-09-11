@@ -12,7 +12,7 @@ Shifty is a simple but powerful framework designed to make it simple to create s
 
 ## Example
 
-![Shifty](https://raw.githubusercontent.com/mcgintw/Shifty/master/ShiftyExample.gif)
+![Shifty](https://raw.githubusercontent.com/wmcginty/Shifty/master/ShiftyExample.gif)
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
