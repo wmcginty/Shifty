@@ -52,7 +52,6 @@ public class FrameShiftAnimator: FrameShiftAnimatorType {
         frameShifts.forEach { shift in
             
             let initial = shift.initial
-            let final = shift.final
             
             //Create a copy of the sourceView according to initialState
             let shiftingView = initial.viewForShiftWithRespect(to: containerView)

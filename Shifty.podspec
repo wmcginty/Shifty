@@ -26,4 +26,6 @@ Shifty is a small transitioning library designed to make creating frame shift vi
   s.source_files = 'Shifty/Classes/**/*'
   s.frameworks = 'UIKit'
 
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
+
 end
