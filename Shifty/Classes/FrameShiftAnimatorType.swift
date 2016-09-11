@@ -1,12 +1,14 @@
 //
 //  FrameShiftAnimatorType.swift
-//  Pods
+//  Shifty
 //
 //  Created by William McGinty on 7/6/16.
 //
 //
 
 import UIKit
+
+public typealias FrameShiftAnimationCompletion = () -> Void
 
 public protocol FrameShiftAnimatorType {
     
@@ -31,8 +33,9 @@ public protocol FrameShiftAnimatorType {
      - parameter containerView: The view which contains the transition. This view will be used as the shiftingView's superview.
      - parameter destinationView: The destination view of the transition. This view will be laid out before shifts are completed.
      - parameter duration: An optional duration for the shift. If this value is `nil` the shift will take place over a default duration (0.3s).
+     - paramter completion: An optional completion block to be executed at the end of the shift
      */
-    func performFrameShiftAnimations(in containerView: UIView, with destinationView: UIView, over duration: TimeInterval?)
+    func performFrameShiftAnimations(in containerView: UIView, with destinationView: UIView, over duration: TimeInterval?, completion: FrameShiftAnimationCompletion?)
 }
 
 //TODO: I think this would work better as a inheritance tree PropertyAnimator: Animator (the code reuse would be better)
@@ -53,7 +56,7 @@ extension FrameShiftAnimatorType {
     func performAnimationCleanup(for shiftingView: UIView, shift: FrameShift) {
         shift.initial.view.isHidden = false
         shift.final.view.isHidden = false
-        shiftingView.removeFromSuperview()
+        shiftingView.removeFromSuperview() 
     }
     
     func configuredSnapshotsFor(_ states: [Shiftable]) -> [Shiftable: Snapshot] {

@@ -1,6 +1,6 @@
 //
 //  FrameShiftPropertyAnimator.swift
-//  Pods
+//  Shifty
 //
 //  Created by William McGinty on 7/6/16.
 //
@@ -40,8 +40,8 @@ public class FrameShiftPropertyAnimator: FrameShiftAnimatorType {
         }
     }
     
-    public func performFrameShiftAnimations(in containerView: UIView, with destinationView: UIView, over duration: TimeInterval?) {
-        precondition(Thread.isMainThread, "Frame Shift Animation must be called from the main thread")
+    public func performFrameShiftAnimations(in containerView: UIView, with destinationView: UIView, over duration: TimeInterval?, completion: FrameShiftAnimationCompletion? = nil) {
+        assert(Thread.isMainThread, "Frame Shift Animation must be called from the main thread")
     
         frameShifts.forEach { shift in
             
