@@ -20,9 +20,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 Shifty revolves around two protocols, *ContinuityTransitionable* and *FrameShiftable*. Although these two protocols have been designed to work together to create incredible effects, they work equally as well independently. 
 
-*ContinuityTransitionable* is your gateway to creating transitions that make the parts of your app feel connected to each other in the ways that a standard transition can't.
-
-For example, animate a view's title off screen before transitioning. But don't forget to bring it back on screen when transitioning back!
+*ContinuityTransitionable* is your gateway to creating transitions that make the parts of your app feel connected to each other in the ways that a standard transition can't. For example, animate a view's title off screen before transitioning. But don't forget to bring it back on screen when transitioning back!
 
 ``` swift
 extension ViewControllerA: ContinuityTransitionable {
@@ -37,13 +35,13 @@ extension ViewControllerA: ContinuityTransitionable {
     
     func completeTransition(from source: UIViewController) {
         UIView.animate(withDuration: 0.3) { 
-            self.shiftButton.transform = CGAffineTransform.identity
+            self.titleLabel.transform = CGAffineTransform.identity
         }
     }
 }
 ```
 
-Need some place to prepare your views for incoming or outgoing transitions? Use the *ContinuityTransitionPreparable* protocol for that:
+What if that's not enough? What if you need some place to prepare your views for incoming or outgoing transitions? Use the *ContinuityTransitionPreparable* protocol for that:
 
 ``` swift
 public protocol ContinuityTransitionPreparable: ContinuityTransitionable {
@@ -66,7 +64,7 @@ extension ViewControllerA: FrameShiftable {
 }
 ```
 
-Just tell Shifty what views you want to move, and it will do the rest. When you ask Shifty to do it's thing, it'll check the source and the destination and find all the views with common identifiers. Then, Shifty will figure out where those views are, and where they need to get to. All you need to do is tell Shifty to do it's thing:
+Just tell Shifty what views you want to move, and it will do the rest. When you ask Shifty to do it's thing, it'll check the source and the destination and find all the views with common identifiers. Then, Shifty will figure out where those views are, and where they need to get to - and it will get them there. All you need to do is tell Shifty to do it's thing:
 
 ``` swift
 let shiftAnimator = self.initializeFrameShiftAnimatorWith(sourceViewController, destinationViewController: destinationViewController)
