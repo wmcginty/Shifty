@@ -105,10 +105,8 @@ fileprivate extension FrameShiftAnimator {
     
     func defaultShift(for shiftingView: UIView, in containerView: UIView, for shift: FrameShift) -> () -> Void  {
         
-        let final = shift.final
-        
         return {
-            let finalSnapshot = self.destinationSnapshots?[final] ?? final.snapshot()
+            let finalSnapshot = self.destinationSnapshots?[shift.final] ?? shift.final.snapshot()
             finalSnapshot.applyPositionalState(to: shiftingView, in: containerView)
         }
     }

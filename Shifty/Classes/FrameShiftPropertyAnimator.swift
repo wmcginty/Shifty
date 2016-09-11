@@ -70,13 +70,10 @@ public class FrameShiftPropertyAnimator: FrameShiftAnimatorType {
 @available(iOS 10.0, *)
 fileprivate extension FrameShiftPropertyAnimator {
     
-    func defaultShiftAnimationBlockFor(_ shiftingView: UIView, in containerView: UIView, for shift: FrameShift, over duration: TimeInterval?) -> () -> Void {
-        //Force the destination to layout - so the position we calculate is up to date.
-        shift.final.superview.layoutIfNeeded()
+    func defaultShift(for shiftingView: UIView, in containerView: UIView, for shift: FrameShift, over duration: TimeInterval?) -> () -> Void {
         
-        let finalSnapshot = destinationSnapshots?[shift.final] ?? shift.final.snapshot()
         return {
-            //Apply the final positional state to the shifting view
+            let finalSnapshot = self.destinationSnapshots?[shift.final] ?? shift.final.snapshot()
             finalSnapshot.applyPositionalState(to: shiftingView, in: containerView)
         }
     }
@@ -89,26 +86,25 @@ fileprivate extension FrameShiftPropertyAnimator {
         final.superview.layoutIfNeeded()
         
         let animator = currentDefaultPropertyAnimatorFor(duration)
-        animator.addAnimations(defaultShiftAnimationBlockFor(shiftingView, in: containerView, for: shift, over: duration))
+        animator.addAnimations(defaultShift(for: shiftingView, in: containerView, for: shift, over: duration))
         animator.addCompletion { [unowned self] in self.defaultShiftAnimationCleanupFor($0, shiftingView: shiftingView, shift: shift) }
     }
     
     func defaultShiftAnimationCleanupFor(_ finalState: UIViewAnimatingPosition, shiftingView: UIView, shift: FrameShift) {
         switch finalState {
         case .start: performAnimationCleanup(for: shiftingView, shift: shift)
-        case .current: assert(false, "WIP")
+        case .current: fatalError("NYI")
         case .end: performAnimationCleanup(for: shiftingView, shift: shift)
         }
     }
     
     func currentDefaultPropertyAnimatorFor(_ duration: TimeInterval?) -> UIViewPropertyAnimator {
-        if let animator = propertyAnimator {
-            return animator
-        } else {
+        if propertyAnimator == nil {
             let animator = UIViewPropertyAnimator(duration: duration ?? FrameShiftPropertyAnimator.defaultAnimationDuration, curve: .easeInOut, animations: nil)
             propertyAnimator = animator
-            
-            return animator
         }
+        
+        assert(propertyAnimator != nil)
+        return propertyAnimator!
     }
 }

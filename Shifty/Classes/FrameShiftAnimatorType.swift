@@ -33,17 +33,14 @@ public protocol FrameShiftAnimatorType {
      - parameter containerView: The view which contains the transition. This view will be used as the shiftingView's superview.
      - parameter destinationView: The destination view of the transition. This view will be laid out before shifts are completed.
      - parameter duration: An optional duration for the shift. If this value is `nil` the shift will take place over a default duration (0.3s).
-     - paramter completion: An optional completion block to be executed at the end of the shift
+     - parameter completion: An optional completion block to be executed at the end of the shift
      */
     func performFrameShiftAnimations(in containerView: UIView, with destinationView: UIView, over duration: TimeInterval?, completion: FrameShiftAnimationCompletion?)
 }
 
-//TODO: I think this would work better as a inheritance tree PropertyAnimator: Animator (the code reuse would be better)
-//TODO: Complete the property frame shift animator
-//TODO: Add a transitional animation from source/destination view to the shifting view, customizable.
-//TODO: Add transitional state properties (color, image, etc)
-
 extension FrameShiftAnimatorType {
+    
+    //FIXME: Would this function better as a superclass? In terms of code reuse?
     
     static var defaultAnimationDuration: TimeInterval { return 0.3 }
     
