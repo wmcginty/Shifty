@@ -24,18 +24,18 @@ public struct Shiftable {
     public let superview: UIView
     
     /// The identifier assigned to this `Shiftable`. Each identifier in the source, should match an identifier in the destination.
-    public let identifier: String
+    public let identifier: AnyHashable
     
     /// The closure used to configure the view. This is optional and only required if a snapshot is insufficient.
     public var shiftingViewConfigurator : ShiftingViewConfigurator?
     
-    //MARK: Initializers
-    public init(view: UIView, identifier: String, configurator: ShiftingViewConfigurator? = nil) {
+    //MARK: Initializers    
+    public init(view: UIView, identifier: AnyHashable, configurator: ShiftingViewConfigurator? = nil) {
         guard let superview = view.superview else { fatalError("The view being shifted must have a superview.") }
         self.init(view: view, inSuperview: superview, identifier: identifier, configurator: configurator)
     }
     
-    public init(view: UIView, inSuperview superview: UIView, identifier: String, configurator: ShiftingViewConfigurator? = nil) {
+    public init(view: UIView, inSuperview superview: UIView, identifier: AnyHashable, configurator: ShiftingViewConfigurator? = nil) {
         self.view = view
         self.superview = superview
         self.identifier = identifier
