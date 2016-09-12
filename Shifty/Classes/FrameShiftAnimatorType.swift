@@ -42,7 +42,7 @@ extension FrameShiftAnimatorType {
     
     //FIXME: Would this function better as a superclass? In terms of code reuse?
     
-    static var defaultAnimationDuration: TimeInterval { return 0.3 }
+    static var defaultAnimationDuration: TimeInterval { return 0.4 }
     
     func insert(_ shiftingView: UIView, into containerView: UIView, for shift: FrameShift) {
         containerView.addSubview(shiftingView)
@@ -50,13 +50,13 @@ extension FrameShiftAnimatorType {
         shift.final.view.isHidden = true
     }
     
-    func performAnimationCleanup(for shiftingView: UIView, shift: FrameShift) {
+    func cleanupAnimation(for shiftingView: UIView, shift: FrameShift) {
         shift.initial.view.isHidden = false
         shift.final.view.isHidden = false
         shiftingView.removeFromSuperview() 
     }
     
-    func configuredSnapshotsFor(_ states: [Shiftable]) -> [Shiftable: Snapshot] {
+    func configuredSnapshots(for states: [Shiftable]) -> [Shiftable: Snapshot] {
         return states.toDictionary(){ ($0, $0.snapshot()) }
     }
 }

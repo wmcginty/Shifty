@@ -37,7 +37,7 @@ public class FrameShiftAnimator: FrameShiftAnimatorType {
         }
         
         if !deferSnapshotting {
-            destinationSnapshots = configuredSnapshotsFor(finalStates)
+            destinationSnapshots = configuredSnapshots(for: finalStates)
         }
     }
     
@@ -60,7 +60,7 @@ public class FrameShiftAnimator: FrameShiftAnimatorType {
             let singleShift = defaultShift(for: shiftingView, in: containerView, for: shift)
             addAnimations(singleShift)
             
-            let singleCompletion = { self.performAnimationCleanup(for: shiftingView, shift: shift) }
+            let singleCompletion = { self.cleanupAnimation(for: shiftingView, shift: shift) }
             addCompletion(singleCompletion)
         }
         

@@ -36,7 +36,7 @@ public class FrameShiftPropertyAnimator: FrameShiftAnimatorType {
         }
         
         if !deferSnapshotting {
-            destinationSnapshots = configuredSnapshotsFor(finalStates)
+            destinationSnapshots = configuredSnapshots(for: finalStates)
         }
     }
     
@@ -57,10 +57,10 @@ public class FrameShiftPropertyAnimator: FrameShiftAnimatorType {
             //If the destination is of the correct type - request a customized animation. If not, then use the default.
             if let destination = self.destination as? CustomFrameShiftable {
                 destination.performShift(with: shiftingView, in: containerView, with: final.snapshot(), duration: duration) {
-                    self.performAnimationCleanup(for: shiftingView, shift: shift)
+                    self.cleanupAnimation(for: shiftingView, shift: shift)
                 }
             } else {
-                performDefaultShiftAnimationFor(shiftingView, in: containerView, for: shift, over: duration)
+                performDefaultShiftAnimation(for: shiftingView, in: containerView, for: shift, over: duration)
             }
         }
     }
@@ -78,27 +78,27 @@ fileprivate extension FrameShiftPropertyAnimator {
         }
     }
     
-    func performDefaultShiftAnimationFor(_ shiftingView: UIView, in containerView: UIView, for shift: FrameShift, over duration: TimeInterval?) {
+    func performDefaultShiftAnimation(for shiftingView: UIView, in containerView: UIView, for shift: FrameShift, over duration: TimeInterval?) {
         
         let final = shift.final
         
         //Force the destination to layout - so the position we calculate is up to date.
         final.superview.layoutIfNeeded()
         
-        let animator = currentDefaultPropertyAnimatorFor(duration)
+        let animator = currentDefaultPropertyAnimator(for: duration)
         animator.addAnimations(defaultShift(for: shiftingView, in: containerView, for: shift, over: duration))
-        animator.addCompletion { [unowned self] in self.defaultShiftAnimationCleanupFor($0, shiftingView: shiftingView, shift: shift) }
+        animator.addCompletion { [unowned self] in self.defaultShiftAnimationCleanup(for: $0, shiftingView: shiftingView, shift: shift) }
     }
     
-    func defaultShiftAnimationCleanupFor(_ finalState: UIViewAnimatingPosition, shiftingView: UIView, shift: FrameShift) {
+    func defaultShiftAnimationCleanup(for finalState: UIViewAnimatingPosition, shiftingView: UIView, shift: FrameShift) {
         switch finalState {
-        case .start: performAnimationCleanup(for: shiftingView, shift: shift)
+        case .start: cleanupAnimation(for: shiftingView, shift: shift)
         case .current: fatalError("NYI")
-        case .end: performAnimationCleanup(for: shiftingView, shift: shift)
+        case .end: cleanupAnimation(for: shiftingView, shift: shift)
         }
     }
     
-    func currentDefaultPropertyAnimatorFor(_ duration: TimeInterval?) -> UIViewPropertyAnimator {
+    func currentDefaultPropertyAnimator(for duration: TimeInterval?) -> UIViewPropertyAnimator {
         if propertyAnimator == nil {
             let animator = UIViewPropertyAnimator(duration: duration ?? FrameShiftPropertyAnimator.defaultAnimationDuration, curve: .easeInOut, animations: nil)
             propertyAnimator = animator
