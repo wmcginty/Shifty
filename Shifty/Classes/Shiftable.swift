@@ -99,6 +99,9 @@ extension Shiftable: Hashable {
 }
 
 //MARK: Equatable
-public func ==(lhs: Shiftable, rhs: Shiftable) -> Bool {
-    return lhs.identifier == rhs.identifier
+extension Shiftable: Equatable {
+    
+    public static func ==(lhs: Shiftable, rhs: Shiftable) -> Bool {
+        return lhs.identifier == rhs.identifier
+    }
 }
