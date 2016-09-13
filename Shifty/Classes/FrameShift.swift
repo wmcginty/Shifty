@@ -28,23 +28,26 @@ struct FrameShift {
     }
 }
 
+//MARK: Shifts
 extension FrameShift {
     
     typealias Shift = () -> Void
     
     /// Creates a default shift from self, and applies it to the given view residing in the container.
     ///
-    /// - parameter shiftingView:  The view which will be shifted according to the initial and final states of self.
-    /// - parameter containerView: The container view acting as the superview of the shiftingView
+    /// - parameter shifting:  The view which will be shifted according to the initial and final states of self.
+    /// - parameter container: The container view acting as the superview of the shiftingView
     /// - parameter snapshot:      The snapshot of the final state to use, if none is provided one will be created.
-    func shiftApplied(to shiftingView: UIView, in containerView: UIView, withFinal snapshot: Snapshot? = nil) -> Shift {
+    func shiftApplied(to shifting: UIView, in container: UIView, withFinal snapshot: Snapshot? = nil) -> Shift {
         
         let finalSnapshot = snapshot ?? final.snapshot()
-        return { finalSnapshot.applyPositionalState(to: shiftingView, in: containerView) }
+        return { finalSnapshot.applyPositionalState(to: shifting, in: container) }
     }
 }
 
+//MARK: Equatable
 extension FrameShift: Equatable {
+    
     static func ==(lhs: FrameShift, rhs: FrameShift) -> Bool {
         return true
     }

@@ -43,50 +43,48 @@ public struct Shiftable {
     }
 }
 
+//MARK: Public Interface
+public extension Shiftable {
+    
+    /// Creates a shifting view by duplicating (or recreating) the `Shiftables view`. If `shiftingViewConfigurator` is not `nil` - it will be used to create the shifting view. Otherwise, a snapshot of the view will be used. Note: If neither methods can be used to create a `UIView`, a fatal error will be thrown.
+    ///
+    /// - parameter container: The container which should house the shifting.
+    ///
+    /// - returns: The view, with positional state applied relative to the container, but not yet added as a subview of the container
+    func viewForShiftWithRespect(to container: UIView) -> UIView {
+        
+        guard !ProcessInfo.processInfo.arguments.contains("-shifty_snapshot_debug") else {
+            let view = UIView(backgroundColor: UIColor.red.withAlphaComponent(0.5))
+            applyPositionalState(to: view, in: container)
+            
+            return view
+        }
+        
+        guard let snapshot = shiftingViewConfigurator?(self, view, container) ?? view.snapshotView(afterScreenUpdates: false) else {
+            fatalError("Unable to create a view for the frame shift for Shiftable: \(self)")
+        }
+    
+        applyPositionalState(to: snapshot, in: container)
+        return snapshot
+    }
+    
+    /// A wrapper around `Snapshot`s function applyPositionalState(to:in:). Uses a `Snapshot` of the current state.
+    ///
+    /// - parameter new:       The view to apply the Snapshot too.
+    /// - parameter container: The superview of `newView`.
+    func applyPositionalState(to new: UIView, in container: UIView) {
+        
+        let currentSnapshot = snapshot()
+        currentSnapshot.applyPositionalState(to: new, in: container)
+    }
+}
+
 //MARK: Internal Interface
 extension Shiftable {
     
     /// Returns a `Snapshot` of the current state of the `Shiftable`.
     func snapshot() -> Snapshot {
         return Snapshot(view: view)
-    }
-}
-
-//MARK: Public Interface
-public extension Shiftable {
-    
-    /**
-     Creates a shifting view by duplicating (or recreating) the `Shiftables view`. If `shiftingViewConfigurator` is not `nil` - it will be used to create the shifting view. Otherwise, a snapshot of the view will be used. Note: If neither methods can be used to create a `UIView`, a fatal error will be thrown.
-     
-    - parameter containerView: The container which should house the shiftingView.
-    */
-    func viewForShiftWithRespect(to containerView: UIView) -> UIView {
-        
-        guard !ProcessInfo.processInfo.arguments.contains("-shifty_snapshot_debug") else {
-            let view = UIView()
-            view.backgroundColor = .red
-            applyPositionalState(to: view, in: containerView)
-            return view
-        }
-        
-        guard let snapshotView = shiftingViewConfigurator?(self, view, containerView) ?? view.snapshotView(afterScreenUpdates: false) else {
-            fatalError("Unable to create a view for the frame shift for Shiftable: \(self)")
-        }
-    
-        applyPositionalState(to: snapshotView, in: containerView)
-        return snapshotView
-    }
-    
-    /**
-     A wrapper around `Snapshot`s function applyPositionalState(_:in:). Uses a `Snapshot` of the current state.
-     
-     - parameter newView: The view to apply the Snapshot too.
-     - parameter containerView: The superview of `newView`.
-    */
-    func applyPositionalState(to newView: UIView, in containerView: UIView) {
-        
-        let currentSnapshot = snapshot()
-        currentSnapshot.applyPositionalState(to: newView, in: containerView)
     }
 }
 

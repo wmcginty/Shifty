@@ -89,10 +89,10 @@ public class FrameShiftAnimator: FrameShiftAnimatorType {
     func addDefaultAnimations(for frameShift: FrameShift, shiftingView: UIView, inContainer container: UIView, toFinal snapshot: Snapshot?) {
         
         let singleShift = frameShift.shiftApplied(to: shiftingView, in: container, withFinal: snapshot)
-        shiftAnimations = add(singleShift, to: shiftAnimations)
+        shiftAnimations = Combiner.add(singleShift, to: shiftAnimations)
         
         let singleCompletion = cleanup(for: shiftingView, shift: frameShift)
-        shiftCompletions = add(singleCompletion, to: shiftCompletions)
+        shiftCompletions = Combiner.add(singleCompletion, to: shiftCompletions)
     }
 }
 
@@ -103,7 +103,7 @@ extension FrameShiftAnimator {
         guard usingDefaultShift else { return }
         
         if let completion = completion {
-            shiftCompletions = add(completion, to: shiftCompletions)
+            shiftCompletions = Combiner.add(completion, to: shiftCompletions)
         }
         
         performShiftAnimations(shiftAnimations ?? { _ in }, over: duration, completion: shiftCompletions)
@@ -121,31 +121,6 @@ extension FrameShiftAnimator {
             clean(finished)
             
             completion?(finished)
-        }
-    }
-}
-
-fileprivate extension FrameShiftAnimator {
-
-    //FIXME: Don't like this here - global func? hope for closure extensions?
-    
-    fileprivate typealias VoidFunc = () -> Void
-    func add(_ block: @escaping VoidFunc, to: VoidFunc?) -> VoidFunc {
-        let current = to
-        
-        return {
-            current?()
-            block()
-        }
-    }
-    
-    fileprivate typealias BoolFunc = (Bool) -> Void
-    func add(_ block: @escaping BoolFunc, to: BoolFunc?) -> BoolFunc {
-        let current = to
-        
-        return { bool in
-            current?(bool)
-            block(bool)
         }
     }
 }
