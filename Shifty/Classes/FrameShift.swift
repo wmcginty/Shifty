@@ -27,3 +27,19 @@ struct FrameShift {
         assert(initialState.identifier == finalState.identifier, "Initial and Final identifiers must match.")
     }
 }
+
+extension FrameShift {
+    
+    typealias Shift = () -> Void
+    
+    /// Creates a default shift from self, and applies it to the given view residing in the container.
+    ///
+    /// - parameter shiftingView:  The view which will be shifted according to the initial and final states of self.
+    /// - parameter containerView: The container view acting as the superview of the shiftingView
+    /// - parameter snapshot:      The snapshot of the final state to use, if none is provided one will be created.
+    func shiftApplied(to shiftingView: UIView, in containerView: UIView, withFinal snapshot: Snapshot? = nil) -> Shift {
+        
+        let finalSnapshot = snapshot ?? final.snapshot()
+        return { finalSnapshot.applyPositionalState(to: shiftingView, in: containerView) }
+    }
+}

@@ -8,7 +8,8 @@
 
 import UIKit
 
-public typealias FrameShiftAnimationCompletion = () -> Void
+public typealias ShiftAnimations = () -> Void
+public typealias ShiftAnimationCompletion = (Bool) -> Void
 
 public protocol FrameShiftAnimatorType {
     
@@ -35,7 +36,7 @@ public protocol FrameShiftAnimatorType {
      - parameter duration: An optional duration for the shift. If this value is `nil` the shift will take place over a default duration (0.3s).
      - parameter completion: An optional completion block to be executed at the end of the shift
      */
-    func performFrameShiftAnimations(in containerView: UIView, with destinationView: UIView, over duration: TimeInterval?, completion: FrameShiftAnimationCompletion?)
+    func performFrameShiftAnimations(inContainer containerView: UIView, withDestination destinationView: UIView, over duration: TimeInterval?, completion: ShiftAnimationCompletion?) 
 }
 
 extension FrameShiftAnimatorType {
@@ -50,10 +51,13 @@ extension FrameShiftAnimatorType {
         shift.final.view.isHidden = true
     }
     
-    func cleanupAnimation(for shiftingView: UIView, shift: FrameShift) {
-        shift.initial.view.isHidden = false
-        shift.final.view.isHidden = false
-        shiftingView.removeFromSuperview() 
+    func cleanup(for shiftingView: UIView, shift: FrameShift) -> (Bool) -> Void {
+        
+        return { finished in
+            shift.initial.view.isHidden = false
+            shift.final.view.isHidden = false
+            shiftingView.removeFromSuperview()
+        }
     }
     
     func configuredSnapshots(for states: [Shiftable]) -> [Shiftable: Snapshot] {
