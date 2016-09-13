@@ -26,7 +26,7 @@ public protocol FrameShiftAnimatorType {
      - parameter destination: The destination of the shift.
      - parameter deferSnapshotting: A boolean value indicating when view snapshotting will take place. A value of true means that the positional state of the view at it's destination will be determined just in time. A value of value means that these state's will be determined at initialization time.
      */
-    init(source: FrameShiftable, destination: FrameShiftable, deferSnapshotting: Bool)
+    //init(source: FrameShiftable, destination: FrameShiftable, deferSnapshotting: Bool)
     
     /**
      Perform the frame shifting animation inside the container.
@@ -36,7 +36,7 @@ public protocol FrameShiftAnimatorType {
      - parameter duration: An optional duration for the shift. If this value is `nil` the shift will take place over a default duration (0.3s).
      - parameter completion: An optional completion block to be executed at the end of the shift
      */
-    func performFrameShiftAnimations(inContainer containerView: UIView, withDestination destinationView: UIView, over duration: TimeInterval?, completion: ShiftAnimationCompletion?) 
+    func performShiftAnimations(inContainer container: UIView, withDestination destination: UIView, over duration: TimeInterval?, completion: ShiftAnimationCompletion?)
 }
 
 extension FrameShiftAnimatorType {

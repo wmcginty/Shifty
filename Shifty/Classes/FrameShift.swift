@@ -43,3 +43,9 @@ extension FrameShift {
         return { finalSnapshot.applyPositionalState(to: shiftingView, in: containerView) }
     }
 }
+
+extension FrameShift: Equatable {
+    static func ==(lhs: FrameShift, rhs: FrameShift) -> Bool {
+        return true
+    }
+}

@@ -1,110 +1,47 @@
+
+//  FrameShiftPropertyAnimator.swift
+//  Shifty
 //
-////  FrameShiftPropertyAnimator.swift
-////  Shifty
-////
-////  Created by William McGinty on 7/6/16.
-////
-////
+//  Created by William McGinty on 7/6/16.
 //
-//import Foundation
 //
-//@available(iOS 10.0, *)
-//public class FrameShiftPropertyAnimator: FrameShiftAnimatorType {
-//    
-//    //MARK: Public Properties
-//    public let source: FrameShiftable
-//    public let destination: FrameShiftable
-//    
-//    public fileprivate(set)var propertyAnimator: UIViewPropertyAnimator?
-//    
-//    //MARK: Private Properties
-//    fileprivate let frameShifts: [FrameShift]
-//    fileprivate var destinationSnapshots: [Shiftable: Snapshot]?
-//    
-//    //MARK: Initializers
-//    public required init(source: FrameShiftable, destination: FrameShiftable, deferSnapshotting: Bool = true) {
-//        
-//        let initialStates = source.shiftablesForTransition(with: destination.viewController)
-//        let finalStates = destination.shiftablesForTransition(with: source.viewController)
-//        let finalReference = finalStates.toDictionary { ($0.identifier, $0) }
-//        
-//        self.source = source
-//        self.destination = destination
-//        self.frameShifts = initialStates.flatMap() {
-//            guard let finalState = finalReference[$0.identifier] else { return nil }
-//            return FrameShift(initialState: $0, finalState: finalState)
-//        }
-//        
-//        if !deferSnapshotting {
-//            destinationSnapshots = configuredSnapshots(for: finalStates)
-//        }
-//    }
-//    
-//    public func performFrameShiftAnimations(in containerView: UIView, with destinationView: UIView, over duration: TimeInterval?, completion: FrameShiftAnimationCompletion? = nil) {
-//        assert(Thread.isMainThread, "Frame Shift Animation must be called from the main thread")
-//    
-//        frameShifts.forEach { shift in
-//            
-//            let initial = shift.initial
-//            let final = shift.final
-//            
-//            //Create a copy of the sourceView according to initialState
-//            let shiftingView = initial.viewForShiftWithRespect(to: containerView)
-//            insert(shiftingView, into: containerView, for: shift)
-//            
-//            destinationView.layoutIfNeeded()
-//            
-//            //If the destination is of the correct type - request a customized animation. If not, then use the default.
-//            if let destination = self.destination as? CustomFrameShiftable {
-//                destination.performShift(with: shiftingView, in: containerView, with: final.snapshot(), duration: duration) {
-//                    self.cleanupAnimation(for: shiftingView, shift: shift)
-//                }
-//            } else {
-//                performDefaultShiftAnimation(for: shiftingView, in: containerView, for: shift, over: duration)
-//            }
-//        }
-//    }
-//}
-//
-////MARK: Private Helpers
-//@available(iOS 10.0, *)
-//fileprivate extension FrameShiftPropertyAnimator {
-//    
-//    func defaultShift(for shiftingView: UIView, in containerView: UIView, for shift: FrameShift, over duration: TimeInterval?) -> () -> Void {
-//        
-//        return {
-//            let finalSnapshot = self.destinationSnapshots?[shift.final] ?? shift.final.snapshot()
-//            finalSnapshot.applyPositionalState(to: shiftingView, in: containerView)
-//        }
-//    }
-//    
-//    func performDefaultShiftAnimation(for shiftingView: UIView, in containerView: UIView, for shift: FrameShift, over duration: TimeInterval?) {
-//        
-//        let final = shift.final
-//        
-//        //Force the destination to layout - so the position we calculate is up to date.
-//        final.superview.layoutIfNeeded()
-//        
-//        let animator = currentDefaultPropertyAnimator(for: duration)
-//        animator.addAnimations(defaultShift(for: shiftingView, in: containerView, for: shift, over: duration))
-//        animator.addCompletion { [unowned self] in self.defaultShiftAnimationCleanup(for: $0, shiftingView: shiftingView, shift: shift) }
-//    }
-//    
-//    func defaultShiftAnimationCleanup(for finalState: UIViewAnimatingPosition, shiftingView: UIView, shift: FrameShift) {
-//        switch finalState {
-//        case .start: cleanupAnimation(for: shiftingView, shift: shift)
-//        case .current: fatalError("NYI")
-//        case .end: cleanupAnimation(for: shiftingView, shift: shift)
-//        }
-//    }
-//    
-//    func currentDefaultPropertyAnimator(for duration: TimeInterval?) -> UIViewPropertyAnimator {
-//        if propertyAnimator == nil {
-//            let animator = UIViewPropertyAnimator(duration: duration ?? FrameShiftPropertyAnimator.defaultAnimationDuration, curve: .easeInOut, animations: nil)
-//            propertyAnimator = animator
-//        }
-//        
-//        assert(propertyAnimator != nil)
-//        return propertyAnimator!
-//    }
-//}
+
+import Foundation
+
+@available(iOS 10.0, *)
+public class FrameShiftPropertyAnimator: FrameShiftAnimator {
+    
+    //MARK: Public Properties
+    public let propertyAnimator: UIViewPropertyAnimator
+    
+    //MARK: Initializers
+    public init(source: FrameShiftable, destination: FrameShiftable, animator: UIViewPropertyAnimator, deferSnapshotting: Bool = true) {
+        
+        propertyAnimator = animator
+        super.init(source: source, destination: destination, deferSnapshotting: deferSnapshotting)
+    }
+    
+    override func addDefaultAnimations(for frameShift: FrameShift, shiftingView: UIView, inContainer container: UIView, toFinal snapshot: Snapshot?) {
+        
+        let singleShift = frameShift.shiftApplied(to: shiftingView, in: container, withFinal: snapshot)
+        propertyAnimator.addAnimations(singleShift)
+        
+        let singleCompletion = cleanup(for: shiftingView, shift: frameShift)
+        propertyAnimator.addCompletion { position in
+            singleCompletion(position == .start || position == .end)
+        }
+    }
+    
+    override func performShiftAnimations(_ animations: @escaping ShiftAnimations, over duration: TimeInterval?, completion: ShiftAnimationCompletion?) {
+        propertyAnimator.addCompletion { (position) in
+            completion?(position == .start || position == .end)
+        }
+        
+        propertyAnimator.startAnimation()
+    }
+}
+
+//MARK: Private Helpers
+@available(iOS 10.0, *)
+fileprivate extension FrameShiftPropertyAnimator {
+    }

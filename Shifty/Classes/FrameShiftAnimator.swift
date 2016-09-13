@@ -15,15 +15,17 @@ public class FrameShiftAnimator: FrameShiftAnimatorType {
     public let source: FrameShiftable
     public let destination: FrameShiftable
     
-    //MARK: Private Properties
-    fileprivate let frameShifts: [FrameShift]
-    fileprivate var destinationSnapshots: [Shiftable: Snapshot]?
+    //MARK: Internal Properties
+    let frameShifts: [FrameShift]
+    var destinationSnapshots: [Shiftable: Snapshot]?
+
+    var shiftAnimations: ShiftAnimations?
+    var shiftCompletions: ShiftAnimationCompletion?
     
-    fileprivate var shiftAnimations: ShiftAnimations?
-    fileprivate var shiftCompletions: ShiftAnimationCompletion?
+    var usingDefaultShift: Bool { return !(destination is CustomFrameShiftable) }
 
     //MARK: Initializers
-    public required init(source: FrameShiftable, destination: FrameShiftable, deferSnapshotting: Bool = true) {
+    public init(source: FrameShiftable, destination: FrameShiftable, deferSnapshotting: Bool = true) {
         
         let initialStates = source.shiftablesForTransition(with: destination.viewController)
         let finalStates = destination.shiftablesForTransition(with: source.viewController)
@@ -42,47 +44,92 @@ public class FrameShiftAnimator: FrameShiftAnimatorType {
     }
     
     //MARK: FrameShiftAnimatorType
-    public func performFrameShiftAnimations(inContainer containerView: UIView, withDestination destinationView: UIView, over duration: TimeInterval?, completion: ShiftAnimationCompletion? = nil) {
+    public func performShiftAnimations(inContainer container: UIView, withDestination dest: UIView, over duration: TimeInterval?, completion: ShiftAnimationCompletion? = nil) {
         assert(Thread.isMainThread, "Frame Shift Animation must be called from the main thread")
         
         //Force layout pass on destinationView so final shift positions are accurate
-        destinationView.layoutIfNeeded()
+        dest.layoutIfNeeded()
         
         //Configure our individual animation and completion blocks and compose them together
         frameShifts.forEach { frameShift in
             
-            let initial = frameShift.initial
             let final = frameShift.final
             
             //Create a copy of the sourceView according to initialState
-            let shiftingView = initial.viewForShiftWithRespect(to: containerView)
-            insert(shiftingView, into: containerView, for: frameShift)
-
-            let singleShift = frameShift.shiftApplied(to: shiftingView, in: containerView, withFinal: destinationSnapshots?[final])
-            shiftAnimations = add(singleShift, to: shiftAnimations)
+            let shiftingView = frameShift.initial.viewForShiftWithRespect(to: container)
+            insert(shiftingView, into: container, for: frameShift)
             
-            let singleCompletion = cleanup(for: shiftingView, shift: frameShift)
-            shiftCompletions = add(singleCompletion, to: shiftCompletions)
+            //If destination conforms to CustomFrameShiftable - hand over to it
+            if let destination = destination as? CustomFrameShiftable {
+                
+                let finalSnapshot = destinationSnapshots?[final] ?? final.snapshot()
+                performCustomShift(for: frameShift, to: destination, byShifting: shiftingView, to: finalSnapshot, over: duration, inContainer: container) { finished in
+                    
+                    //If this is the last shift, add the overall completion
+                    if let lastShift = self.frameShifts.last, lastShift == frameShift, let completion = completion {
+                        completion(finished)
+                    }
+                }
+                
+            } else {
+                //Destination does not conform to CustomFrameShiftable - apply defaults
+                addDefaultAnimations(for: frameShift, shiftingView: shiftingView, inContainer: container, toFinal: destinationSnapshots?[final])
+            }
         }
+        
+        //If using default animations - trigger them now
+        performDefaultAnimationsIfNeeded(over: duration, completion: completion)
+    }
+    
+    func performShiftAnimations(_ animations: @escaping ShiftAnimations, over duration: TimeInterval?, completion: ShiftAnimationCompletion?) {
+        UIView.animate(withDuration: duration ?? FrameShiftAnimator.defaultAnimationDuration, delay: 0.0, options: [.beginFromCurrentState],
+                       animations: animations, completion: completion)
+    }
+    
+    func addDefaultAnimations(for frameShift: FrameShift, shiftingView: UIView, inContainer container: UIView, toFinal snapshot: Snapshot?) {
+        
+        let singleShift = frameShift.shiftApplied(to: shiftingView, in: container, withFinal: snapshot)
+        shiftAnimations = add(singleShift, to: shiftAnimations)
+        
+        let singleCompletion = cleanup(for: shiftingView, shift: frameShift)
+        shiftCompletions = add(singleCompletion, to: shiftCompletions)
+    }
+}
+
+//MARK: Default Shifting
+extension FrameShiftAnimator {
+    
+    func performDefaultAnimationsIfNeeded(over duration: TimeInterval?, completion: ShiftAnimationCompletion?) {
+        guard usingDefaultShift else { return }
         
         if let completion = completion {
             shiftCompletions = add(completion, to: shiftCompletions)
         }
         
-        performDefaultShiftAnimations(shiftAnimations ?? { _ in }, withDuration: duration, completion: shiftCompletions)
+        performShiftAnimations(shiftAnimations ?? { _ in }, over: duration, completion: shiftCompletions)
     }
 }
 
-//MARK: Animation and Completion
-fileprivate extension FrameShiftAnimator {
+//MARK: Custom Shifting
+extension FrameShiftAnimator {
     
-    func performDefaultShiftAnimations(_ animations: @escaping ShiftAnimations, withDuration duration: TimeInterval?, completion: ShiftAnimationCompletion?) {
-        UIView.animate(withDuration: duration ?? FrameShiftAnimator.defaultAnimationDuration, delay: 0.0, options: [.beginFromCurrentState],
-                       animations: animations, completion: completion)
+    func performCustomShift(for frameShift: FrameShift, to destination: CustomFrameShiftable, byShifting shifting: UIView, to snapshot: Snapshot, over duration: TimeInterval?, inContainer container: UIView, completion: ShiftAnimationCompletion? = nil) {
+        destination.performShift(with: shifting, in: container, withFinal: snapshot, over: duration) { finished in
+            
+            //Clean up after the shift transition
+            let clean = self.cleanup(for: shifting, shift: frameShift)
+            clean(finished)
+            
+            completion?(finished)
+        }
     }
-    
+}
+
+fileprivate extension FrameShiftAnimator {
+
     //FIXME: Don't like this here - global func? hope for closure extensions?
-    private typealias VoidFunc = () -> Void
+    
+    fileprivate typealias VoidFunc = () -> Void
     func add(_ block: @escaping VoidFunc, to: VoidFunc?) -> VoidFunc {
         let current = to
         
@@ -92,7 +139,7 @@ fileprivate extension FrameShiftAnimator {
         }
     }
     
-    private typealias BoolFunc = (Bool) -> Void
+    fileprivate typealias BoolFunc = (Bool) -> Void
     func add(_ block: @escaping BoolFunc, to: BoolFunc?) -> BoolFunc {
         let current = to
         
