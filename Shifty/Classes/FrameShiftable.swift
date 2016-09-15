@@ -10,6 +10,9 @@ import UIKit
 
 //MARK: FrameShiftable Protocol Declaration
 
+public typealias Animation = () -> Void
+public typealias AnimationCompletion = (Bool) -> Void
+
 /// An object that is capable of frame-shifting a subset of it's view hierarchy during a transition.
 public protocol FrameShiftable {
     
@@ -36,7 +39,7 @@ public protocol CustomFrameShiftable: FrameShiftable {
     /// - parameter snapshot:   The final positional state of the shiftingView. Can include `center`, `position`, `transform` and `layer.transform3d`.
     /// - parameter duration:   Optional duration of the transition. If nil, any duration can be used.
     /// - parameter completion: The closure to be executed at the end of the custom shifting animation.
-    func performShift(with shifting: UIView, in container: UIView, withFinal snapshot: Snapshot, over duration: TimeInterval?, completion: ShiftAnimationCompletion?)
+    func performShift(with shifting: UIView, in container: UIView, forFinal snapshot: Snapshot, with duration: TimeInterval?, completion: AnimationCompletion?)
 }
 
 //MARK: Extensions

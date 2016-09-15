@@ -57,10 +57,12 @@ class PropertyShiftAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             let springTiming = UISpringTimingParameters(dampingRatio: 0.6)
             let animator = UIViewPropertyAnimator(duration: self.transitionDuration(using: transitionContext), timingParameters: springTiming)
             
+            /*
             let shiftAnimator = self.initializeFrameShiftAnimator(with: sourceViewController, destination: destinationViewController, animator: animator)
             shiftAnimator?.performShiftAnimations(inContainer: containerView, withDestination: destinationView, over: nil, completion: { finished in
                 transitionContext.completeTransition(finished && !transitionContext.transitionWasCancelled)
             })
+ */
             
             //At this point, we can tell the destination to complete the transition and provide the source a chance to clean up before cleaning up the context itself.
             destinationVC.completeTransition(from: sourceViewController)
@@ -72,11 +74,12 @@ class PropertyShiftAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 //MARK: Private Helpers
 @available(iOS 10, *)
 private extension PropertyShiftAnimator {
-    
+    /*
     func initializeFrameShiftAnimator(with source: UIViewController, destination: UIViewController, animator: UIViewPropertyAnimator) -> FrameShiftPropertyAnimator? {
         guard let source = source as? FrameShiftable,
             let destination = destination as? FrameShiftable else { return .none }
         
         return FrameShiftPropertyAnimator(source: source, destination: destination, animator: animator)
     }
+ */
 }

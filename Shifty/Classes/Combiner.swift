@@ -1,6 +1,6 @@
 //
 //  Combiner.swift
-//  Pods
+//  Shifty
 //
 //  Created by William McGinty on 9/12/16.
 //
