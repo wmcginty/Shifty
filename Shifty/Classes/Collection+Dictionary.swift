@@ -10,12 +10,11 @@ import Foundation
 
 extension Collection {
     
-    /**
-        Convert a collection into a dictionary representation.
-        
-        - parameter transformer: The function that converts each element (of type `Generator.Element`) into a key, value tuple. Note that the key type must conform to `Hashable`.
-        - returns: A dictionary representation of `self` created by applying `transformer`. If 'self' is empty, an empty dictionary is returned.
-     */
+    /// Convert a collection into a dictionary representation.
+    ///
+    /// - parameter transformer: The function that converts each element (of type `Generator.Element`) into a key, value tuple. Note that the key type must conform to `Hashable`.
+    ///
+    /// - returns: A dictionary representation of `self` created by applying `transformer`. If 'self' is empty, an empty dictionary is returned.
     func toDictionary<T: Hashable, V>(using transformer: (Generator.Element) -> (key: T, value: V)) -> Dictionary<T, V> {
         return self.reduce([:]) { dictionary, element in
             var dict = dictionary

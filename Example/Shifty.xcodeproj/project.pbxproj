@@ -16,6 +16,7 @@
 		B477DD6B1D2E0F4900651077 /* ViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B477DD6A1D2E0F4900651077 /* ViewControllerB.swift */; };
 		B477DD701D2E120C00651077 /* SimpleTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B477DD6F1D2E120C00651077 /* SimpleTransitioningDelegate.swift */; };
 		B477DD731D2E121500651077 /* SimpleShiftAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B477DD721D2E121500651077 /* SimpleShiftAnimator.swift */; };
+		B4AF09451D87B56200B07410 /* PropertyShiftAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF09441D87B56200B07410 /* PropertyShiftAnimator.swift */; };
 		B4B6F17D1D3498EB0014EF7A /* NavTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B6F17C1D3498EB0014EF7A /* NavTransitioningDelegate.swift */; };
 		CF4D6F220D09CAC96EF8965C /* Pods_Shifty_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63FADE7377C13CC4C4C04646 /* Pods_Shifty_Tests.framework */; };
 		CF7D0493066FB2769203D4DF /* Pods_Shifty_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9396B34D2254E80A9AC607D5 /* Pods_Shifty_Example.framework */; };
@@ -51,6 +52,7 @@
 		B477DD6A1D2E0F4900651077 /* ViewControllerB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerB.swift; sourceTree = "<group>"; };
 		B477DD6F1D2E120C00651077 /* SimpleTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTransitioningDelegate.swift; sourceTree = "<group>"; };
 		B477DD721D2E121500651077 /* SimpleShiftAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleShiftAnimator.swift; sourceTree = "<group>"; };
+		B4AF09441D87B56200B07410 /* PropertyShiftAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyShiftAnimator.swift; sourceTree = "<group>"; };
 		B4B6F17C1D3498EB0014EF7A /* NavTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavTransitioningDelegate.swift; sourceTree = "<group>"; };
 		D1A5DE282137D43D5F1CA167 /* Pods-Shifty_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifty_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shifty_Example/Pods-Shifty_Example.release.xcconfig"; sourceTree = "<group>"; };
 		E42C535C3EA119CA43F56AC2 /* Shifty.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Shifty.podspec; path = ../Shifty.podspec; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				B477DD721D2E121500651077 /* SimpleShiftAnimator.swift */,
+				B4AF09441D87B56200B07410 /* PropertyShiftAnimator.swift */,
 			);
 			name = Animators;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 				B4B6F17D1D3498EB0014EF7A /* NavTransitioningDelegate.swift in Sources */,
 				B477DD701D2E120C00651077 /* SimpleTransitioningDelegate.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				B4AF09451D87B56200B07410 /* PropertyShiftAnimator.swift in Sources */,
 				B477DD731D2E121500651077 /* SimpleShiftAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,20 +16,16 @@ import UIKit
  */
 public protocol ContinuityTransitionable {
     
-    /**
-     The opportunity for the object (as the source) to perform any actions that need to be done before the transition proceeds. For instance, this method can be used to perform exiting animations for a view controller's content.
-     
-     - parameter destination: The view controller being transitioned to.
-     - parameter duration: The duration of the transition alloted to the preparation. Not obeying this duration can lead to visual glitches.
-     - parameter completion: The closure to be executed at the end of the preparations. Failure to execute this closure will break the transition.
-    */
+    /// The opportunity for the object (as the source) to perform any actions that need to be done before the transition proceeds. For instance, this method can be used to perform exiting animations for a view controller's content.
+    ///
+    /// - parameter destination: The view controller being transitioned to.
+    /// - parameter duration:    The duration of the transition alloted to the preparation. Not obeying this duration can lead to animation skips.
+    /// - parameter completion:  The closure to be executed at the end of the preparations. Failure to execute this closure will break the transition.
     func prepareForTransition(to destination: UIViewController, withDuration duration: TimeInterval, completion: @escaping (Bool) -> Void)
     
-    /**
-    The opportunity for the object (as the destination) to perform any actions that need to be done to complete a transition. For instance, this method can be used to perform entrance animations on a view controller's content.
- 
-    - parameter source: The view controller being transitioned from.
-    */
+    /// The opportunity for the object (as the destination) to perform any actions that need to be done to complete a transition. For instance, this method can be used to perform entrance animations on a view controller's content.
+    ///
+    /// - parameter source: The view controller being transitioned from.
     func completeTransition(from source: UIViewController)
 }
 
