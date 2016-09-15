@@ -20,6 +20,6 @@ struct ShiftAction: FrameShiftAnimatable {
     
     func performShift(withDuration duration: TimeInterval, completion block: AnimationCompletion? = nil) {
         let handler = block.map { Combiner.add($0, to: completion) } ?? completion
-        UIView.animateShift(withDuration: duration, animations: animations ?? { }, completion: handler)
+        UIView.animateShift(withDuration: duration, animations: animations, completion: handler)
     }
 }
