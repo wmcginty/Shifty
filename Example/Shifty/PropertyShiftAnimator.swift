@@ -1,5 +1,5 @@
 //
-//  SimpleShiftAnimator.swift
+//  PropertyShiftAnimator.swift
 //  Shifty
 //
 //  Created by William McGinty on 7/6/16.
@@ -9,7 +9,8 @@
 import UIKit
 import Shifty
 
-class SimpleShiftAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+@available(iOS 10, *)
+class PropertyShiftAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
     private var isPresenting: Bool = true
     
@@ -18,22 +19,21 @@ class SimpleShiftAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     }
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.4
+        return 1.4
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         
         //Begin by ensuring the transitionContext is configured correctly, and that our source + destination can power the transition
         //This being a basic example - exit if this fails. YMMV with more complicated examples.
-        
         guard let sourceViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from),
             let destinationViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) else {
-            fatalError("Improperly configured transition context: \(transitionContext)")
+                fatalError("Improperly configured transition context: \(transitionContext)")
         }
         
         guard let sourceView = transitionContext.view(forKey: UITransitionContextViewKey.from),
             let destinationView = transitionContext.view(forKey: UITransitionContextViewKey.to) else {
-            fatalError("Improperly configured transition context: \(transitionContext)")
+                fatalError("Improperly configured transition context: \(transitionContext)")
         }
         
         guard let source = sourceViewController as? ContinuityTransitionable, let destination = destinationViewController as? ContinuityTransitionable else {
@@ -48,16 +48,20 @@ class SimpleShiftAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         
         //Begin the transitioning process by telling the source to prepare
         source.prepareForTransition(to: destinationViewController, withDuration: transitionDuration(using: transitionContext)) { [unowned self] finished in
-        
+            
             //As soon as the source has finished preparations, add the destination view so that we can properly place our shifting views.
             container.insertSubview(destinationView, aboveSubview: sourceView)
-        
+            
             //Next, we will begin the frame shift animation and unhide the destination view - because the continuity transition is designed for view controllers with identical backgrounds - this is imperceptible. Note that doesn't have to be the case - use defersSnapshotting to move the frame shifts and views simultaneously.
-            let shiftAnimator = self.initializeFrameShiftAnimator(with: sourceViewController, destination: destinationViewController)
-            shiftAnimator?.performShift(inContainer: container, withDestination: destinationView, with: self.transitionDuration(using: transitionContext)) { finished in
+            
+            let springTiming = UISpringTimingParameters(dampingRatio: 0.6)
+            let animator = UIViewPropertyAnimator(duration: self.transitionDuration(using: transitionContext), timingParameters: springTiming)
+            
+            let shiftAnimator = self.initializeFrameShiftAnimator(with: sourceViewController, destination: destinationViewController, animator: animator)
+            shiftAnimator?.performShift(inContainer: container, withDestination: destinationView) { finished in
                 transitionContext.completeTransition(finished && !transitionContext.transitionWasCancelled)
             }
-    
+            
             //At this point, we can tell the destination to complete the transition and provide the source a chance to clean up before cleaning up the context itself.
             destination.completeTransition(from: sourceViewController)
             (source as? ContinuityTransitionPreparable)?.completeTransition(to: destinationViewController)
@@ -66,12 +70,13 @@ class SimpleShiftAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 }
 
 //MARK: Private Helpers
-private extension SimpleShiftAnimator {
+@available(iOS 10, *)
+private extension PropertyShiftAnimator {
     
-    func initializeFrameShiftAnimator(with source: UIViewController, destination: UIViewController) -> FrameShiftAnimator? {
+    func initializeFrameShiftAnimator(with source: UIViewController, destination: UIViewController, animator: UIViewPropertyAnimator) -> FrameShiftPropertyAnimator? {
         guard let source = source as? FrameShiftable,
             let destination = destination as? FrameShiftable else { return .none }
         
-        return FrameShiftAnimator(source: source, destination: destination)
+        return FrameShiftPropertyAnimator(source: source, destination: destination, animator: animator)
     }
 }
