@@ -16,8 +16,8 @@ public class FrameShiftAnimator {
     
     //MARK: Internal Properties
     let frameShifts: [FrameShift]
+    let defaultShift = CoalescedShiftAction()
     
-    let defaultShift = CoalescedShift()
     var isCustomShiftable: Bool { return shiftDestination is CustomFrameShiftable }
     
     //MARK: Initializers

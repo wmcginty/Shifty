@@ -1,5 +1,5 @@
 //
-//  CoalescedShift.swift
+//  CoalescedShiftAction.swift
 //  Shifty
 //
 //  Created by William McGinty on 9/13/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CoalescedShift: Coalesced<ShiftAction>, FrameShiftAnimatable {
+class CoalescedShiftAction: Coalesced<ShiftAction>, FrameShiftAnimatable {
     
     func performShift(withDuration duration: TimeInterval, completion: AnimationCompletion? = nil) {
         

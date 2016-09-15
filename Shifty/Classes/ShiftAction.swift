@@ -10,8 +10,8 @@ import Foundation
 
 struct ShiftAction: FrameShiftAnimatable {
     
-    private var animations: Animation
-    private var completion: AnimationCompletion?
+    private(set) var animations: Animation
+    private(set) var completion: AnimationCompletion?
     
     init(animations: @escaping Animation, completion: AnimationCompletion? = nil) {
         self.animations = animations
@@ -23,6 +23,3 @@ struct ShiftAction: FrameShiftAnimatable {
         UIView.animateShift(withDuration: duration, animations: animations ?? { }, completion: handler)
     }
 }
-
-
-//create extension to initialize from a frame shift?
