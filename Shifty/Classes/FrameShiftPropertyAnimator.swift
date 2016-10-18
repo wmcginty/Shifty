@@ -81,7 +81,7 @@ fileprivate extension FrameShiftPropertyAnimator {
     
     func performDefaultAnimationsIfNeeded(completion: AnimationCompletion? = nil) {
         guard !isCustomShiftable else { return }
-        defaultAnimator.add(completion)
+        defaultAnimator.add(completion: completion)
         defaultAnimator.startAnimation()
     }
 }
