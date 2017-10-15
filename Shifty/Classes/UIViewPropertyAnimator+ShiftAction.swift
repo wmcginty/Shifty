@@ -13,10 +13,10 @@ extension UIViewPropertyAnimator {
     
     func add(_ shiftAction: ShiftAction) {
         addAnimations(shiftAction.animations)
-        add(shiftAction.completion)
+        add(completion: shiftAction.completion)
     }
     
-    func add(_ completion: AnimationCompletion?) {
+    func add(completion: AnimationCompletion?) {
         addCompletion { position in
             switch position {
             case .start: completion?(false) //We're at the start - we didn't finish
