@@ -39,7 +39,6 @@ public struct Snapshot {
     /// - parameter container: The coordinate space to convert the center into.
     ///
     /// - returns: The center of `view` in the coordinate space of `container`.
-
     public func center(of view: UIView, withRespectTo container: UIView) -> CGPoint {
         return container.convert(center, from: view.superview)
     }
