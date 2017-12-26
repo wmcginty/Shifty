@@ -181,6 +181,7 @@
                     <connections>
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="LKQ-RH-eU7"/>
                         <segue destination="bHB-pY-PUq" kind="relationship" relationship="viewControllers" id="LCX-Sw-N86"/>
+                        <segue destination="Pft-1h-35L" kind="relationship" relationship="viewControllers" id="OYh-ce-daN"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fyk-vA-dT7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -200,8 +201,8 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJj-wY-u7b">
-                                <rect key="frame" x="111" y="568" width="154" height="30"/>
-                                <state key="normal" title="Continuous Transition!"/>
+                                <rect key="frame" x="134" y="568" width="108" height="30"/>
+                                <state key="normal" title="Shift Transition!"/>
                                 <connections>
                                     <action selector="shiftItButtonPressedWithSender:" destination="bHB-pY-PUq" eventType="touchUpInside" id="gbP-6z-A9V"/>
                                 </connections>
@@ -300,6 +301,120 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TOw-U6-B11" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-127" y="483"/>
+        </scene>
+        <!--Shift-->
+        <scene sceneID="FDO-g9-1IS">
+            <objects>
+                <viewController id="Pft-1h-35L" userLabel="Shift" customClass="CommitShiftExampleViewControllerA" customModule="Shifty_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UHH-Ax-fof"/>
+                        <viewControllerLayoutGuide type="bottom" id="jHT-bN-sya"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UGH-DL-Soy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lQR-U5-5ew">
+                                <rect key="frame" x="134" y="568" width="108" height="30"/>
+                                <state key="normal" title="Shift Transition!"/>
+                                <connections>
+                                    <action selector="shiftItButtonPressedWithSender:" destination="Pft-1h-35L" eventType="touchUpInside" id="ABN-9o-Y8j"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eov-02-beU">
+                                <rect key="frame" x="36" y="160" width="100" height="100"/>
+                                <color key="backgroundColor" red="1" green="0.46964316849999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="eov-02-beU" secondAttribute="height" id="a2R-ei-3nj"/>
+                                    <constraint firstAttribute="height" constant="100" id="eg7-fb-eBp"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sF3-X1-oI8">
+                                <rect key="frame" x="36" y="40" width="200" height="100"/>
+                                <color key="backgroundColor" red="1" green="0.81176470590000005" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="sF3-X1-oI8" secondAttribute="height" multiplier="2:1" id="MQY-fV-4lb"/>
+                                    <constraint firstAttribute="height" constant="100" id="QJx-ZS-04w"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="eov-02-beU" firstAttribute="top" secondItem="sF3-X1-oI8" secondAttribute="bottom" constant="20" id="D0v-CT-Ck4"/>
+                            <constraint firstItem="eov-02-beU" firstAttribute="leading" secondItem="sF3-X1-oI8" secondAttribute="leading" id="MYY-wS-eFL"/>
+                            <constraint firstItem="lQR-U5-5ew" firstAttribute="centerX" secondItem="UGH-DL-Soy" secondAttribute="centerX" id="TPJ-ri-DVU"/>
+                            <constraint firstItem="sF3-X1-oI8" firstAttribute="top" secondItem="UHH-Ax-fof" secondAttribute="bottom" constant="20" id="bVF-We-JA0"/>
+                            <constraint firstItem="jHT-bN-sya" firstAttribute="top" secondItem="lQR-U5-5ew" secondAttribute="bottom" constant="20" id="hdB-4w-1xe"/>
+                            <constraint firstItem="sF3-X1-oI8" firstAttribute="leading" secondItem="UGH-DL-Soy" secondAttribute="leadingMargin" constant="20" id="taU-Kr-wnT"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Shift 2" id="hjA-wk-jUT"/>
+                    <navigationItem key="navigationItem" id="9II-XY-FW4"/>
+                    <connections>
+                        <outlet property="orangeView" destination="eov-02-beU" id="BsL-Wk-DLR"/>
+                        <outlet property="shiftButton" destination="lQR-U5-5ew" id="UL8-fM-1Q4"/>
+                        <outlet property="yellowView" destination="sF3-X1-oI8" id="rgd-ph-aoo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tf1-mo-n3n" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="790" y="-188"/>
+        </scene>
+        <!--Commit Shift Example View ControllerB-->
+        <scene sceneID="PKE-7O-rC7">
+            <objects>
+                <viewController storyboardIdentifier="CommitShiftExampleViewControllerB" id="gZp-Zo-0Ki" customClass="CommitShiftExampleViewControllerB" customModule="Shifty_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Q39-At-mhP"/>
+                        <viewControllerLayoutGuide type="bottom" id="sNe-Fu-cMY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7xd-bA-fx6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jxm-dr-Eoo">
+                                <rect key="frame" x="259" y="40" width="100" height="100"/>
+                                <color key="backgroundColor" red="1" green="0.81176470590000005" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="jxm-dr-Eoo" secondAttribute="height" id="j3s-nL-WSK"/>
+                                    <constraint firstAttribute="height" constant="100" id="lDV-9g-3JE"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qQK-dZ-yS3">
+                                <rect key="frame" x="159" y="160" width="200" height="100"/>
+                                <color key="backgroundColor" red="1" green="0.46964316849999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="qQK-dZ-yS3" secondAttribute="height" multiplier="2" id="dWx-sb-75y"/>
+                                    <constraint firstAttribute="height" constant="100" id="uM7-DA-ugw"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tll-dj-7eb">
+                                <rect key="frame" x="170.5" y="617" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="dismiss" destination="gZp-Zo-0Ki" eventType="touchUpInside" id="aZi-VL-zA0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.001160401247" green="0.92935490610000004" blue="0.0018002973979999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="sNe-Fu-cMY" firstAttribute="top" secondItem="Tll-dj-7eb" secondAttribute="bottom" constant="20" id="GA4-Vg-95S"/>
+                            <constraint firstItem="qQK-dZ-yS3" firstAttribute="trailing" secondItem="jxm-dr-Eoo" secondAttribute="trailing" id="agq-WV-uLK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jxm-dr-Eoo" secondAttribute="trailing" id="cce-E7-hd4"/>
+                            <constraint firstItem="jxm-dr-Eoo" firstAttribute="top" secondItem="Q39-At-mhP" secondAttribute="bottom" constant="20" id="okf-Ds-5zx"/>
+                            <constraint firstItem="qQK-dZ-yS3" firstAttribute="top" secondItem="jxm-dr-Eoo" secondAttribute="bottom" constant="20" id="rrT-f9-Mgm"/>
+                            <constraint firstItem="Tll-dj-7eb" firstAttribute="centerX" secondItem="7xd-bA-fx6" secondAttribute="centerX" id="v3t-hr-RVg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="Tll-dj-7eb" id="nK3-WI-VV3"/>
+                        <outlet property="orangeView" destination="qQK-dZ-yS3" id="iPC-EY-0XB"/>
+                        <outlet property="yellowView" destination="jxm-dr-Eoo" id="CfL-s0-s75"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Ha-Jh-GYT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="790" y="483"/>
         </scene>
     </scenes>
 </document>

@@ -17,6 +17,10 @@
 		B424D0121FF25BE600952234 /* ShiftExampleViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424D0111FF25BE600952234 /* ShiftExampleViewControllerB.swift */; };
 		B424D0141FF25E6000952234 /* SimpleShiftTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424D0131FF25E6000952234 /* SimpleShiftTransitionAnimator.swift */; };
 		B424D0161FF25E6E00952234 /* SimpleShiftTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424D0151FF25E6E00952234 /* SimpleShiftTransitioningDelegate.swift */; };
+		B424D0181FF274F000952234 /* CommitShiftExampleViewControllerA.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424D0171FF274F000952234 /* CommitShiftExampleViewControllerA.swift */; };
+		B424D01A1FF274FF00952234 /* CommitShiftExampleViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424D0191FF274FF00952234 /* CommitShiftExampleViewControllerB.swift */; };
+		B424D01C1FF2769F00952234 /* PrecommitShiftTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424D01B1FF2769F00952234 /* PrecommitShiftTransitionAnimator.swift */; };
+		B424D01E1FF276A800952234 /* PrecommitShiftTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424D01D1FF276A800952234 /* PrecommitShiftTransitioningDelegate.swift */; };
 		B477DD691D2E0F4400651077 /* ContinuousExampleViewControllerA.swift in Sources */ = {isa = PBXBuildFile; fileRef = B477DD681D2E0F4400651077 /* ContinuousExampleViewControllerA.swift */; };
 		B477DD6B1D2E0F4900651077 /* ContinuousExampleViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B477DD6A1D2E0F4900651077 /* ContinuousExampleViewControllerB.swift */; };
 		B477DD731D2E121500651077 /* ContinuityTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B477DD721D2E121500651077 /* ContinuityTransitionAnimator.swift */; };
@@ -55,6 +59,10 @@
 		B424D0111FF25BE600952234 /* ShiftExampleViewControllerB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftExampleViewControllerB.swift; sourceTree = "<group>"; };
 		B424D0131FF25E6000952234 /* SimpleShiftTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleShiftTransitionAnimator.swift; sourceTree = "<group>"; };
 		B424D0151FF25E6E00952234 /* SimpleShiftTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleShiftTransitioningDelegate.swift; sourceTree = "<group>"; };
+		B424D0171FF274F000952234 /* CommitShiftExampleViewControllerA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitShiftExampleViewControllerA.swift; sourceTree = "<group>"; };
+		B424D0191FF274FF00952234 /* CommitShiftExampleViewControllerB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitShiftExampleViewControllerB.swift; sourceTree = "<group>"; };
+		B424D01B1FF2769F00952234 /* PrecommitShiftTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrecommitShiftTransitionAnimator.swift; sourceTree = "<group>"; };
+		B424D01D1FF276A800952234 /* PrecommitShiftTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrecommitShiftTransitioningDelegate.swift; sourceTree = "<group>"; };
 		B477DD681D2E0F4400651077 /* ContinuousExampleViewControllerA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContinuousExampleViewControllerA.swift; sourceTree = "<group>"; };
 		B477DD6A1D2E0F4900651077 /* ContinuousExampleViewControllerB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContinuousExampleViewControllerB.swift; sourceTree = "<group>"; };
 		B477DD721D2E121500651077 /* ContinuityTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContinuityTransitionAnimator.swift; sourceTree = "<group>"; };
@@ -180,6 +188,8 @@
 				B477DD6A1D2E0F4900651077 /* ContinuousExampleViewControllerB.swift */,
 				B424D00F1FF25BDE00952234 /* ShiftExampleViewControllerA.swift */,
 				B424D0111FF25BE600952234 /* ShiftExampleViewControllerB.swift */,
+				B424D0171FF274F000952234 /* CommitShiftExampleViewControllerA.swift */,
+				B424D0191FF274FF00952234 /* CommitShiftExampleViewControllerB.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -207,6 +217,7 @@
 			children = (
 				B40241021FF0892A0089E67A /* ContinuityTransitioningDelegate.swift */,
 				B424D0151FF25E6E00952234 /* SimpleShiftTransitioningDelegate.swift */,
+				B424D01D1FF276A800952234 /* PrecommitShiftTransitioningDelegate.swift */,
 			);
 			name = Delegates;
 			sourceTree = "<group>";
@@ -216,6 +227,7 @@
 			children = (
 				B477DD721D2E121500651077 /* ContinuityTransitionAnimator.swift */,
 				B424D0131FF25E6000952234 /* SimpleShiftTransitionAnimator.swift */,
+				B424D01B1FF2769F00952234 /* PrecommitShiftTransitionAnimator.swift */,
 			);
 			name = Animators;
 			sourceTree = "<group>";
@@ -436,8 +448,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B424D0101FF25BDE00952234 /* ShiftExampleViewControllerA.swift in Sources */,
+				B424D01C1FF2769F00952234 /* PrecommitShiftTransitionAnimator.swift in Sources */,
+				B424D0181FF274F000952234 /* CommitShiftExampleViewControllerA.swift in Sources */,
+				B424D01A1FF274FF00952234 /* CommitShiftExampleViewControllerB.swift in Sources */,
 				B477DD6B1D2E0F4900651077 /* ContinuousExampleViewControllerB.swift in Sources */,
 				B477DD691D2E0F4400651077 /* ContinuousExampleViewControllerA.swift in Sources */,
+				B424D01E1FF276A800952234 /* PrecommitShiftTransitioningDelegate.swift in Sources */,
 				B424D0121FF25BE600952234 /* ShiftExampleViewControllerB.swift in Sources */,
 				B424D0141FF25E6000952234 /* SimpleShiftTransitionAnimator.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,

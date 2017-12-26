@@ -9,12 +9,12 @@
 import UIKit
 import Shifty
 
-class ShiftExampleViewControllerA: UIViewController {
+class CommitShiftExampleViewControllerA: UIViewController {
     
     @IBOutlet var yellowView: UIView!
     @IBOutlet var orangeView: UIView!
     @IBOutlet var shiftButton: UIButton!
-    private var shiftTransitioningDelegate = SimpleShiftTransitioningDelegate()
+    private var shiftTransitioningDelegate = PrecommitShiftTransitioningDelegate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class ShiftExampleViewControllerA: UIViewController {
     //MARK: IBActions
     @IBAction func shiftItButtonPressed(sender: AnyObject) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "ShiftExampleViewControllerB") as! ShiftExampleViewControllerB
+        let controller = storyboard.instantiateViewController(withIdentifier: "CommitShiftExampleViewControllerB") as! CommitShiftExampleViewControllerB
         
         controller.modalPresentationStyle = .currentContext
         controller.transitioningDelegate = shiftTransitioningDelegate
@@ -33,7 +33,7 @@ class ShiftExampleViewControllerA: UIViewController {
 }
 
 //MARK: TransitionRespondable
-extension ShiftExampleViewControllerA: TransitionRespondable {
+extension CommitShiftExampleViewControllerA: TransitionRespondable {
     
     func completeTransition(from source: TransitionRespondable?) {
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [], animations: {
@@ -57,10 +57,11 @@ extension ShiftExampleViewControllerA: TransitionRespondable {
 }
 
 //MARK: FrameShiftTransitionable
-extension ShiftExampleViewControllerA: FrameShiftTransitionable {
+extension CommitShiftExampleViewControllerA: FrameShiftTransitionable {
     func shiftablesForTransition(with transitionable: FrameShiftTransitionable) -> [Shiftable] {
         return [Shiftable(view: yellowView, identifier: "yellow"),
                 Shiftable(view: orangeView, identifier: "orange")]
     }
 }
+
 

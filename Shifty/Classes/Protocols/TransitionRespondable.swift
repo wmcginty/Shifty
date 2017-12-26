@@ -22,7 +22,7 @@ public protocol TransitionRespondable {
 
 
 public extension TransitionRespondable {
-    func completeTransition(to destination: UIViewController) { /* No op */ }
-    func prepareForTransition(from source: UIViewController) { /* No op */ }
+    func completeTransition(to destination: TransitionRespondable?) { /* No op */ }
+    func prepareForTransition(from source: TransitionRespondable?) { /* No op */ }
 }
 
