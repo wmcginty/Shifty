@@ -22,7 +22,7 @@ public struct DefaultShiftCoordinator: ShiftCoordinator {
     }
     
     public init(timingCurve: UIViewAnimationCurve = .linear) {
-        self.timingCurve = UICubicTimingParameters(animationCurve: timingCurve)
+        self.init(timingCurveProvider: UICubicTimingParameters(animationCurve: timingCurve))
     }
 
     //MARK: ShiftCoordinator
