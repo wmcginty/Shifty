@@ -15,6 +15,13 @@ public struct Shift: Hashable {
     public let destination: Shiftable
     public let timingCurve: UITimingCurveProvider
     
+    //MARK: Initializers
+    public init(source: Shiftable, destination: Shiftable, timingCurve: UITimingCurveProvider) {
+        self.source = source
+        self.destination = destination
+        self.timingCurve = timingCurve
+    }
+    
     //MARK: Hashable
     public var hashValue: Int {
         return source.hashValue ^ destination.hashValue
