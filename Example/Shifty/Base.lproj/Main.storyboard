@@ -348,7 +348,7 @@
                             <constraint firstItem="sF3-X1-oI8" firstAttribute="leading" secondItem="UGH-DL-Soy" secondAttribute="leadingMargin" constant="20" id="taU-Kr-wnT"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Shift 2" id="hjA-wk-jUT"/>
+                    <tabBarItem key="tabBarItem" title="Precommit Shift" id="hjA-wk-jUT"/>
                     <navigationItem key="navigationItem" id="9II-XY-FW4"/>
                     <connections>
                         <outlet property="orangeView" destination="eov-02-beU" id="BsL-Wk-DLR"/>

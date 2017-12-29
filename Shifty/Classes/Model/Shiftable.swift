@@ -40,7 +40,7 @@ public struct Shiftable {
     
     //MARK: Initializers    
     public init(view: UIView, identifier: AnyHashable, configuration: Configuration = .snapshot) {
-        guard let superview = view.superview else { fatalError("In order to shift - the view must have a superview: \(view)") }
+        guard let superview = view.superview else { fatalError("In order to shift, the view must have a superview: \(view)") }
         self.init(view: view, inSuperview: superview, identifier: identifier, configuration: configuration)
     }
     
