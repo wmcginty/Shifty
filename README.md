@@ -80,14 +80,14 @@ Sometimes in transitions like these, there is content that is consistent between
 
 ```swift
 extension ViewControllerA: FrameShiftTransitionable {
-    func shiftablesForTransition(with transitionable: FrameShiftTransitionable) -> [Shiftable] {
+    var shiftables: [Shiftable] {
         return [Shiftable(view: yellowView, identifier: "yellow"),
                 Shiftable(view: orangeView, identifier: "orange")]
     }
 }
 
 extension ViewControllerB: FrameShiftTransitionable {
-    func shiftablesForTransition(with transitionable: FrameShiftTransitionable) -> [Shiftable] {
+    var shiftables: [Shiftable] {
         return [Shiftable(view: yellowView, identifier: "yellow"),
                 Shiftable(view: orangeView, identifier: "orange")]
     }
