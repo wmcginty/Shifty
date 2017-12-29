@@ -5,116 +5,158 @@
 [![License](https://img.shields.io/cocoapods/l/Shifty.svg?style=flat)](http://cocoapods.org/pods/Shifty)
 [![Platform](https://img.shields.io/cocoapods/p/Shifty.svg?style=flat)](http://cocoapods.org/pods/Shifty)
 
-Shifty is a simple but powerful framework designed to make it simple to create sleek frame shift transitions and animations without the trouble of doing all the under hood work yourself.
+## Purpose
+This library is intended as a supplement to the existing UIViewController transitioning APIs. While Shifty will not replace the UIKit view controller transitioning delegates and animators, it greatly simplifies the implementation of frame shift transitions while giving you the power to customize many parts of the animation to create unique effects.
+
+## Key Concepts
+* `TransitionRespondable` - A protocol representing any object that can respond to various callbacks from the transition animator throughout it's lifecycle.
+* `Shiftable` - Encapsulates a target state for a shifting view, in both the source and the destination.
+* `FrameShiftTransitionable` - A protocol representing any object (usually a UIViewController) that can vend `Shiftable` objects to the animator.
+* `ShiftAnimator` - The animator object that manages the matching and coordinating of `Shiftable` objects between the source and destination.
+
+## Usage
+### TransitionRespondable
+The  `TransitionRespondable` protocol can be used to create a huge variety of transitions. It allows you to separate out view controller specific effects and animations from the` UIViewControllerAnimatedTransitioning` object itself. This allows to create more reusable animators without losing the custom nature of the animations.
+
+In order to create a simple transition between two view controllers whose backgrounds are identical (say both blue). We might create a `UIViewControllerAnimatedTransitioning` object:
+
+```swift
+func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+
+    let container = transitionContext.containerView
+    guard let sourceController = transitionContext.viewController(forKey: .from), let destinationController = transitionContext.viewController(forKey: .to) else { return }
+    guard let destinationView = transitionContext.view(forKey: .to) else { return }
+    guard let source = sourceController as? TransitionRespondable, let destination = destinationController as? TransitionRespondable else { return }
+
+    destination.prepareForTransition(from: source)
+    source.prepareForTransition(to: destination, withDuration: transitionDuration(using: transitionContext)) { finished in
+
+    container.addSubview(destinationView)
+    destinationView.frame = transitionContext.finalFrame(for: destinationController)
+
+    source.completeTransition(to: destination)
+    destination.completeTransition(from: source)
+    transitionContext.completeTransition(finished)
+}
+```
+
+This animator follows a simple sequence of events. After ensuring that the `UIViewControllerContextTransitioning` is configured properly, it will instruct the source to perform any animations necessary to facilitate a transition to the destination while at the same time giving the destination a chance to prepare itself before it's visible in the window.
+
+Once those animations have completed by the source, the animator will add the `destinationView` to the container and configure it in it's final frame.
+
+Finally, now that the destination view is visible (and obscuring the source view) it will instruct the source to clean up after itself, the destination to perform any animations or work necessary to complete the transition and will call back to the `UIViewControllerContextTransitioning` object to indicate the end of the transition.
+
+But in order to complete the effect that these two screens are continuous, all the content on the source must be cleared, and all the content on the destination must be cleared before the swap itself can happen. In order to accomplish this we might implement `TransitionRespondable` on our source and destination view controllers:
+
+```swift
+extension ViewController: TransitionRespondable {
+    func completeTransition(from source: TransitionRespondable?) {
+        UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [], animations: {
+            animatingViews.forEach { $0.transform = .identity }
+        }, completion: nil)
+    }
+
+    func completeTransition(to destination: TransitionRespondable?) {
+        animatingViews.forEach { $0.transform = .identity }
+    }
+
+    func prepareForTransition(from source: TransitionRespondable?) {
+        animatingViews.forEach { $0.transform = CGAffineTransform(translationX: -self.view.bounds.width, y: 0) }
+    }
+
+    func prepareForTransition(to destination: TransitionRespondable?, withDuration duration: TimeInterval, completion: @escaping (Bool) -> Void) {
+        UIView.animate(withDuration: duration - delay, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [], animations: {
+            animatingViews.forEach { $0.transform = CGAffineTransform(translationX: -self.view.bounds.width, y: 0) }
+        }, completion: completion)
+    }
+}
+```
+
+This will have the effect of animating all the intended views off the leading edge of the screen when acting as the source, and to animate back in from the leading edge when acting as the destination. Implementing this on both the source and destination of the  `UIViewControllerAnimatedTransitioning` object will create the illusion that it is one continuous screen.
+
+### FrameShiftTransitionable
+
+Sometimes in transitions like these, there is content that is consistent between two screens - if not in the exact same size or position. It would be ideal in this situation to not animate the content off screen only to animate it back on. Instead we can use the `FrameShiftTransitionable` protocol to move it to it's new position. First, we must tell our source and destination which views are eligible to move:
+
+```swift
+extension ViewControllerA: FrameShiftTransitionable {
+    func shiftablesForTransition(with transitionable: FrameShiftTransitionable) -> [Shiftable] {
+        return [Shiftable(view: yellowView, identifier: "yellow"),
+                Shiftable(view: orangeView, identifier: "orange")]
+    }
+}
+
+extension ViewControllerB: FrameShiftTransitionable {
+    func shiftablesForTransition(with transitionable: FrameShiftTransitionable) -> [Shiftable] {
+        return [Shiftable(view: yellowView, identifier: "yellow"),
+                Shiftable(view: orangeView, identifier: "orange")]
+    }
+}
+```
+
+In this example, we have a yellow and orange view which are consistent between screens. Because their identifiers (which can be `AnyHashable`) are equal, the animator will match them up into a pair. It will move the `UIView` attached to each `Shiftable` from it's position in the source, to it's position in the destination. This will create the illusion that the content is moving from one place to another (similar to the magic move effect in Keynote).
+
+In order to complete the effect, we need to do a little bit more work in our animator:
+
+```swift
+func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+
+    let container = transitionContext.containerView
+    guard let sourceController = transitionContext.viewController(forKey: .from), let destinationController = transitionContext.viewController(forKey: .to) else { return }
+    guard let destinationView = transitionContext.view(forKey: .to) else { return }
+    guard let source = sourceController as? TransitionRespondable, let destination = destinationController as? TransitionRespondable else { return }
+    guard let shiftSource = sourceController as? FrameShiftTransitionable, let shiftDestination = destinationController as? FrameShiftTransitionable else { return }
+
+    shiftAnimator = ShiftAnimator(source: shiftSource, destination: shiftDestination)
+
+    destination.prepareForTransition(from: source)
+    source.prepareForTransition(to: destination, withDuration: transitionDuration(using: transitionContext)) { finished in
+
+        container.addSubview(destinationView)
+        destinationView.frame = transitionContext.finalFrame(for: destinationController)
+        destinationView.layoutIfNeeded()
+
+        source.completeTransition(to: destination)
+        destination.completeTransition(from: source)
+        self.shiftAnimator?.animate(with: 0.3, inContainer: container) { position in
+            transitionContext.completeTransition(position == .end)
+        }
+    }
+}
+```
+This animator method is nearly identical to the previous, with the addition of the `ShiftAnimator`. This object is created with a specific source and destination. At some point during the transition it will be instructed to animate the matches it finds between the source and destination states. This animation can be done as part of the transition (ending it when the frame shifts complete) or separately (the transition will end as soon as the shifts begin).
+
+In addition, providing a custom `ShiftCoordinator` object will allow you to provide a custom `UITimingCurveProvider` object and a different relative start time and end time for each shift.
 
 ## Example
 
-![Shifty](https://raw.githubusercontent.com/wmcginty/Shifty/master/ShiftyExample.gif)
-
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Usage
-
-Shifty revolves around two protocols, *ContinuityTransitionable* and *FrameShiftable*. Although these two protocols have been designed to work together to create incredible effects, they work equally as well independently. 
-
-*ContinuityTransitionable* is your gateway to creating transitions that make the parts of your app feel connected to each other in the ways that a standard transition can't. For example, animate a view's title off screen before transitioning. But don't forget to bring it back on screen when transitioning back!
-
-``` swift
-extension ViewControllerA: ContinuityTransitionable {
-    
-    func prepareForTransition(to destination: UIViewController, withDuration duration: TimeInterval, completion: @escaping (Bool) -> Void) {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.titleLabel.transform = CGAffineTransform(translationX: 0, y: 200)
-        }) { (finished) in
-            completion(finished)
-        }
-    }
-    
-    func completeTransition(from source: UIViewController) {
-        UIView.animate(withDuration: 0.3) { 
-            self.titleLabel.transform = CGAffineTransform.identity
-        }
-    }
-}
-```
-
-What if that's not enough? What if you need some place to prepare your views for incoming or outgoing transitions? Use the *ContinuityTransitionPreparable* protocol for that:
-
-``` swift
-public protocol ContinuityTransitionPreparable: ContinuityTransitionable {
-    
-    func prepareForTransition(from source: UIViewController)
-    func completeTransition(to destination: UIViewController)
-    
-}
-```
-
-But what if you want to take that awesome view you designed from screen A, and show it someplace else on screen B? What if you could just pick it up from screen A and move it to screen B when you needed to? Enter, *FrameShiftable*:
-
-``` swift
-extension ViewControllerA: FrameShiftable {
-    func shiftablesForTransition(with viewController: UIViewController) -> [Shiftable] {
-        return [Shiftable(view: yellowView, identifier: "yellow"),
-                Shiftable(view: orangeView, identifier: "orange"),
-                Shiftable(view: titleLabel, identifier: "title")]
-    }
-}
-```
-
-Just tell Shifty what views you want to move, and it will do the rest. When you ask Shifty to do it's thing, it'll check the source and the destination and find all the views with common identifiers. Then, Shifty will figure out where those views are, and where they need to get to - and it will get them there. All you need to do is tell Shifty to do it's thing:
-
-``` swift
-let shiftAnimator = self.initializeFrameShiftAnimatorWith(sourceViewController, destinationViewController: destinationViewController)
-shiftAnimator?.performFrameShiftAnimations(in: containerView, with: destinationView, over: self.transitionDuration(using: transitionContext)) {
-    //Completion
-}
-```
-
-Finally, what if the default ease in, ease out shift animation isn't good enough? That's where *CustomFrameShiftable* comes in. This allows you to provide your own custom animations - and they don't have to be UIView based:
-
-``` swift
-public protocol CustomFrameShiftable: FrameShiftable {
-    func performShift(with shiftingView: UIView, in containerView: UIView, with finalState: Snapshot, duration: TimeInterval?, completion: () -> Void)
-}
-```
 
 ## Requirements
 
-* Swift 3.0
-* iOS 9+
+Requires iOS 10.0 +, Swift 4.0
 
-## Installation
+## Installation - CocoaPods
 
-[CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
+[CocoaPods]: http://cocoapods.org
 
-``` bash
-$ gem install cocoapods
-```
+Add the following to your [Podfile](http://guides.cocoapods.org/using/the-podfile.html):
 
-To integrate Shifty into your Xcode project using CocoaPods, specify it in your `Podfile`:
-
-``` ruby
-source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '9.0'
-use_frameworks!
-
+```ruby
 pod 'Shifty'
 ```
 
-Then, run the following command:
+You will also need to make sure you're opting into using frameworks:
 
-``` bash
-$ pod install
+```ruby
+use_frameworks!
 ```
 
-You should open the `{Project}.xcworkspace` instead of the `{Project}.xcodeproj` after you installed anything from CocoaPods.
+Then run `pod install` with CocoaPods 0.36 or newer.
 
-## Contact
+## Contributing
 
-William McGinty, mcgintw@gmail.com
+See the [CONTRIBUTING] document. Thank you, [contributors]!
 
-If you find an issue or want to request a feature, please [raise an issue](https://github.com/wmcginty/Shifty/issues/new). Pull requests are always welcome!
-
-## License
-
-Shifty is available under the MIT license. See the LICENSE file for more info.
+[CONTRIBUTING]: CONTRIBUTING.md
+[contributors]: https://github.com/wmcginty/Shifty/graphs/contributors

@@ -65,6 +65,7 @@
 		B424D01B1FF2769F00952234 /* PrecommitShiftTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrecommitShiftTransitionAnimator.swift; sourceTree = "<group>"; };
 		B424D01D1FF276A800952234 /* PrecommitShiftTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrecommitShiftTransitioningDelegate.swift; sourceTree = "<group>"; };
 		B440C3B11FF5F4030031DB82 /* EvenShiftCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvenShiftCoordinator.swift; sourceTree = "<group>"; };
+		B440C3B31FF5FE610031DB82 /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
 		B477DD681D2E0F4400651077 /* ContinuousExampleViewControllerA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContinuousExampleViewControllerA.swift; sourceTree = "<group>"; };
 		B477DD6A1D2E0F4900651077 /* ContinuousExampleViewControllerB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContinuousExampleViewControllerB.swift; sourceTree = "<group>"; };
 		B477DD721D2E121500651077 /* ContinuityTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContinuityTransitionAnimator.swift; sourceTree = "<group>"; };
@@ -167,6 +168,7 @@
 			children = (
 				E42C535C3EA119CA43F56AC2 /* Shifty.podspec */,
 				E8B657BB3CD2E1594F92DD01 /* README.md */,
+				B440C3B31FF5FE610031DB82 /* CONTRIBUTING.md */,
 				9DCC910BB5ED158E33F46626 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
