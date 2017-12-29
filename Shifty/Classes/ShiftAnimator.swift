@@ -40,7 +40,7 @@ public class ShiftAnimator {
         commitDestinationsIfNeeded()
         shifts.forEach { shift in
             
-            let animator = configuredAnimator(for: shift, duration: duration, timingParameters: shift.timingCurve, in: container)
+            let animator = configuredAnimator(for: shift, duration: duration, in: container)
             if let completion = completion, shift == shifts.first {
                 animator.addCompletion(completion)
             }
@@ -65,13 +65,12 @@ private extension ShiftAnimator {
 //MARK: Shift Animations
 private extension ShiftAnimator {
         
-    func configuredAnimator(for shift: Shift, duration: TimeInterval,
-                            timingParameters: UITimingCurveProvider, in container: UIView) -> UIViewPropertyAnimator {
-        let animator = UIViewPropertyAnimator(duration: duration, timingParameters: timingParameters)
+    func configuredAnimator(for shift: Shift, duration: TimeInterval, in container: UIView) -> UIViewPropertyAnimator {
+        let animator = UIViewPropertyAnimator(duration: duration, timingParameters: shift.timingCurve)
         let snapshot = destinations?[shift]
         let shiftingView = shift.configuredShiftingView(in: container)
         
-        animator.addAnimations { snapshot?.applyPositionalState(to: shiftingView, in: container) }
+        animator.addAnimations { shift.shiftAnimations(for: shiftingView, in: container, target: snapshot, duration: duration) }
         animator.addCompletion { _ in shift.cleanupShiftingView(shiftingView) }
         
         return animator
