@@ -29,7 +29,7 @@ public struct DefaultShiftCoordinator: ShiftCoordinator {
     public func shifts(from sources: [Shiftable], to destinations: [Shiftable]) -> [Shift] {
         return sources.flatMap { source in
             guard let match = destinations.first(where: { $0.identifier == source.identifier }) else { return nil }
-            return Shift(source: source, destination: match, timingCurve: timingCurve)
+            return Shift(source: source, destination: match, animationParameters: AnimationParameters(timingCurve: timingCurve))
         }
     }
 }

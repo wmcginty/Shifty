@@ -66,7 +66,7 @@ private extension ShiftAnimator {
 private extension ShiftAnimator {
         
     func configuredAnimator(for shift: Shift, duration: TimeInterval, in container: UIView) -> UIViewPropertyAnimator {
-        let animator = UIViewPropertyAnimator(duration: duration, timingParameters: shift.timingCurve)
+        let animator = UIViewPropertyAnimator(duration: duration, timingParameters: shift.animationParameters.timingCurve)
         let snapshot = destinations?[shift]
         let shiftingView = shift.configuredShiftingView(in: container)
         

@@ -13,18 +13,13 @@ public struct Shift: Hashable {
     //MARK: Properties
     public let source: Shiftable
     public let destination: Shiftable
-    public let timingCurve: UITimingCurveProvider
-    public let relativeStartTime: TimeInterval
-    public let relativeEndTime: TimeInterval
+    public let animationParameters: AnimationParameters
     
     //MARK: Initializers
-    public init(source: Shiftable, destination: Shiftable, timingCurve: UITimingCurveProvider,
-                relativeStartTime: TimeInterval = 0.0, relativeEndTime: TimeInterval = 1.0) {
+    public init(source: Shiftable, destination: Shiftable, animationParameters: AnimationParameters) {
         self.source = source
         self.destination = destination
-        self.timingCurve = timingCurve
-        self.relativeStartTime = relativeStartTime
-        self.relativeEndTime = relativeEndTime
+        self.animationParameters = animationParameters
     }
     
     //MARK: Hashable
@@ -55,8 +50,9 @@ extension Shift {
     func shiftAnimations(for shiftingView: UIView, in container: UIView, target: Snapshot?, duration: TimeInterval) {
 
         //Nesting the animation in a keyframe allows us to take advantage of relative start/end times and inherit the existing animation curve
+        let parameters = animationParameters
         UIView.animateKeyframes(withDuration: duration, delay: 0.0, options: [], animations: {
-            UIView.addKeyframe(withRelativeStartTime: self.relativeStartTime, relativeDuration: self.relativeEndTime - self.relativeStartTime) {
+            UIView.addKeyframe(withRelativeStartTime: parameters.relativeStartTime, relativeDuration: parameters.relativeEndTime - parameters.relativeStartTime) {
                 target?.applyPositionalState(to: shiftingView, in: container)
             }
         }, completion: nil)

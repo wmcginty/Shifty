@@ -17,7 +17,9 @@ struct EvenShiftCoordinator: ShiftCoordinator {
             let timingCurve = index % 2 == 0 ? UICubicTimingParameters(animationCurve: .linear) : UICubicTimingParameters(animationCurve: .easeOut)
             let relativeStart = index % 2 == 0 ? 0 : 0.5
             let relativeEnd = index % 2 == 0 ? 0.5 : 1
-            return Shift(source: source, destination: match, timingCurve: timingCurve, relativeStartTime: relativeStart, relativeEndTime: relativeEnd)
+            
+            let animationParameters = AnimationParameters(timingCurve: timingCurve, relativeStartTime: relativeStart, relativeEndTime: relativeEnd)
+            return Shift(source: source, destination: match, animationParameters: animationParameters)
         }
     }
 }
