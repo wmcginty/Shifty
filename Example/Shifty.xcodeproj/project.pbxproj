@@ -11,7 +11,6 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		B40241031FF0892A0089E67A /* ContinuityTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40241021FF0892A0089E67A /* ContinuityTransitioningDelegate.swift */; };
 		B424D0101FF25BDE00952234 /* ShiftExampleViewControllerA.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424D00F1FF25BDE00952234 /* ShiftExampleViewControllerA.swift */; };
 		B424D0121FF25BE600952234 /* ShiftExampleViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424D0111FF25BE600952234 /* ShiftExampleViewControllerB.swift */; };
@@ -22,6 +21,11 @@
 		B424D01C1FF2769F00952234 /* PrecommitShiftTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424D01B1FF2769F00952234 /* PrecommitShiftTransitionAnimator.swift */; };
 		B424D01E1FF276A800952234 /* PrecommitShiftTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B424D01D1FF276A800952234 /* PrecommitShiftTransitioningDelegate.swift */; };
 		B440C3B21FF5F4030031DB82 /* EvenShiftCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440C3B11FF5F4030031DB82 /* EvenShiftCoordinator.swift */; };
+		B440C3B91FF696300031DB82 /* SnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440C3B71FF6962D0031DB82 /* SnapshotTests.swift */; };
+		B440C3BC1FF697EC0031DB82 /* ShiftableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440C3BA1FF697D40031DB82 /* ShiftableTests.swift */; };
+		B440C3BF1FF69EDB0031DB82 /* ShiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440C3BD1FF69ED80031DB82 /* ShiftTests.swift */; };
+		B440C3C11FF6A3980031DB82 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440C3C01FF6A3980031DB82 /* CoordinatorTests.swift */; };
+		B440C3C31FF6A4F40031DB82 /* AnimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B440C3C21FF6A4F40031DB82 /* AnimatorTests.swift */; };
 		B477DD691D2E0F4400651077 /* ContinuousExampleViewControllerA.swift in Sources */ = {isa = PBXBuildFile; fileRef = B477DD681D2E0F4400651077 /* ContinuousExampleViewControllerA.swift */; };
 		B477DD6B1D2E0F4900651077 /* ContinuousExampleViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B477DD6A1D2E0F4900651077 /* ContinuousExampleViewControllerB.swift */; };
 		B477DD731D2E121500651077 /* ContinuityTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B477DD721D2E121500651077 /* ContinuityTransitionAnimator.swift */; };
@@ -51,7 +55,6 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* Shifty_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Shifty_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		63FADE7377C13CC4C4C04646 /* Pods_Shifty_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shifty_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9396B34D2254E80A9AC607D5 /* Pods_Shifty_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shifty_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DCC910BB5ED158E33F46626 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
@@ -66,6 +69,11 @@
 		B424D01D1FF276A800952234 /* PrecommitShiftTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrecommitShiftTransitioningDelegate.swift; sourceTree = "<group>"; };
 		B440C3B11FF5F4030031DB82 /* EvenShiftCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvenShiftCoordinator.swift; sourceTree = "<group>"; };
 		B440C3B31FF5FE610031DB82 /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CONTRIBUTING.md; path = ../CONTRIBUTING.md; sourceTree = "<group>"; };
+		B440C3B71FF6962D0031DB82 /* SnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTests.swift; sourceTree = "<group>"; };
+		B440C3BA1FF697D40031DB82 /* ShiftableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftableTests.swift; sourceTree = "<group>"; };
+		B440C3BD1FF69ED80031DB82 /* ShiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftTests.swift; sourceTree = "<group>"; };
+		B440C3C01FF6A3980031DB82 /* CoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
+		B440C3C21FF6A4F40031DB82 /* AnimatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatorTests.swift; sourceTree = "<group>"; };
 		B477DD681D2E0F4400651077 /* ContinuousExampleViewControllerA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContinuousExampleViewControllerA.swift; sourceTree = "<group>"; };
 		B477DD6A1D2E0F4900651077 /* ContinuousExampleViewControllerB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContinuousExampleViewControllerB.swift; sourceTree = "<group>"; };
 		B477DD721D2E121500651077 /* ContinuityTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContinuityTransitionAnimator.swift; sourceTree = "<group>"; };
@@ -149,7 +157,11 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				B440C3B71FF6962D0031DB82 /* SnapshotTests.swift */,
+				B440C3BA1FF697D40031DB82 /* ShiftableTests.swift */,
+				B440C3BD1FF69ED80031DB82 /* ShiftTests.swift */,
+				B440C3C01FF6A3980031DB82 /* CoordinatorTests.swift */,
+				B440C3C21FF6A4F40031DB82 /* AnimatorTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -473,7 +485,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				B440C3C11FF6A3980031DB82 /* CoordinatorTests.swift in Sources */,
+				B440C3BF1FF69EDB0031DB82 /* ShiftTests.swift in Sources */,
+				B440C3C31FF6A4F40031DB82 /* AnimatorTests.swift in Sources */,
+				B440C3BC1FF697EC0031DB82 /* ShiftableTests.swift in Sources */,
+				B440C3B91FF696300031DB82 /* SnapshotTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,6 +668,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shifty_Example.app/Shifty_Example";
 			};
 			name = Debug;
 		};
@@ -666,6 +683,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shifty_Example.app/Shifty_Example";
 			};
 			name = Release;
 		};

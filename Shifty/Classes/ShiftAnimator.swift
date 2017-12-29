@@ -24,9 +24,9 @@ public class ShiftAnimator {
         self.shifts = coordinator.shifts(from: source.shiftables, to: destination.shiftables)
     }
     
-    public convenience init?(source: Any, destination: Any) {
+    public convenience init?(source: Any, destination: Any, coordinator: ShiftCoordinator = DefaultShiftCoordinator()) {
         guard let s = source as? FrameShiftTransitionable, let d = destination as? FrameShiftTransitionable else { return nil }
-        self.init(source: s, destination: d)
+        self.init(source: s, destination: d, coordinator: coordinator)
     }
     
     // MARK: Interface

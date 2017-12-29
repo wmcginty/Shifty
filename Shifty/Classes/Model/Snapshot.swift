@@ -26,13 +26,17 @@ public struct Snapshot {
     let transform3d: CATransform3D
     
     // MARK: Initializers
-    init(view: UIView) {
-        center = view.center
-        bounds = view.bounds
-        transform = view.transform
-        transform3d = view.layer.transform
+    public init(center: CGPoint, bounds: CGRect, transform: CGAffineTransform, transform3d: CATransform3D) {
+        self.center = center
+        self.bounds = bounds
+        self.transform = transform
+        self.transform3d = transform3d
     }
-
+    
+    init(view: UIView) {
+        self.init(center: view.center, bounds: view.bounds, transform: view.transform, transform3d: view.layer.transform)
+    }
+    
     /// The center of the Snapshot's `view` with respect to the provided container.
     ///
     /// - parameter view:          The view whose center needs to be converted.
@@ -52,5 +56,19 @@ public struct Snapshot {
         new.center = center(of: new, withRespectTo: container)
         new.transform = transform
         new.layer.transform = transform3d
+    }
+}
+
+//MARK: Equatable
+extension Snapshot: Equatable {
+    
+    public static func == (lhs: Snapshot, rhs: Snapshot) -> Bool {
+        return lhs.bounds == rhs.bounds && lhs.center == rhs.center && lhs.transform == rhs.transform && lhs.transform3d == rhs.transform3d
+    }
+}
+
+extension CATransform3D: Equatable {
+    public static func == (lhs: CATransform3D, rhs: CATransform3D) -> Bool {
+        return CATransform3DEqualToTransform(lhs, rhs)
     }
 }

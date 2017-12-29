@@ -16,7 +16,7 @@ public struct Shift: Hashable {
     public let animationParameters: AnimationParameters
     
     // MARK: Initializers
-    public init(source: Shiftable, destination: Shiftable, animationParameters: AnimationParameters) {
+    public init(source: Shiftable, destination: Shiftable, animationParameters: AnimationParameters = .default) {
         self.source = source
         self.destination = destination
         self.animationParameters = animationParameters
@@ -70,10 +70,6 @@ extension Shift {
     func destinationSnapshot() -> Snapshot {
         return destination.currentSnapshot()
     }
-}
-
-// MARK: Helper
-private extension Shift {
     
     func configureNativeViews(hidden: Bool) {
         [source.view, destination.view].forEach { $0.isHidden = hidden }

@@ -18,4 +18,9 @@ public struct AnimationParameters {
         self.relativeStartTime = relativeStartTime
         self.relativeEndTime = relativeEndTime
     }
+    
+    // MARK: Default
+    public static var `default`: AnimationParameters {
+        return AnimationParameters(timingCurve: UICubicTimingParameters(animationCurve: .linear))
+    }
 }
