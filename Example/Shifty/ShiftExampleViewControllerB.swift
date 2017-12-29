@@ -15,13 +15,13 @@ class ShiftExampleViewControllerB: UIViewController {
     @IBOutlet var orangeView: UIView!
     @IBOutlet var backButton: UIButton!
     
-    //MARK: IBActions
+    // MARK: IBActions
     @IBAction func dismiss() {
         dismiss(animated: true, completion: nil)
     }
 }
 
-//MARK: TransitionRespondable
+// MARK: TransitionRespondable
 extension ShiftExampleViewControllerB: TransitionRespondable {
     
     func completeTransition(from source: TransitionRespondable?) {
@@ -45,7 +45,7 @@ extension ShiftExampleViewControllerB: TransitionRespondable {
     }
 }
 
-//MARK: FrameShiftTransitionable
+// MARK: FrameShiftTransitionable
 extension ShiftExampleViewControllerB: FrameShiftTransitionable {
     var shiftables: [Shiftable] {
         return [Shiftable(view: yellowView, identifier: "yellow"),

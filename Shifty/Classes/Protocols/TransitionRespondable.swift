@@ -19,4 +19,3 @@ public extension TransitionRespondable {
     func completeTransition(to destination: TransitionRespondable?) { /* No op */ }
     func prepareForTransition(from source: TransitionRespondable?) { /* No op */ }
 }
-

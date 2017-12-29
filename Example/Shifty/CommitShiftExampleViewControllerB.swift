@@ -15,13 +15,13 @@ class CommitShiftExampleViewControllerB: UIViewController {
     @IBOutlet var orangeView: UIView!
     @IBOutlet var backButton: UIButton!
     
-    //MARK: IBActions
+    // MARK: IBActions
     @IBAction func dismiss() {
         dismiss(animated: true, completion: nil)
     }
 }
 
-//MARK: TransitionRespondable
+// MARK: TransitionRespondable
 extension CommitShiftExampleViewControllerB: TransitionRespondable {
     func completeTransition(from source: TransitionRespondable?) { }
     func prepareForTransition(to destination: TransitionRespondable?, withDuration duration: TimeInterval, completion: @escaping (Bool) -> Void) {
@@ -29,7 +29,7 @@ extension CommitShiftExampleViewControllerB: TransitionRespondable {
     }
 }
 
-//MARK: FrameShiftTransitionable
+// MARK: FrameShiftTransitionable
 extension CommitShiftExampleViewControllerB: FrameShiftTransitionable {
     var shiftables: [Shiftable] {
         return [Shiftable(view: yellowView, identifier: "yellow"),

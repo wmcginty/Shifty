@@ -14,7 +14,7 @@ class SimpleShiftTransitionAnimator: NSObject, UIViewControllerAnimatedTransitio
     
     var shiftAnimator: ShiftAnimator?
         
-    //MARK: UIViewControllerAnimatedTransitioning
+    // MARK: UIViewControllerAnimatedTransitioning
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.4
     }

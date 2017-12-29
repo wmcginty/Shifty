@@ -8,7 +8,7 @@
 
 import UIKit
 
-//MARK: ShiftState Struct
+// MARK: ShiftState Struct
 
 /// Represents a single state of a shifting `UIView`.
 public struct Shiftable {
@@ -19,7 +19,7 @@ public struct Shiftable {
         case snapshot
         case configured(Configurator)
         
-        //MARK: Interface
+        // MARK: Interface
         func configuredShiftingView(for baseView: UIView) -> UIView {
             switch self {
             case .snapshot:
@@ -32,13 +32,13 @@ public struct Shiftable {
         }
     }
     
-    //MARK: Properties
+    // MARK: Properties
     public let view: UIView /// The view being subjected to the shift.
     public let superview: UIView /// The direct superview of `view`.
     public let identifier: AnyHashable /// The identifier assigned to this `Shiftable`. Each identifier in the source should match an identifier in the destination.
     public let configuration: Configuration /// The method used to configure the view. Defaults to .snapshot.
     
-    //MARK: Initializers    
+    // MARK: Initializers    
     public init(view: UIView, identifier: AnyHashable, configuration: Configuration = .snapshot) {
         guard let superview = view.superview else { fatalError("In order to shift, the view must have a superview: \(view)") }
         self.init(view: view, inSuperview: superview, identifier: identifier, configuration: configuration)
@@ -52,7 +52,7 @@ public struct Shiftable {
     }
 }
 
-//MARK: Public Interface
+// MARK: Public Interface
 public extension Shiftable {
     
     func viewForShiftWithRespect(to container: UIView) -> UIView {
@@ -64,7 +64,7 @@ public extension Shiftable {
     }
 }
 
-//MARK: Internal Interface
+// MARK: Internal Interface
 extension Shiftable {
     
     /// Returns a `Snapshot` of the current state of the `Shiftable`.
@@ -73,14 +73,14 @@ extension Shiftable {
     }
 }
 
-//MARK: Hashable
+// MARK: Hashable
 extension Shiftable: Hashable {
     
     public var hashValue: Int {
         return identifier.hashValue
     }
     
-    public static func ==(lhs: Shiftable, rhs: Shiftable) -> Bool {
+    public static func == (lhs: Shiftable, rhs: Shiftable) -> Bool {
         return lhs.identifier == rhs.identifier
     }
 }

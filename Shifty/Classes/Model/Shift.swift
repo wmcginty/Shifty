@@ -10,29 +10,29 @@ import Foundation
 /// Represents the frame shift of a single `UIView` object.
 public struct Shift: Hashable {
     
-    //MARK: Properties
+    // MARK: Properties
     public let source: Shiftable
     public let destination: Shiftable
     public let animationParameters: AnimationParameters
     
-    //MARK: Initializers
+    // MARK: Initializers
     public init(source: Shiftable, destination: Shiftable, animationParameters: AnimationParameters) {
         self.source = source
         self.destination = destination
         self.animationParameters = animationParameters
     }
     
-    //MARK: Hashable
+    // MARK: Hashable
     public var hashValue: Int {
         return source.hashValue ^ destination.hashValue
     }
     
-    public static func ==(lhs: Shift, rhs: Shift) -> Bool {
+    public static func == (lhs: Shift, rhs: Shift) -> Bool {
         return lhs.source == rhs.source && lhs.destination == rhs.destination
     }
 }
 
-//MARK: Container Management
+// MARK: Container Management
 extension Shift {
     
     func configuredShiftingView(in container: UIView) -> UIView {
@@ -64,7 +64,7 @@ extension Shift {
     }
 }
 
-//MARK: Snapshots
+// MARK: Snapshots
 extension Shift {
     
     func destinationSnapshot() -> Snapshot {
@@ -72,12 +72,10 @@ extension Shift {
     }
 }
 
-//MARK: Helper
+// MARK: Helper
 private extension Shift {
     
     func configureNativeViews(hidden: Bool) {
         [source.view, destination.view].forEach { $0.isHidden = hidden }
     }
 }
-
-

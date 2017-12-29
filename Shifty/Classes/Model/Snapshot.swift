@@ -11,7 +11,7 @@ import Foundation
 /// Represents the positional state of a `UIView` object at any given moment.
 public struct Snapshot {
     
-    //MARK: Properties
+    // MARK: Properties
     
     /// The center of `view`.
     let center: CGPoint
@@ -25,7 +25,7 @@ public struct Snapshot {
     /// The transform3d of `view.layer`.
     let transform3d: CATransform3D
     
-    //MARK: Initializers
+    // MARK: Initializers
     init(view: UIView) {
         center = view.center
         bounds = view.bounds

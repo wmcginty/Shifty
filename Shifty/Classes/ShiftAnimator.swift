@@ -17,7 +17,7 @@ public class ShiftAnimator {
     private var baseAnimator: UIViewPropertyAnimator?
     private var animators: [Shift: UIViewPropertyAnimator] = [:]
     
-    //MARK: Initializers
+    // MARK: Initializers
     public init(source: FrameShiftTransitionable, destination: FrameShiftTransitionable, coordinator: ShiftCoordinator = DefaultShiftCoordinator()) {
         self.source = source
         self.destination = destination
@@ -29,7 +29,7 @@ public class ShiftAnimator {
         self.init(source: s, destination: d)
     }
     
-    //MARK: Interface
+    // MARK: Interface
     public func commitShifts() {
         let shiftDestinations = Dictionary(uniqueKeysWithValues: shifts.map { ($0, $0.destinationSnapshot() )})
         destinations = shiftDestinations
@@ -50,7 +50,7 @@ public class ShiftAnimator {
     }
 }
 
-//MARK: Shift Committing
+// MARK: Shift Committing
 private extension ShiftAnimator {
     
     var hasCommittedShifts: Bool { return destinations != nil }
@@ -61,7 +61,7 @@ private extension ShiftAnimator {
     }
 }
 
-//MARK: Shift Animations
+// MARK: Shift Animations
 private extension ShiftAnimator {
         
     func configuredAnimator(for shift: Shift, duration: TimeInterval, in container: UIView) -> UIViewPropertyAnimator {

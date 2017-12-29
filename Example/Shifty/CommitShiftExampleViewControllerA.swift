@@ -21,7 +21,7 @@ class CommitShiftExampleViewControllerA: UIViewController {
         definesPresentationContext = true
     }
     
-    //MARK: IBActions
+    // MARK: IBActions
     @IBAction func shiftItButtonPressed(sender: AnyObject) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "CommitShiftExampleViewControllerB") as! CommitShiftExampleViewControllerB
@@ -32,7 +32,7 @@ class CommitShiftExampleViewControllerA: UIViewController {
     }
 }
 
-//MARK: TransitionRespondable
+// MARK: TransitionRespondable
 extension CommitShiftExampleViewControllerA: TransitionRespondable {
     
     func completeTransition(from source: TransitionRespondable?) {
@@ -56,7 +56,7 @@ extension CommitShiftExampleViewControllerA: TransitionRespondable {
     }
 }
 
-//MARK: FrameShiftTransitionable
+// MARK: FrameShiftTransitionable
 extension CommitShiftExampleViewControllerA: FrameShiftTransitionable {
     var shiftables: [Shiftable] {
         return [Shiftable(view: yellowView, identifier: "yellow"),

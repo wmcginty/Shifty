@@ -21,7 +21,7 @@ class ShiftExampleViewControllerA: UIViewController {
         definesPresentationContext = true
     }
     
-    //MARK: IBActions
+    // MARK: IBActions
     @IBAction func shiftItButtonPressed(sender: AnyObject) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "ShiftExampleViewControllerB") as! ShiftExampleViewControllerB
@@ -32,7 +32,7 @@ class ShiftExampleViewControllerA: UIViewController {
     }
 }
 
-//MARK: TransitionRespondable
+// MARK: TransitionRespondable
 extension ShiftExampleViewControllerA: TransitionRespondable {
     
     func completeTransition(from source: TransitionRespondable?) {
@@ -56,7 +56,7 @@ extension ShiftExampleViewControllerA: TransitionRespondable {
     }
 }
 
-//MARK: FrameShiftTransitionable
+// MARK: FrameShiftTransitionable
 extension ShiftExampleViewControllerA: FrameShiftTransitionable {
     var shiftables: [Shiftable] {
         return [Shiftable(view: yellowView, identifier: "yellow"),

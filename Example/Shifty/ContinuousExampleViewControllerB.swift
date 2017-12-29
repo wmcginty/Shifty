@@ -18,13 +18,13 @@ class ContinuousExampleViewControllerB: UIViewController {
     
     @IBOutlet var backButton: UIButton!
     
-    //MARK: IBActions
+    // MARK: IBActions
     @IBAction func dismiss() {
         dismiss(animated: true, completion: nil)
     }
 }
 
-//MARK: TransitionRespondable
+// MARK: TransitionRespondable
 extension ContinuousExampleViewControllerB: TransitionRespondable {
     
     func animatingViews() -> [UIView] {

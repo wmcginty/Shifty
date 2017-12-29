@@ -12,7 +12,7 @@ import Shifty
 /// A transition with the implicit contract that the source will animate all of it's contents off screen to a point where it's visual state matches that of the destination. The destination will then be instantaneously swapped on screen and be given the chance to complete any entrance animations to reach it's final visual state.
 class ContinuityTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         
-    //MARK: UIViewControllerAnimatedTransitioning
+    // MARK: UIViewControllerAnimatedTransitioning
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.4
     }

@@ -13,10 +13,10 @@ public protocol ShiftCoordinator {
 
 public struct DefaultShiftCoordinator: ShiftCoordinator {
     
-    //MARK: Properties
+    // MARK: Properties
     public let timingCurve: UITimingCurveProvider
     
-    //MARK: Initializers
+    // MARK: Initializers
     public init(timingCurveProvider: UITimingCurveProvider) {
         self.timingCurve = timingCurveProvider
     }
@@ -25,7 +25,7 @@ public struct DefaultShiftCoordinator: ShiftCoordinator {
         self.init(timingCurveProvider: UICubicTimingParameters(animationCurve: timingCurve))
     }
 
-    //MARK: ShiftCoordinator
+    // MARK: ShiftCoordinator
     public func shifts(from sources: [Shiftable], to destinations: [Shiftable]) -> [Shift] {
         return sources.flatMap { source in
             guard let match = destinations.first(where: { $0.identifier == source.identifier }) else { return nil }

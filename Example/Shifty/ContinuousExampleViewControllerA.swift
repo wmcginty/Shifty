@@ -24,7 +24,7 @@ class ContinuousExampleViewControllerA: UIViewController {
         definesPresentationContext = true
     }
     
-    //MARK: IBActions
+    // MARK: IBActions
     @IBAction func shiftItButtonPressed(sender: AnyObject) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -36,7 +36,7 @@ class ContinuousExampleViewControllerA: UIViewController {
     }
 }
 
-//MARK: TransitionRespondable
+// MARK: TransitionRespondable
 extension ContinuousExampleViewControllerA: TransitionRespondable {
     
     func animatingViews() -> [UIView] {
