@@ -8,26 +8,19 @@
 import Foundation
 
 /// Represents the frame shift of a single `UIView` object.
-struct Shift: Hashable {
+public struct Shift: Hashable {
     
     //MARK: Properties
-    let source: Shiftable
-    let destination: Shiftable
-    
-    //MARK: Initializers
-    init(source: Shiftable, destination: Shiftable) {
-        self.source = source
-        self.destination = destination
-        
-        assert(source.identifier == destination.identifier, "source and destination identifiers must match.")
-    }
+    public let source: Shiftable
+    public let destination: Shiftable
+    public let timingCurve: UITimingCurveProvider
     
     //MARK: Hashable
-    var hashValue: Int {
+    public var hashValue: Int {
         return source.hashValue ^ destination.hashValue
     }
     
-    static func ==(lhs: Shift, rhs: Shift) -> Bool {
+    public static func ==(lhs: Shift, rhs: Shift) -> Bool {
         return lhs.source == rhs.source && lhs.destination == rhs.destination
     }
 }
