@@ -58,7 +58,7 @@ extension ShiftExampleViewControllerA: TransitionRespondable {
 
 //MARK: FrameShiftTransitionable
 extension ShiftExampleViewControllerA: FrameShiftTransitionable {
-    func shiftablesForTransition(with transitionable: FrameShiftTransitionable) -> [Shiftable] {
+    var shiftables: [Shiftable] {
         return [Shiftable(view: yellowView, identifier: "yellow"),
                 Shiftable(view: orangeView, identifier: "orange")]
     }

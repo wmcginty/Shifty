@@ -21,8 +21,7 @@ public class ShiftAnimator {
     public init(source: FrameShiftTransitionable, destination: FrameShiftTransitionable, coordinator: ShiftCoordinator = DefaultShiftCoordinator()) {
         self.source = source
         self.destination = destination
-        self.shifts = coordinator.shifts(from: source.shiftablesForTransition(with: destination),
-                                         to: destination.shiftablesForTransition(with: source))
+        self.shifts = coordinator.shifts(from: source.shiftables, to: destination.shiftables)
     }
     
     public convenience init?(source: Any, destination: Any) {

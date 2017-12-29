@@ -8,5 +8,5 @@
 import Foundation
 
 public protocol FrameShiftTransitionable {
-    func shiftablesForTransition(with transitionable: FrameShiftTransitionable) -> [Shiftable]
+    var shiftables: [Shiftable] { get }
 }

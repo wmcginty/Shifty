@@ -31,7 +31,7 @@ extension CommitShiftExampleViewControllerB: TransitionRespondable {
 
 //MARK: FrameShiftTransitionable
 extension CommitShiftExampleViewControllerB: FrameShiftTransitionable {
-    func shiftablesForTransition(with transitionable: FrameShiftTransitionable) -> [Shiftable] {
+    var shiftables: [Shiftable] {
         return [Shiftable(view: yellowView, identifier: "yellow"),
                 Shiftable(view: orangeView, identifier: "orange")]
     }
