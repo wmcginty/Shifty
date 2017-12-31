@@ -101,9 +101,15 @@ extension ViewController {
 }
 ```
 
-In this example, we have a yellow and orange view which are consistent between screens. Because their identifiers (which can be `AnyHashable`) are equal, the animator will match them up into a pair. It will move the `UIView` attached to each `State` from it's position in the source, to it's position in the destination. This will create the illusion that the content is moving from one place to another (similar to the magic move effect in Keynote).
+In this example, we have a yellow and orange view which are consistent between screens. Because their identifiers (which can be `AnyHashable`) are equal, the animator will match them up into a pair. It will move the `UIView` attached to each `State` from it's state in the source, to it's state in the destination. This will create the illusion that the content is moving from one place to another (similar to the magic move effect in Keynote).
 
-In order to complete the effect, we need to do a little bit more work in our animator:
+The full list of `UIView` and `CALayer` properties that comprise `State` are so are automatically animatable are:
+*`bounds`
+*`center`
+*`transform` and `layer.transform3d`
+*`layer.cornerRadius`
+
+In order to complete the effect and use this new shifting ability, we need to do a little bit more work in our animator:
 
 ```swift
 func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
