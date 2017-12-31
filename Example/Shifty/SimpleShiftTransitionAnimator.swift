@@ -16,7 +16,7 @@ class SimpleShiftTransitionAnimator: NSObject, UIViewControllerAnimatedTransitio
         
     // MARK: UIViewControllerAnimatedTransitioning
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.4
+        return 0.7
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -30,10 +30,11 @@ class SimpleShiftTransitionAnimator: NSObject, UIViewControllerAnimatedTransitio
         
         //First, we'll instruct the source to respond to the beginning of the transition. Because we want to immediately swap out the views and end the 'transition' before allowing the destination to complete it. We'll pass the entire transition duration to this preparation (for animations). Meanwhile, we'll create our destinationView and allow it to prepare for the incoming transition (so it can do things like clear out it's view, etc).
         
-        shiftAnimator = ShiftAnimator(source: shiftSource, destination: shiftDestination, coordinator: EvenShiftCoordinator())
+        let coordinator = DefaultCoordinator(animationContext: SpringAnimationContext(timingParameters: UISpringTimingParameters(dampingRatio: 0.8)))
+        shiftAnimator = ShiftAnimator(source: shiftSource, destination: shiftDestination, coordinator: coordinator)
         
         destination.prepareForTransition(from: source)
-        source.prepareForTransition(to: destination, withDuration: transitionDuration(using: transitionContext)) { finished in
+        source.prepareForTransition(to: destination, withDuration: 0.2) { finished in
             
             //At this point, the source has been able to prepare. The implicit requirement for this particular transition is that the view needs to be clear at this point. Now, assuming the backgrounds of the views match we can swap in the destination (with no visual effect - so it all looks like one controller) and allow it to animate it's elements on screen.
             
@@ -44,8 +45,8 @@ class SimpleShiftTransitionAnimator: NSObject, UIViewControllerAnimatedTransitio
             //Now, the destination is on screen and ready to complete the transition. But we don't need to include that 'entrance' animation in our transition. So we'll simultaneously give our source time to clean up after transitioning to the destination, tell the destination to perform any 'complete animations/work', perform any necessary frame shifts from the source to the destination and tell the context we're finished (when the shifts are completed).
             
             source.completeTransition(to: destination)
-            destination.completeTransition(from: source)
-            self.shiftAnimator?.animate(with: 0.3, inContainer: container) { position in
+            self.shiftAnimator?.animate(with: 0.5, inContainer: container) { position in
+                destination.completeTransition(from: source)
                 transitionContext.completeTransition(position == .end)
             }
         }

@@ -30,8 +30,8 @@ class PrecommitShiftTransitionAnimator: NSObject, UIViewControllerAnimatedTransi
         
         //First, we'll instruct the source to respond to the beginning of the transition. Because we want to immediately swap out the views and end the 'transition' before allowing the destination to complete it. We'll pass the entire transition duration to this preparation (for animations). Meanwhile, we'll create our destinationView and allow it to prepare for the incoming transition (so it can do things like clear out it's view, etc).
         
-        shiftAnimator = ShiftAnimator(source: shiftSource, destination: shiftDestination,
-                                      coordinator: DefaultCoordinator(timingCurveProvider: UISpringTimingParameters(dampingRatio: 0.7)))
+        let coordinator = DefaultCoordinator(animationContext: SpringAnimationContext(timingParameters: UISpringTimingParameters(dampingRatio: 0.8)))
+        shiftAnimator = ShiftAnimator(source: shiftSource, destination: shiftDestination, coordinator: coordinator)
         
         destination.prepareForTransition(from: source)
         source.prepareForTransition(to: destination, withDuration: transitionDuration(using: transitionContext)) { finished in

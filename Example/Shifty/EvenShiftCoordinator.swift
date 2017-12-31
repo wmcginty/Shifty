@@ -14,12 +14,13 @@ struct EvenShiftCoordinator: ShiftCoordinator {
     public func shifts(from sources: [State], to destinations: [State]) -> [Shift] {
         return zip(sources.indices, sources).flatMap { (index, source) in
             guard let match = destinations.first(where: { $0.identifier == source.identifier }) else { return nil }
+            
             let timingCurve = index % 2 == 0 ? UICubicTimingParameters(animationCurve: .linear) : UICubicTimingParameters(animationCurve: .easeOut)
             let relativeStart = index % 2 == 0 ? 0 : 0.5
             let relativeEnd = index % 2 == 0 ? 0.5 : 1
             
-            let animationParameters = AnimationParameters(timingCurve: timingCurve, relativeStartTime: relativeStart, relativeEndTime: relativeEnd)
-            return Shift(source: source, destination: match, animationParameters: animationParameters)
+            let animationParameters = CubicAnimationContext(timingParameters: timingCurve, relativeStartTime: relativeStart, relativeEndTime: relativeEnd)
+            return Shift(source: source, destination: match, animationContext: animationParameters)
         }
     }
 }

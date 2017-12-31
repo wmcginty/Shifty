@@ -14,22 +14,22 @@ public protocol ShiftCoordinator {
 public struct DefaultCoordinator: ShiftCoordinator {
     
     // MARK: Properties
-    public let timingCurve: UITimingCurveProvider
+    public let animationContext: AnimationContext
     
     // MARK: Initializers
-    public init(timingCurveProvider: UITimingCurveProvider) {
-        self.timingCurve = timingCurveProvider
+    public init(animationContext: AnimationContext) {
+        self.animationContext = animationContext
     }
     
-    public init(timingCurve: UIViewAnimationCurve = .linear) {
-        self.init(timingCurveProvider: UICubicTimingParameters(animationCurve: timingCurve))
+    public init(timingCurve: UIViewAnimationCurve = .easeInOut) {
+        self.init(animationContext: CubicAnimationContext(timingParameters: UICubicTimingParameters(animationCurve: timingCurve)))
     }
 
     // MARK: ShiftCoordinator
     public func shifts(from sources: [State], to destinations: [State]) -> [Shift] {
         return sources.flatMap { source in
             guard let match = destinations.first(where: { $0.identifier == source.identifier }) else { return nil }
-            return Shift(source: source, destination: match, animationParameters: AnimationParameters(timingCurve: timingCurve))
+            return Shift(source: source, destination: match, animationContext: animationContext)
         }
     }
 }

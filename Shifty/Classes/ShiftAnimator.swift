@@ -7,6 +7,10 @@
 
 import Foundation
 
+/* TODO:
+    -Provide a way to add 'alongside' animations/modifiers. Ex: Rotate 360 degrees from S -> D. Traverse S -> D in an arc instead of a straight line.
+    -Figure out a way to allow the 'entrance' animations from TransitionRespondable to happen simultaneously with shifts (even when the views may obscure each other. */
+
 public class ShiftAnimator {
     
     private let shifts: [Shift]
@@ -62,11 +66,11 @@ private extension ShiftAnimator {
 private extension ShiftAnimator {
         
     func configuredAnimator(for shift: Shift, duration: TimeInterval, in container: UIView) -> UIViewPropertyAnimator {
-        let animator = UIViewPropertyAnimator(duration: duration, timingParameters: shift.animationParameters.timingCurve)
+        let animator = UIViewPropertyAnimator(duration: duration, timingParameters: shift.animationContext.timingParameters)
         let snapshot = destinations?[shift]
         let shiftingView = shift.configuredShiftingView(in: container)
         
-        animator.addAnimations { shift.shiftAnimations(for: shiftingView, in: container, target: snapshot, duration: duration) }
+        animator.addAnimations { shift.shiftAnimations(for: shiftingView, in: container, target: snapshot) }
         animator.addCompletion { _ in shift.cleanupShiftingView(shiftingView) }
         
         return animator

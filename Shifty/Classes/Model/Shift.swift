@@ -13,13 +13,13 @@ public struct Shift: Hashable {
     // MARK: Properties
     public let source: State
     public let destination: State
-    public let animationParameters: AnimationParameters
+    public let animationContext: AnimationContext
     
     // MARK: Initializers
-    public init(source: State, destination: State, animationParameters: AnimationParameters = .default) {
+    public init(source: State, destination: State, animationContext: AnimationContext = CubicAnimationContext.default) {
         self.source = source
         self.destination = destination
-        self.animationParameters = animationParameters
+        self.animationContext = animationContext
     }
     
     // MARK: Hashable
@@ -47,15 +47,10 @@ extension Shift {
         return shiftingView
     }
     
-    func shiftAnimations(for shiftingView: UIView, in container: UIView, target: Snapshot?, duration: TimeInterval) {
-
-        //Nesting the animation in a keyframe allows us to take advantage of relative start/end times and inherit the existing animation curve
-        let parameters = animationParameters
-        UIView.animateKeyframes(withDuration: duration, delay: 0.0, options: [.layoutSubviews], animations: {
-            UIView.addKeyframe(withRelativeStartTime: parameters.relativeStartTime, relativeDuration: parameters.relativeEndTime - parameters.relativeStartTime) {
-                target?.applyState(to: shiftingView, in: container)
-            }
-        }, completion: nil)
+    func shiftAnimations(for shiftingView: UIView, in container: UIView, target: Snapshot?) {
+        animationContext.performAnimations {
+            target?.applyState(to: shiftingView, in: container)
+        }
     }
     
     func cleanupShiftingView(_ shiftingView: UIView) {
