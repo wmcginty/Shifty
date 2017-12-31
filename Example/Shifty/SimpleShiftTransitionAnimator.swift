@@ -26,7 +26,7 @@ class SimpleShiftTransitionAnimator: NSObject, UIViewControllerAnimatedTransitio
         guard let sourceController = transitionContext.viewController(forKey: .from), let destinationController = transitionContext.viewController(forKey: .to) else { return }
         guard let destinationView = transitionContext.view(forKey: .to) else { return }
         guard let source = sourceController as? TransitionRespondable, let destination = destinationController as? TransitionRespondable else { return }
-        guard let shiftSource = sourceController as? FrameShiftTransitionable, let shiftDestination = destinationController as? FrameShiftTransitionable else { return }
+        guard let shiftSource = sourceController as? ShiftTransitionable, let shiftDestination = destinationController as? ShiftTransitionable else { return }
         
         //First, we'll instruct the source to respond to the beginning of the transition. Because we want to immediately swap out the views and end the 'transition' before allowing the destination to complete it. We'll pass the entire transition duration to this preparation (for animations). Meanwhile, we'll create our destinationView and allow it to prepare for the incoming transition (so it can do things like clear out it's view, etc).
         

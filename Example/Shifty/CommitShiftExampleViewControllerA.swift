@@ -9,16 +9,20 @@
 import UIKit
 import Shifty
 
-class CommitShiftExampleViewControllerA: UIViewController {
+class CommitShiftExampleViewControllerA: UIViewController, ShiftTransitionable {
     
     @IBOutlet var yellowView: UIView!
     @IBOutlet var orangeView: UIView!
     @IBOutlet var shiftButton: UIButton!
     private var shiftTransitioningDelegate = PrecommitShiftTransitioningDelegate()
     
+    //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         definesPresentationContext = true
+        
+        yellowView.shiftID = "yellow"
+        orangeView.shiftID = "orange"
     }
     
     // MARK: IBActions
@@ -55,13 +59,3 @@ extension CommitShiftExampleViewControllerA: TransitionRespondable {
         }, completion: completion)
     }
 }
-
-// MARK: FrameShiftTransitionable
-extension CommitShiftExampleViewControllerA: FrameShiftTransitionable {
-    var shiftables: [Shiftable] {
-        return [Shiftable(view: yellowView, identifier: "yellow"),
-                Shiftable(view: orangeView, identifier: "orange")]
-    }
-}
-
-

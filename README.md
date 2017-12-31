@@ -76,20 +76,27 @@ This will have the effect of animating all the intended views off the leading ed
 
 ### FrameShiftTransitionable
 
-Sometimes in transitions like these, there is content that is consistent between two screens - if not in the exact same size or position. It would be ideal in this situation to not animate the content off screen only to animate it back on. Instead we can use the `FrameShiftTransitionable` protocol to move it to it's new position. First, we must tell our source and destination which views are eligible to move:
+Sometimes in transitions like these, there is content that is consistent between two screens - if not in the exact same size or position. It would be ideal in these situations to not animate the content off screen only to animate it back on. Instead we can use the `ShiftTransitionable` protocol to move it to it's new position. First, we must tell our source and destination which views are eligible to move:
 
 ```swift
-extension ViewControllerA: FrameShiftTransitionable {
-    var shiftables: [Shiftable] {
-        return [Shiftable(view: yellowView, identifier: "yellow"),
-                Shiftable(view: orangeView, identifier: "orange")]
-    }
+extension ViewController: ShiftTransitionable {
+    /* This empty conformance is enough to inform the animator to search through this controller's subviews for eligible shiftables. */
+    
+    //The default value of this variable is true, setting to false will short-circuit the search. */
+    var containsShiftables: Bool { return true }
+    
+    //The default value of this variable is an empty array, but allows you to short-circuit search in more complicated view hierarchies.
+    var shiftExclusions: [UIView] { return [] }
 }
 
-extension ViewControllerB: FrameShiftTransitionable {
-    var shiftables: [Shiftable] {
-        return [Shiftable(view: yellowView, identifier: "yellow"),
-                Shiftable(view: orangeView, identifier: "orange")]
+extension ViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        /* ...other work... */
+
+        yellowView.shiftID = "yellow"
+        orangeView.shiftID = "orange"
     }
 }
 ```
@@ -126,7 +133,7 @@ func animateTransition(using transitionContext: UIViewControllerContextTransitio
 ```
 This animator method is nearly identical to the previous, with the addition of the `ShiftAnimator`. This object is created with a specific source and destination. At some point during the transition it will be instructed to animate the matches it finds between the source and destination states. This animation can be done as part of the transition (ending it when the frame shifts complete) or separately (the transition will end as soon as the shifts begin).
 
-In addition, providing a custom `ShiftCoordinator` object will allow you to provide a custom `UITimingCurveProvider` object and a different relative start time and end time for each shift.
+In addition, providing a custom `ShiftCoordinator` object will allow you to provide a custom `UITimingCurveProvider` object and a different relative start time and end time for each shift. Many more complicated examples are available to run in the example project.
 
 ## Example
 

@@ -9,23 +9,20 @@ import Foundation
 
 public class ShiftAnimator {
     
-    public let source: FrameShiftTransitionable
-    public let destination: FrameShiftTransitionable
-    
     private let shifts: [Shift]
+    
     private var destinations: [Shift: Snapshot]?
     private var baseAnimator: UIViewPropertyAnimator?
     private var animators: [Shift: UIViewPropertyAnimator] = [:]
     
     // MARK: Initializers
-    public init(source: FrameShiftTransitionable, destination: FrameShiftTransitionable, coordinator: ShiftCoordinator = DefaultShiftCoordinator()) {
-        self.source = source
-        self.destination = destination
-        self.shifts = coordinator.shifts(from: source.shiftables, to: destination.shiftables)
+    public init(source: ShiftTransitionable, destination: ShiftTransitionable, coordinator: ShiftCoordinator = DefaultShiftCoordinator()) {
+        let prospects = ShiftProspector().prospectiveShifts(from: source, to: destination)
+        self.shifts = coordinator.shifts(from: prospects.sources, to: prospects.destinations)
     }
     
     public convenience init?(source: Any, destination: Any, coordinator: ShiftCoordinator = DefaultShiftCoordinator()) {
-        guard let s = source as? FrameShiftTransitionable, let d = destination as? FrameShiftTransitionable else { return nil }
+        guard let s = source as? ShiftTransitionable, let d = destination as? ShiftTransitionable else { return nil }
         self.init(source: s, destination: d, coordinator: coordinator)
     }
     

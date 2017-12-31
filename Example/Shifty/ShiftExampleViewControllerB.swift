@@ -9,11 +9,19 @@
 import UIKit
 import Shifty
 
-class ShiftExampleViewControllerB: UIViewController {
+class ShiftExampleViewControllerB: UIViewController, ShiftTransitionable {
     
     @IBOutlet var yellowView: UIView!
     @IBOutlet var orangeView: UIView!
     @IBOutlet var backButton: UIButton!
+    
+    //MARK: Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        yellowView.shiftID = "yellow"
+        orangeView.shiftID = "orange"
+    }
     
     // MARK: IBActions
     @IBAction func dismiss() {
@@ -44,14 +52,3 @@ extension ShiftExampleViewControllerB: TransitionRespondable {
         }, completion: completion)
     }
 }
-
-// MARK: FrameShiftTransitionable
-extension ShiftExampleViewControllerB: FrameShiftTransitionable {
-    var shiftables: [Shiftable] {
-        return [Shiftable(view: yellowView, identifier: "yellow"),
-                Shiftable(view: orangeView, identifier: "orange")]
-    }
-}
-
-
-

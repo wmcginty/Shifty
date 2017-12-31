@@ -28,7 +28,7 @@ class ContinuousExampleViewControllerB: UIViewController {
 extension ContinuousExampleViewControllerB: TransitionRespondable {
     
     func animatingViews() -> [UIView] {
-        return [orangeView, yellowView, orangeView2, yellowView2, backButton]
+        return [yellowView, orangeView, yellowView2, orangeView2, backButton]
     }
     
     func completeTransition(from source: TransitionRespondable?) {

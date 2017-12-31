@@ -9,16 +9,20 @@
 import UIKit
 import Shifty
 
-class ShiftExampleViewControllerA: UIViewController {
+class ShiftExampleViewControllerA: UIViewController, ShiftTransitionable {
     
     @IBOutlet var yellowView: UIView!
     @IBOutlet var orangeView: UIView!
     @IBOutlet var shiftButton: UIButton!
     private var shiftTransitioningDelegate = SimpleShiftTransitioningDelegate()
     
+    //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         definesPresentationContext = true
+        
+        yellowView.shiftID = "yellow"
+        orangeView.shiftID = "orange"
     }
     
     // MARK: IBActions
@@ -53,14 +57,6 @@ extension ShiftExampleViewControllerA: TransitionRespondable {
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [], animations: {
             self.shiftButton.alpha = 0
         }, completion: completion)
-    }
-}
-
-// MARK: FrameShiftTransitionable
-extension ShiftExampleViewControllerA: FrameShiftTransitionable {
-    var shiftables: [Shiftable] {
-        return [Shiftable(view: yellowView, identifier: "yellow"),
-                Shiftable(view: orangeView, identifier: "orange")]
     }
 }
 

@@ -54,8 +54,7 @@ class ShiftableTests: XCTestCase {
         
         XCTAssertEqual(snap.center, .zero)
         XCTAssertEqual(snap.bounds, .zero)
-        XCTAssertEqual(snap.transform, .identity)
-        XCTAssertEqual(snap.transform3d, CATransform3DIdentity)
+        XCTAssertEqual(snap.transform, CATransform3DIdentity)
         
         let c = CGPoint(x: 50, y: 50)
         let b = CGRect(origin: .zero, size: CGSize(width: 200, height: 200))
@@ -69,6 +68,6 @@ class ShiftableTests: XCTestCase {
         
         XCTAssertEqual(snap2.center, c)
         XCTAssertEqual(snap2.bounds, b)
-        XCTAssertEqual(snap2.transform, t)
+        XCTAssertEqual(snap2.transform, CATransform3DMakeAffineTransform(t))
     }
 }

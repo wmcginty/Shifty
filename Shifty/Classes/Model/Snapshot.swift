@@ -19,22 +19,20 @@ public struct Snapshot {
     /// The bounds of `view`.
     let bounds: CGRect
     
-    /// The transform of `view`.
-    let transform: CGAffineTransform
-    
     /// The transform3d of `view.layer`.
-    let transform3d: CATransform3D
+    let transform: CATransform3D
+    
+    //TODO: Corner radius?
     
     // MARK: Initializers
-    public init(center: CGPoint, bounds: CGRect, transform: CGAffineTransform, transform3d: CATransform3D) {
+    public init(center: CGPoint, bounds: CGRect, transform: CATransform3D) {
         self.center = center
         self.bounds = bounds
         self.transform = transform
-        self.transform3d = transform3d
     }
     
     init(view: UIView) {
-        self.init(center: view.center, bounds: view.bounds, transform: view.transform, transform3d: view.layer.transform)
+        self.init(center: view.center, bounds: view.bounds, transform: view.layer.transform)
     }
     
     /// The center of the Snapshot's `view` with respect to the provided container.
@@ -54,8 +52,10 @@ public struct Snapshot {
     public func applyPositionalState(to new: UIView, in container: UIView) {
         new.bounds = bounds
         new.center = center(of: new, withRespectTo: container)
-        new.transform = transform
-        new.layer.transform = transform3d
+        
+        /*Setting the view.transform converts the affine transform to a 3d space and sets the layer's transform.
+            This means we can safely 'ignore' it, and instead rely soly on the 3d transform of the view's layer. */
+        new.layer.transform = transform
     }
 }
 
@@ -63,7 +63,7 @@ public struct Snapshot {
 extension Snapshot: Equatable {
     
     public static func == (lhs: Snapshot, rhs: Snapshot) -> Bool {
-        return lhs.bounds == rhs.bounds && lhs.center == rhs.center && lhs.transform == rhs.transform && lhs.transform3d == rhs.transform3d
+        return lhs.bounds == rhs.bounds && lhs.center == rhs.center && lhs.transform == rhs.transform
     }
 }
 

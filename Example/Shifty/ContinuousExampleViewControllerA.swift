@@ -24,6 +24,10 @@ class ContinuousExampleViewControllerA: UIViewController {
         definesPresentationContext = true
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
     // MARK: IBActions
     @IBAction func shiftItButtonPressed(sender: AnyObject) {
         

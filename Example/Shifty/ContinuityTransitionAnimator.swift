@@ -37,7 +37,7 @@ class ContinuityTransitionAnimator: NSObject, UIViewControllerAnimatedTransition
             
             //Now, the destination is on screen and ready to complete the transition. But we don't need to include that 'entrance' animation in our transition. So we'll simultaneously give our source time to clean up after transitioning to the destination, tell the destination to perform any 'complete animations/work' and tell the context we're finished.
             
-            source.completeTransition(to: destination)
+            //source.completeTransition(to: destination)
             destination.completeTransition(from: source)
             transitionContext.completeTransition(finished)
         }
