@@ -23,7 +23,17 @@ public struct State {
         func configuredShiftingView(for baseView: UIView) -> UIView {
             switch self {
             case .snapshot:
-                guard let snapshot = baseView.snapshotView(afterScreenUpdates: true) else { fatalError("Unable to snapshot view: \(baseView)") }
+                //Ensure we take the snapshot with no corner radius, and then apply that radius to the snapshot (and reset the baseView).
+                let cornerRadius = baseView.layer.cornerRadius
+                baseView.layer.cornerRadius = 0
+                
+                guard let s = baseView.snapshotView(afterScreenUpdates: true) else { fatalError("Unable to snapshot view: \(baseView)") }
+                let snapshot = SnapshotView(contentView: s)
+                
+                snapshot.layer.masksToBounds = true
+                snapshot.layer.cornerRadius = cornerRadius
+                baseView.layer.cornerRadius = cornerRadius
+                
                 return snapshot
                 
             case .configured(let configurator):
@@ -53,7 +63,7 @@ public extension State {
     }
     
     func applyPositionalState(to view: UIView, in container: UIView) {
-        currentSnapshot().applyPositionalState(to: view, in: container)
+        currentSnapshot().applyState(to: view, in: container)
     }
 }
 

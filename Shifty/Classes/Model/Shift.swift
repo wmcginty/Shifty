@@ -51,9 +51,9 @@ extension Shift {
 
         //Nesting the animation in a keyframe allows us to take advantage of relative start/end times and inherit the existing animation curve
         let parameters = animationParameters
-        UIView.animateKeyframes(withDuration: duration, delay: 0.0, options: [], animations: {
+        UIView.animateKeyframes(withDuration: duration, delay: 0.0, options: [.layoutSubviews], animations: {
             UIView.addKeyframe(withRelativeStartTime: parameters.relativeStartTime, relativeDuration: parameters.relativeEndTime - parameters.relativeStartTime) {
-                target?.applyPositionalState(to: shiftingView, in: container)
+                target?.applyState(to: shiftingView, in: container)
             }
         }, completion: nil)
     }

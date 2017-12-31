@@ -273,6 +273,11 @@
                                     <constraint firstAttribute="width" secondItem="OJ2-RZ-kCi" secondAttribute="height" multiplier="2" id="O4K-a9-FwU"/>
                                     <constraint firstAttribute="height" constant="100" id="iIR-Ee-cQY"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vti-wj-c0y">
                                 <rect key="frame" x="170.5" y="617" width="34" height="30"/>

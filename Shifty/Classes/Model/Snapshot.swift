@@ -22,15 +22,19 @@ public struct Snapshot {
     /// The transform3d of `view.layer`.
     let transform: CATransform3D
     
+    /// The corner radius of `view.layer`.
+    let cornerRadius: CGFloat
+    
     // MARK: Initializers
-    public init(center: CGPoint, bounds: CGRect, transform: CATransform3D) {
+    public init(center: CGPoint, bounds: CGRect, transform: CATransform3D, cornerRadius: CGFloat) {
         self.center = center
         self.bounds = bounds
         self.transform = transform
+        self.cornerRadius = cornerRadius
     }
     
     init(view: UIView) {
-        self.init(center: view.center, bounds: view.bounds, transform: view.layer.transform)
+        self.init(center: view.center, bounds: view.bounds, transform: view.layer.transform, cornerRadius: view.layer.cornerRadius)
     }
     
     /// The center of the Snapshot's `view` with respect to the provided container.
@@ -47,13 +51,14 @@ public struct Snapshot {
     ///
     /// - parameter new:       The view to apply the Snapshot too.
     /// - parameter container: The superview of `new`.
-    public func applyPositionalState(to new: UIView, in container: UIView) {
+    public func applyState(to new: UIView, in container: UIView) {
         new.bounds = bounds
         new.center = center(of: new, withRespectTo: container)
         
         /*Setting the view.transform converts the affine transform to a 3d space and sets the layer's transform.
             This means we can safely 'ignore' it, and instead rely soly on the 3d transform of the view's layer. */
         new.layer.transform = transform
+        new.layer.cornerRadius = cornerRadius
     }
 }
 
@@ -61,7 +66,7 @@ public struct Snapshot {
 extension Snapshot: Equatable {
     
     public static func == (lhs: Snapshot, rhs: Snapshot) -> Bool {
-        return lhs.bounds == rhs.bounds && lhs.center == rhs.center && lhs.transform == rhs.transform
+        return lhs.bounds == rhs.bounds && lhs.center == rhs.center && lhs.transform == rhs.transform && lhs.cornerRadius == rhs.cornerRadius
     }
 }
 
