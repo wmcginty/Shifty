@@ -22,8 +22,6 @@ public struct Snapshot {
     /// The transform3d of `view.layer`.
     let transform: CATransform3D
     
-    //TODO: Corner radius?
-    
     // MARK: Initializers
     public init(center: CGPoint, bounds: CGRect, transform: CATransform3D) {
         self.center = center

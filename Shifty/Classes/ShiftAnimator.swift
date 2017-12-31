@@ -1,6 +1,6 @@
 //
 //  ShiftAnimator.swift
-//  Pods-Shifty_Example
+//  Shifty
 //
 //  Created by William McGinty on 12/26/17.
 //
@@ -16,12 +16,12 @@ public class ShiftAnimator {
     private var animators: [Shift: UIViewPropertyAnimator] = [:]
     
     // MARK: Initializers
-    public init(source: ShiftTransitionable, destination: ShiftTransitionable, coordinator: ShiftCoordinator = DefaultShiftCoordinator()) {
-        let prospects = ShiftProspector().prospectiveShifts(from: source, to: destination)
+    public init(source: ShiftTransitionable, destination: ShiftTransitionable, coordinator: ShiftCoordinator = DefaultCoordinator()) {
+        let prospects = Prospector().prospectiveShifts(from: source, to: destination)
         self.shifts = coordinator.shifts(from: prospects.sources, to: prospects.destinations)
     }
     
-    public convenience init?(source: Any, destination: Any, coordinator: ShiftCoordinator = DefaultShiftCoordinator()) {
+    public convenience init?(source: Any, destination: Any, coordinator: ShiftCoordinator = DefaultCoordinator()) {
         guard let s = source as? ShiftTransitionable, let d = destination as? ShiftTransitionable else { return nil }
         self.init(source: s, destination: d, coordinator: coordinator)
     }

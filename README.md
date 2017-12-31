@@ -10,9 +10,9 @@ This library is intended as a supplement to the existing UIViewController transi
 
 ## Key Concepts
 * `TransitionRespondable` - A protocol representing any object that can respond to various callbacks from the transition animator throughout it's lifecycle.
-* `Shiftable` - Encapsulates a target state for a shifting view, in both the source and the destination.
-* `FrameShiftTransitionable` - A protocol representing any object (usually a UIViewController) that can vend `Shiftable` objects to the animator.
-* `ShiftAnimator` - The animator object that manages the matching and coordinating of `Shiftable` objects between the source and destination.
+* `State` - Encapsulates a target state for a shifting view, in both the source and the destination.
+* `ShiftTransitionable` - A protocol representing any object (usually a UIViewController) that can vend `State` objects to the animator.
+* `ShiftAnimator` - The animator object that manages the matching and coordinating of `State` objects between the source and destination.
 
 ## Usage
 ### TransitionRespondable
@@ -101,7 +101,7 @@ extension ViewController {
 }
 ```
 
-In this example, we have a yellow and orange view which are consistent between screens. Because their identifiers (which can be `AnyHashable`) are equal, the animator will match them up into a pair. It will move the `UIView` attached to each `Shiftable` from it's position in the source, to it's position in the destination. This will create the illusion that the content is moving from one place to another (similar to the magic move effect in Keynote).
+In this example, we have a yellow and orange view which are consistent between screens. Because their identifiers (which can be `AnyHashable`) are equal, the animator will match them up into a pair. It will move the `UIView` attached to each `State` from it's position in the source, to it's position in the destination. This will create the illusion that the content is moving from one place to another (similar to the magic move effect in Keynote).
 
 In order to complete the effect, we need to do a little bit more work in our animator:
 

@@ -13,14 +13,14 @@ public protocol ShiftTransitionable {
     var shiftContentView: UIView { get }
     
     /// Denotes whether or not the conforming object contains any shiftables.
-    var containsShiftables: Bool { get }
+    var containsStates: Bool { get }
     
     /// A list of views that should be excluded from shifting. These views, and their subviews, will be excluded from shiftable evaluation.
     var shiftExclusions: [UIView] { get }
 }
 
 public extension ShiftTransitionable {
-    var containsShiftables: Bool { return true }
+    var containsStates: Bool { return true }
     var shiftExclusions: [UIView] { return [] }
 }
 

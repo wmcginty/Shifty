@@ -12,15 +12,15 @@ import XCTest
 class CoordinatorTests: XCTestCase {
     
     func testDefaultCoordinatorMatchingEmptyInput() {
-        let c = DefaultShiftCoordinator()
+        let c = DefaultCoordinator()
         let s = c.shifts(from: [], to: [])
         XCTAssertEqual(s, [])
     }
     
     func testDefaultCoordinatorMatchingInputs() {
-        let c = DefaultShiftCoordinator()
-        let s = c.shifts(from: [Shiftable(view: UIView(), identifier: "id2"),
-                                Shiftable(view: UIView(), identifier: "id")], to: [Shiftable(view: UIView(), identifier: "id")])
+        let c = DefaultCoordinator()
+        let s = c.shifts(from: [State(view: UIView(), identifier: "id2"),
+                                State(view: UIView(), identifier: "id")], to: [State(view: UIView(), identifier: "id")])
         XCTAssertEqual(s.count, 1)
         XCTAssertTrue(s.first!.source.identifier == AnyHashable("id"))
         XCTAssertTrue(s.first!.destination.identifier == AnyHashable("id"))
@@ -28,8 +28,8 @@ class CoordinatorTests: XCTestCase {
     }
     
     func testDefaultCoordinatorNoMatchingInputs() {
-        let c = DefaultShiftCoordinator()
-        let s = c.shifts(from: [Shiftable(view: UIView(), identifier: "id2")], to: [Shiftable(view: UIView(), identifier: "id")])
+        let c = DefaultCoordinator()
+        let s = c.shifts(from: [State(view: UIView(), identifier: "id2")], to: [State(view: UIView(), identifier: "id")])
         XCTAssertTrue(s.isEmpty)
     }
 }

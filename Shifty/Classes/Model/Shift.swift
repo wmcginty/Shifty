@@ -11,12 +11,12 @@ import Foundation
 public struct Shift: Hashable {
     
     // MARK: Properties
-    public let source: Shiftable
-    public let destination: Shiftable
+    public let source: State
+    public let destination: State
     public let animationParameters: AnimationParameters
     
     // MARK: Initializers
-    public init(source: Shiftable, destination: Shiftable, animationParameters: AnimationParameters = .default) {
+    public init(source: State, destination: State, animationParameters: AnimationParameters = .default) {
         self.source = source
         self.destination = destination
         self.animationParameters = animationParameters

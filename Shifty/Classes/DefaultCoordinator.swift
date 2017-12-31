@@ -1,5 +1,5 @@
 //
-//  DefaultShiftCoordinator.swift
+//  DefaultCoordinator.swift
 //  Shifty
 //
 //  Created by William McGinty on 12/28/17.
@@ -8,10 +8,10 @@
 import UIKit
 
 public protocol ShiftCoordinator {
-    func shifts(from sources: [Shiftable], to destinations: [Shiftable]) -> [Shift]
+    func shifts(from sources: [State], to destinations: [State]) -> [Shift]
 }
 
-public struct DefaultShiftCoordinator: ShiftCoordinator {
+public struct DefaultCoordinator: ShiftCoordinator {
     
     // MARK: Properties
     public let timingCurve: UITimingCurveProvider
@@ -26,7 +26,7 @@ public struct DefaultShiftCoordinator: ShiftCoordinator {
     }
 
     // MARK: ShiftCoordinator
-    public func shifts(from sources: [Shiftable], to destinations: [Shiftable]) -> [Shift] {
+    public func shifts(from sources: [State], to destinations: [State]) -> [Shift] {
         return sources.flatMap { source in
             guard let match = destinations.first(where: { $0.identifier == source.identifier }) else { return nil }
             return Shift(source: source, destination: match, animationParameters: AnimationParameters(timingCurve: timingCurve))

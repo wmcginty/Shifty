@@ -12,8 +12,8 @@ import XCTest
 class ShiftTests: XCTestCase {
     
     func testShiftEquality() {
-        let s = Shiftable(view: UIView(), identifier: "id")
-        let d = Shiftable(view: UIView(), identifier: "id")
+        let s = State(view: UIView(), identifier: "id")
+        let d = State(view: UIView(), identifier: "id")
         
         let a = Shift(source: s, destination: d, animationParameters: .default)
         let b = Shift(source: s, destination: d, animationParameters: .default)
@@ -24,10 +24,10 @@ class ShiftTests: XCTestCase {
     }
     
     func testShiftInequality() {
-        let s = Shiftable(view: UIView(), identifier: "id")
-        let d = Shiftable(view: UIView(), identifier: "id")
-        let s2 = Shiftable(view: UIView(), identifier: "id2")
-        let d2 = Shiftable(view: UIView(), identifier: "id2")
+        let s = State(view: UIView(), identifier: "id")
+        let d = State(view: UIView(), identifier: "id")
+        let s2 = State(view: UIView(), identifier: "id2")
+        let d2 = State(view: UIView(), identifier: "id2")
         
         let a = Shift(source: s, destination: d, animationParameters: .default)
         let b = Shift(source: s2, destination: d, animationParameters: .default)
@@ -40,8 +40,8 @@ class ShiftTests: XCTestCase {
     }
     
     func testShiftHashEquality() {
-        let s = Shiftable(view: UIView(), identifier: "id")
-        let d = Shiftable(view: UIView(), identifier: "id")
+        let s = State(view: UIView(), identifier: "id")
+        let d = State(view: UIView(), identifier: "id")
         
         let a = Shift(source: s, destination: d, animationParameters: .default)
         let b = Shift(source: s, destination: d, animationParameters: AnimationParameters(timingCurve: UISpringTimingParameters(dampingRatio: 1.0)))
@@ -50,8 +50,8 @@ class ShiftTests: XCTestCase {
     }
     
     func testShiftDestinationSnapshotting() {
-        let s = Shiftable(view: UIView(), identifier: "id")
-        let d = Shiftable(view: UIView(), identifier: "id")
+        let s = State(view: UIView(), identifier: "id")
+        let d = State(view: UIView(), identifier: "id")
         
         let a = Shift(source: s, destination: d, animationParameters: .default)
         let snap1 = a.destinationSnapshot()
@@ -63,7 +63,7 @@ class ShiftTests: XCTestCase {
     func testShiftHidingNativeViews() {
         let v1 = UIView()
         let v2 = UIView()
-        let a = Shift(source: Shiftable(view: v1, identifier: "id"), destination: Shiftable(view: v2, identifier: "id"))
+        let a = Shift(source: State(view: v1, identifier: "id"), destination: State(view: v2, identifier: "id"))
         
         XCTAssertFalse(v1.isHidden)
         XCTAssertFalse(v2.isHidden)

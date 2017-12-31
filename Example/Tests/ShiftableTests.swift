@@ -1,5 +1,5 @@
 //
-//  ShiftableTests.swift
+//  StateTests.swift
 //  Shifty_Example
 //
 //  Created by William McGinty on 12/29/17.
@@ -9,47 +9,45 @@
 import XCTest
 @testable import Shifty
 
-class ShiftableTests: XCTestCase {
+class StateTests: XCTestCase {
     
-    //TODO: Tests for generating shiftingView (snapshot / created
-    
-    func testShiftableEquality() {
+    func testStateEquality() {
         let view = UIView()
-        let a = Shiftable(view: view, identifier: "identifier")
-        let b = Shiftable(view: UIView(), identifier: "identifier")
-        let c = Shiftable(view: view, identifier: "identifier")
+        let a = State(view: view, identifier: "identifier")
+        let b = State(view: UIView(), identifier: "identifier")
+        let c = State(view: view, identifier: "identifier")
         
         XCTAssertEqual(a, b)
         XCTAssertEqual(a, c)
     }
     
-    func testShiftableInequality() {
+    func testStateInequality() {
         let view = UIView()
-        let a = Shiftable(view: view, identifier: "identifier")
-        let b = Shiftable(view: UIView(), identifier: "other")
-        let c = Shiftable(view: view, identifier: "otheridentifier")
+        let a = State(view: view, identifier: "identifier")
+        let b = State(view: UIView(), identifier: "other")
+        let c = State(view: view, identifier: "otheridentifier")
         
         XCTAssertNotEqual(a, b)
         XCTAssertNotEqual(a, c)
     }
     
-    func testShiftableHashEquality() {
-        let a = Shiftable(view: UIView(), identifier: "identifier")
-        let b = Shiftable(view: UIView(), identifier: "identifier")
+    func testStateHashEquality() {
+        let a = State(view: UIView(), identifier: "identifier")
+        let b = State(view: UIView(), identifier: "identifier")
         
         XCTAssertEqual(a.hashValue, b.hashValue)
     }
     
-    func testShiftableHashInequality() {
-        let a = Shiftable(view: UIView(), identifier: "identifier")
-        let b = Shiftable(view: UIView(), identifier: "other")
+    func testStateHashInequality() {
+        let a = State(view: UIView(), identifier: "identifier")
+        let b = State(view: UIView(), identifier: "other")
         
         XCTAssertNotEqual(a.hashValue, b.hashValue)
     }
     
-    func testShiftableSnapshots() {
+    func testStateSnapshots() {
         let view = UIView()
-        let a = Shiftable(view: view, identifier: "identifier")
+        let a = State(view: view, identifier: "identifier")
         let snap = a.currentSnapshot()
         
         XCTAssertEqual(snap.center, .zero)

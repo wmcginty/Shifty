@@ -1,5 +1,5 @@
 //
-//  Shiftable.swift
+//  State.swift
 //  Shifty
 //
 //  Created by Will McGinty on 5/2/16.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-// MARK: ShiftState Struct
+// MARK: State Struct
 
 /// Represents a single state of a shifting `UIView`.
-public struct Shiftable {
+public struct State {
     
     public enum Configuration {
         public typealias Configurator = (_ baseView: UIView) -> UIView
@@ -34,7 +34,7 @@ public struct Shiftable {
     
     // MARK: Properties
     public let view: UIView /// The view being subjected to the shift.
-    public let identifier: AnyHashable /// The identifier assigned to this `Shiftable`. Each identifier in the source should match an identifier in the destination.
+    public let identifier: AnyHashable /// The identifier assigned to this `State`. Each identifier in the source should match an identifier in the destination.
     public let configuration: Configuration /// The method used to configure the view. Defaults to .snapshot.
     
     // MARK: Initializers    
@@ -46,7 +46,7 @@ public struct Shiftable {
 }
 
 // MARK: Public Interface
-public extension Shiftable {
+public extension State {
     
     func viewForShiftWithRespect(to container: UIView) -> UIView {
         return configuration.configuredShiftingView(for: view)
@@ -58,22 +58,22 @@ public extension Shiftable {
 }
 
 // MARK: Internal Interface
-extension Shiftable {
+extension State {
     
-    /// Returns a `Snapshot` of the current state of the `Shiftable`.
+    /// Returns a `Snapshot` of the current state of the `State`.
     func currentSnapshot() -> Snapshot {
         return Snapshot(view: view)
     }
 }
 
 // MARK: Hashable
-extension Shiftable: Hashable {
+extension State: Hashable {
     
     public var hashValue: Int {
         return identifier.hashValue
     }
     
-    public static func == (lhs: Shiftable, rhs: Shiftable) -> Bool {
+    public static func == (lhs: State, rhs: State) -> Bool {
         return lhs.identifier == rhs.identifier
     }
 }
