@@ -368,7 +368,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jxm-dr-Eoo">
-                                <rect key="frame" x="259" y="40" width="100" height="100"/>
+                                <rect key="frame" x="16" y="40" width="100" height="100"/>
                                 <color key="backgroundColor" red="1" green="0.81176470590000005" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="jxm-dr-Eoo" secondAttribute="height" id="j3s-nL-WSK"/>
@@ -376,7 +376,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qQK-dZ-yS3">
-                                <rect key="frame" x="159" y="160" width="200" height="100"/>
+                                <rect key="frame" x="16" y="160" width="200" height="100"/>
                                 <color key="backgroundColor" red="1" green="0.46964316849999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="qQK-dZ-yS3" secondAttribute="height" multiplier="2" id="dWx-sb-75y"/>
@@ -394,8 +394,8 @@
                         <color key="backgroundColor" red="0.001160401247" green="0.92935490610000004" blue="0.0018002973979999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="axJ-Nn-gSj" firstAttribute="bottom" secondItem="Tll-dj-7eb" secondAttribute="bottom" constant="20" id="GA4-Vg-95S"/>
-                            <constraint firstItem="qQK-dZ-yS3" firstAttribute="trailing" secondItem="jxm-dr-Eoo" secondAttribute="trailing" id="agq-WV-uLK"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="jxm-dr-Eoo" secondAttribute="trailing" id="cce-E7-hd4"/>
+                            <constraint firstItem="qQK-dZ-yS3" firstAttribute="leading" secondItem="jxm-dr-Eoo" secondAttribute="leading" id="agq-WV-uLK"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="jxm-dr-Eoo" secondAttribute="leading" id="cce-E7-hd4"/>
                             <constraint firstItem="jxm-dr-Eoo" firstAttribute="top" secondItem="axJ-Nn-gSj" secondAttribute="top" constant="20" id="okf-Ds-5zx"/>
                             <constraint firstItem="qQK-dZ-yS3" firstAttribute="top" secondItem="jxm-dr-Eoo" secondAttribute="bottom" constant="20" id="rrT-f9-Mgm"/>
                             <constraint firstItem="Tll-dj-7eb" firstAttribute="centerX" secondItem="axJ-Nn-gSj" secondAttribute="centerX" id="v3t-hr-RVg"/>
