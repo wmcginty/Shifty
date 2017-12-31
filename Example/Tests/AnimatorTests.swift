@@ -11,7 +11,15 @@ import XCTest
 
 class AnimatorTests: XCTestCase {
     
-    func testAnimatorInitializerFromAny() {
+    func testAnimatorInitializerFromAnyFailure() {
         XCTAssertNil(ShiftAnimator(source: UIView(), destination: UIView()))
     }
+    
+    func testAnimatorInitializerFromAnySuccess() {
+        XCTAssertNotNil(ShiftAnimator(source: MockShiftTransitionable(), destination: MockShiftTransitionable()))
+    }
+}
+
+private class MockShiftTransitionable: ShiftTransitionable {
+    let shiftContentView = UIView()
 }

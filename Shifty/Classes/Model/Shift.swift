@@ -40,7 +40,7 @@ extension Shift {
         //Create, add and place the shiftingView with respect to the container
         let shiftingView = source.viewForShiftWithRespect(to: container)
         container.addSubview(shiftingView)
-        source.applyPositionalState(to: shiftingView, in: container)
+        source.applyState(to: shiftingView, in: container)
         
         //Configure the native views as hidden so the shiftingView is the only visible copy, then return it
         configureNativeViews(hidden: true)

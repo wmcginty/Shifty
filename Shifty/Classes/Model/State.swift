@@ -62,7 +62,7 @@ public extension State {
         return configuration.configuredShiftingView(for: view)
     }
     
-    func applyPositionalState(to view: UIView, in container: UIView) {
+    func applyState(to view: UIView, in container: UIView) {
         currentSnapshot().applyState(to: view, in: container)
     }
 }

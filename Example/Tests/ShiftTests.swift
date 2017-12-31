@@ -70,6 +70,24 @@ class ShiftTests: XCTestCase {
         a.configureNativeViews(hidden: true)
         XCTAssertTrue(v1.isHidden)
         XCTAssertTrue(v2.isHidden)
+    }
+    
+    func testShiftCleanup() {
+        let sView = UIView()
+        let dView = UIView()
+        let s = State(view: sView, identifier: "id")
+        let d = State(view: dView, identifier: "id")
+        let shift = Shift(source: s, destination: d, animationParameters: .default)
         
+        let test = UIView()
+        let superview = UIView()
+        superview.addSubview(test)
+        
+        shift.configureNativeViews(hidden: true)
+        shift.cleanupShiftingView(test)
+        
+        XCTAssertNil(test.superview)
+        XCTAssertFalse(sView.isHidden)
+        XCTAssertFalse(dView.isHidden)
     }
 }
