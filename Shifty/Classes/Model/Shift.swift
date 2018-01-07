@@ -67,6 +67,6 @@ extension Shift {
     }
     
     func configureNativeViews(hidden: Bool) {
-        [source.view, destination.view].forEach { $0.isHidden = hidden }
+        [source, destination].forEach { $0.configureNativeView(hidden: hidden) }
     }
 }

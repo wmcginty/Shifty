@@ -74,6 +74,10 @@ extension State {
     func currentSnapshot() -> Snapshot {
         return Snapshot(view: view)
     }
+    
+    func configureNativeView(hidden: Bool) {
+        view.isHidden = hidden
+    }
 }
 
 // MARK: Hashable
