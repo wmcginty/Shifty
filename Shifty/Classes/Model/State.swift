@@ -8,8 +8,6 @@
 
 import UIKit
 
-// MARK: State Struct
-
 /// Represents a single state of a shifting `UIView`.
 public struct State {
     
@@ -73,6 +71,10 @@ extension State {
     /// Returns a `Snapshot` of the current state of the `State`.
     func currentSnapshot() -> Snapshot {
         return Snapshot(view: view)
+    }
+    
+    func configureNativeView(hidden: Bool) {
+        view.isHidden = hidden
     }
 }
 

@@ -8,17 +8,16 @@
 import Foundation
 
 /* TODO:
-    -Provide a way to add 'alongside' animations/modifiers. Ex: Rotate 360 degrees from S -> D. Traverse S -> D in an arc instead of a straight line.
-    -Figure out a way to allow the 'entrance' animations from TransitionRespondable to happen simultaneously with shifts (even when the views may obscure each other. */
+    -Allow 'entrance' animations to happen simultaneously with shifts. Possibly by moving all exit/entrance/shift animations to snapshots that are happening in front of the source/destination view hierarchies.
+ */
 
-public class ShiftAnimator {
+public class ShiftAnimator: NSObject {
     
     private let shifts: [Shift]
     
     private var destinations: [Shift: Snapshot]?
-    private var baseAnimator: UIViewPropertyAnimator?
     private var animators: [Shift: UIViewPropertyAnimator] = [:]
-    
+
     // MARK: Initializers
     public init(source: ShiftTransitionable, destination: ShiftTransitionable, coordinator: ShiftCoordinator = DefaultCoordinator()) {
         let prospects = Prospector().prospectiveShifts(from: source, to: destination)
@@ -74,5 +73,55 @@ private extension ShiftAnimator {
         animator.addCompletion { _ in shift.cleanupShiftingView(shiftingView) }
         
         return animator
+    }
+}
+
+//MARK: UIViewImplicitlyAnimating
+extension ShiftAnimator: UIViewImplicitlyAnimating {
+
+    private var representativeAnimator: UIViewPropertyAnimator? {
+        return animators.values.first
+    }
+    
+    public var state: UIViewAnimatingState {
+        return representativeAnimator?.state ?? .inactive
+    }
+    
+    public var isRunning: Bool {
+        return representativeAnimator?.isRunning ?? false
+    }
+    
+    public var isReversed: Bool {
+        get { return representativeAnimator?.isReversed ?? false }
+        set {
+            animators.values.forEach { $0.isReversed = newValue }
+        }
+    }
+    
+    public var fractionComplete: CGFloat {
+        get { return representativeAnimator?.fractionComplete ?? 0 }
+        set {
+            animators.values.forEach { $0.fractionComplete = fractionComplete }
+        }
+    }
+    
+    public func startAnimation() {
+        animators.values.forEach { $0.startAnimation() }
+    }
+    
+    public func startAnimation(afterDelay delay: TimeInterval = 0.0) {
+        animators.values.forEach { $0.startAnimation(afterDelay: delay) }
+    }
+    
+    public func pauseAnimation() {
+        animators.values.forEach { $0.pauseAnimation() }
+    }
+    
+    public func stopAnimation(_ withoutFinishing: Bool) {
+        animators.values.forEach { $0.stopAnimation(withoutFinishing) }
+    }
+    
+    public func finishAnimation(at finalPosition: UIViewAnimatingPosition) {
+        animators.values.forEach { $0.finishAnimation(at: finalPosition) }
     }
 }

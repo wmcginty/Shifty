@@ -48,7 +48,7 @@ extension Shift {
     }
     
     func shiftAnimations(for shiftingView: UIView, in container: UIView, target: Snapshot?) {
-        animationContext.performAnimations {
+        animationContext.animate {
             target?.applyState(to: shiftingView, in: container)
         }
     }
@@ -67,6 +67,6 @@ extension Shift {
     }
     
     func configureNativeViews(hidden: Bool) {
-        [source.view, destination.view].forEach { $0.isHidden = hidden }
+        [source, destination].forEach { $0.configureNativeView(hidden: hidden) }
     }
 }
