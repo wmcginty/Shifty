@@ -7,6 +7,11 @@
 
 import Foundation
 
+/* TODO:
+    -Provide a way in which to provide 'alongside' animations, such as rotating by 360 degrees while shifting.
+    -Provide a way to modify the shift animation, such as shifting in an arc instead of a straight line.
+ */
+
 public protocol AnimationContext {
     var timingParameters: UITimingCurveProvider { get }
     func animate(_ animations: @escaping () -> Void)

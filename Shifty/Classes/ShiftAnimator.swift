@@ -8,8 +8,8 @@
 import Foundation
 
 /* TODO:
-    -Provide a way to add 'alongside' animations/modifiers. Ex: Rotate 360 degrees from S -> D. Traverse S -> D in an arc instead of a straight line.
-    -Figure out a way to allow the 'entrance' animations from TransitionRespondable to happen simultaneously with shifts (even when the views may obscure each other. */
+    -Allow 'entrance' animations to happen simultaneously with shifts. Possibly by moving all exit/entrance/shift animations to snapshots that are happening in front of the source/destination view hierarchies.
+ */
 
 public class ShiftAnimator: NSObject {
     

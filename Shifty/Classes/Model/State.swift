@@ -8,8 +8,6 @@
 
 import UIKit
 
-// MARK: State Struct
-
 /// Represents a single state of a shifting `UIView`.
 public struct State {
     
