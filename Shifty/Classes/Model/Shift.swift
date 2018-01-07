@@ -48,7 +48,7 @@ extension Shift {
     }
     
     func shiftAnimations(for shiftingView: UIView, in container: UIView, target: Snapshot?) {
-        animationContext.performAnimations {
+        animationContext.animate {
             target?.applyState(to: shiftingView, in: container)
         }
     }
