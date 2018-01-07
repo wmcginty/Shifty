@@ -15,7 +15,7 @@ struct Prospector {
     }
     
     func prospectiveShifts(from source: ShiftTransitionable, to destination: ShiftTransitionable) -> Prospects {
-        guard source.containsStates && destination.containsStates else { return Prospects(sources: [], destinations: []) }
+        guard source.isShiftingEnabled && destination.isShiftingEnabled else { return Prospects(sources: [], destinations: []) }
         
         let sourceViews = flattenedHierarchy(for: source.shiftContentView, withExclusions: source.shiftExclusions)
         let destinationViews = flattenedHierarchy(for: destination.shiftContentView, withExclusions: destination.shiftExclusions)
