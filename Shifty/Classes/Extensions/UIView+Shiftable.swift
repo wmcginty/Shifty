@@ -11,6 +11,7 @@ import Foundation
 extension UIView {
     private struct AssociatedKeys {
         static var shiftID = "shiftID"
+        static var actions = "actions"
     }
     
     /// The shift identifier for this `UIView`. If this identifier matches the identifier for another `UIView` in the destination of a transition, Shifty can animate the view from it's source position to it's destination position. This property simply creates a default 'State' object and assigns it to the view's `shiftState` property.
@@ -28,6 +29,14 @@ extension UIView {
         set {
             guard let shiftable = newValue else { return }
             setAssociatedObject(shiftable, associatedKey: &AssociatedKeys.shiftID, policy: .OBJC_ASSOCIATION_RETAIN)
+        }
+    }
+    
+    public var actions: [Action]? {
+        get { return getAssociatedObject(associatedKey: &AssociatedKeys.actions) }
+        set {
+            guard let actions = newValue else { return }
+            setAssociatedObject(actions, associatedKey: &AssociatedKeys.actions, policy: .OBJC_ASSOCIATION_RETAIN)
         }
     }
 }

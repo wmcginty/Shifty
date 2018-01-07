@@ -9,7 +9,7 @@
 import UIKit
 import Shifty
 
-class ContinuousExampleViewControllerA: UIViewController {
+class ContinuousExampleViewControllerA: UIViewController, ShiftTransitionable {
     
     @IBOutlet var yellowView: UIView!
     @IBOutlet var orangeView: UIView!
@@ -33,6 +33,11 @@ class ContinuousExampleViewControllerA: UIViewController {
         controller.modalPresentationStyle = .currentContext
         controller.transitioningDelegate = continuityTransitioningDelegate
         present(controller, animated: true, completion: nil)
+        
+        yellowView.actions = [.fadeOut]
+        orangeView.actions = [.fadeOut]
+        yellowView2.actions = [.fadeOut]
+        orangeView2.actions = [.fadeOut]
     }
 }
 
