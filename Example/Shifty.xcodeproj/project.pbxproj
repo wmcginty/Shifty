@@ -78,7 +78,7 @@
 		B477DD6A1D2E0F4900651077 /* ContinuousExampleViewControllerB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContinuousExampleViewControllerB.swift; sourceTree = "<group>"; };
 		B477DD721D2E121500651077 /* ContinuityTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContinuityTransitionAnimator.swift; sourceTree = "<group>"; };
 		D1A5DE282137D43D5F1CA167 /* Pods-Shifty_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifty_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shifty_Example/Pods-Shifty_Example.release.xcconfig"; sourceTree = "<group>"; };
-		E42C535C3EA119CA43F56AC2 /* Shifty.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Shifty.podspec; path = ../Shifty.podspec; sourceTree = "<group>"; };
+		E42C535C3EA119CA43F56AC2 /* Shifty.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Shifty.podspec; path = ../Shifty.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E8B657BB3CD2E1594F92DD01 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 

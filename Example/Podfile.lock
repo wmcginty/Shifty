@@ -1,5 +1,5 @@
 PODS:
-  - Shifty (0.4.0)
+  - Shifty (1.1.0)
 
 DEPENDENCIES:
   - Shifty (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  Shifty: 7ca6de312b97bddbb26c443c356b2553e2e900c2
+  Shifty: ccbb577319592d7a05c875478dc3318549cd8070
 
 PODFILE CHECKSUM: a8be6cbf0ace9486eae42cd01042330a8d21436e
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.4.0.rc.1
