@@ -52,10 +52,8 @@ public class ShiftAnimator: NSObject {
 // MARK: Shift Committing
 private extension ShiftAnimator {
     
-    var hasCommittedShifts: Bool { return destinations != nil }
-    
     func commitDestinationsIfNeeded() {
-        guard !hasCommittedShifts else { return }
+        guard destinations == nil else { return }
         commitShifts()
     }
 }

@@ -28,8 +28,8 @@ public struct DefaultCoordinator: ShiftCoordinator {
     // MARK: ShiftCoordinator
     public func shifts(from sources: [State], to destinations: [State]) -> [Shift] {
         return sources.flatMap { source in
-            guard let match = destinations.first(where: { $0.identifier == source.identifier }) else { return nil }
-            return Shift(source: source, destination: match, animationContext: animationContext)
+            let match = destinations.first { $0.identifier == source.identifier }
+            return match.map { Shift(source: source, destination: $0, animationContext: animationContext) }
         }
     }
 }
