@@ -21,8 +21,6 @@ install:
 script:
   - swiftlint --config ./.swiftlint.yml
   - set -o pipefail
-after_success:
-  bash <(curl -s https://codecov.io/bash) -J 'Shifty-Example'
 
   # Build Framework and Run Tests if specified
   - if [ $RUN_TESTS == "YES" ]; then
@@ -35,6 +33,9 @@ after_success:
   - if [ $POD_LINT == "YES" ]; then
       pod lib lint;
     fi
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -J 'Shifty-Example'
 
 # references:
 # * http://www.objc.io/issue-6/travis-ci.html
