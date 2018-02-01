@@ -19,7 +19,7 @@ before_install:
 install:
   - ./install_swiftlint.sh
 script:
-  - swiftlint --config ./Example/.swiftlint.yml
+  - swiftlint --config ./.swiftlint.yml
   - set -o pipefail
 
   # Build Framework and Run Tests if specified
