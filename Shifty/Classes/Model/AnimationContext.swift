@@ -66,4 +66,3 @@ public struct SpringAnimationContext: AnimationContext {
         animations()
     }
 }
-
