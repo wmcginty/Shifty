@@ -9,7 +9,9 @@
 import UIKit
 import Shifty
 
-/// A transition with the implicit contract that the source will animate all of it's contents off screen to a point where it's visual state matches that of the destination. The destination will then be instantaneously swapped on screen and be given the chance to complete any entrance animations to reach it's final visual state.
+/** A transition with the implicit contract that the source will animate all of it's contents off screen to a point where it's
+ visual state matches that of the destination. The destination will then be instantaneously swapped on screen and be given the chance to
+ complete any entrance animations to reach it's final visual state. **/
 class PrecommitShiftTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
     var shiftAnimator: ShiftAnimator?
@@ -28,12 +30,15 @@ class PrecommitShiftTransitionAnimator: NSObject, UIViewControllerAnimatedTransi
         guard let source = sourceController as? TransitionRespondable, let destination = destinationController as? TransitionRespondable else { return }
         guard let shiftSource = sourceController as? ShiftTransitionable, let shiftDestination = destinationController as? ShiftTransitionable else { return }
         
-        //First, we'll instruct the source to respond to the beginning of the transition. Because we want to immediately swap out the views and end the 'transition' before allowing the destination to complete it. We'll pass the entire transition duration to this preparation (for animations). Meanwhile, we'll create our destinationView and allow it to prepare for the incoming transition (so it can do things like clear out it's view, etc).
+        /* First, we'll instruct the source to respond to the beginning of the transition. Because we want to immediately swap out the
+         views and end the 'transition' before allowing the destination to complete it. We'll pass the entire transition duration to this
+         preparation (for animations). Meanwhile, we'll create our destinationView and allow it to prepare for the incoming transition (so
+         it can do things like clear out it's view, etc). */
         
         shiftAnimator = ShiftAnimator(source: shiftSource, destination: shiftDestination, coordinator: EvenShiftCoordinator())
         
         destination.prepareForTransition(from: source)
-        source.prepareForTransition(to: destination, withDuration: transitionDuration(using: transitionContext)) { finished in
+        source.prepareForTransition(to: destination, withDuration: transitionDuration(using: transitionContext)) { _ in
             
             container.addSubview(destinationView)
             destinationView.frame = transitionContext.finalFrame(for: destinationController)

@@ -7,7 +7,7 @@
 
 import Foundation
 
-//MARK: UIView + State
+// MARK: UIView + State
 extension UIView {
     private struct AssociatedKeys {
         static var shiftID = "shiftID"
@@ -32,7 +32,7 @@ extension UIView {
     }
 }
 
-//MARK: NSObject + Associated Values
+// MARK: NSObject + Associated Values
 fileprivate extension NSObject {
     final private class AssociatedBox<T> {
         let value: T

@@ -17,7 +17,7 @@ class ContinuousExampleViewControllerA: UIViewController {
     @IBOutlet var orangeView2: UIView!
     
     @IBOutlet var shiftButton: UIButton!
-    private var continuityTransitioningDelegate = ContinuityTransitioningDelegate()
+    private var continuityTransitioningManager = ContinuityTransitioningDelegate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,10 +28,10 @@ class ContinuousExampleViewControllerA: UIViewController {
     @IBAction func shiftItButtonPressed(sender: AnyObject) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "ContinuousExampleViewControllerB") as! ContinuousExampleViewControllerB
+        guard let controller = storyboard.instantiateViewController(withIdentifier: "ContinuousExampleViewControllerB") as? ContinuousExampleViewControllerB else { return }
         
         controller.modalPresentationStyle = .currentContext
-        controller.transitioningDelegate = continuityTransitioningDelegate
+        controller.transitioningDelegate = continuityTransitioningManager
         present(controller, animated: true, completion: nil)
     }
 }
