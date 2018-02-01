@@ -13,7 +13,9 @@ extension UIView {
         static var shiftID = "shiftID"
     }
     
-    /// The shift identifier for this `UIView`. If this identifier matches the identifier for another `UIView` in the destination of a transition, Shifty can animate the view from it's source position to it's destination position. This property simply creates a default 'State' object and assigns it to the view's `shiftState` property.
+    /** The shift identifier for this `UIView`. If this identifier matches the identifier for another `UIView` in the destination of a
+     transition, Shifty can animate the view from it's source position to it's destination position. This property simply creates a
+     default 'State' object and assigns it to the view's `shiftState` property. */
     public var shiftID: AnyHashable? {
         get { return shiftState?.identifier }
         set {
@@ -22,7 +24,8 @@ extension UIView {
         }
     }
     
-    /// The shift state object associated with this `UIView`. Contains the information necessary for the animator to create and execute the transition from it's position and state in the source to that in the destination.
+    /** The shift state object associated with this `UIView`. Contains the information necessary for the animator to create and execute
+     the transition from it's position and state in the source to that in the destination. */
     public var shiftState: State? {
         get { return getAssociatedObject(associatedKey: &AssociatedKeys.shiftID) }
         set {
@@ -36,7 +39,7 @@ extension UIView {
 fileprivate extension NSObject {
     final private class AssociatedBox<T> {
         let value: T
-        init(_ v: T) { value = v }
+        init(_ val: T) { value = val }
     }
     
     func setAssociatedObject<T>(_ object: T, associatedKey: UnsafeRawPointer, policy: objc_AssociationPolicy) {
@@ -47,5 +50,3 @@ fileprivate extension NSObject {
         return (objc_getAssociatedObject(self, associatedKey) as? AssociatedBox<T>)?.value
     }
 }
-
-
