@@ -21,6 +21,8 @@ install:
 script:
   - swiftlint --config ./.swiftlint.yml
   - set -o pipefail
+after_success:
+  bash <(curl -s https://codecov.io/bash) -J 'Shifty-Example'
 
   # Build Framework and Run Tests if specified
   - if [ $RUN_TESTS == "YES" ]; then
