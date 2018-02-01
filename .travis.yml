@@ -35,7 +35,7 @@ script:
     fi
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash) -J 'Shifty-Example'
+   - bash <(curl -s https://codecov.io/bash)
 
 # references:
 # * http://www.objc.io/issue-6/travis-ci.html
