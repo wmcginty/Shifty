@@ -75,6 +75,11 @@ public extension State {
     func applyState(to view: UIView, in container: UIView) {
         currentSnapshot().applyState(to: view, in: container)
     }
+    
+    func cleanupReplicantView(_ replicantView: UIView) {
+        configureNativeView(hidden: false)
+        replicantView.removeFromSuperview()
+    }
 }
 
 // MARK: Internal Interface

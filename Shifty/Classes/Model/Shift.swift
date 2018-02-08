@@ -51,8 +51,7 @@ extension Shift {
     }
     
     func cleanupShiftingView(_ shiftingView: UIView) {
-        configureNativeViews(hidden: false)
-        shiftingView.removeFromSuperview()
+        [source, destination].forEach { $0.cleanupReplicantView(shiftingView) }
     }
 }
 
