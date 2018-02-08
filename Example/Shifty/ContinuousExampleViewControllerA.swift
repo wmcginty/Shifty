@@ -34,47 +34,48 @@ class ContinuousExampleViewControllerA: UIViewController, ShiftTransitionable {
         controller.transitioningDelegate = continuityTransitioningManager
         present(controller, animated: true, completion: nil)
         
-        yellowView.actions = [.rotate, .fadeOut]
-        orangeView.actions = [.fadeOut, .scaleDown, .rotate]
-        yellowView2.actions = [.fadeOut]
-        orangeView2.actions = [.fadeOut, .scaleDown]
+        yellowView.actions = [.slideLeft]
+        orangeView.actions = [.slideLeft]
+        yellowView2.actions = [.slideLeft]
+        orangeView2.actions = [.slideLeft]
     }
 }
 
 // MARK: TransitionRespondable
-extension ContinuousExampleViewControllerA: TransitionRespondable {
-    
-    func animatingViews() -> [UIView] {
-        return [yellowView, orangeView, yellowView2, orangeView2, shiftButton]
-    }
-    
-    func completeTransition(from source: TransitionRespondable?) {
-        for (idx, view) in animatingViews().enumerated() {
-            let delay = Double(idx) * 0.05
-            UIView.animate(withDuration: 0.3, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [], animations: {
-                view.transform = .identity
-            }, completion: nil)
-        }
-    }
-    
-    func completeTransition(to destination: TransitionRespondable?) {
-        animatingViews().forEach { $0.transform = .identity }
-    }
-    
-    func prepareForTransition(from source: TransitionRespondable?) {
-        animatingViews().forEach { $0.transform = CGAffineTransform(translationX: -self.view.bounds.width, y: 0) }
-    }
-    
-    func prepareForTransition(to destination: TransitionRespondable?, withDuration duration: TimeInterval, completion: @escaping (Bool) -> Void) {
-        for (idx, view) in animatingViews().enumerated() {
-            let delay = Double(idx) * 0.05
-            UIView.animate(withDuration: duration - delay, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [], animations: {
-                view.transform = CGAffineTransform(translationX: -self.view.bounds.width, y: 0)
-            }, completion: { finished in
-                if idx == self.animatingViews().endIndex - 1 {
-                    completion(finished)
-                }
-            })
-        }
-    }
-}
+//extension ContinuousExampleViewControllerA: TransitionRespondable {
+//
+//    func animatingViews() -> [UIView] {
+//        return [yellowView, orangeView, yellowView2, orangeView2, shiftButton]
+//    }
+//
+//    func completeTransition(from source: TransitionRespondable?) {
+//        for (idx, view) in animatingViews().enumerated() {
+//            let delay = Double(idx) * 0.05
+//            UIView.animate(withDuration: 0.3, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [], animations: {
+//                view.transform = .identity
+//            }, completion: nil)
+//        }
+//    }
+//
+//    func completeTransition(to destination: TransitionRespondable?) {
+//        animatingViews().forEach { $0.transform = .identity }
+//    }
+//
+//    func prepareForTransition(from source: TransitionRespondable?) {
+//        animatingViews().forEach { $0.transform = CGAffineTransform(translationX: -self.view.bounds.width, y: 0) }
+//    }
+//
+//    func prepareForTransition(to destination: TransitionRespondable?, withDuration duration: TimeInterval, completion: @escaping (Bool) -> Void) {
+//        for (idx, view) in animatingViews().enumerated() {
+//            let delay = Double(idx) * 0.05
+//            UIView.animate(withDuration: duration - delay, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [], animations: {
+//                view.transform = CGAffineTransform(translationX: -self.view.bounds.width, y: 0)
+//            }, completion: { finished in
+//                if idx == self.animatingViews().endIndex - 1 {
+//                    completion(finished)
+//                }
+//            })
+//        }
+//    }
+//}
+

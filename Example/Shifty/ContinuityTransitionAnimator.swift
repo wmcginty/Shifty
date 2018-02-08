@@ -23,19 +23,23 @@ class ContinuityTransitionAnimator: NSObject, UIViewControllerAnimatedTransition
         //Begin by ensuring the transitionContext is configured correctly, and that our source + destination can power the transition. This being a basic example - exit if this fails, no fallbacks. YMMV with more complicated examples.
         
         let container = transitionContext.containerView
-        guard let sourceController = transitionContext.viewController(forKey: .from)/*, let destinationController = transitionContext.viewController(forKey: .to)*/ else { return }
-        //guard _ = transitionContext.view(forKey: .to) else { return }
-        guard let source = sourceController as? ShiftTransitionable/*, _ = destinationController as? ShiftTransitionable*/ else { return }
+        guard let sourceController = transitionContext.viewController(forKey: .from), let destinationController = transitionContext.viewController(forKey: .to) else { return }
+        guard let destinationView = transitionContext.view(forKey: .to) else { return }
+        guard let source = sourceController as? ShiftTransitionable, let destination = destinationController as? ShiftTransitionable else { return }
         
         /* First, create an ActionAnimator */
         
         let actionAnimator = ActionAnimator(transitionable: source)
         actionAnimator.animate(withDuration: transitionDuration(using: transitionContext), inContainer: container)
         
-//
-//            source.completeTransition(to: destination)
-//            destination.completeTransition(from: source)
-//            transitionContext.completeTransition(finished)
-//        }
+        container.insertSubview(destinationView, aboveSubview: sourceController.view)
+        destinationView.frame = transitionContext.finalFrame(for: destinationController)
+        
+        let actionAnimator2 = ActionAnimator(transitionable: destination, inverted: true)
+        actionAnimator2.animate(withDuration: transitionDuration(using: transitionContext), inContainer: container)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + transitionDuration(using: transitionContext)) {
+            transitionContext.completeTransition(true)
+        }
     }
 }

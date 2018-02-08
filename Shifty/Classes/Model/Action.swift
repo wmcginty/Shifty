@@ -28,4 +28,12 @@ extension Action {
     public static let rotate = Action { view in
         view.transform = view.transform.concatenating(CGAffineTransform(rotationAngle: .pi / 2))
     }
+    
+    public static let slideLeft = Action { view in
+        view.transform = view.transform.concatenating(CGAffineTransform(translationX: -300, y: 0))
+    }
+    
+    public static let slideRight = Action { view in
+        view.transform = view.transform.concatenating(CGAffineTransform(translationX: 300, y: 0))
+    }
 }

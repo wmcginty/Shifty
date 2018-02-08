@@ -7,17 +7,22 @@
 
 import Foundation
 
+//TODO: Entrance vs exit (can we like isReversed = true fractionComplete = 1 on all the animators?
+//TODO: restore swiftlint
+
 public class ActionAnimator {
     
     //MARK: Properties
     let actionReference: [UIView: ActionGroup]
+    let isInverted: Bool
     
         //We use multiple property animators to allow each ActionGroup to occur on a different timing curve. We can also support different overall durations, start delays, etc using keyframes inside the individual animation blocks.
     var animators: [UIView: UIViewPropertyAnimator] = [:]
     
     // MARK: Initializers
-    public init(transitionable: ShiftTransitionable) {
+    public init(transitionable: ShiftTransitionable, inverted: Bool = false) {
         actionReference = Prospector().actionReference(from: transitionable)
+        isInverted = inverted
     }
     
     // MARK: Interface
@@ -41,6 +46,11 @@ private extension ActionAnimator {
         
         animator.addAnimations { group.actionAnimations(for: replicantView) }
         animator.addCompletion { _ in state.cleanupReplicantView(replicantView) }
+        
+        if isInverted {
+            animator.fractionComplete = 1
+            animator.isReversed = true
+        }
         
         return animator
     }
