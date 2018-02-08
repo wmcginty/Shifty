@@ -32,8 +32,8 @@ class ContinuityTransitionAnimator: NSObject, UIViewControllerAnimatedTransition
          preparation (for animations). Meanwhile, we'll create our destinationView and allow it to prepare for the incoming transition (so
          it can do things like clear out it's view, etc). */
         
-        let actionAnimator = ActionAnimator(transitionable: source as! ShiftTransitionable)
-        actionAnimator.execute()
+        //let actionAnimator = ActionAnimator(transitionable: source as! ShiftTransitionable)
+       // actionAnimator.execute()
         //print(actionAnimator)
         
 //        destination.prepareForTransition(from: source)
