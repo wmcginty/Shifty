@@ -9,10 +9,10 @@ import Foundation
 
 class SnapshotView: UIView {
     
-    //MARK: Properties
+    // MARK: Properties
     let contentView: UIView
     
-    //MARK: Initializers
+    // MARK: Initializers
     init(contentView: UIView) {
         self.contentView = contentView
         super.init(frame: contentView.frame)
@@ -24,7 +24,7 @@ class SnapshotView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: Layout
+    // MARK: Layout
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.frame = bounds

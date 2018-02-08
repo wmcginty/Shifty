@@ -28,7 +28,7 @@ struct Prospector {
     }
 }
 
-//MARK: Helper
+// MARK: Helper
 private extension Prospector {
 
     private func flattenedHierarchy(for view: UIView, withExclusions exclusions: [UIView]) -> [UIView] {

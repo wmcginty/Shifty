@@ -14,9 +14,9 @@ class ShiftExampleViewControllerA: UIViewController, ShiftTransitionable {
     @IBOutlet var yellowView: UIView!
     @IBOutlet var orangeView: UIView!
     @IBOutlet var shiftButton: UIButton!
-    private var shiftTransitioningDelegate = SimpleShiftTransitioningDelegate()
+    private var shiftTransitioningManager = SimpleShiftTransitioningDelegate()
     
-    //MARK: Lifecycle
+    // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         definesPresentationContext = true
@@ -28,10 +28,10 @@ class ShiftExampleViewControllerA: UIViewController, ShiftTransitionable {
     // MARK: IBActions
     @IBAction func shiftItButtonPressed(sender: AnyObject) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "ShiftExampleViewControllerB") as! ShiftExampleViewControllerB
+        guard let controller = storyboard.instantiateViewController(withIdentifier: "ShiftExampleViewControllerB") as? ShiftExampleViewControllerB else { return }
         
         controller.modalPresentationStyle = .currentContext
-        controller.transitioningDelegate = shiftTransitioningDelegate
+        controller.transitioningDelegate = shiftTransitioningManager
         present(controller, animated: true, completion: nil)
     }
 }
@@ -59,4 +59,3 @@ extension ShiftExampleViewControllerA: TransitionRespondable {
         }, completion: completion)
     }
 }
-

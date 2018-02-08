@@ -16,7 +16,10 @@ env:
 before_install:
   - gem install cocoapods --pre # Since Travis is not always on latest version
   - pod install --project-directory=Example
+install:
+  - ./install_swiftlint.sh
 script:
+  - swiftlint --config ./.swiftlint.yml
   - set -o pipefail
 
   # Build Framework and Run Tests if specified
@@ -30,6 +33,9 @@ script:
   - if [ $POD_LINT == "YES" ]; then
       pod lib lint;
     fi
+
+after_success:
+   - bash <(curl -s https://codecov.io/bash)
 
 # references:
 # * http://www.objc.io/issue-6/travis-ci.html

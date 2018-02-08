@@ -14,9 +14,9 @@ class CommitShiftExampleViewControllerA: UIViewController, ShiftTransitionable {
     @IBOutlet var yellowView: UIView!
     @IBOutlet var orangeView: UIView!
     @IBOutlet var shiftButton: UIButton!
-    private var shiftTransitioningDelegate = PrecommitShiftTransitioningDelegate()
+    private var shiftTransitioningManager = PrecommitShiftTransitioningDelegate()
     
-    //MARK: Lifecycle
+    // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         definesPresentationContext = true
@@ -28,10 +28,10 @@ class CommitShiftExampleViewControllerA: UIViewController, ShiftTransitionable {
     // MARK: IBActions
     @IBAction func shiftItButtonPressed(sender: AnyObject) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "CommitShiftExampleViewControllerB") as! CommitShiftExampleViewControllerB
+        guard let controller = storyboard.instantiateViewController(withIdentifier: "CommitShiftExampleViewControllerB") as? CommitShiftExampleViewControllerB else { return }
         
         controller.modalPresentationStyle = .currentContext
-        controller.transitioningDelegate = shiftTransitioningDelegate
+        controller.transitioningDelegate = shiftTransitioningManager
         present(controller, animated: true, completion: nil)
     }
 }

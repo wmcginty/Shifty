@@ -7,7 +7,7 @@
 
 import Foundation
 
-//MARK: UIViewImplicitlyAnimating
+// MARK: UIViewImplicitlyAnimating
 extension ShiftAnimator: UIViewImplicitlyAnimating {
     
     private var representativeAnimator: UIViewPropertyAnimator? {

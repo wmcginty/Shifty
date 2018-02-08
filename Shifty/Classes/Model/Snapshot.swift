@@ -62,7 +62,7 @@ public struct Snapshot {
     }
 }
 
-//MARK: Equatable
+// MARK: Equatable
 extension Snapshot: Equatable {
     
     public static func == (lhs: Snapshot, rhs: Snapshot) -> Bool {

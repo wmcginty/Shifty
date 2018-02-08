@@ -19,7 +19,7 @@ public protocol AnimationContext {
 
 public struct CubicAnimationContext: AnimationContext {
     
-    //MARK: Properties
+    // MARK: Properties
     public let cubicTimingParameters: UICubicTimingParameters
     public let relativeStartTime: TimeInterval
     public let relativeEndTime: TimeInterval
@@ -31,7 +31,7 @@ public struct CubicAnimationContext: AnimationContext {
         self.relativeEndTime = relativeEndTime
     }
     
-    //MARK: AnimationContext
+    // MARK: AnimationContext
     public var timingParameters: UITimingCurveProvider { return cubicTimingParameters }
     public func animate(_ animations: @escaping () -> Void) {
         //Nesting the animation in a keyframe allows us to take advantage of relative start/end times and inherit the existing animation curve
@@ -50,7 +50,7 @@ public struct CubicAnimationContext: AnimationContext {
 
 public struct SpringAnimationContext: AnimationContext {
     
-    //MARK: Properties
+    // MARK: Properties
     public let springTimingParameters: UISpringTimingParameters
     
     // MARK: Initializers
@@ -58,7 +58,7 @@ public struct SpringAnimationContext: AnimationContext {
         self.springTimingParameters = timingParameters
     }
     
-    //MARK: AnimationContext
+    // MARK: AnimationContext
     public var timingParameters: UITimingCurveProvider { return springTimingParameters }
     public func animate(_ animations: @escaping () -> Void) {
         /* Currently, UISpringTimingParameters do not propagate through a keyframe animation (rdar://36245304).
@@ -66,6 +66,3 @@ public struct SpringAnimationContext: AnimationContext {
         animations()
     }
 }
-
-
-

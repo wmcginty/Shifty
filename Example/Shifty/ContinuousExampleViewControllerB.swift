@@ -61,5 +61,3 @@ extension ContinuousExampleViewControllerB: TransitionRespondable {
         }
     }
 }
-
-

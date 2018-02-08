@@ -15,7 +15,7 @@ class ShiftExampleViewControllerB: UIViewController, ShiftTransitionable {
     @IBOutlet var orangeView: UIView!
     @IBOutlet var backButton: UIButton!
     
-    //MARK: Lifecycle
+    // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         

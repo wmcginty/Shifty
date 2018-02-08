@@ -9,7 +9,9 @@
 import UIKit
 import Shifty
 
-/// A transition with the implicit contract that the source will animate all of it's contents off screen to a point where it's visual state matches that of the destination. The destination will then be instantaneously swapped on screen and be given the chance to complete any entrance animations to reach it's final visual state.
+/** A transition with the implicit contract that the source will animate all of it's contents off screen to a point where it's visual
+ state matches that of the destination. The destination will then be instantaneously swapped on screen and be given the chance to
+ complete any entrance animations to reach it's final visual state. */
 class ContinuityTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         
     // MARK: UIViewControllerAnimatedTransitioning
@@ -25,7 +27,10 @@ class ContinuityTransitionAnimator: NSObject, UIViewControllerAnimatedTransition
         guard let destinationView = transitionContext.view(forKey: .to) else { return }
         guard let source = sourceController as? TransitionRespondable, let destination = destinationController as? TransitionRespondable else { return }
         
-        //First, we'll instruct the source to respond to the beginning of the transition. Because we want to immediately swap out the views and end the 'transition' before allowing the destination to complete it. We'll pass the entire transition duration to this preparation (for animations). Meanwhile, we'll create our destinationView and allow it to prepare for the incoming transition (so it can do things like clear out it's view, etc).
+        /*First, we'll instruct the source to respond to the beginning of the transition. Because we want to immediately swap out the
+         views and end the 'transition' before allowing the destination to complete it. We'll pass the entire transition duration to this
+         preparation (for animations). Meanwhile, we'll create our destinationView and allow it to prepare for the incoming transition (so
+         it can do things like clear out it's view, etc). */
         
         let actionAnimator = ActionAnimator(transitionable: source as! ShiftTransitionable)
         actionAnimator.execute()

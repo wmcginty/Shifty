@@ -262,6 +262,7 @@
 				607FACCE1AFB9204008FA782 /* Resources */,
 				D2D753D59F26F22B5257497D /* [CP] Embed Pods Frameworks */,
 				02085FDA4A32306566763E10 /* [CP] Copy Pods Resources */,
+				B4A886BA2022CED30020EC08 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -423,6 +424,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Shifty_Tests/Pods-Shifty_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		B4A886BA2022CED30020EC08 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint --config ../.swiftlint.yml\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		D2D753D59F26F22B5257497D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -627,7 +642,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4154398CB3D0445EF85B1604 /* Pods-Shifty_Example.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Shifty/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -642,7 +656,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D1A5DE282137D43D5F1CA167 /* Pods-Shifty_Example.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Shifty/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
