@@ -35,7 +35,7 @@ extension UIView {
         }
     }
     
-    public var actions: [Action]? {
+    public var actions: ActionGroup? {
         get { return getAssociatedObject(associatedKey: &AssociatedKeys.actions) }
         set {
             guard let actions = newValue else { return }

@@ -34,7 +34,7 @@ class ContinuousExampleViewControllerA: UIViewController, ShiftTransitionable {
         controller.transitioningDelegate = continuityTransitioningManager
         present(controller, animated: true, completion: nil)
         
-        yellowView.actions = [.fadeOut]
+        yellowView.actions = [.rotate, .fadeOut]
         orangeView.actions = [.fadeOut, .scaleDown, .rotate]
         yellowView2.actions = [.fadeOut]
         orangeView2.actions = [.fadeOut, .scaleDown]

@@ -35,7 +35,7 @@ public struct CubicAnimationContext: AnimationContext {
     public var timingParameters: UITimingCurveProvider { return cubicTimingParameters }
     public func animate(_ animations: @escaping () -> Void) {
         //Nesting the animation in a keyframe allows us to take advantage of relative start/end times and inherit the existing animation curve
-        UIView.animateKeyframes(withDuration: 0.0, delay: 0.0, options: [.layoutSubviews], animations: {
+        UIView.animateKeyframes(withDuration: 0.0, delay: 0.0, options: [.beginFromCurrentState], animations: {
             UIView.addKeyframe(withRelativeStartTime: self.relativeStartTime, relativeDuration: self.relativeEndTime - self.relativeStartTime) {
                 animations()
             }

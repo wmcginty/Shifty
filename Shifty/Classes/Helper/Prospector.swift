@@ -22,9 +22,12 @@ struct Prospector {
         return ShiftProspects(sources: sourceViews.flatMap { $0.shiftState }, destinations: destinationViews.flatMap { $0.shiftState })
     }
     
-    func actionReference(from transitionable: ShiftTransitionable) -> [UIView: [Action]] {
-        let views = flattenedHierarchy(for: transitionable.shiftContentView, withExclusions: []).filter { $0.actions?.isEmpty == false }
-        return Dictionary(views.map { ($0, $0.actions ?? []) }, uniquingKeysWith: { l,r in l })
+    func actionReference(from transitionable: ShiftTransitionable) -> [UIView: ActionGroup] {
+        let views: [(UIView, ActionGroup)] = flattenedHierarchy(for: transitionable.shiftContentView, withExclusions: []).flatMap { view in
+            return view.actions.map { (view, $0) } ?? nil
+        }
+        
+       return Dictionary(views, uniquingKeysWith: { l,r in l })
     }
 }
 

@@ -9,8 +9,11 @@ import Foundation
 
 public class ActionAnimator {
     
-    let actionReference: [UIView: [Action]]
-    private var animator: UIViewPropertyAnimator?
+    //MARK: Properties
+    let actionReference: [UIView: ActionGroup]
+    
+        //We use multiple property animators to allow each ActionGroup to occur on a different timing curve. We can also support different overall durations, start delays, etc using keyframes inside the individual animation blocks.
+    var animators: [UIView: UIViewPropertyAnimator] = [:]
     
     // MARK: Initializers
     public init(transitionable: ShiftTransitionable) {
@@ -19,17 +22,26 @@ public class ActionAnimator {
     
     // MARK: Interface
     public func animate(withDuration duration: TimeInterval, inContainer container: UIView) {
-        animator = UIViewPropertyAnimator(duration: duration, timingParameters: UICubicTimingParameters(animationCurve: .linear))
-        actionReference.forEach { (view, actions) in
-            let state = State(view: view, identifier: view.hashValue)
-            let replicantView = state.configuredReplicantView(inContainer: container)
+        actionReference.forEach { (view, actionGroup) in
             
-            actions.forEach { action in
-                animator?.addAnimations { action.handler(replicantView) }
-            }
-            animator?.addCompletion { _ in replicantView.removeFromSuperview() } //needs work, what about different UIViewAnimatingPositions?
+            let animator = configuredAnimator(for: actionGroup, view: view, duration: duration, in: container)
+            animator.startAnimation()
+            animators[view] = animator
         }
+    }
+}
+
+// MARK: Action Animations
+private extension ActionAnimator {
+    
+    func configuredAnimator(for group: ActionGroup, view: UIView, duration: TimeInterval, in container: UIView) -> UIViewPropertyAnimator {
+        let animator = UIViewPropertyAnimator(duration: duration, timingParameters: group.animationContext.timingParameters)
+        let state = State(view: view, identifier: view.hashValue)
+        let replicantView = state.configuredReplicantView(inContainer: container)
         
-        animator?.startAnimation()
+        animator.addAnimations { group.actionAnimations(for: replicantView) }
+        animator.addCompletion { _ in state.cleanupReplicantView(replicantView) }
+        
+        return animator
     }
 }
