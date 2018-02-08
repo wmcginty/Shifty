@@ -19,7 +19,11 @@ public class ActionAnimator {
     // MARK: Interface
     public func animate(withDuration duration: TimeInterval, inContainer container: UIView) {
         actionReference.forEach { (view, actions) in
-            actions.forEach { $0.handler(view, duration) }
+            let state = State(view: view, identifier: view.hashValue)
+            let replicantView = state.configuredReplicantView(inContainer: container)
+            
+            //use a property animator here. allows you to add a completion block. also makes it easier to make interactive.
+            actions.forEach { $0.handler(replicantView, duration) }
         }
     }
 }

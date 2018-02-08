@@ -56,7 +56,19 @@ public struct State {
 // MARK: Public Interface
 public extension State {
     
-    func viewForShiftWithRespect(to container: UIView) -> UIView {
+    func configuredReplicantView(inContainer container: UIView) -> UIView {
+        
+        //Create, add and place the replicantView with respect to the container
+        let replicantView = viewForShiftWithRespect(toContainer: container)
+        container.addSubview(replicantView)
+        applyState(to: replicantView, in: container)
+        
+        //Configure the native view as hidden so the replicantView is the only visible copy, then return it
+        configureNativeView(hidden: true)
+        return replicantView
+    }
+    
+    func viewForShiftWithRespect(toContainer container: UIView) -> UIView {
         return configuration.configuredShiftingView(for: view)
     }
     

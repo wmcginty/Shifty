@@ -23,7 +23,7 @@ struct Prospector {
     }
     
     func actionReference(from transitionable: ShiftTransitionable) -> [UIView: [Action]] {
-        let views = flattenedHierarchy(for: transitionable.shiftContentView, withExclusions: [])
+        let views = flattenedHierarchy(for: transitionable.shiftContentView, withExclusions: []).filter { $0.actions?.isEmpty == false }
         return Dictionary(views.map { ($0, $0.actions ?? []) }, uniquingKeysWith: { l,r in l })
     }
 }

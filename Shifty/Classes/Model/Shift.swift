@@ -35,15 +35,12 @@ public struct Shift: Hashable {
 // MARK: Container Management
 extension Shift {
     
-    func configuredShiftingView(in container: UIView) -> UIView {
+    func configuredShiftingView(inContainer container: UIView) -> UIView {
         
         //Create, add and place the shiftingView with respect to the container
-        let shiftingView = source.viewForShiftWithRespect(to: container)
-        container.addSubview(shiftingView)
-        source.applyState(to: shiftingView, in: container)
-        
-        //Configure the native views as hidden so the shiftingView is the only visible copy, then return it
+        let shiftingView = source.configuredReplicantView(inContainer: container)
         configureNativeViews(hidden: true)
+        
         return shiftingView
     }
     
