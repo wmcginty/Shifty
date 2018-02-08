@@ -11,16 +11,15 @@ public class ActionAnimator {
     
     let actionReference: [UIView: [Action]]
     
+    // MARK: Initializers
     public init(transitionable: ShiftTransitionable) {
         actionReference = Prospector().actionReference(from: transitionable)
-        print(actionReference)
     }
     
-    public func execute() {
-        actionReference.forEach { key, value in
-            value.forEach {
-                $0.handler(key)
-            }
+    // MARK: Interface
+    public func animate(withDuration duration: TimeInterval, inContainer container: UIView) {
+        actionReference.forEach { (view, actions) in
+            actions.forEach { $0.handler(view, duration) }
         }
     }
 }

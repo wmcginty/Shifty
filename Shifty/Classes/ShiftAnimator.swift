@@ -34,7 +34,7 @@ public class ShiftAnimator: NSObject {
         destinations = shiftDestinations
     }
     
-    public func animate(with duration: TimeInterval, inContainer container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
+    public func animate(withDuration duration: TimeInterval, inContainer container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
         commitDestinationsIfNeeded()
         shifts.forEach { shift in
             

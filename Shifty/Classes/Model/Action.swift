@@ -9,18 +9,23 @@ import UIKit
 
 public struct Action {
     
-    public let handler: (UIView) -> Void
+    public let handler: (UIView, TimeInterval) -> Void
     
-    public init(handler: @escaping (UIView) -> Void) {
+    public init(handler: @escaping (UIView, TimeInterval) -> Void) {
         self.handler = handler
     }
-    
 }
 
 extension Action {
-    public static let fadeOut = Action { view in
-        UIView.animate(withDuration: 1.5, animations: {
+    public static let fadeOut = Action { view, duration in
+        UIView.animate(withDuration: duration, animations: {
             view.alpha = 0
+        })
+    }
+    
+    public static let scaleDown = Action { view, duration in
+        UIView.animate(withDuration: duration, animations: {
+            view.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
         })
     }
 }

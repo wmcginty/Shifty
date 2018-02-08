@@ -54,7 +54,7 @@ class PrecommitShiftTransitionAnimator: NSObject, UIViewControllerAnimatedTransi
             
             source.completeTransition(to: destination)
             destination.completeTransition(from: source)
-            self.shiftAnimator?.animate(with: duration, inContainer: container) { position in
+            self.shiftAnimator?.animate(withDuration: duration, inContainer: container) { position in
                 transitionContext.completeTransition(position == .end)
             }
         }

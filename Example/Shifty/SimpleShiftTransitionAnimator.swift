@@ -56,7 +56,7 @@ class SimpleShiftTransitionAnimator: NSObject, UIViewControllerAnimatedTransitio
              destination and tell the context we're finished (when the shifts are completed). */
             
             source.completeTransition(to: destination)
-            self.shiftAnimator?.animate(with: 0.5, inContainer: container) { position in
+            self.shiftAnimator?.animate(withDuration: 0.5, inContainer: container) { position in
                 destination.completeTransition(from: source)
                 transitionContext.completeTransition(position == .end)
             }

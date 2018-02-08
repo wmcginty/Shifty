@@ -35,9 +35,9 @@ class ContinuousExampleViewControllerA: UIViewController, ShiftTransitionable {
         present(controller, animated: true, completion: nil)
         
         yellowView.actions = [.fadeOut]
-        orangeView.actions = [.fadeOut]
+        orangeView.actions = [.fadeOut, .scaleDown]
         yellowView2.actions = [.fadeOut]
-        orangeView2.actions = [.fadeOut]
+        orangeView2.actions = [.fadeOut, .scaleDown]
     }
 }
 
