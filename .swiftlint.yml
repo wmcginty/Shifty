@@ -3,6 +3,3 @@ line_length: 240 # Max line length before warning (default is 120)
 disabled_rules:
   - trailing_whitespace # Disables SwiftLint complaining about whitespace characters on empty lines
   - todo # Disables auto-warning of TODO statements
-  
-excluded:
-  - Pods # Don't lint anything coming in through Cocoapods
