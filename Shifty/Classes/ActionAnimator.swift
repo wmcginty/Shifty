@@ -7,16 +7,13 @@
 
 import Foundation
 
-//TODO: Entrance vs exit (can we like isReversed = true fractionComplete = 1 on all the animators?
-//TODO: restore swiftlint
-
 public class ActionAnimator {
     
     //MARK: Properties
     let actionReference: [UIView: ActionGroup]
     let isInverted: Bool
     
-        //We use multiple property animators to allow each ActionGroup to occur on a different timing curve. We can also support different overall durations, start delays, etc using keyframes inside the individual animation blocks.
+    //We use multiple property animators to allow each ActionGroup to occur on a different timing curve. We can also support different overall durations, start delays, etc using keyframes inside the individual animation blocks.
     var animators: [UIView: UIViewPropertyAnimator] = [:]
     
     // MARK: Initializers
@@ -26,12 +23,18 @@ public class ActionAnimator {
     }
     
     // MARK: Interface
-    public func animate(withDuration duration: TimeInterval, inContainer container: UIView) {
-        actionReference.forEach { (view, actionGroup) in
+    public func animate(withDuration duration: TimeInterval, inContainer container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
+
+        let actionPairs = actionReference.map { (view: $0.key, actionGroup: $0.value) }
+        actionPairs.enumerated().forEach { idx, pair in
             
-            let animator = configuredAnimator(for: actionGroup, view: view, duration: duration, in: container)
+            let animator = configuredAnimator(for: pair.actionGroup, view: pair.view, duration: duration, in: container)
+            if let completion = completion, idx == 0 {
+                animator.addCompletion(completion)
+            }
+            
             animator.startAnimation()
-            animators[view] = animator
+            animators[pair.view] = animator
         }
     }
 }
@@ -44,7 +47,7 @@ private extension ActionAnimator {
         let state = State(view: view, identifier: view.hashValue)
         let replicantView = state.configuredReplicantView(inContainer: container)
         
-        animator.addAnimations { group.actionAnimations(for: replicantView) }
+        animator.addAnimations({ group.actionAnimations(for: replicantView) }, delayFactor: group.delayFactor)
         animator.addCompletion { _ in state.cleanupReplicantView(replicantView) }
         
         if isInverted {

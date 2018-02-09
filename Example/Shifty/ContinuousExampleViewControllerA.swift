@@ -34,10 +34,10 @@ class ContinuousExampleViewControllerA: UIViewController, ShiftTransitionable {
         controller.transitioningDelegate = continuityTransitioningManager
         present(controller, animated: true, completion: nil)
         
-        yellowView.actions = [.slideLeft]
-        orangeView.actions = [.slideLeft]
-        yellowView2.actions = [.slideLeft]
-        orangeView2.actions = [.slideLeft]
+        yellowView.actions = ActionGroup(actions: [.slideLeft])
+        orangeView.actions = ActionGroup(actions: [.slideLeft])
+        yellowView2.actions = ActionGroup(actions: [.slideLeft])
+        orangeView2.actions = ActionGroup(actions: [.slideLeft])
     }
 }
 

@@ -11,11 +11,13 @@ public struct ActionGroup: ExpressibleByArrayLiteral {
     
     //MARK: Properties
     public let animationContext: AnimationContext
+    public let delayFactor: CGFloat
     public let actions: [Action]
     
     //MARK: Initializers
-    public init(animationContext: AnimationContext = CubicAnimationContext.default, actions: [Action]) {
+    public init(animationContext: AnimationContext = CubicAnimationContext.default, delayFactor: CGFloat = 0.0, actions: [Action]) {
         self.animationContext = animationContext
+        self.delayFactor = delayFactor
         self.actions = actions
     }
     

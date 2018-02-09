@@ -27,19 +27,17 @@ class ContinuityTransitionAnimator: NSObject, UIViewControllerAnimatedTransition
         guard let destinationView = transitionContext.view(forKey: .to) else { return }
         guard let source = sourceController as? ShiftTransitionable, let destination = destinationController as? ShiftTransitionable else { return }
         
-        /* First, create an ActionAnimator */
+        //TODO: Document whats happening here
         
-        let actionAnimator = ActionAnimator(transitionable: source)
-        actionAnimator.animate(withDuration: transitionDuration(using: transitionContext), inContainer: container)
-        
-        container.insertSubview(destinationView, aboveSubview: sourceController.view)
+        container.addSubview(destinationView)
         destinationView.frame = transitionContext.finalFrame(for: destinationController)
         
-        let actionAnimator2 = ActionAnimator(transitionable: destination, inverted: true)
-        actionAnimator2.animate(withDuration: transitionDuration(using: transitionContext), inContainer: container)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + transitionDuration(using: transitionContext)) {
+        let sourceAnimator = ActionAnimator(transitionable: source)
+        sourceAnimator.animate(withDuration: transitionDuration(using: transitionContext), inContainer: container) { _ in
             transitionContext.completeTransition(true)
         }
+        
+        let destinationAnimator = ActionAnimator(transitionable: destination, inverted: true)
+        destinationAnimator.animate(withDuration: transitionDuration(using: transitionContext), inContainer: container)
     }
 }
