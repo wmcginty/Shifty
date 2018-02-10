@@ -27,8 +27,6 @@ class ContinuityTransitionAnimator: NSObject, UIViewControllerAnimatedTransition
         guard let destinationView = transitionContext.view(forKey: .to) else { return }
         guard let source = sourceController as? ShiftTransitionable, let destination = destinationController as? ShiftTransitionable else { return }
         
-        //TODO: Document whats happening here
-        
         container.addSubview(destinationView)
         destinationView.frame = transitionContext.finalFrame(for: destinationController)
         
@@ -39,11 +37,5 @@ class ContinuityTransitionAnimator: NSObject, UIViewControllerAnimatedTransition
         
         let destinationAnimator = ActionAnimator(transitionable: destination, inverted: true)
         destinationAnimator.animate(withDuration: self.transitionDuration(using: transitionContext), inContainer: container)
-        
-        /* TODO
-            UIView.snapshotView(afterScreenUpdates: TRUE) does not allow us to animate with delay (radar)
-            When I enable the destination animator, the delay factors invert? Kind of?
-         */
-
     }
 }
