@@ -23,7 +23,7 @@ class ContinuousExampleViewControllerB: UIViewController, ShiftTransitionable {
         
         yellowView.actions = [.translate(byX: 200, y: 0)]//.delayed(by: 0.0)
         orangeView.actions = [.translate(byX: 200, y: 0)]//.delayed(by: 0.1)
-        yellowView2.actions = [.translate(byX: 200, y: 0)]//.delayed(by: 0.2)
+        yellowView2.actions = [.translate(byX: 200, y: 0)].with(delayFactor: 0.2)
         orangeView2.actions = [.translate(byX: 200, y: 0)]//.delayed(by: 0.3)
     }
     

@@ -37,7 +37,16 @@ class ContinuityTransitionAnimator: NSObject, UIViewControllerAnimatedTransition
             //transitionContext.completeTransition(true)
         }
         
-//        let destinationAnimator = ActionAnimator(transitionable: destination, inverted: true)
-//        destinationAnimator.animate(withDuration: transitionDuration(using: transitionContext), inContainer: container)
+        /*TODO: It appears as though UIView.snapshotView(afterScreenUpdates: TRUE) does not allow us to animate with delays (why? file radar). A secondary issue, is that a reversed animator can not start with a delay. Radar?
+ 
+ next steps
+    -alternate way to do the 'reverse' animation? entrance vs exits
+ */
+    
+        
+        
+        
+        let destinationAnimator = ActionAnimator(transitionable: destination, inverted: true)
+        destinationAnimator.animate(withDuration: transitionDuration(using: transitionContext), inContainer: container)
     }
 }
