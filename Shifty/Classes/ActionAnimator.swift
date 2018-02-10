@@ -33,11 +33,7 @@ public class ActionAnimator {
             }
             
             animators[pair.view] = animator
-            if pair.actionGroup.delay > 0 && !animator.isReversed {
-                animator.startAnimation(afterDelay: pair.actionGroup.delay)
-            } else {
-                animator.startAnimation()
-            }
+            animator.startAnimation()
         }
     }
 }

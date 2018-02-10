@@ -21,10 +21,10 @@ class ContinuousExampleViewControllerB: UIViewController, ShiftTransitionable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        yellowView.actions = [.translate(byX: 200, y: 0)]//.delayed(by: 0.0)
-        orangeView.actions = [.translate(byX: 200, y: 0)]//.delayed(by: 0.1)
+        yellowView.actions = [.translate(byX: 200, y: 0)].with(delayFactor: 0.0)
+        orangeView.actions = [.translate(byX: 200, y: 0)].with(delayFactor: 0.1)
         yellowView2.actions = [.translate(byX: 200, y: 0)].with(delayFactor: 0.2)
-        orangeView2.actions = [.translate(byX: 200, y: 0)]//.delayed(by: 0.3)
+        orangeView2.actions = [.translate(byX: 200, y: 0)].with(delayFactor: 0.3)
     }
     
     // MARK: IBActions

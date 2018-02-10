@@ -9,10 +9,6 @@ import Foundation
 
 public extension Array where Element == Action {
     
-    func delayed(by interval: TimeInterval) -> ActionGroup {
-        return ActionGroup(delay: interval, actions: self)
-    }
-    
     func with(delayFactor: CGFloat) -> ActionGroup {
         return ActionGroup(delayFactor: delayFactor, actions: self)
     }
