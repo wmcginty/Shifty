@@ -34,10 +34,10 @@ class ContinuityTransitionAnimator: NSObject, UIViewControllerAnimatedTransition
         
         let sourceAnimator = ActionAnimator(transitionable: source)
         sourceAnimator.animate(withDuration: transitionDuration(using: transitionContext), inContainer: container) { _ in
-            transitionContext.completeTransition(true)
+            //transitionContext.completeTransition(true)
         }
         
-        let destinationAnimator = ActionAnimator(transitionable: destination, inverted: true)
-        destinationAnimator.animate(withDuration: transitionDuration(using: transitionContext), inContainer: container)
+//        let destinationAnimator = ActionAnimator(transitionable: destination, inverted: true)
+//        destinationAnimator.animate(withDuration: transitionDuration(using: transitionContext), inContainer: container)
     }
 }

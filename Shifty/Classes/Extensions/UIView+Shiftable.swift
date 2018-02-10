@@ -32,6 +32,7 @@ extension UIView {
         set {
             guard let shiftable = newValue else { return }
             setAssociatedObject(shiftable, associatedKey: &AssociatedKeys.shiftID, policy: .OBJC_ASSOCIATION_RETAIN)
+            actions = nil
         }
     }
     
@@ -40,6 +41,7 @@ extension UIView {
         set {
             guard let actions = newValue else { return }
             setAssociatedObject(actions, associatedKey: &AssociatedKeys.actions, policy: .OBJC_ASSOCIATION_RETAIN)
+            shiftState = nil
         }
     }
 }

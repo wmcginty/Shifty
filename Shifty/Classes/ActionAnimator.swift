@@ -24,17 +24,20 @@ public class ActionAnimator {
     
     // MARK: Interface
     public func animate(withDuration duration: TimeInterval, inContainer container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
-
         let actionPairs = actionReference.map { (view: $0.key, actionGroup: $0.value) }
+        
         actionPairs.enumerated().forEach { idx, pair in
-            
             let animator = configuredAnimator(for: pair.actionGroup, view: pair.view, duration: duration, in: container)
             if let completion = completion, idx == 0 {
                 animator.addCompletion(completion)
             }
             
-            animator.startAnimation()
             animators[pair.view] = animator
+            if pair.actionGroup.delay > 0 && !animator.isReversed {
+                animator.startAnimation(afterDelay: pair.actionGroup.delay)
+            } else {
+                animator.startAnimation()
+            }
         }
     }
 }
@@ -45,7 +48,7 @@ private extension ActionAnimator {
     func configuredAnimator(for group: ActionGroup, view: UIView, duration: TimeInterval, in container: UIView) -> UIViewPropertyAnimator {
         let animator = UIViewPropertyAnimator(duration: duration, timingParameters: group.animationContext.timingParameters)
         let state = State(view: view, identifier: view.hashValue)
-        let replicantView = state.configuredReplicantView(inContainer: container)
+        let replicantView = state.configuredReplicantView(inContainer: container, afterScreenUpdates: isInverted)
         
         animator.addAnimations({ group.actionAnimations(for: replicantView) }, delayFactor: group.delayFactor)
         animator.addCompletion { _ in state.cleanupReplicantView(replicantView) }
