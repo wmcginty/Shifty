@@ -25,6 +25,8 @@ class ContinuousExampleViewControllerB: UIViewController, ShiftTransitionable {
         orangeView.actions = [.translate(byX: 200, y: 0)].with(delayFactor: 0.1)
         yellowView2.actions = [.translate(byX: 200, y: 0)].with(delayFactor: 0.2)
         orangeView2.actions = [.translate(byX: 200, y: 0)].with(delayFactor: 0.3)
+        
+        backButton.actions = [.fade(to: 0), .scale(toX: 0.33, y: 0.33)].with(animationContext: SpringAnimationContext(timingParameters: UISpringTimingParameters(dampingRatio: 0.8)))
     }
     
     // MARK: IBActions
