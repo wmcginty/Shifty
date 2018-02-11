@@ -35,7 +35,7 @@ class ContinuityTransitionAnimator: NSObject, UIViewControllerAnimatedTransition
             transitionContext.completeTransition(true)
         }
         
-        let destinationAnimator = ActionAnimator(transitionable: destination, inverted: true)
+        let destinationAnimator = ActionAnimator(transitionable: destination, isInverted: true)
         destinationAnimator.animate(withDuration: self.transitionDuration(using: transitionContext), inContainer: container)
     }
 }
