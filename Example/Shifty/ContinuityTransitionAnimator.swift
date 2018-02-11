@@ -34,8 +34,8 @@ class ContinuityTransitionAnimator: NSObject, UIViewControllerAnimatedTransition
         /** Next, we will create a source animator, and instruct it to animate. This will gather all the subviews of `source` with associated `actions` and
          animate them simultaneously using the options specified to the animator. As soon as the source's actions have completed, the transition can finish. */
         let sourceAnimator = ActionAnimator(transitionable: source)
-        sourceAnimator.animate(withDuration: transitionDuration(using: transitionContext), inContainer: container) { _ in
-            transitionContext.completeTransition(true)
+        sourceAnimator.animate(withDuration: transitionDuration(using: transitionContext), inContainer: container) { position in
+            transitionContext.completeTransition(position == .end)
         }
         
         /** Finally, we'll create another animator for the destination. Because these animations have no bearing on the final state of this transition, they can be

@@ -38,7 +38,7 @@ extension Shift {
     func configuredShiftingView(inContainer container: UIView) -> UIView {
         
         //Create, add and place the shiftingView with respect to the container
-        let shiftingView = source.configuredReplicantView(inContainer: container, afterScreenUpdates: false)
+        let shiftingView = source.configuredReplicantView(inContainer: container, afterScreenUpdates: true)
         configureNativeViews(hidden: true)
         
         return shiftingView

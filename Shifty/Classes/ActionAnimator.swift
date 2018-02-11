@@ -7,6 +7,8 @@
 
 import Foundation
 
+//TODO: Needs a way to hide the native views on demand, without starting the animations/replicant process.
+
 public class ActionAnimator {
     
     //MARK: Properties
