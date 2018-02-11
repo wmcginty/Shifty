@@ -14,12 +14,16 @@ public struct State {
     public enum Configuration {
         public typealias Configurator = (_ baseView: UIView) -> UIView
         
+        case original
         case snapshot
         case configured(Configurator)
         
         // MARK: Interface
         func configuredShiftingView(for baseView: UIView, afterScreenUpdates: Bool) -> UIView {
             switch self {
+            case .original:
+                return baseView
+                
             case .snapshot:
                 //Ensure we take the snapshot with no corner radius, and then apply that radius to the snapshot (and reset the baseView).
                 let cornerRadius = baseView.layer.cornerRadius
@@ -33,7 +37,7 @@ public struct State {
                 baseView.layer.cornerRadius = cornerRadius
                 
                 return snapshot
-                
+
             case .configured(let configurator):
                 return configurator(baseView)
             }

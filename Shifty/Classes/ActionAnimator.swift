@@ -11,15 +11,17 @@ public class ActionAnimator {
     
     //MARK: Properties
     let actionReference: [UIView: ActionGroup]
-    let isInverted: Bool
+    var isInverted: Bool
+    var viewConfiguration: State.Configuration
     
     //We use multiple property animators to allow each ActionGroup to occur on a different timing curve. We can also support different overall durations, start delays, etc using keyframes inside the individual animation blocks.
-    var animators: [UIView: UIViewPropertyAnimator] = [:]
+    private var animators: [UIView: UIViewPropertyAnimator] = [:]
     
     // MARK: Initializers
-    public init(transitionable: ShiftTransitionable, inverted: Bool = false) {
-        actionReference = Prospector().actionReference(from: transitionable)
-        isInverted = inverted
+    public init(transitionable: ShiftTransitionable, isInverted: Bool = false, viewConfiguration: State.Configuration = .snapshot) {
+        self.actionReference = Prospector().actionReference(from: transitionable)
+        self.isInverted = isInverted
+        self.viewConfiguration = viewConfiguration
     }
     
     // MARK: Interface
@@ -43,7 +45,7 @@ private extension ActionAnimator {
     
     func configuredAnimator(for group: ActionGroup, view: UIView, duration: TimeInterval, in container: UIView) -> UIViewPropertyAnimator {
         let animator = UIViewPropertyAnimator(duration: duration, timingParameters: group.animationContext.timingParameters)
-        let state = State(view: view, identifier: view.hashValue)
+        let state = State(view: view, identifier: view.hashValue, configuration: viewConfiguration)
         let replicantView = state.configuredReplicantView(inContainer: container, afterScreenUpdates: isInverted)
         
         animator.addAnimations({ group.actionAnimations(for: replicantView) }, delayFactor: group.delayFactor)
