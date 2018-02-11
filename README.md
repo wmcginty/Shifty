@@ -176,3 +176,11 @@ See the [CONTRIBUTING] document. Thank you, [contributors]!
 
 [CONTRIBUTING]: CONTRIBUTING.md
 [contributors]: https://github.com/wmcginty/Shifty/graphs/contributors
+
+##Roadmap
+
+*Expand upon the default set of `Action`s provided
+*Provide a method in which an `Action` can be prepared (the native view hidden), but executed at a later time
+*Provide a way to add 'alongside' animations to `Shift`s and `Action`s (cross-dissolve, rotate, etc)
+*Provide a way to have finer grain control over the order of subviews in the event multiple `ShiftAnimator`s and `ActionAnimator`s are functioning simultaneously.
+*Conform `ActionAnimator` to `UIViewImplicitlyAnimating`, similar to `ShiftAnimator`.
