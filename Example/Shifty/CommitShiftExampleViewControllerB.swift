@@ -21,18 +21,11 @@ class CommitShiftExampleViewControllerB: UIViewController, ShiftTransitionable {
         
         yellowView.shiftID = "yellow"
         orangeView.shiftID = "orange"
+        backButton.actions = [.fade(to: 0)]
     }
     
     // MARK: IBActions
     @IBAction func dismiss() {
         dismiss(animated: true, completion: nil)
-    }
-}
-
-// MARK: TransitionRespondable
-extension CommitShiftExampleViewControllerB: TransitionRespondable {
-    func completeTransition(from source: TransitionRespondable?) { }
-    func prepareForTransition(to destination: TransitionRespondable?, withDuration duration: TimeInterval, completion: @escaping (Bool) -> Void) {
-        completion(true)
     }
 }
