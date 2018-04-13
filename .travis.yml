@@ -2,19 +2,19 @@
 # * http://www.objc.io/issue-6/travis-ci.html
 # * https://github.com/supermarin/xcpretty#usage
 
-osx_image: xcode9.2
+osx_image: xcode9.3
 language: swift
 env:
   global:
     - WORKSPACE=Example/Shifty.xcworkspace
     - IOS_FRAMEWORK_SCHEME="Shifty-Example"
   matrix:
-    - DESTINATION="platform=iOS Simulator,OS=11.2,name=iPhone X" SDK="iphonesimulator" SCHEME="$IOS_FRAMEWORK_SCHEME" RUN_TESTS="YES" POD_LINT="YES"
+    - DESTINATION="platform=iOS Simulator,OS=11.3,name=iPhone X" SDK="iphonesimulator" SCHEME="$IOS_FRAMEWORK_SCHEME" RUN_TESTS="YES" POD_LINT="YES"
 
 # cache: cocoapods
 # podfile: Example/Podfile
 before_install:
-  - gem install cocoapods --pre # Since Travis is not always on latest version
+  - gem install cocoapods
   - pod install --project-directory=Example
 #install:
 #  - ./install_swiftlint.sh

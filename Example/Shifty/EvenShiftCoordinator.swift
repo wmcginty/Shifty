@@ -12,7 +12,7 @@ import Shifty
 struct EvenShiftCoordinator: ShiftCoordinator {
     
     public func shifts(from sources: [State], to destinations: [State]) -> [Shift] {
-        return zip(sources.indices, sources).flatMap { (index, source) in
+        return zip(sources.indices, sources).compactMap { (index, source) in
             guard let match = destinations.first(where: { $0.identifier == source.identifier }) else { return nil }
             
             let timingCurve = index % 2 == 0 ? UICubicTimingParameters(animationCurve: .linear) : UICubicTimingParameters(animationCurve: .easeOut)

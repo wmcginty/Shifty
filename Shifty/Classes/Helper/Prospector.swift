@@ -19,11 +19,11 @@ struct Prospector {
         
         let sourceViews = flattenedHierarchy(for: source.shiftContentView, withExclusions: source.shiftExclusions)
         let destinationViews = flattenedHierarchy(for: destination.shiftContentView, withExclusions: destination.shiftExclusions)
-        return ShiftProspects(sources: sourceViews.flatMap { $0.shiftState }, destinations: destinationViews.flatMap { $0.shiftState })
+        return ShiftProspects(sources: sourceViews.compactMap { $0.shiftState }, destinations: destinationViews.compactMap { $0.shiftState })
     }
     
     func actionReference(from transitionable: ShiftTransitionable) -> [UIView: ActionGroup] {
-        let views: [(UIView, ActionGroup)] = flattenedHierarchy(for: transitionable.shiftContentView, withExclusions: []).flatMap { view in
+        let views: [(UIView, ActionGroup)] = flattenedHierarchy(for: transitionable.shiftContentView, withExclusions: []).compactMap { view in
             return view.actions.map { (view, $0) } ?? nil
         }
         
