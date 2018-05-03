@@ -34,7 +34,7 @@ struct Prospector {
 // MARK: Helper
 private extension Prospector {
 
-    private func flattenedHierarchy(for view: UIView, withExclusions exclusions: [UIView]) -> [UIView] {
+    func flattenedHierarchy(for view: UIView, withExclusions exclusions: [UIView]) -> [UIView] {
         guard !exclusions.contains(view), !view.isHidden else { return [] }
         return [view] + view.subviews.flatMap { flattenedHierarchy(for: $0, withExclusions: exclusions) }
     }
