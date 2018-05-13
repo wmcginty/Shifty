@@ -12,9 +12,9 @@ import XCTest
 class CoordinatorTests: XCTestCase {
     
     func testDefaultCoordinatorMatchingEmptyInput() {
-        let c = DefaultCoordinator()
-        let s = c.shifts(from: [], to: [])
-        XCTAssertEqual(s, [])
+        let coord = DefaultCoordinator()
+        let shifts = coord.shifts(from: [], to: [])
+        XCTAssertEqual(shifts, [])
     }
     
     func testDefaultCoordinatorMatchingInputs() {

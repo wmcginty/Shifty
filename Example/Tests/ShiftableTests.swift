@@ -13,22 +13,22 @@ class StateTests: XCTestCase {
     
     func testStateEquality() {
         let view = UIView()
-        let a = State(view: view, identifier: "identifier")
-        let b = State(view: UIView(), identifier: "identifier")
-        let c = State(view: view, identifier: "identifier")
+        let state1 = State(view: view, identifier: "identifier")
+        let state2 = State(view: UIView(), identifier: "identifier")
+        let state3 = State(view: view, identifier: "identifier")
         
-        XCTAssertEqual(a, b)
-        XCTAssertEqual(a, c)
+        XCTAssertEqual(state1, state2)
+        XCTAssertEqual(state1, state3)
     }
     
     func testStateInequality() {
         let view = UIView()
-        let a = State(view: view, identifier: "identifier")
-        let b = State(view: UIView(), identifier: "other")
-        let c = State(view: view, identifier: "otheridentifier")
+        let state1 = State(view: view, identifier: "identifier")
+        let state2 = State(view: UIView(), identifier: "other")
+        let state3 = State(view: view, identifier: "otheridentifier")
         
-        XCTAssertNotEqual(a, b)
-        XCTAssertNotEqual(a, c)
+        XCTAssertNotEqual(state1, state2)
+        XCTAssertNotEqual(state1, state3)
     }
     
     func testStateHashEquality() {

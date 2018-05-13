@@ -12,22 +12,22 @@ import XCTest
 class SnapshotTests: XCTestCase {
     
     func testSnapshotEquality() {
-        let a = Snapshot(center: .zero, bounds: .zero, transform: CATransform3DIdentity, cornerRadius: 0)
-        let b = Snapshot(center: .zero, bounds: .zero, transform: CATransform3DIdentity, cornerRadius: 0)
+        let snap1 = Snapshot(center: .zero, bounds: .zero, transform: CATransform3DIdentity, cornerRadius: 0)
+        let snap2 = Snapshot(center: .zero, bounds: .zero, transform: CATransform3DIdentity, cornerRadius: 0)
        
-        XCTAssertEqual(a, b)
+        XCTAssertEqual(snap1, snap1)
     }
     
     func testSnapshotInequality() {
-        let a = Snapshot(center: .zero, bounds: .zero, transform: CATransform3DIdentity, cornerRadius: 0)
-        let b = Snapshot(center: CGPoint(x: 10, y: 10), bounds: .zero, transform: CATransform3DIdentity, cornerRadius: 0)
-        let c = Snapshot(center: .zero, bounds: CGRect(origin: .zero, size: CGSize(width: 10, height: 10)), transform: CATransform3DIdentity, cornerRadius: 0)
-        let d = Snapshot(center: .zero, bounds: .zero, transform: CATransform3DScale(CATransform3DIdentity, 1.1, 1.1, 1.1), cornerRadius: 0)
-        let e = Snapshot(center: .zero, bounds: .zero, transform: CATransform3DIdentity, cornerRadius: 5)
+        let snap1 = Snapshot(center: .zero, bounds: .zero, transform: CATransform3DIdentity, cornerRadius: 0)
+        let snap2 = Snapshot(center: CGPoint(x: 10, y: 10), bounds: .zero, transform: CATransform3DIdentity, cornerRadius: 0)
+        let snap3 = Snapshot(center: .zero, bounds: CGRect(origin: .zero, size: CGSize(width: 10, height: 10)), transform: CATransform3DIdentity, cornerRadius: 0)
+        let snap4 = Snapshot(center: .zero, bounds: .zero, transform: CATransform3DScale(CATransform3DIdentity, 1.1, 1.1, 1.1), cornerRadius: 0)
+        let snap5 = Snapshot(center: .zero, bounds: .zero, transform: CATransform3DIdentity, cornerRadius: 5)
         
-        XCTAssertNotEqual(a, b)
-        XCTAssertNotEqual(a, c)
-        XCTAssertNotEqual(a, d)
-        XCTAssertNotEqual(a, e)
+        XCTAssertNotEqual(snap1, snap2)
+        XCTAssertNotEqual(snap1, snap3)
+        XCTAssertNotEqual(snap1, snap4)
+        XCTAssertNotEqual(snap1, snap5)
     }
 }
