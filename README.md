@@ -3,7 +3,6 @@
 [![CI Status](http://img.shields.io/travis/wmcginty/Shifty.svg?style=flat)](https://travis-ci.org/wmcginty/Shifty)
 [![Version](https://img.shields.io/cocoapods/v/Shifty.svg?style=flat)](http://cocoapods.org/pods/Shifty)
 [![codebeat badge](https://codebeat.co/badges/efa1c8f3-cc21-4e5d-9a12-63b25cc71a27)](https://codebeat.co/projects/github-com-wmcginty-shifty-master)
-[![codecov](https://codecov.io/gh/wmcginty/Shifty/branch/master/graph/badge.svg)](https://codecov.io/gh/wmcginty/Shifty)
 [![License](https://img.shields.io/cocoapods/l/Shifty.svg?style=flat)](http://cocoapods.org/pods/Shifty)
 [![Platform](https://img.shields.io/cocoapods/p/Shifty.svg?style=flat)](http://cocoapods.org/pods/Shifty)
 
