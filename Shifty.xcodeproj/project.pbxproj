@@ -1,0 +1,924 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B48612BB20A8E028003B8152 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B48612BA20A8E028003B8152 /* Main.storyboard */; };
+		B4D70F0420A8DCF600EBB707 /* Shifty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D70EFB20A8DCF500EBB707 /* Shifty.framework */; };
+		B4D70F2320A8DD3600EBB707 /* ShiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F1E20A8DD3600EBB707 /* ShiftTests.swift */; };
+		B4D70F2420A8DD3600EBB707 /* AnimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F1F20A8DD3600EBB707 /* AnimatorTests.swift */; };
+		B4D70F2520A8DD3600EBB707 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2020A8DD3600EBB707 /* CoordinatorTests.swift */; };
+		B4D70F2620A8DD3600EBB707 /* SnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2120A8DD3600EBB707 /* SnapshotTests.swift */; };
+		B4D70F2720A8DD3600EBB707 /* ShiftableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2220A8DD3600EBB707 /* ShiftableTests.swift */; };
+		B4D70F2A20A8DD6D00EBB707 /* DefaultCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2820A8DD6D00EBB707 /* DefaultCoordinator.swift */; };
+		B4D70F2B20A8DD6D00EBB707 /* ActionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2920A8DD6D00EBB707 /* ActionAnimator.swift */; };
+		B4D70F2D20A8DD7200EBB707 /* ShiftAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2C20A8DD7100EBB707 /* ShiftAnimator.swift */; };
+		B4D70F3F20A8DD7A00EBB707 /* ActionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2F20A8DD7900EBB707 /* ActionGroup.swift */; };
+		B4D70F4020A8DD7A00EBB707 /* Shift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3020A8DD7900EBB707 /* Shift.swift */; };
+		B4D70F4120A8DD7A00EBB707 /* Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3120A8DD7900EBB707 /* Snapshot.swift */; };
+		B4D70F4220A8DD7A00EBB707 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3220A8DD7900EBB707 /* State.swift */; };
+		B4D70F4320A8DD7A00EBB707 /* AnimationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3320A8DD7900EBB707 /* AnimationContext.swift */; };
+		B4D70F4420A8DD7A00EBB707 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3420A8DD7900EBB707 /* Action.swift */; };
+		B4D70F4520A8DD7A00EBB707 /* ShiftTransitionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3620A8DD7900EBB707 /* ShiftTransitionable.swift */; };
+		B4D70F4620A8DD7A00EBB707 /* TransitionRespondable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3720A8DD7900EBB707 /* TransitionRespondable.swift */; };
+		B4D70F4720A8DD7A00EBB707 /* Array+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3920A8DD7A00EBB707 /* Array+Actions.swift */; };
+		B4D70F4820A8DD7A00EBB707 /* UIView+Shiftable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3A20A8DD7A00EBB707 /* UIView+Shiftable.swift */; };
+		B4D70F4920A8DD7A00EBB707 /* ShiftAnimator+UIViewImplicitlyAnimating.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3B20A8DD7A00EBB707 /* ShiftAnimator+UIViewImplicitlyAnimating.swift */; };
+		B4D70F4A20A8DD7A00EBB707 /* Prospector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3D20A8DD7A00EBB707 /* Prospector.swift */; };
+		B4D70F4B20A8DD7A00EBB707 /* SnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3E20A8DD7A00EBB707 /* SnapshotView.swift */; };
+		B4D70F5220A8DDA900EBB707 /* Shifty.h in Headers */ = {isa = PBXBuildFile; fileRef = B4D70F5020A8DDA900EBB707 /* Shifty.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4D70F8A20A8DE1800EBB707 /* SimpleShiftTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F7A20A8DE1800EBB707 /* SimpleShiftTransitionAnimator.swift */; };
+		B4D70F8B20A8DE1800EBB707 /* ShiftExampleViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F7B20A8DE1800EBB707 /* ShiftExampleViewControllerB.swift */; };
+		B4D70F8C20A8DE1800EBB707 /* PrecommitShiftTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F7C20A8DE1800EBB707 /* PrecommitShiftTransitionAnimator.swift */; };
+		B4D70F8D20A8DE1800EBB707 /* ContinuousExampleViewControllerA.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F7D20A8DE1800EBB707 /* ContinuousExampleViewControllerA.swift */; };
+		B4D70F8E20A8DE1800EBB707 /* EvenShiftCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F7E20A8DE1800EBB707 /* EvenShiftCoordinator.swift */; };
+		B4D70F8F20A8DE1800EBB707 /* SimpleShiftTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F7F20A8DE1800EBB707 /* SimpleShiftTransitioningDelegate.swift */; };
+		B4D70F9020A8DE1800EBB707 /* ShiftExampleViewControllerA.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F8020A8DE1800EBB707 /* ShiftExampleViewControllerA.swift */; };
+		B4D70F9120A8DE1800EBB707 /* ContinuousExampleViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F8120A8DE1800EBB707 /* ContinuousExampleViewControllerB.swift */; };
+		B4D70F9220A8DE1800EBB707 /* PrecommitShiftTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F8220A8DE1800EBB707 /* PrecommitShiftTransitioningDelegate.swift */; };
+		B4D70F9320A8DE1800EBB707 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4D70F8320A8DE1800EBB707 /* LaunchScreen.xib */; };
+		B4D70F9420A8DE1800EBB707 /* ContinuityTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F8520A8DE1800EBB707 /* ContinuityTransitioningDelegate.swift */; };
+		B4D70F9520A8DE1800EBB707 /* ContinuityTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F8620A8DE1800EBB707 /* ContinuityTransitionAnimator.swift */; };
+		B4D70F9620A8DE1800EBB707 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4D70F8720A8DE1800EBB707 /* Images.xcassets */; };
+		B4D70F9720A8DE1800EBB707 /* CommitShiftExampleViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F8820A8DE1800EBB707 /* CommitShiftExampleViewControllerB.swift */; };
+		B4D70F9820A8DE1800EBB707 /* CommitShiftExampleViewControllerA.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F8920A8DE1800EBB707 /* CommitShiftExampleViewControllerA.swift */; };
+		B4D70F9E20A8DF4100EBB707 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F9D20A8DF4000EBB707 /* AppDelegate.swift */; };
+		B4D70FA220A8DF9C00EBB707 /* Shifty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D70EFB20A8DCF500EBB707 /* Shifty.framework */; };
+		B4D70FA320A8DF9C00EBB707 /* Shifty.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B4D70EFB20A8DCF500EBB707 /* Shifty.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B4D70F0520A8DCF600EBB707 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B4D70EFA20A8DCF500EBB707;
+			remoteInfo = "Shifty-iOS";
+		};
+		B4D70FA420A8DF9C00EBB707 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B4D70EFA20A8DCF500EBB707;
+			remoteInfo = "Shifty-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B4D70FA620A8DF9C00EBB707 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B4D70FA320A8DF9C00EBB707 /* Shifty.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		357FF35769807C049027C20C /* Pods-Shifty_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifty_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Shifty_Tests/Pods-Shifty_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		4154398CB3D0445EF85B1604 /* Pods-Shifty_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifty_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Shifty_Example/Pods-Shifty_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		445B06F01EDC49EB0210A66C /* Pods-Shifty_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifty_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shifty_Tests/Pods-Shifty_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		63FADE7377C13CC4C4C04646 /* Pods_Shifty_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shifty_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9396B34D2254E80A9AC607D5 /* Pods_Shifty_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shifty_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B48612BA20A8E028003B8152 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		B4D70EFB20A8DCF500EBB707 /* Shifty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Shifty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4D70F0320A8DCF600EBB707 /* Shifty-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shifty-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4D70F1320A8DD0100EBB707 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Tests/Supporting Files/Info.plist"; sourceTree = SOURCE_ROOT; };
+		B4D70F1E20A8DD3600EBB707 /* ShiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftTests.swift; sourceTree = "<group>"; };
+		B4D70F1F20A8DD3600EBB707 /* AnimatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatorTests.swift; sourceTree = "<group>"; };
+		B4D70F2020A8DD3600EBB707 /* CoordinatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
+		B4D70F2120A8DD3600EBB707 /* SnapshotTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotTests.swift; sourceTree = "<group>"; };
+		B4D70F2220A8DD3600EBB707 /* ShiftableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftableTests.swift; sourceTree = "<group>"; };
+		B4D70F2820A8DD6D00EBB707 /* DefaultCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCoordinator.swift; sourceTree = "<group>"; };
+		B4D70F2920A8DD6D00EBB707 /* ActionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionAnimator.swift; sourceTree = "<group>"; };
+		B4D70F2C20A8DD7100EBB707 /* ShiftAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftAnimator.swift; sourceTree = "<group>"; };
+		B4D70F2F20A8DD7900EBB707 /* ActionGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionGroup.swift; sourceTree = "<group>"; };
+		B4D70F3020A8DD7900EBB707 /* Shift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shift.swift; sourceTree = "<group>"; };
+		B4D70F3120A8DD7900EBB707 /* Snapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snapshot.swift; sourceTree = "<group>"; };
+		B4D70F3220A8DD7900EBB707 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		B4D70F3320A8DD7900EBB707 /* AnimationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationContext.swift; sourceTree = "<group>"; };
+		B4D70F3420A8DD7900EBB707 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		B4D70F3620A8DD7900EBB707 /* ShiftTransitionable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftTransitionable.swift; sourceTree = "<group>"; };
+		B4D70F3720A8DD7900EBB707 /* TransitionRespondable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionRespondable.swift; sourceTree = "<group>"; };
+		B4D70F3920A8DD7A00EBB707 /* Array+Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Actions.swift"; sourceTree = "<group>"; };
+		B4D70F3A20A8DD7A00EBB707 /* UIView+Shiftable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Shiftable.swift"; sourceTree = "<group>"; };
+		B4D70F3B20A8DD7A00EBB707 /* ShiftAnimator+UIViewImplicitlyAnimating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ShiftAnimator+UIViewImplicitlyAnimating.swift"; sourceTree = "<group>"; };
+		B4D70F3D20A8DD7A00EBB707 /* Prospector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prospector.swift; sourceTree = "<group>"; };
+		B4D70F3E20A8DD7A00EBB707 /* SnapshotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotView.swift; sourceTree = "<group>"; };
+		B4D70F5020A8DDA900EBB707 /* Shifty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shifty.h; sourceTree = "<group>"; };
+		B4D70F5120A8DDA900EBB707 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4D70F5820A8DDCB00EBB707 /* Shifty-iOSExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shifty-iOSExample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4D70F7A20A8DE1800EBB707 /* SimpleShiftTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleShiftTransitionAnimator.swift; sourceTree = "<group>"; };
+		B4D70F7B20A8DE1800EBB707 /* ShiftExampleViewControllerB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftExampleViewControllerB.swift; sourceTree = "<group>"; };
+		B4D70F7C20A8DE1800EBB707 /* PrecommitShiftTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrecommitShiftTransitionAnimator.swift; sourceTree = "<group>"; };
+		B4D70F7D20A8DE1800EBB707 /* ContinuousExampleViewControllerA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContinuousExampleViewControllerA.swift; sourceTree = "<group>"; };
+		B4D70F7E20A8DE1800EBB707 /* EvenShiftCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvenShiftCoordinator.swift; sourceTree = "<group>"; };
+		B4D70F7F20A8DE1800EBB707 /* SimpleShiftTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleShiftTransitioningDelegate.swift; sourceTree = "<group>"; };
+		B4D70F8020A8DE1800EBB707 /* ShiftExampleViewControllerA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftExampleViewControllerA.swift; sourceTree = "<group>"; };
+		B4D70F8120A8DE1800EBB707 /* ContinuousExampleViewControllerB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContinuousExampleViewControllerB.swift; sourceTree = "<group>"; };
+		B4D70F8220A8DE1800EBB707 /* PrecommitShiftTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrecommitShiftTransitioningDelegate.swift; sourceTree = "<group>"; };
+		B4D70F8420A8DE1800EBB707 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		B4D70F8520A8DE1800EBB707 /* ContinuityTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContinuityTransitioningDelegate.swift; sourceTree = "<group>"; };
+		B4D70F8620A8DE1800EBB707 /* ContinuityTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContinuityTransitionAnimator.swift; sourceTree = "<group>"; };
+		B4D70F8720A8DE1800EBB707 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B4D70F8820A8DE1800EBB707 /* CommitShiftExampleViewControllerB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitShiftExampleViewControllerB.swift; sourceTree = "<group>"; };
+		B4D70F8920A8DE1800EBB707 /* CommitShiftExampleViewControllerA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitShiftExampleViewControllerA.swift; sourceTree = "<group>"; };
+		B4D70F9920A8DEAD00EBB707 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4D70F9D20A8DF4000EBB707 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D1A5DE282137D43D5F1CA167 /* Pods-Shifty_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifty_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shifty_Example/Pods-Shifty_Example.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B4D70EF720A8DCF500EBB707 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4D70F0020A8DCF600EBB707 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4D70F0420A8DCF600EBB707 /* Shifty.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4D70F5520A8DDCB00EBB707 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4D70FA220A8DF9C00EBB707 /* Shifty.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3B5C11179C31AF6EE6F9F683 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9396B34D2254E80A9AC607D5 /* Pods_Shifty_Example.framework */,
+				63FADE7377C13CC4C4C04646 /* Pods_Shifty_Tests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		607FACC71AFB9204008FA782 = {
+			isa = PBXGroup;
+			children = (
+				B4D70EF120A8DCA300EBB707 /* Sources */,
+				B4D70EF320A8DCAF00EBB707 /* Tests */,
+				B4D70EF220A8DCAB00EBB707 /* Examples */,
+				607FACD11AFB9204008FA782 /* Products */,
+				65CAA1B23F4BE35D56694E70 /* Pods */,
+				3B5C11179C31AF6EE6F9F683 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		607FACD11AFB9204008FA782 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B4D70EFB20A8DCF500EBB707 /* Shifty.framework */,
+				B4D70F0320A8DCF600EBB707 /* Shifty-iOSTests.xctest */,
+				B4D70F5820A8DDCB00EBB707 /* Shifty-iOSExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		65CAA1B23F4BE35D56694E70 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4154398CB3D0445EF85B1604 /* Pods-Shifty_Example.debug.xcconfig */,
+				D1A5DE282137D43D5F1CA167 /* Pods-Shifty_Example.release.xcconfig */,
+				357FF35769807C049027C20C /* Pods-Shifty_Tests.debug.xcconfig */,
+				445B06F01EDC49EB0210A66C /* Pods-Shifty_Tests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B4D70EF120A8DCA300EBB707 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				B4D70F2920A8DD6D00EBB707 /* ActionAnimator.swift */,
+				B4D70F2820A8DD6D00EBB707 /* DefaultCoordinator.swift */,
+				B4D70F2C20A8DD7100EBB707 /* ShiftAnimator.swift */,
+				B4D70F3820A8DD7A00EBB707 /* Extensions */,
+				B4D70F3C20A8DD7A00EBB707 /* Helper */,
+				B4D70F2E20A8DD7900EBB707 /* Model */,
+				B4D70F3520A8DD7900EBB707 /* Protocols */,
+				B4D70EF520A8DCD300EBB707 /* Supporting Files */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		B4D70EF220A8DCAB00EBB707 /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				B4D70F7920A8DE1800EBB707 /* Shifty-iOSExample */,
+			);
+			path = Examples;
+			sourceTree = "<group>";
+		};
+		B4D70EF320A8DCAF00EBB707 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				B4D70F1F20A8DD3600EBB707 /* AnimatorTests.swift */,
+				B4D70F2020A8DD3600EBB707 /* CoordinatorTests.swift */,
+				B4D70F2220A8DD3600EBB707 /* ShiftableTests.swift */,
+				B4D70F1E20A8DD3600EBB707 /* ShiftTests.swift */,
+				B4D70F2120A8DD3600EBB707 /* SnapshotTests.swift */,
+				B4D70EF420A8DCC900EBB707 /* Supporting Files */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		B4D70EF420A8DCC900EBB707 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B4D70F1320A8DD0100EBB707 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B4D70EF520A8DCD300EBB707 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B4D70F5120A8DDA900EBB707 /* Info.plist */,
+				B4D70F5020A8DDA900EBB707 /* Shifty.h */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B4D70F2E20A8DD7900EBB707 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B4D70F2F20A8DD7900EBB707 /* ActionGroup.swift */,
+				B4D70F3020A8DD7900EBB707 /* Shift.swift */,
+				B4D70F3120A8DD7900EBB707 /* Snapshot.swift */,
+				B4D70F3220A8DD7900EBB707 /* State.swift */,
+				B4D70F3320A8DD7900EBB707 /* AnimationContext.swift */,
+				B4D70F3420A8DD7900EBB707 /* Action.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B4D70F3520A8DD7900EBB707 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B4D70F3620A8DD7900EBB707 /* ShiftTransitionable.swift */,
+				B4D70F3720A8DD7900EBB707 /* TransitionRespondable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		B4D70F3820A8DD7A00EBB707 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B4D70F3920A8DD7A00EBB707 /* Array+Actions.swift */,
+				B4D70F3A20A8DD7A00EBB707 /* UIView+Shiftable.swift */,
+				B4D70F3B20A8DD7A00EBB707 /* ShiftAnimator+UIViewImplicitlyAnimating.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B4D70F3C20A8DD7A00EBB707 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				B4D70F3D20A8DD7A00EBB707 /* Prospector.swift */,
+				B4D70F3E20A8DD7A00EBB707 /* SnapshotView.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		B4D70F7920A8DE1800EBB707 /* Shifty-iOSExample */ = {
+			isa = PBXGroup;
+			children = (
+				B4D70F9D20A8DF4000EBB707 /* AppDelegate.swift */,
+				B4D70FA120A8DF5F00EBB707 /* Transitioning Delegates */,
+				B4D70FA020A8DF4800EBB707 /* Animators */,
+				B4D70F9F20A8DF4300EBB707 /* View Controllers */,
+				B4D70F9A20A8DF1200EBB707 /* Supporting Files */,
+			);
+			path = "Shifty-iOSExample";
+			sourceTree = "<group>";
+		};
+		B4D70F9A20A8DF1200EBB707 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B48612BA20A8E028003B8152 /* Main.storyboard */,
+				B4D70F8720A8DE1800EBB707 /* Images.xcassets */,
+				B4D70F8320A8DE1800EBB707 /* LaunchScreen.xib */,
+				B4D70F9920A8DEAD00EBB707 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B4D70F9F20A8DF4300EBB707 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B4D70F7B20A8DE1800EBB707 /* ShiftExampleViewControllerB.swift */,
+				B4D70F7D20A8DE1800EBB707 /* ContinuousExampleViewControllerA.swift */,
+				B4D70F8020A8DE1800EBB707 /* ShiftExampleViewControllerA.swift */,
+				B4D70F8120A8DE1800EBB707 /* ContinuousExampleViewControllerB.swift */,
+				B4D70F8820A8DE1800EBB707 /* CommitShiftExampleViewControllerB.swift */,
+				B4D70F8920A8DE1800EBB707 /* CommitShiftExampleViewControllerA.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		B4D70FA020A8DF4800EBB707 /* Animators */ = {
+			isa = PBXGroup;
+			children = (
+				B4D70F7E20A8DE1800EBB707 /* EvenShiftCoordinator.swift */,
+				B4D70F7A20A8DE1800EBB707 /* SimpleShiftTransitionAnimator.swift */,
+				B4D70F7C20A8DE1800EBB707 /* PrecommitShiftTransitionAnimator.swift */,
+				B4D70F8620A8DE1800EBB707 /* ContinuityTransitionAnimator.swift */,
+			);
+			path = Animators;
+			sourceTree = "<group>";
+		};
+		B4D70FA120A8DF5F00EBB707 /* Transitioning Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				B4D70F7F20A8DE1800EBB707 /* SimpleShiftTransitioningDelegate.swift */,
+				B4D70F8220A8DE1800EBB707 /* PrecommitShiftTransitioningDelegate.swift */,
+				B4D70F8520A8DE1800EBB707 /* ContinuityTransitioningDelegate.swift */,
+			);
+			path = "Transitioning Delegates";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B4D70EF820A8DCF500EBB707 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4D70F5220A8DDA900EBB707 /* Shifty.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		B4D70EFA20A8DCF500EBB707 /* Shifty-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B4D70F0C20A8DCF600EBB707 /* Build configuration list for PBXNativeTarget "Shifty-iOS" */;
+			buildPhases = (
+				B4D70EF620A8DCF500EBB707 /* Sources */,
+				B4D70EF720A8DCF500EBB707 /* Frameworks */,
+				B4D70EF820A8DCF500EBB707 /* Headers */,
+				B4D70EF920A8DCF500EBB707 /* Resources */,
+				B48612BD20A8E0ED003B8152 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Shifty-iOS";
+			productName = "Shifty-iOS";
+			productReference = B4D70EFB20A8DCF500EBB707 /* Shifty.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B4D70F0220A8DCF600EBB707 /* Shifty-iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B4D70F0F20A8DCF600EBB707 /* Build configuration list for PBXNativeTarget "Shifty-iOSTests" */;
+			buildPhases = (
+				B4D70EFF20A8DCF600EBB707 /* Sources */,
+				B4D70F0020A8DCF600EBB707 /* Frameworks */,
+				B4D70F0120A8DCF600EBB707 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B4D70F0620A8DCF600EBB707 /* PBXTargetDependency */,
+			);
+			name = "Shifty-iOSTests";
+			productName = "Shifty-iOSTests";
+			productReference = B4D70F0320A8DCF600EBB707 /* Shifty-iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B4D70F5720A8DDCB00EBB707 /* Shifty-iOSExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B4D70F6720A8DDCD00EBB707 /* Build configuration list for PBXNativeTarget "Shifty-iOSExample" */;
+			buildPhases = (
+				B4D70F5420A8DDCB00EBB707 /* Sources */,
+				B4D70F5520A8DDCB00EBB707 /* Frameworks */,
+				B4D70F5620A8DDCB00EBB707 /* Resources */,
+				B4D70FA620A8DF9C00EBB707 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B4D70FA520A8DF9C00EBB707 /* PBXTargetDependency */,
+			);
+			name = "Shifty-iOSExample";
+			productName = "Shifty-iOSExample";
+			productReference = B4D70F5820A8DDCB00EBB707 /* Shifty-iOSExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		607FACC81AFB9204008FA782 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = CocoaPods;
+				TargetAttributes = {
+					B4D70EFA20A8DCF500EBB707 = {
+						CreatedOnToolsVersion = 9.3.1;
+						DevelopmentTeam = 9W2C69WDZE;
+						LastSwiftMigration = 0930;
+						ProvisioningStyle = Automatic;
+					};
+					B4D70F0220A8DCF600EBB707 = {
+						CreatedOnToolsVersion = 9.3.1;
+						DevelopmentTeam = 9W2C69WDZE;
+						ProvisioningStyle = Automatic;
+					};
+					B4D70F5720A8DDCB00EBB707 = {
+						CreatedOnToolsVersion = 9.3.1;
+						DevelopmentTeam = 9W2C69WDZE;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "Shifty" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 607FACC71AFB9204008FA782;
+			productRefGroup = 607FACD11AFB9204008FA782 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B4D70EFA20A8DCF500EBB707 /* Shifty-iOS */,
+				B4D70F0220A8DCF600EBB707 /* Shifty-iOSTests */,
+				B4D70F5720A8DDCB00EBB707 /* Shifty-iOSExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B4D70EF920A8DCF500EBB707 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4D70F0120A8DCF600EBB707 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4D70F5620A8DDCB00EBB707 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B48612BB20A8E028003B8152 /* Main.storyboard in Resources */,
+				B4D70F9320A8DE1800EBB707 /* LaunchScreen.xib in Resources */,
+				B4D70F9620A8DE1800EBB707 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B48612BD20A8E0ED003B8152 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B4D70EF620A8DCF500EBB707 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4D70F2B20A8DD6D00EBB707 /* ActionAnimator.swift in Sources */,
+				B4D70F4520A8DD7A00EBB707 /* ShiftTransitionable.swift in Sources */,
+				B4D70F4420A8DD7A00EBB707 /* Action.swift in Sources */,
+				B4D70F2D20A8DD7200EBB707 /* ShiftAnimator.swift in Sources */,
+				B4D70F2A20A8DD6D00EBB707 /* DefaultCoordinator.swift in Sources */,
+				B4D70F4920A8DD7A00EBB707 /* ShiftAnimator+UIViewImplicitlyAnimating.swift in Sources */,
+				B4D70F4A20A8DD7A00EBB707 /* Prospector.swift in Sources */,
+				B4D70F4720A8DD7A00EBB707 /* Array+Actions.swift in Sources */,
+				B4D70F4B20A8DD7A00EBB707 /* SnapshotView.swift in Sources */,
+				B4D70F4620A8DD7A00EBB707 /* TransitionRespondable.swift in Sources */,
+				B4D70F4120A8DD7A00EBB707 /* Snapshot.swift in Sources */,
+				B4D70F3F20A8DD7A00EBB707 /* ActionGroup.swift in Sources */,
+				B4D70F4220A8DD7A00EBB707 /* State.swift in Sources */,
+				B4D70F4820A8DD7A00EBB707 /* UIView+Shiftable.swift in Sources */,
+				B4D70F4320A8DD7A00EBB707 /* AnimationContext.swift in Sources */,
+				B4D70F4020A8DD7A00EBB707 /* Shift.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4D70EFF20A8DCF600EBB707 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4D70F2520A8DD3600EBB707 /* CoordinatorTests.swift in Sources */,
+				B4D70F2320A8DD3600EBB707 /* ShiftTests.swift in Sources */,
+				B4D70F2720A8DD3600EBB707 /* ShiftableTests.swift in Sources */,
+				B4D70F2620A8DD3600EBB707 /* SnapshotTests.swift in Sources */,
+				B4D70F2420A8DD3600EBB707 /* AnimatorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4D70F5420A8DDCB00EBB707 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4D70F8E20A8DE1800EBB707 /* EvenShiftCoordinator.swift in Sources */,
+				B4D70F9220A8DE1800EBB707 /* PrecommitShiftTransitioningDelegate.swift in Sources */,
+				B4D70F8C20A8DE1800EBB707 /* PrecommitShiftTransitionAnimator.swift in Sources */,
+				B4D70F9020A8DE1800EBB707 /* ShiftExampleViewControllerA.swift in Sources */,
+				B4D70F9E20A8DF4100EBB707 /* AppDelegate.swift in Sources */,
+				B4D70F8D20A8DE1800EBB707 /* ContinuousExampleViewControllerA.swift in Sources */,
+				B4D70F9420A8DE1800EBB707 /* ContinuityTransitioningDelegate.swift in Sources */,
+				B4D70F9520A8DE1800EBB707 /* ContinuityTransitionAnimator.swift in Sources */,
+				B4D70F8B20A8DE1800EBB707 /* ShiftExampleViewControllerB.swift in Sources */,
+				B4D70F8F20A8DE1800EBB707 /* SimpleShiftTransitioningDelegate.swift in Sources */,
+				B4D70F9820A8DE1800EBB707 /* CommitShiftExampleViewControllerA.swift in Sources */,
+				B4D70F8A20A8DE1800EBB707 /* SimpleShiftTransitionAnimator.swift in Sources */,
+				B4D70F9720A8DE1800EBB707 /* CommitShiftExampleViewControllerB.swift in Sources */,
+				B4D70F9120A8DE1800EBB707 /* ContinuousExampleViewControllerB.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B4D70F0620A8DCF600EBB707 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B4D70EFA20A8DCF500EBB707 /* Shifty-iOS */;
+			targetProxy = B4D70F0520A8DCF600EBB707 /* PBXContainerItemProxy */;
+		};
+		B4D70FA520A8DF9C00EBB707 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B4D70EFA20A8DCF500EBB707 /* Shifty-iOS */;
+			targetProxy = B4D70FA420A8DF9C00EBB707 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B4D70F8320A8DE1800EBB707 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B4D70F8420A8DE1800EBB707 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		607FACED1AFB9204008FA782 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		607FACEE1AFB9204008FA782 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B4D70F0D20A8DCF600EBB707 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 9W2C69WDZE;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mcginty.will.Shifty-iOS";
+				PRODUCT_NAME = Shifty;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B4D70F0E20A8DCF600EBB707 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 9W2C69WDZE;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mcginty.will.Shifty-iOS";
+				PRODUCT_NAME = Shifty;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B4D70F1020A8DCF600EBB707 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 9W2C69WDZE;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mcginty.will.Shifty-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B4D70F1120A8DCF600EBB707 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9W2C69WDZE;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mcginty.will.Shifty-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B4D70F6820A8DDCD00EBB707 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 9W2C69WDZE;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Examples/Shifty-iOSExample/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mcginty.will.Shifty-iOSExample";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B4D70F6920A8DDCD00EBB707 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9W2C69WDZE;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Examples/Shifty-iOSExample/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mcginty.will.Shifty-iOSExample";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "Shifty" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				607FACED1AFB9204008FA782 /* Debug */,
+				607FACEE1AFB9204008FA782 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B4D70F0C20A8DCF600EBB707 /* Build configuration list for PBXNativeTarget "Shifty-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B4D70F0D20A8DCF600EBB707 /* Debug */,
+				B4D70F0E20A8DCF600EBB707 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B4D70F0F20A8DCF600EBB707 /* Build configuration list for PBXNativeTarget "Shifty-iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B4D70F1020A8DCF600EBB707 /* Debug */,
+				B4D70F1120A8DCF600EBB707 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B4D70F6720A8DDCD00EBB707 /* Build configuration list for PBXNativeTarget "Shifty-iOSExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B4D70F6820A8DDCD00EBB707 /* Debug */,
+				B4D70F6920A8DDCD00EBB707 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 607FACC81AFB9204008FA782 /* Project object */;
+}

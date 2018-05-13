@@ -3,9 +3,4 @@ line_length: 240 # Max line length before warning (default is 120)
 disabled_rules:
   - trailing_whitespace # Disables SwiftLint complaining about whitespace characters on empty lines
   - todo # Disables auto-warning of TODO statements
-  - nesting # Allows declaration of types nested multiple levels deep
-
-identifier_name:
-  excluded:
-    - x
-    - y
+  - identifier_name #Disables 3-40 character requirement on names
