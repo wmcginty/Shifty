@@ -6,20 +6,21 @@ osx_image: xcode9.3
 language: swift
 env:
   global:
-    - WORKSPACE=Example/Shifty.xcworkspace
-    - IOS_FRAMEWORK_SCHEME="Shifty-Example"
+    - WORKSPACE=Shifty.xcworkspace
+    - IOS_FRAMEWORK_SCHEME="Shifty-iOSExample"
   matrix:
     - DESTINATION="platform=iOS Simulator,OS=11.3,name=iPhone X" SDK="iphonesimulator" SCHEME="$IOS_FRAMEWORK_SCHEME" RUN_TESTS="YES" POD_LINT="YES"
 
 # cache: cocoapods
 # podfile: Example/Podfile
 before_install:
+  - brew upgrade swiftlint
   - gem install cocoapods
   - pod install --project-directory=Example
 #install:
 #  - ./install_swiftlint.sh
-#script:
-#  - swiftlint --config ./.swiftlint.yml
+script:
+  - swiftlint
   - set -o pipefail
 
   # Build Framework and Run Tests if specified
