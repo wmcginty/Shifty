@@ -20,7 +20,7 @@ Shifty is a small transitioning library designed to make creating frame shift vi
   s.source           = { :git => 'https://github.com/wmcginty/Shifty.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '10.0'
-  s.source_files = 'Shifty/Classes/**/*'
+  s.source_files = 'Sources/**/*'
   s.frameworks = 'UIKit'
 
 end
