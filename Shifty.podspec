@@ -8,10 +8,13 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Shifty'
-  s.version          = '1.1.0'
+  s.version          = '2.0.0'
   s.summary          = 'A small transitioning library that aims to make performing frame shifts easier.'
   s.description      = <<-DESC
-Shifty is a small transitioning library designed to make creating frame shift view controller transitions much simpler. Written entirely in Swift, Shifty aims to abstract away the boilerplate math and coordinate space conversions needed to make these transitions seamless. This, combined with a multiple of customization points and options allows you to focus on creating the transition that is custom to your app.
+Shifty is a small transitioning library designed to make creating frame shift view controller transitions much simpler.
+Written entirely in Swift, Shifty aims to abstract away the boilerplate math and coordinate space conversions needed to
+make these transitions seamless. This, combined with a multiple of customization points and options allows you to focus
+on creating the transition that is custom to your app.
                        DESC
 
   s.homepage         = 'https://github.com/wmcginty/Shifty'
