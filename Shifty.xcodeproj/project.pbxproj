@@ -14,18 +14,17 @@
 		B4D70F2520A8DD3600EBB707 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2020A8DD3600EBB707 /* CoordinatorTests.swift */; };
 		B4D70F2620A8DD3600EBB707 /* SnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2120A8DD3600EBB707 /* SnapshotTests.swift */; };
 		B4D70F2720A8DD3600EBB707 /* ShiftableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2220A8DD3600EBB707 /* ShiftableTests.swift */; };
-		B4D70F2A20A8DD6D00EBB707 /* DefaultCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2820A8DD6D00EBB707 /* DefaultCoordinator.swift */; };
+		B4D70F2A20A8DD6D00EBB707 /* ShiftCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2820A8DD6D00EBB707 /* ShiftCoordinator.swift */; };
 		B4D70F2B20A8DD6D00EBB707 /* ActionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2920A8DD6D00EBB707 /* ActionAnimator.swift */; };
 		B4D70F2D20A8DD7200EBB707 /* ShiftAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2C20A8DD7100EBB707 /* ShiftAnimator.swift */; };
 		B4D70F3F20A8DD7A00EBB707 /* ActionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2F20A8DD7900EBB707 /* ActionGroup.swift */; };
 		B4D70F4020A8DD7A00EBB707 /* Shift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3020A8DD7900EBB707 /* Shift.swift */; };
 		B4D70F4120A8DD7A00EBB707 /* Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3120A8DD7900EBB707 /* Snapshot.swift */; };
 		B4D70F4220A8DD7A00EBB707 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3220A8DD7900EBB707 /* State.swift */; };
-		B4D70F4320A8DD7A00EBB707 /* AnimationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3320A8DD7900EBB707 /* AnimationContext.swift */; };
+		B4D70F4320A8DD7A00EBB707 /* TimingContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3320A8DD7900EBB707 /* TimingContext.swift */; };
 		B4D70F4420A8DD7A00EBB707 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3420A8DD7900EBB707 /* Action.swift */; };
 		B4D70F4520A8DD7A00EBB707 /* ShiftTransitionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3620A8DD7900EBB707 /* ShiftTransitionable.swift */; };
 		B4D70F4620A8DD7A00EBB707 /* TransitionRespondable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3720A8DD7900EBB707 /* TransitionRespondable.swift */; };
-		B4D70F4720A8DD7A00EBB707 /* Array+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3920A8DD7A00EBB707 /* Array+Actions.swift */; };
 		B4D70F4820A8DD7A00EBB707 /* UIView+Shiftable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3A20A8DD7A00EBB707 /* UIView+Shiftable.swift */; };
 		B4D70F4920A8DD7A00EBB707 /* ShiftAnimator+UIViewImplicitlyAnimating.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3B20A8DD7A00EBB707 /* ShiftAnimator+UIViewImplicitlyAnimating.swift */; };
 		B4D70F4A20A8DD7A00EBB707 /* Prospector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3D20A8DD7A00EBB707 /* Prospector.swift */; };
@@ -97,18 +96,17 @@
 		B4D70F2020A8DD3600EBB707 /* CoordinatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
 		B4D70F2120A8DD3600EBB707 /* SnapshotTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotTests.swift; sourceTree = "<group>"; };
 		B4D70F2220A8DD3600EBB707 /* ShiftableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftableTests.swift; sourceTree = "<group>"; };
-		B4D70F2820A8DD6D00EBB707 /* DefaultCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCoordinator.swift; sourceTree = "<group>"; };
+		B4D70F2820A8DD6D00EBB707 /* ShiftCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftCoordinator.swift; sourceTree = "<group>"; };
 		B4D70F2920A8DD6D00EBB707 /* ActionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionAnimator.swift; sourceTree = "<group>"; };
 		B4D70F2C20A8DD7100EBB707 /* ShiftAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftAnimator.swift; sourceTree = "<group>"; };
 		B4D70F2F20A8DD7900EBB707 /* ActionGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionGroup.swift; sourceTree = "<group>"; };
 		B4D70F3020A8DD7900EBB707 /* Shift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shift.swift; sourceTree = "<group>"; };
 		B4D70F3120A8DD7900EBB707 /* Snapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snapshot.swift; sourceTree = "<group>"; };
 		B4D70F3220A8DD7900EBB707 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
-		B4D70F3320A8DD7900EBB707 /* AnimationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationContext.swift; sourceTree = "<group>"; };
+		B4D70F3320A8DD7900EBB707 /* TimingContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimingContext.swift; sourceTree = "<group>"; };
 		B4D70F3420A8DD7900EBB707 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		B4D70F3620A8DD7900EBB707 /* ShiftTransitionable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftTransitionable.swift; sourceTree = "<group>"; };
 		B4D70F3720A8DD7900EBB707 /* TransitionRespondable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionRespondable.swift; sourceTree = "<group>"; };
-		B4D70F3920A8DD7A00EBB707 /* Array+Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Actions.swift"; sourceTree = "<group>"; };
 		B4D70F3A20A8DD7A00EBB707 /* UIView+Shiftable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Shiftable.swift"; sourceTree = "<group>"; };
 		B4D70F3B20A8DD7A00EBB707 /* ShiftAnimator+UIViewImplicitlyAnimating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ShiftAnimator+UIViewImplicitlyAnimating.swift"; sourceTree = "<group>"; };
 		B4D70F3D20A8DD7A00EBB707 /* Prospector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prospector.swift; sourceTree = "<group>"; };
@@ -205,11 +203,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B42DDE612103E0ED0098AFD6 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				B4D70F3420A8DD7900EBB707 /* Action.swift */,
+				B4D70F2F20A8DD7900EBB707 /* ActionGroup.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
 		B4D70EF120A8DCA300EBB707 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				B4D70F2920A8DD6D00EBB707 /* ActionAnimator.swift */,
-				B4D70F2820A8DD6D00EBB707 /* DefaultCoordinator.swift */,
 				B4D70F2C20A8DD7100EBB707 /* ShiftAnimator.swift */,
 				B4D70F3820A8DD7A00EBB707 /* Extensions */,
 				B4D70F3C20A8DD7A00EBB707 /* Helper */,
@@ -261,12 +267,11 @@
 		B4D70F2E20A8DD7900EBB707 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B4D70F2F20A8DD7900EBB707 /* ActionGroup.swift */,
+				B4D70F3320A8DD7900EBB707 /* TimingContext.swift */,
+				B42DDE612103E0ED0098AFD6 /* Actions */,
 				B4D70F3020A8DD7900EBB707 /* Shift.swift */,
 				B4D70F3120A8DD7900EBB707 /* Snapshot.swift */,
 				B4D70F3220A8DD7900EBB707 /* State.swift */,
-				B4D70F3320A8DD7900EBB707 /* AnimationContext.swift */,
-				B4D70F3420A8DD7900EBB707 /* Action.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -274,6 +279,7 @@
 		B4D70F3520A8DD7900EBB707 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				B4D70F2820A8DD6D00EBB707 /* ShiftCoordinator.swift */,
 				B4D70F3620A8DD7900EBB707 /* ShiftTransitionable.swift */,
 				B4D70F3720A8DD7900EBB707 /* TransitionRespondable.swift */,
 			);
@@ -283,7 +289,6 @@
 		B4D70F3820A8DD7A00EBB707 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				B4D70F3920A8DD7A00EBB707 /* Array+Actions.swift */,
 				B4D70F3A20A8DD7A00EBB707 /* UIView+Shiftable.swift */,
 				B4D70F3B20A8DD7A00EBB707 /* ShiftAnimator+UIViewImplicitlyAnimating.swift */,
 			);
@@ -514,7 +519,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "#if which swiftlint >/dev/null; then\n#swiftlint\n#else\n#echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n#fi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -527,17 +532,16 @@
 				B4D70F4520A8DD7A00EBB707 /* ShiftTransitionable.swift in Sources */,
 				B4D70F4420A8DD7A00EBB707 /* Action.swift in Sources */,
 				B4D70F2D20A8DD7200EBB707 /* ShiftAnimator.swift in Sources */,
-				B4D70F2A20A8DD6D00EBB707 /* DefaultCoordinator.swift in Sources */,
+				B4D70F2A20A8DD6D00EBB707 /* ShiftCoordinator.swift in Sources */,
 				B4D70F4920A8DD7A00EBB707 /* ShiftAnimator+UIViewImplicitlyAnimating.swift in Sources */,
 				B4D70F4A20A8DD7A00EBB707 /* Prospector.swift in Sources */,
-				B4D70F4720A8DD7A00EBB707 /* Array+Actions.swift in Sources */,
 				B4D70F4B20A8DD7A00EBB707 /* SnapshotView.swift in Sources */,
 				B4D70F4620A8DD7A00EBB707 /* TransitionRespondable.swift in Sources */,
 				B4D70F4120A8DD7A00EBB707 /* Snapshot.swift in Sources */,
 				B4D70F3F20A8DD7A00EBB707 /* ActionGroup.swift in Sources */,
 				B4D70F4220A8DD7A00EBB707 /* State.swift in Sources */,
 				B4D70F4820A8DD7A00EBB707 /* UIView+Shiftable.swift in Sources */,
-				B4D70F4320A8DD7A00EBB707 /* AnimationContext.swift in Sources */,
+				B4D70F4320A8DD7A00EBB707 /* TimingContext.swift in Sources */,
 				B4D70F4020A8DD7A00EBB707 /* Shift.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

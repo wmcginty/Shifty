@@ -9,7 +9,7 @@
 import Foundation
 
 /// Represents the positional state of a `UIView` object at any given moment.
-public struct Snapshot {
+public struct Snapshot: Equatable {
     
     // MARK: Properties
     
@@ -33,7 +33,7 @@ public struct Snapshot {
         self.cornerRadius = cornerRadius
     }
     
-    init(view: UIView) {
+    public init(view: UIView) {
         self.init(center: view.center, bounds: view.bounds, transform: view.layer.transform, cornerRadius: view.layer.cornerRadius)
     }
     
@@ -55,21 +55,14 @@ public struct Snapshot {
         new.bounds = bounds
         new.center = center(of: new, withRespectTo: container)
         
-        /*Setting the view.transform converts the affine transform to a 3d space and sets the layer's transform.
-            This means we can safely 'ignore' it, and instead rely soly on the 3d transform of the view's layer. */
+        /*Setting the view.transform simply converts the affine transform to into a 3D coordinate space and sets the layer's CATransform3D.
+         This means we shouldn't (can't) animate both properties simultaneously - and instead rely solely on the view's layer's CATransform3D. */
         new.layer.transform = transform
         new.layer.cornerRadius = cornerRadius
     }
 }
 
-// MARK: Equatable
-extension Snapshot: Equatable {
-    
-    public static func == (lhs: Snapshot, rhs: Snapshot) -> Bool {
-        return lhs.bounds == rhs.bounds && lhs.center == rhs.center && lhs.transform == rhs.transform && lhs.cornerRadius == rhs.cornerRadius
-    }
-}
-
+// MARK: CATransform3D Conformation To Equatable
 extension CATransform3D: Equatable {
     public static func == (lhs: CATransform3D, rhs: CATransform3D) -> Bool {
         return CATransform3DEqualToTransform(lhs, rhs)

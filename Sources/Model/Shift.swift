@@ -13,13 +13,13 @@ public struct Shift: Hashable {
     // MARK: Properties
     public let source: State
     public let destination: State
-    public let animationContext: AnimationContext
+    public let timingContext: TimingContext
     
     // MARK: Initializers
-    public init(source: State, destination: State, animationContext: AnimationContext = CubicAnimationContext.default) {
+    public init(source: State, destination: State, timingContext: TimingContext = CubicAnimationContext.default) {
         self.source = source
         self.destination = destination
-        self.animationContext = animationContext
+        self.timingContext = timingContext
     }
     
     // MARK: Hashable
@@ -27,6 +27,7 @@ public struct Shift: Hashable {
         return source.hashValue ^ destination.hashValue
     }
     
+    // MARK: Equatable
     public static func == (lhs: Shift, rhs: Shift) -> Bool {
         return lhs.source == rhs.source && lhs.destination == rhs.destination
     }
@@ -36,7 +37,6 @@ public struct Shift: Hashable {
 extension Shift {
     
     func configuredShiftingView(inContainer container: UIView) -> UIView {
-        
         //Create, add and place the shiftingView with respect to the container
         let shiftingView = source.configuredReplicantView(inContainer: container, afterScreenUpdates: true)
         configureNativeViews(hidden: true)
@@ -45,7 +45,7 @@ extension Shift {
     }
     
     func shiftAnimations(for shiftingView: UIView, in container: UIView, target: Snapshot?) {
-        animationContext.animate {
+        timingContext.animate {
             target?.applyState(to: shiftingView, in: container)
         }
     }
@@ -59,7 +59,7 @@ extension Shift {
 extension Shift {
     
     func destinationSnapshot() -> Snapshot {
-        return destination.currentSnapshot()
+        return destination.snapshot()
     }
     
     func configureNativeViews(hidden: Bool) {

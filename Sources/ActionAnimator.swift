@@ -14,7 +14,7 @@ public class ActionAnimator {
     var isInverted: Bool
     var viewConfiguration: State.Configuration
     
-    //We use multiple property animators to allow each ActionGroup to occur on a different timing curve. We can also support different overall durations, start delays, etc using keyframes inside the individual animation blocks.
+    //We use multiple property animators to allow each ActionGroup to occur on a different timing curve. This also means we can support different overall durations and delays using keyframes inside the individual `TimingContext`s.
     private var animators: [UIView: UIViewPropertyAnimator] = [:]
     
     // MARK: Initializers
@@ -30,7 +30,7 @@ public class ActionAnimator {
         
         actionPairs.enumerated().forEach { idx, pair in
             let animator = configuredAnimator(for: pair.actionGroup, view: pair.view, duration: duration, in: container)
-            if let completion = completion, idx == 0 {
+            if let completion = completion, idx == actionPairs.startIndex {
                 animator.addCompletion(completion)
             }
             
@@ -40,15 +40,15 @@ public class ActionAnimator {
     }
 }
 
-// MARK: Action Animations
+// MARK: Helper
 private extension ActionAnimator {
     
     func configuredAnimator(for group: ActionGroup, view: UIView, duration: TimeInterval, in container: UIView) -> UIViewPropertyAnimator {
-        let animator = UIViewPropertyAnimator(duration: duration, timingParameters: group.animationContext.timingParameters)
+        let animator = UIViewPropertyAnimator(duration: duration, timingParameters: group.timingContext.timingParameters)
         let state = State(view: view, identifier: view.hashValue, configuration: viewConfiguration)
         let replicantView = state.configuredReplicantView(inContainer: container, afterScreenUpdates: isInverted)
         
-        animator.addAnimations({ group.actionAnimations(for: replicantView) }, delayFactor: group.delayFactor)
+        animator.addAnimations({ group.animate(with: replicantView) }, delayFactor: group.delayFactor)
         animator.addCompletion { _ in state.cleanupReplicantView(replicantView) }
         
         if isInverted {

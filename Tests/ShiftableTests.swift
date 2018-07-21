@@ -48,7 +48,7 @@ class StateTests: XCTestCase {
     func testStateSnapshots() {
         let view = UIView()
         let a = State(view: view, identifier: "identifier")
-        let snap = a.currentSnapshot()
+        let snap = a.snapshot()
         
         XCTAssertEqual(snap.center, .zero)
         XCTAssertEqual(snap.bounds, .zero)
@@ -62,7 +62,7 @@ class StateTests: XCTestCase {
         view.bounds = b
         view.transform = t
 
-        let snap2 = a.currentSnapshot()
+        let snap2 = a.snapshot()
         
         XCTAssertEqual(snap2.center, c)
         XCTAssertEqual(snap2.bounds, b)

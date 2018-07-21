@@ -17,8 +17,8 @@ public class ShiftAnimator: NSObject {
     private let shifts: [Shift]
     private var destinations: [Shift: Snapshot]?
     
-    //We use multiple property animators to allow each Shift to occur on a different timing curve. We can also support different overall durations, start delays, etc using keyframes inside the individual animation blocks.
-    var animators: [Shift: UIViewPropertyAnimator] = [:]
+    //We use multiple property animators to allow each Shift to occur on a different timing curve. This also means we can support different overall durations and delays using keyframes inside the individual `TimingContext`s.
+    private(set) var animators: [Shift: UIViewPropertyAnimator] = [:]
 
     // MARK: Initializers
     public init(source: ShiftTransitionable, destination: ShiftTransitionable, coordinator: ShiftCoordinator = DefaultCoordinator()) {
@@ -52,20 +52,16 @@ public class ShiftAnimator: NSObject {
     }
 }
 
-// MARK: Shift Committing
+// MARK: Helper
 private extension ShiftAnimator {
     
     func commitDestinationsIfNeeded() {
         guard destinations == nil else { return }
         commitShifts()
     }
-}
-
-// MARK: Shift Animations
-private extension ShiftAnimator {
     
     func configuredAnimator(for shift: Shift, duration: TimeInterval, in container: UIView) -> UIViewPropertyAnimator {
-        let animator = UIViewPropertyAnimator(duration: duration, timingParameters: shift.animationContext.timingParameters)
+        let animator = UIViewPropertyAnimator(duration: duration, timingParameters: shift.timingContext.timingParameters)
         let snapshot = destinations?[shift]
         let shiftingView = shift.configuredShiftingView(inContainer: container)
         

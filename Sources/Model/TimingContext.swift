@@ -12,12 +12,12 @@ import Foundation
     -Provide a way to modify the animation, such as shifting in an arc instead of a straight line.
  */
 
-public protocol AnimationContext {
+public protocol TimingContext {
     var timingParameters: UITimingCurveProvider { get }
     func animate(_ animations: @escaping () -> Void)
 }
 
-public struct CubicAnimationContext: AnimationContext {
+public struct CubicAnimationContext: TimingContext {
     
     // MARK: Properties
     public let cubicTimingParameters: UICubicTimingParameters
@@ -48,7 +48,7 @@ public struct CubicAnimationContext: AnimationContext {
     }
 }
 
-public struct SpringAnimationContext: AnimationContext {
+public struct SpringAnimationContext: TimingContext {
     
     // MARK: Properties
     public let springTimingParameters: UISpringTimingParameters

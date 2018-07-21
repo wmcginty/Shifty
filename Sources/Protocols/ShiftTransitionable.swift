@@ -20,10 +20,16 @@ public protocol ShiftTransitionable {
 }
 
 public extension ShiftTransitionable {
+    
+    /// Provides a default value of 'true' to all conformers.
     var isShiftingEnabled: Bool { return true }
+    
+    /// Provides a default value of an empty array to all conformers.
     var shiftExclusions: [UIView] { return [] }
 }
 
 public extension ShiftTransitionable where Self: UIViewController {
+    
+    /// Provides a default value of .view to all conforming UIViewControllers.
     var shiftContentView: UIView { return view }
 }

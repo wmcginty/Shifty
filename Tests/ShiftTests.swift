@@ -55,7 +55,7 @@ class ShiftTests: XCTestCase {
         
         let a = Shift(source: s, destination: d)
         let snap1 = a.destinationSnapshot()
-        let snap2 = a.destination.currentSnapshot()
+        let snap2 = a.destination.snapshot()
         
         XCTAssertEqual(snap1, snap2)
     }

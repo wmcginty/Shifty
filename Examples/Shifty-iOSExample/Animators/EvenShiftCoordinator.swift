@@ -20,7 +20,7 @@ struct EvenShiftCoordinator: ShiftCoordinator {
             let relativeEnd = index % 2 == 0 ? 0.5 : 1
             
             let context = CubicAnimationContext(timingParameters: timingCurve, relativeStartTime: relativeStart, relativeEndTime: relativeEnd)
-            return Shift(source: source, destination: match, animationContext: context)
+            return Shift(source: source, destination: match, timingContext: context)
         }
     }
 }

@@ -32,7 +32,7 @@ public struct State {
                 guard let contentView = baseView.snapshotView(afterScreenUpdates: afterScreenUpdates) else { fatalError("Unable to snapshot view: \(baseView)") }
                 let snapshot = SnapshotView(contentView: contentView)
                 
-                snapshot.layer.masksToBounds = true
+                snapshot.layer.masksToBounds = cornerRadius > 0
                 snapshot.layer.cornerRadius = cornerRadius
                 baseView.layer.cornerRadius = cornerRadius
                 
@@ -45,9 +45,15 @@ public struct State {
     }
     
     // MARK: Properties
-    public let view: UIView /// The view being subjected to the shift.
-    public let identifier: AnyHashable /// The identifier assigned to this `State`. Each identifier in the source should match an identifier in the destination.
-    public let configuration: Configuration /// The method used to configure the view. Defaults to .snapshot.
+    
+    /// The view being subjected to the shift.
+    public let view: UIView
+    
+    /// The identifier assigned to this `State`. Each identifier in the source should match an identifier in the destination.
+    public let identifier: AnyHashable
+    
+    /// The method used to configure the view. Defaults to .snapshot.
+    public let configuration: Configuration
     
     // MARK: Initializers    
     public init(view: UIView, identifier: AnyHashable, configuration: Configuration = .snapshot) {
@@ -77,7 +83,7 @@ public extension State {
     }
     
     func applyState(to view: UIView, in container: UIView) {
-        currentSnapshot().applyState(to: view, in: container)
+        snapshot().applyState(to: view, in: container)
     }
     
     func cleanupReplicantView(_ replicantView: UIView) {
@@ -90,7 +96,7 @@ public extension State {
 extension State {
     
     /// Returns a `Snapshot` of the current state of the `State`.
-    func currentSnapshot() -> Snapshot {
+    func snapshot() -> Snapshot {
         return Snapshot(view: view)
     }
     
