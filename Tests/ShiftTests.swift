@@ -17,7 +17,7 @@ class ShiftTests: XCTestCase {
         
         let a = Shift(source: s, destination: d)
         let b = Shift(source: s, destination: d)
-        let c = Shift(source: s, destination: d, animationContext: SpringAnimationContext(timingParameters: UISpringTimingParameters(dampingRatio: 1.0)))
+        let c = Shift(source: s, destination: d, timingContext: SpringAnimationContext(timingParameters: UISpringTimingParameters(dampingRatio: 1.0)))
         
         XCTAssertEqual(a, b)
         XCTAssertEqual(a, c)
@@ -44,7 +44,7 @@ class ShiftTests: XCTestCase {
         let d = State(view: UIView(), identifier: "id")
         
         let a = Shift(source: s, destination: d)
-        let b = Shift(source: s, destination: d, animationContext: SpringAnimationContext(timingParameters: UISpringTimingParameters(dampingRatio: 1.0)))
+        let b = Shift(source: s, destination: d, timingContext: SpringAnimationContext(timingParameters: UISpringTimingParameters(dampingRatio: 1.0)))
         
         XCTAssertEqual(a.hashValue, b.hashValue)
     }
