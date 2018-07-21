@@ -57,4 +57,3 @@ public extension Array where Element == Action {
         return ActionGroup(actions: self + [action])
     }
 }
-
