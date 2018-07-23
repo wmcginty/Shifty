@@ -161,6 +161,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E409E582106660A00364894 /* Shifty */ = {
+			isa = PBXGroup;
+			children = (
+				B4D70F2920A8DD6D00EBB707 /* ActionAnimator.swift */,
+				B4D70F2C20A8DD7100EBB707 /* ShiftAnimator.swift */,
+				B4D70F3820A8DD7A00EBB707 /* Extensions */,
+				B4D70F3C20A8DD7A00EBB707 /* Helper */,
+				B4D70F2E20A8DD7900EBB707 /* Model */,
+				B4D70F3520A8DD7900EBB707 /* Protocols */,
+			);
+			path = Shifty;
+			sourceTree = "<group>";
+		};
 		3B5C11179C31AF6EE6F9F683 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,12 +228,7 @@
 		B4D70EF120A8DCA300EBB707 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				B4D70F2920A8DD6D00EBB707 /* ActionAnimator.swift */,
-				B4D70F2C20A8DD7100EBB707 /* ShiftAnimator.swift */,
-				B4D70F3820A8DD7A00EBB707 /* Extensions */,
-				B4D70F3C20A8DD7A00EBB707 /* Helper */,
-				B4D70F2E20A8DD7900EBB707 /* Model */,
-				B4D70F3520A8DD7900EBB707 /* Protocols */,
+				0E409E582106660A00364894 /* Shifty */,
 				B4D70EF520A8DCD300EBB707 /* Supporting Files */,
 			);
 			path = Sources;
@@ -659,6 +667,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
+				VERSION = 2.0.1;
 			};
 			name = Debug;
 		};
@@ -707,6 +716,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
+				VERSION = 2.0.1;
 			};
 			name = Release;
 		};

@@ -23,7 +23,7 @@ on creating the transition that is custom to your app.
   s.source           = { :git => 'https://github.com/wmcginty/Shifty.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '10.0'
-  s.source_files = 'Sources/**/*'
+  s.source_files = 'Sources/Shifty/**/*'
   s.frameworks = 'UIKit'
 
 end
