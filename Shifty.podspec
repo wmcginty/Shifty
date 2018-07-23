@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Shifty'
-  s.version          = '2.0.0'
+  s.version          = '2.0.1'
   s.summary          = 'A small transitioning library that aims to make performing frame shifts easier.'
   s.description      = <<-DESC
 Shifty is a small transitioning library designed to make creating frame shift view controller transitions much simpler.
