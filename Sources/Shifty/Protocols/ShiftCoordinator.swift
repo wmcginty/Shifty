@@ -21,7 +21,7 @@ public struct DefaultCoordinator: ShiftCoordinator {
         self.timingContext = animationContext
     }
     
-    public init(timingCurve: UIViewAnimationCurve = .easeInOut) {
+    public init(timingCurve: UIView.AnimationCurve = .easeInOut) {
         self.init(animationContext: CubicAnimationContext(timingParameters: UICubicTimingParameters(animationCurve: timingCurve)))
     }
 
