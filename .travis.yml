@@ -11,8 +11,8 @@ env:
   matrix:
     - DESTINATION="platform=iOS Simulator,OS=11.3,name=iPhone X" SDK="iphonesimulator" SCHEME="$IOS_FRAMEWORK_SCHEME" RUN_TESTS="YES" POD_LINT="YES"
 
-before_install:
-  - brew upgrade swiftlint
+#before_install:
+#  - brew upgrade swiftlint
 
 script:
   - swiftlint
