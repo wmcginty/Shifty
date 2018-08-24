@@ -84,7 +84,7 @@ public extension State {
     
     func applyState(to otherView: UIView, in container: UIView) {
         if let superview = view.superview {
-            snapshot().applyState(to: view, in: container, withReferenceTo: superview)
+            snapshot().applyState(to: otherView, in: container, withReferenceTo: superview)
         }
     }
     
