@@ -338,9 +338,9 @@
 		B4D70F9F20A8DF4300EBB707 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B4D70F8020A8DE1800EBB707 /* ShiftExampleViewControllerA.swift */,
 				B4D70F7B20A8DE1800EBB707 /* ShiftExampleViewControllerB.swift */,
 				B4D70F7D20A8DE1800EBB707 /* ContinuousExampleViewControllerA.swift */,
-				B4D70F8020A8DE1800EBB707 /* ShiftExampleViewControllerA.swift */,
 				B4D70F8120A8DE1800EBB707 /* ContinuousExampleViewControllerB.swift */,
 				B4D70F8820A8DE1800EBB707 /* CommitShiftExampleViewControllerB.swift */,
 				B4D70F8920A8DE1800EBB707 /* CommitShiftExampleViewControllerA.swift */,
