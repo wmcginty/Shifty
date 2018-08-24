@@ -82,8 +82,10 @@ public extension State {
         return configuration.configuredShiftingView(for: view, afterScreenUpdates: afterScreenUpdates)
     }
     
-    func applyState(to view: UIView, in container: UIView) {
-        snapshot().applyState(to: view, in: container)
+    func applyState(to otherView: UIView, in container: UIView) {
+        if let superview = view.superview {
+            snapshot().applyState(to: view, in: container, withReferenceTo: superview)
+        }
     }
     
     func cleanupReplicantView(_ replicantView: UIView) {
