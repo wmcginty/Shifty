@@ -104,8 +104,6 @@ extension State {
     
     func configureNativeView(hidden: Bool) {
         view.isHidden = hidden
-        view.setNeedsLayout()
-        view.layoutIfNeeded()
     }
 }
 
