@@ -10,8 +10,8 @@ import Foundation
 import Shifty
 
 struct EvenShiftCoordinator: ShiftCoordinator {
-    
-    public func shifts(from sources: [State], to destinations: [State]) -> [Shift] {
+
+    func shifts(from sources: [State], to destinations: [State]) -> [Shift] {
         return zip(sources.indices, sources).compactMap { (index, source) in
             guard let match = destinations.first(where: { $0.identifier == source.identifier }) else { return nil }
             

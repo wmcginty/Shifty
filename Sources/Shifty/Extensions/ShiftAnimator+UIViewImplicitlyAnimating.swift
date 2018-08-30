@@ -32,7 +32,7 @@ extension ShiftAnimator: UIViewImplicitlyAnimating {
     public var fractionComplete: CGFloat {
         get { return representativeAnimator?.fractionComplete ?? 0 }
         set {
-            animators.values.forEach { $0.fractionComplete = fractionComplete }
+            animators.values.forEach { $0.fractionComplete = newValue }
         }
     }
     

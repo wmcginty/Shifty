@@ -10,7 +10,6 @@
 		B48612BB20A8E028003B8152 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B48612BA20A8E028003B8152 /* Main.storyboard */; };
 		B4D70F0420A8DCF600EBB707 /* Shifty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D70EFB20A8DCF500EBB707 /* Shifty.framework */; };
 		B4D70F2320A8DD3600EBB707 /* ShiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F1E20A8DD3600EBB707 /* ShiftTests.swift */; };
-		B4D70F2420A8DD3600EBB707 /* AnimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F1F20A8DD3600EBB707 /* AnimatorTests.swift */; };
 		B4D70F2520A8DD3600EBB707 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2020A8DD3600EBB707 /* CoordinatorTests.swift */; };
 		B4D70F2620A8DD3600EBB707 /* SnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2120A8DD3600EBB707 /* SnapshotTests.swift */; };
 		B4D70F2720A8DD3600EBB707 /* ShiftableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2220A8DD3600EBB707 /* ShiftableTests.swift */; };
@@ -92,7 +91,6 @@
 		B4D70F0320A8DCF600EBB707 /* Shifty-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shifty-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4D70F1320A8DD0100EBB707 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Tests/Supporting Files/Info.plist"; sourceTree = SOURCE_ROOT; };
 		B4D70F1E20A8DD3600EBB707 /* ShiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftTests.swift; sourceTree = "<group>"; };
-		B4D70F1F20A8DD3600EBB707 /* AnimatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatorTests.swift; sourceTree = "<group>"; };
 		B4D70F2020A8DD3600EBB707 /* CoordinatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
 		B4D70F2120A8DD3600EBB707 /* SnapshotTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotTests.swift; sourceTree = "<group>"; };
 		B4D70F2220A8DD3600EBB707 /* ShiftableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftableTests.swift; sourceTree = "<group>"; };
@@ -181,6 +179,7 @@
 				63FADE7377C13CC4C4C04646 /* Pods_Shifty_Tests.framework */,
 			);
 			name = Frameworks;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		607FACC71AFB9204008FA782 = {
@@ -191,7 +190,6 @@
 				B4D70EF220A8DCAB00EBB707 /* Examples */,
 				607FACD11AFB9204008FA782 /* Products */,
 				65CAA1B23F4BE35D56694E70 /* Pods */,
-				3B5C11179C31AF6EE6F9F683 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -245,7 +243,7 @@
 		B4D70EF320A8DCAF00EBB707 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				B4D70F1F20A8DD3600EBB707 /* AnimatorTests.swift */,
+				3B5C11179C31AF6EE6F9F683 /* Frameworks */,
 				B4D70F2020A8DD3600EBB707 /* CoordinatorTests.swift */,
 				B4D70F2220A8DD3600EBB707 /* ShiftableTests.swift */,
 				B4D70F1E20A8DD3600EBB707 /* ShiftTests.swift */,
@@ -562,7 +560,6 @@
 				B4D70F2320A8DD3600EBB707 /* ShiftTests.swift in Sources */,
 				B4D70F2720A8DD3600EBB707 /* ShiftableTests.swift in Sources */,
 				B4D70F2620A8DD3600EBB707 /* SnapshotTests.swift in Sources */,
-				B4D70F2420A8DD3600EBB707 /* AnimatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

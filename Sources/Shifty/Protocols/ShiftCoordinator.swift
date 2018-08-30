@@ -8,6 +8,13 @@
 import UIKit
 
 public protocol ShiftCoordinator {
+    
+    /// Creates the `Shift` objects that can be animated from the `State` objects found in the source and destination hierarchy.
+    ///
+    /// - Parameters:
+    ///   - sources: The `State` objects residing the source's view hierarchy.
+    ///   - destinations: The `State` objects residing the source's view hierarchy.
+    /// - Returns: An array of `Shift objects.
     func shifts(from sources: [State], to destinations: [State]) -> [Shift]
 }
 
