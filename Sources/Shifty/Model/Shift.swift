@@ -45,8 +45,10 @@ extension Shift {
     }
     
     func shiftAnimations(for shiftingView: UIView, in container: UIView, target: Snapshot?) {
-        timingContext.animate {
-            target?.applyState(to: shiftingView, in: container)
+        if let destinationSuperview = destination.view.superview {
+            timingContext.animate {
+                target?.applyState(to: shiftingView, in: container, withReferenceTo: destinationSuperview)
+            }
         }
     }
     

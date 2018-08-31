@@ -41,19 +41,21 @@ public struct Snapshot: Equatable {
     ///
     /// - parameter view:          The view whose center needs to be converted.
     /// - parameter container: The coordinate space to convert the center into.
+    /// - referenceView: The view in which native view that 'new' is emulating is situated.
     ///
     /// - returns: The center of `view` in the coordinate space of `container`.
-    public func center(of view: UIView, withRespectTo container: UIView) -> CGPoint {
-        return container.convert(center, from: view.superview)
+    public func center(of view: UIView, in container: UIView, withReferenceTo referenceView: UIView) -> CGPoint {
+        return container.convert(center, from: referenceView)
     }
     
     /// Apply the position state of Snapshot to the provided view in the container.
     ///
     /// - parameter new:       The view to apply the Snapshot too.
     /// - parameter container: The superview of `new`.
-    public func applyState(to new: UIView, in container: UIView) {
+    /// - referenceView: The view in which native view that 'new' is emulating is situated.
+    public func applyState(to new: UIView, in container: UIView, withReferenceTo referenceView: UIView) {
         new.bounds = bounds
-        new.center = center(of: new, withRespectTo: container)
+        new.center = center(of: new, in: container, withReferenceTo: referenceView)
         
         /*Setting the view.transform simply converts the affine transform to into a 3D coordinate space and sets the layer's CATransform3D.
          This means we shouldn't (can't) animate both properties simultaneously - and instead rely solely on the view's layer's CATransform3D. */
