@@ -19,7 +19,7 @@ public class ActionAnimator {
     
     // MARK: Initializers
     public init(transitionable: ShiftTransitionable, isInverted: Bool = false, viewConfiguration: State.Configuration = .snapshot) {
-        self.actionReference = Prospector().actionReference(from: transitionable)
+        self.actionReference = Prospector.actionReference(from: transitionable)
         self.isInverted = isInverted
         self.viewConfiguration = viewConfiguration
     }

@@ -21,14 +21,16 @@ public class ShiftAnimator: NSObject {
     private(set) var animators: [Shift: UIViewPropertyAnimator] = [:]
 
     // MARK: Initializers
-    public init(source: ShiftTransitionable, destination: ShiftTransitionable, coordinator: ShiftCoordinator = DefaultCoordinator()) {
-        let prospects = Prospector().prospectiveShifts(from: source, to: destination)
-        self.shifts = coordinator.shifts(from: prospects.sources, to: prospects.destinations)
+    public convenience init?(source: ShiftTransitionable, destination: ShiftTransitionable, timingContext: TimingContext = CubicAnimationContext.default) {
+        self.init(source: source, destination: destination, coordinator: DefaultCoordinator(animationContext: timingContext))
     }
     
-    public convenience init?(source: Any, destination: Any, coordinator: ShiftCoordinator = DefaultCoordinator()) {
-        guard let source = source as? ShiftTransitionable, let destination = destination as? ShiftTransitionable else { return nil }
-        self.init(source: source, destination: destination, coordinator: coordinator)
+    public init?(source: ShiftTransitionable, destination: ShiftTransitionable, coordinator: ShiftCoordinator) {
+        let prospects = Prospector.prospectiveShifts(from: source, to: destination)
+        let shifts = coordinator.shifts(from: prospects.sources, to: prospects.destinations)
+        guard !shifts.isEmpty else { return nil }
+        
+        self.shifts = shifts
     }
     
     // MARK: Interface
@@ -39,8 +41,9 @@ public class ShiftAnimator: NSObject {
     
     public func animate(withDuration duration: TimeInterval, inContainer container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
         commitDestinationsIfNeeded()
+        assert(!shifts.isEmpty, "The ShiftAnimator should not be created with an empty [Shift].")
+        
         shifts.forEach { shift in
-            
             let animator = configuredAnimator(for: shift, duration: duration, in: container)
             if let completion = completion, shift == shifts.first {
                 animator.addCompletion(completion)
