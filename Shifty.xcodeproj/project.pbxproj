@@ -664,7 +664,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
-				VERSION = 2.0.1;
+				VERSION = 2.1.0;
 			};
 			name = Debug;
 		};
@@ -713,7 +713,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
-				VERSION = 2.0.1;
+				VERSION = 2.1.0;
 			};
 			name = Release;
 		};
