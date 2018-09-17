@@ -8,7 +8,7 @@
 import Foundation
 
 /* TODO:
-    -Allow 'entrance' animations to happen simultaneously with shifts. Possibly by moving all exit/entrance/shift animations to snapshots that are happening in front of the source/destination view hierarchies.
+ -Allow 'entrance' animations to happen simultaneously with shifts. Possibly by moving all exit/entrance/shift animations to snapshots that are happening in front of the source/destination view hierarchies.
  */
 
 public class ShiftAnimator: NSObject {
@@ -19,7 +19,7 @@ public class ShiftAnimator: NSObject {
     
     //We use multiple property animators to allow each Shift to occur on a different timing curve. This also means we can support different overall durations and delays using keyframes inside the individual `TimingContext`s.
     private(set) var animators: [Shift: UIViewPropertyAnimator] = [:]
-
+    
     // MARK: Initializers
     public convenience init?(source: ShiftTransitionable, destination: ShiftTransitionable, timingContext: TimingContext = CubicAnimationContext.default) {
         self.init(source: source, destination: destination, coordinator: DefaultCoordinator(animationContext: timingContext))

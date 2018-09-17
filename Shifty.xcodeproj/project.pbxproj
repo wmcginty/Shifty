@@ -179,6 +179,7 @@
 				63FADE7377C13CC4C4C04646 /* Pods_Shifty_Tests.framework */,
 			);
 			name = Frameworks;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		607FACC71AFB9204008FA782 = {
@@ -189,7 +190,6 @@
 				B4D70EF220A8DCAB00EBB707 /* Examples */,
 				607FACD11AFB9204008FA782 /* Products */,
 				65CAA1B23F4BE35D56694E70 /* Pods */,
-				3B5C11179C31AF6EE6F9F683 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -243,6 +243,7 @@
 		B4D70EF320A8DCAF00EBB707 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				3B5C11179C31AF6EE6F9F683 /* Frameworks */,
 				B4D70F2020A8DD3600EBB707 /* CoordinatorTests.swift */,
 				B4D70F2220A8DD3600EBB707 /* ShiftableTests.swift */,
 				B4D70F1E20A8DD3600EBB707 /* ShiftTests.swift */,
@@ -335,9 +336,9 @@
 		B4D70F9F20A8DF4300EBB707 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B4D70F8020A8DE1800EBB707 /* ShiftExampleViewControllerA.swift */,
 				B4D70F7B20A8DE1800EBB707 /* ShiftExampleViewControllerB.swift */,
 				B4D70F7D20A8DE1800EBB707 /* ContinuousExampleViewControllerA.swift */,
-				B4D70F8020A8DE1800EBB707 /* ShiftExampleViewControllerA.swift */,
 				B4D70F8120A8DE1800EBB707 /* ContinuousExampleViewControllerB.swift */,
 				B4D70F8820A8DE1800EBB707 /* CommitShiftExampleViewControllerB.swift */,
 				B4D70F8920A8DE1800EBB707 /* CommitShiftExampleViewControllerA.swift */,
@@ -662,7 +663,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				VERSION = 2.0.1;
 			};
 			name = Debug;
@@ -710,7 +711,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 				VERSION = 2.0.1;
 			};
@@ -745,7 +746,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -779,7 +779,6 @@
 				PRODUCT_NAME = Shifty;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -807,7 +806,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mcginty.will.Shifty-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -832,7 +830,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mcginty.will.Shifty-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -859,7 +856,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mcginty.will.Shifty-iOSExample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -885,7 +881,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mcginty.will.Shifty-iOSExample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

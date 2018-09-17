@@ -27,6 +27,7 @@ class PrecommitShiftTransitionAnimator: NSObject, UIViewControllerAnimatedTransi
         guard let sourceController = transitionContext.viewController(forKey: .from), let destinationController = transitionContext.viewController(forKey: .to) else { return }
         guard let destinationView = transitionContext.view(forKey: .to) else { return }
         guard let source = sourceController as? ShiftTransitionable, let destination = destinationController as? ShiftTransitionable else { return }
+        guard let shiftAnimator = ShiftAnimator(source: source, destination: destination, coordinator: EvenShiftCoordinator()) else { return }
         
         guard let shiftAnimator = ShiftAnimator(source: source, destination: destination, coordinator: EvenShiftCoordinator()) else { return }
         

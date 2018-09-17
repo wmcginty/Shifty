@@ -2,7 +2,7 @@
 # * http://www.objc.io/issue-6/travis-ci.html
 # * https://github.com/supermarin/xcpretty#usage
 
-osx_image: xcode9.3
+osx_image: xcode10
 language: swift
 env:
   global:
@@ -11,8 +11,8 @@ env:
   matrix:
     - DESTINATION="platform=iOS Simulator,OS=11.3,name=iPhone X" SDK="iphonesimulator" SCHEME="$IOS_FRAMEWORK_SCHEME" RUN_TESTS="YES" POD_LINT="YES"
 
-before_install:
-  - brew upgrade swiftlint
+#before_install:
+#  - brew upgrade swiftlint
 
 script:
   - swiftlint

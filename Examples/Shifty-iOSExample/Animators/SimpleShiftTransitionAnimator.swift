@@ -39,6 +39,7 @@ class SimpleShiftTransitionAnimator: NSObject, UIViewControllerAnimatedTransitio
         shiftAnimator.animate(withDuration: transitionDuration(using: transitionContext), inContainer: container) { position in
             transitionContext.completeTransition(position == .end)
         }
+
         
         let sourceAnimator = ActionAnimator(transitionable: source)
         sourceAnimator.animate(withDuration: transitionDuration(using: transitionContext), inContainer: container)
