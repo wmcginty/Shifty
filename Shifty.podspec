@@ -21,7 +21,7 @@ on creating the transition that is custom to your app.
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'William McGinty' => 'mcgintw@gmail.com' }
   s.source           = { :git => 'https://github.com/wmcginty/Shifty.git', :tag => s.version.to_s }
-  s.swift_version = '5'
+  s.swift_version    = '5.0'
 
   s.ios.deployment_target = '10.0'
   s.source_files = 'Sources/Shifty/**/*'
