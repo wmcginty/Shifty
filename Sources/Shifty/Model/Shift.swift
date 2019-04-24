@@ -23,8 +23,9 @@ public struct Shift: Hashable {
     }
     
     // MARK: Hashable
-    public var hashValue: Int {
-        return source.hashValue ^ destination.hashValue
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(source)
+        hasher.combine(destination)
     }
     
     // MARK: Equatable
