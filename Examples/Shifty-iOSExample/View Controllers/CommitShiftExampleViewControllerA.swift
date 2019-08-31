@@ -25,9 +25,9 @@ class CommitShiftExampleViewControllerA: UIViewController, ShiftTransitionable {
     // MARK: IBActions
     @IBAction func shiftItButtonPressed(sender: AnyObject) {
         
-        yellowView.shiftID = "yellow"
-        orangeView.shiftID = "orange"
-        shiftButton.actions = [.fade(to: 0)]
+//        yellowView.shiftID = "yellow"
+//        orangeView.shiftID = "orange"
+//        shiftButton.actions = [.fade(to: 0)]
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let controller = storyboard.instantiateViewController(withIdentifier: "CommitShiftExampleViewControllerB") as? CommitShiftExampleViewControllerB else { return }

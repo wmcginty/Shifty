@@ -5,18 +5,18 @@
 //  Created by William McGinty on 12/25/17.
 //
 
-import Foundation
+import UIKit
 
-/// Represents the frame shift of a single `UIView` object.
+/// Represents the shift of a single `UIView` object.
 public struct Shift: Hashable {
     
     // MARK: Properties
-    public let source: State
-    public let destination: State
+    public let source: Target
+    public let destination: Target
     public let timingContext: TimingContext
     
     // MARK: Initializers
-    public init(source: State, destination: State, timingContext: TimingContext = CubicAnimationContext.default) {
+    public init(source: Target, destination: Target, timingContext: TimingContext = CubicAnimationContext.default) {
         self.source = source
         self.destination = destination
         self.timingContext = timingContext

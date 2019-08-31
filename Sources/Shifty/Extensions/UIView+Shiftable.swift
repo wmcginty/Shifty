@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: UIView + State
+// MARK: UIView + Target
 extension UIView {
     private struct AssociatedKeys {
         static var shiftID = "shiftID"
@@ -16,34 +16,34 @@ extension UIView {
     
     /** The shift identifier for this `UIView`. If this identifier matches the identifier for another `UIView` in the destination of a
      transition, Shifty can animate the view from it's source position to it's destination position. This property simply creates a
-     default 'State' object and assigns it to the view's `shiftState` property. */
-    public var shiftID: AnyHashable? {
+     default 'Target' object and assigns it to the view's `shiftState` property. */
+    public var shiftID: Shift.Identifier? {
         get { return shiftState?.identifier }
         set {
             guard let shiftID = newValue else { return }
-            shiftState = State(view: self, identifier: shiftID)
+            shiftState = Shift.Target(view: self, identifier: shiftID)
         }
     }
     
     /** The shift state object associated with this `UIView`. Contains the information necessary for the animator to create and execute
      the transition from it's position and state in the source to that in the destination. */
-    public var shiftState: State? {
+    public var shiftState: Shift.Target? {
         get { return getAssociatedObject(associatedKey: &AssociatedKeys.shiftID) }
         set {
             guard let shiftable = newValue else { return }
             setAssociatedObject(shiftable, associatedKey: &AssociatedKeys.shiftID, policy: .OBJC_ASSOCIATION_RETAIN)
-            actions = nil
+            //actions = nil
         }
     }
     
-    public var actions: ActionGroup? {
-        get { return getAssociatedObject(associatedKey: &AssociatedKeys.actions) }
-        set {
-            guard let actions = newValue else { return }
-            setAssociatedObject(actions, associatedKey: &AssociatedKeys.actions, policy: .OBJC_ASSOCIATION_RETAIN)
-            shiftState = nil
-        }
-    }
+//    public var actions: ActionGroup? {
+//        get { return getAssociatedObject(associatedKey: &AssociatedKeys.actions) }
+//        set {
+//            guard let actions = newValue else { return }
+//            setAssociatedObject(actions, associatedKey: &AssociatedKeys.actions, policy: .OBJC_ASSOCIATION_RETAIN)
+//            shiftState = nil
+//        }
+//    }
 }
 
 // MARK: NSObject + Associated Values

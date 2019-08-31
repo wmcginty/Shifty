@@ -7,25 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B44B2279231A21C200A2E80B /* ReplicationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B2278231A21C200A2E80B /* ReplicationStrategy.swift */; };
+		B44B227E231A259700A2E80B /* SnapshotTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B44B227D231A259700A2E80B /* SnapshotTesting.framework */; };
+		B44B2280231A25E800A2E80B /* ReplicantStrategyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B227F231A25E800A2E80B /* ReplicantStrategyTests.swift */; };
+		B44B2283231A323400A2E80B /* Shift.Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B2282231A323400A2E80B /* Shift.Identifier.swift */; };
+		B44B2287231A397700A2E80B /* CATransform3D+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B2286231A397700A2E80B /* CATransform3D+Equatable.swift */; };
+		B44B228A231A3D1400A2E80B /* ShiftAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B2289231A3D1400A2E80B /* ShiftAnimator.swift */; };
+		B44B228C231A3E8C00A2E80B /* TimingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B228B231A3E8C00A2E80B /* TimingProvider.swift */; };
+		B44B2297231A45BF00A2E80B /* TimingProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B2295231A448B00A2E80B /* TimingProviderTests.swift */; };
+		B44B2298231A45D200A2E80B /* ShiftIdentifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B228F231A443A00A2E80B /* ShiftIdentifierTests.swift */; };
+		B44B2299231A45D700A2E80B /* ShiftTargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B2291231A445100A2E80B /* ShiftTargetTests.swift */; };
+		B44B229C231A48B000A2E80B /* SnapshotViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B229A231A48AB00A2E80B /* SnapshotViewTests.swift */; };
+		B47C8D98231AD107000AF742 /* Replicable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47C8D97231AD107000AF742 /* Replicable.swift */; };
 		B48612BB20A8E028003B8152 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B48612BA20A8E028003B8152 /* Main.storyboard */; };
 		B4D70F0420A8DCF600EBB707 /* Shifty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D70EFB20A8DCF500EBB707 /* Shifty.framework */; };
 		B4D70F2320A8DD3600EBB707 /* ShiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F1E20A8DD3600EBB707 /* ShiftTests.swift */; };
 		B4D70F2520A8DD3600EBB707 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2020A8DD3600EBB707 /* CoordinatorTests.swift */; };
 		B4D70F2620A8DD3600EBB707 /* SnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2120A8DD3600EBB707 /* SnapshotTests.swift */; };
-		B4D70F2720A8DD3600EBB707 /* ShiftableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2220A8DD3600EBB707 /* ShiftableTests.swift */; };
 		B4D70F2A20A8DD6D00EBB707 /* ShiftCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2820A8DD6D00EBB707 /* ShiftCoordinator.swift */; };
 		B4D70F2B20A8DD6D00EBB707 /* ActionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2920A8DD6D00EBB707 /* ActionAnimator.swift */; };
-		B4D70F2D20A8DD7200EBB707 /* ShiftAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2C20A8DD7100EBB707 /* ShiftAnimator.swift */; };
+		B4D70F2D20A8DD7200EBB707 /* MultiShiftAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2C20A8DD7100EBB707 /* MultiShiftAnimator.swift */; };
 		B4D70F3F20A8DD7A00EBB707 /* ActionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2F20A8DD7900EBB707 /* ActionGroup.swift */; };
 		B4D70F4020A8DD7A00EBB707 /* Shift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3020A8DD7900EBB707 /* Shift.swift */; };
 		B4D70F4120A8DD7A00EBB707 /* Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3120A8DD7900EBB707 /* Snapshot.swift */; };
-		B4D70F4220A8DD7A00EBB707 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3220A8DD7900EBB707 /* State.swift */; };
+		B4D70F4220A8DD7A00EBB707 /* Shift.Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3220A8DD7900EBB707 /* Shift.Target.swift */; };
 		B4D70F4320A8DD7A00EBB707 /* TimingContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3320A8DD7900EBB707 /* TimingContext.swift */; };
 		B4D70F4420A8DD7A00EBB707 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3420A8DD7900EBB707 /* Action.swift */; };
 		B4D70F4520A8DD7A00EBB707 /* ShiftTransitionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3620A8DD7900EBB707 /* ShiftTransitionable.swift */; };
 		B4D70F4620A8DD7A00EBB707 /* TransitionRespondable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3720A8DD7900EBB707 /* TransitionRespondable.swift */; };
 		B4D70F4820A8DD7A00EBB707 /* UIView+Shiftable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3A20A8DD7A00EBB707 /* UIView+Shiftable.swift */; };
-		B4D70F4920A8DD7A00EBB707 /* ShiftAnimator+UIViewImplicitlyAnimating.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3B20A8DD7A00EBB707 /* ShiftAnimator+UIViewImplicitlyAnimating.swift */; };
 		B4D70F4A20A8DD7A00EBB707 /* Prospector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3D20A8DD7A00EBB707 /* Prospector.swift */; };
 		B4D70F4B20A8DD7A00EBB707 /* SnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3E20A8DD7A00EBB707 /* SnapshotView.swift */; };
 		B4D70F5220A8DDA900EBB707 /* Shifty.h in Headers */ = {isa = PBXBuildFile; fileRef = B4D70F5020A8DDA900EBB707 /* Shifty.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -50,6 +60,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		B44B227A231A257D00A2E80B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B4D70F5720A8DDCB00EBB707;
+			remoteInfo = "Shifty-iOSExample";
+		};
 		B4D70F0520A8DCF600EBB707 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
@@ -81,11 +98,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		357FF35769807C049027C20C /* Pods-Shifty_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifty_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Shifty_Tests/Pods-Shifty_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		4154398CB3D0445EF85B1604 /* Pods-Shifty_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifty_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Shifty_Example/Pods-Shifty_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		445B06F01EDC49EB0210A66C /* Pods-Shifty_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifty_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shifty_Tests/Pods-Shifty_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		63FADE7377C13CC4C4C04646 /* Pods_Shifty_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shifty_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9396B34D2254E80A9AC607D5 /* Pods_Shifty_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shifty_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B44B2278231A21C200A2E80B /* ReplicationStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplicationStrategy.swift; sourceTree = "<group>"; };
+		B44B227D231A259700A2E80B /* SnapshotTesting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapshotTesting.framework; path = Carthage/Build/iOS/SnapshotTesting.framework; sourceTree = "<group>"; };
+		B44B227F231A25E800A2E80B /* ReplicantStrategyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplicantStrategyTests.swift; sourceTree = "<group>"; };
+		B44B2282231A323400A2E80B /* Shift.Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shift.Identifier.swift; sourceTree = "<group>"; };
+		B44B2286231A397700A2E80B /* CATransform3D+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CATransform3D+Equatable.swift"; sourceTree = "<group>"; };
+		B44B2289231A3D1400A2E80B /* ShiftAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftAnimator.swift; sourceTree = "<group>"; };
+		B44B228B231A3E8C00A2E80B /* TimingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimingProvider.swift; sourceTree = "<group>"; };
+		B44B228F231A443A00A2E80B /* ShiftIdentifierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftIdentifierTests.swift; sourceTree = "<group>"; };
+		B44B2291231A445100A2E80B /* ShiftTargetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftTargetTests.swift; sourceTree = "<group>"; };
+		B44B2295231A448B00A2E80B /* TimingProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimingProviderTests.swift; sourceTree = "<group>"; };
+		B44B229A231A48AB00A2E80B /* SnapshotViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotViewTests.swift; sourceTree = "<group>"; };
+		B47C8D97231AD107000AF742 /* Replicable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Replicable.swift; sourceTree = "<group>"; };
 		B48612BA20A8E028003B8152 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B4D70EFB20A8DCF500EBB707 /* Shifty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Shifty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4D70F0320A8DCF600EBB707 /* Shifty-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shifty-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,20 +117,18 @@
 		B4D70F1E20A8DD3600EBB707 /* ShiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftTests.swift; sourceTree = "<group>"; };
 		B4D70F2020A8DD3600EBB707 /* CoordinatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
 		B4D70F2120A8DD3600EBB707 /* SnapshotTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotTests.swift; sourceTree = "<group>"; };
-		B4D70F2220A8DD3600EBB707 /* ShiftableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftableTests.swift; sourceTree = "<group>"; };
 		B4D70F2820A8DD6D00EBB707 /* ShiftCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftCoordinator.swift; sourceTree = "<group>"; };
 		B4D70F2920A8DD6D00EBB707 /* ActionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionAnimator.swift; sourceTree = "<group>"; };
-		B4D70F2C20A8DD7100EBB707 /* ShiftAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftAnimator.swift; sourceTree = "<group>"; };
+		B4D70F2C20A8DD7100EBB707 /* MultiShiftAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiShiftAnimator.swift; sourceTree = "<group>"; };
 		B4D70F2F20A8DD7900EBB707 /* ActionGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionGroup.swift; sourceTree = "<group>"; };
 		B4D70F3020A8DD7900EBB707 /* Shift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shift.swift; sourceTree = "<group>"; };
 		B4D70F3120A8DD7900EBB707 /* Snapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snapshot.swift; sourceTree = "<group>"; };
-		B4D70F3220A8DD7900EBB707 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		B4D70F3220A8DD7900EBB707 /* Shift.Target.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shift.Target.swift; sourceTree = "<group>"; };
 		B4D70F3320A8DD7900EBB707 /* TimingContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimingContext.swift; sourceTree = "<group>"; };
 		B4D70F3420A8DD7900EBB707 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		B4D70F3620A8DD7900EBB707 /* ShiftTransitionable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftTransitionable.swift; sourceTree = "<group>"; };
 		B4D70F3720A8DD7900EBB707 /* TransitionRespondable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionRespondable.swift; sourceTree = "<group>"; };
 		B4D70F3A20A8DD7A00EBB707 /* UIView+Shiftable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Shiftable.swift"; sourceTree = "<group>"; };
-		B4D70F3B20A8DD7A00EBB707 /* ShiftAnimator+UIViewImplicitlyAnimating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ShiftAnimator+UIViewImplicitlyAnimating.swift"; sourceTree = "<group>"; };
 		B4D70F3D20A8DD7A00EBB707 /* Prospector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prospector.swift; sourceTree = "<group>"; };
 		B4D70F3E20A8DD7A00EBB707 /* SnapshotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotView.swift; sourceTree = "<group>"; };
 		B4D70F5020A8DDA900EBB707 /* Shifty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shifty.h; sourceTree = "<group>"; };
@@ -129,7 +151,6 @@
 		B4D70F8920A8DE1800EBB707 /* CommitShiftExampleViewControllerA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitShiftExampleViewControllerA.swift; sourceTree = "<group>"; };
 		B4D70F9920A8DEAD00EBB707 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4D70F9D20A8DF4000EBB707 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D1A5DE282137D43D5F1CA167 /* Pods-Shifty_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifty_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shifty_Example/Pods-Shifty_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B44B227E231A259700A2E80B /* SnapshotTesting.framework in Frameworks */,
 				B4D70F0420A8DCF600EBB707 /* Shifty.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,34 +184,23 @@
 		0E409E582106660A00364894 /* Shifty */ = {
 			isa = PBXGroup;
 			children = (
-				B4D70F2920A8DD6D00EBB707 /* ActionAnimator.swift */,
-				B4D70F2C20A8DD7100EBB707 /* ShiftAnimator.swift */,
-				B4D70F3820A8DD7A00EBB707 /* Extensions */,
+				B44B2288231A3CE400A2E80B /* Animators */,
 				B4D70F3C20A8DD7A00EBB707 /* Helper */,
 				B4D70F2E20A8DD7900EBB707 /* Model */,
+				B4D70F3820A8DD7A00EBB707 /* Extensions */,
 				B4D70F3520A8DD7900EBB707 /* Protocols */,
 			);
 			path = Shifty;
 			sourceTree = "<group>";
 		};
-		3B5C11179C31AF6EE6F9F683 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				9396B34D2254E80A9AC607D5 /* Pods_Shifty_Example.framework */,
-				63FADE7377C13CC4C4C04646 /* Pods_Shifty_Tests.framework */,
-			);
-			name = Frameworks;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				B4D70EF220A8DCAB00EBB707 /* Examples */,
 				B4D70EF120A8DCA300EBB707 /* Sources */,
 				B4D70EF320A8DCAF00EBB707 /* Tests */,
-				B4D70EF220A8DCAB00EBB707 /* Examples */,
 				607FACD11AFB9204008FA782 /* Products */,
-				65CAA1B23F4BE35D56694E70 /* Pods */,
+				B44B227C231A259700A2E80B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -203,17 +214,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		65CAA1B23F4BE35D56694E70 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				4154398CB3D0445EF85B1604 /* Pods-Shifty_Example.debug.xcconfig */,
-				D1A5DE282137D43D5F1CA167 /* Pods-Shifty_Example.release.xcconfig */,
-				357FF35769807C049027C20C /* Pods-Shifty_Tests.debug.xcconfig */,
-				445B06F01EDC49EB0210A66C /* Pods-Shifty_Tests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		B42DDE612103E0ED0098AFD6 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +221,65 @@
 				B4D70F2F20A8DD7900EBB707 /* ActionGroup.swift */,
 			);
 			path = Actions;
+			sourceTree = "<group>";
+		};
+		B44B227C231A259700A2E80B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B44B227D231A259700A2E80B /* SnapshotTesting.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B44B2284231A32E300A2E80B /* Shift */ = {
+			isa = PBXGroup;
+			children = (
+				B4D70F3020A8DD7900EBB707 /* Shift.swift */,
+				B4D70F3220A8DD7900EBB707 /* Shift.Target.swift */,
+				B44B2282231A323400A2E80B /* Shift.Identifier.swift */,
+			);
+			path = Shift;
+			sourceTree = "<group>";
+		};
+		B44B2285231A32E900A2E80B /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				B44B228B231A3E8C00A2E80B /* TimingProvider.swift */,
+				B44B2278231A21C200A2E80B /* ReplicationStrategy.swift */,
+				B4D70F3120A8DD7900EBB707 /* Snapshot.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		B44B2288231A3CE400A2E80B /* Animators */ = {
+			isa = PBXGroup;
+			children = (
+				B44B2289231A3D1400A2E80B /* ShiftAnimator.swift */,
+				B4D70F2920A8DD6D00EBB707 /* ActionAnimator.swift */,
+				B4D70F2C20A8DD7100EBB707 /* MultiShiftAnimator.swift */,
+			);
+			path = Animators;
+			sourceTree = "<group>";
+		};
+		B44B2293231A447900A2E80B /* Shifting */ = {
+			isa = PBXGroup;
+			children = (
+				B44B228F231A443A00A2E80B /* ShiftIdentifierTests.swift */,
+				B44B2291231A445100A2E80B /* ShiftTargetTests.swift */,
+				B4D70F1E20A8DD3600EBB707 /* ShiftTests.swift */,
+			);
+			path = Shifting;
+			sourceTree = "<group>";
+		};
+		B44B2294231A447E00A2E80B /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				B44B229A231A48AB00A2E80B /* SnapshotViewTests.swift */,
+				B44B227F231A25E800A2E80B /* ReplicantStrategyTests.swift */,
+				B44B2295231A448B00A2E80B /* TimingProviderTests.swift */,
+				B4D70F2120A8DD3600EBB707 /* SnapshotTests.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		B4D70EF120A8DCA300EBB707 /* Sources */ = {
@@ -243,11 +302,9 @@
 		B4D70EF320A8DCAF00EBB707 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				3B5C11179C31AF6EE6F9F683 /* Frameworks */,
+				B44B2294231A447E00A2E80B /* Shared */,
+				B44B2293231A447900A2E80B /* Shifting */,
 				B4D70F2020A8DD3600EBB707 /* CoordinatorTests.swift */,
-				B4D70F2220A8DD3600EBB707 /* ShiftableTests.swift */,
-				B4D70F1E20A8DD3600EBB707 /* ShiftTests.swift */,
-				B4D70F2120A8DD3600EBB707 /* SnapshotTests.swift */,
 				B4D70EF420A8DCC900EBB707 /* Supporting Files */,
 			);
 			path = Tests;
@@ -273,11 +330,10 @@
 		B4D70F2E20A8DD7900EBB707 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B4D70F3320A8DD7900EBB707 /* TimingContext.swift */,
+				B44B2285231A32E900A2E80B /* Shared */,
+				B44B2284231A32E300A2E80B /* Shift */,
 				B42DDE612103E0ED0098AFD6 /* Actions */,
-				B4D70F3020A8DD7900EBB707 /* Shift.swift */,
-				B4D70F3120A8DD7900EBB707 /* Snapshot.swift */,
-				B4D70F3220A8DD7900EBB707 /* State.swift */,
+				B4D70F3320A8DD7900EBB707 /* TimingContext.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -285,9 +341,10 @@
 		B4D70F3520A8DD7900EBB707 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				B4D70F2820A8DD6D00EBB707 /* ShiftCoordinator.swift */,
+				B47C8D97231AD107000AF742 /* Replicable.swift */,
 				B4D70F3620A8DD7900EBB707 /* ShiftTransitionable.swift */,
 				B4D70F3720A8DD7900EBB707 /* TransitionRespondable.swift */,
+				B4D70F2820A8DD6D00EBB707 /* ShiftCoordinator.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -296,7 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				B4D70F3A20A8DD7A00EBB707 /* UIView+Shiftable.swift */,
-				B4D70F3B20A8DD7A00EBB707 /* ShiftAnimator+UIViewImplicitlyAnimating.swift */,
+				B44B2286231A397700A2E80B /* CATransform3D+Equatable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -304,8 +361,8 @@
 		B4D70F3C20A8DD7A00EBB707 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				B4D70F3D20A8DD7A00EBB707 /* Prospector.swift */,
 				B4D70F3E20A8DD7A00EBB707 /* SnapshotView.swift */,
+				B4D70F3D20A8DD7A00EBB707 /* Prospector.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -407,11 +464,13 @@
 				B4D70EFF20A8DCF600EBB707 /* Sources */,
 				B4D70F0020A8DCF600EBB707 /* Frameworks */,
 				B4D70F0120A8DCF600EBB707 /* Resources */,
+				B44B2281231A2A1200A2E80B /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				B4D70F0620A8DCF600EBB707 /* PBXTargetDependency */,
+				B44B227B231A257D00A2E80B /* PBXTargetDependency */,
 			);
 			name = "Shifty-iOSTests";
 			productName = "Shifty-iOSTests";
@@ -514,6 +573,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		B44B2281231A2A1200A2E80B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/SnapshotTesting.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SnapshotTesting.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
 		B48612BD20A8E0ED003B8152 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -537,16 +615,21 @@
 			files = (
 				B4D70F2B20A8DD6D00EBB707 /* ActionAnimator.swift in Sources */,
 				B4D70F4520A8DD7A00EBB707 /* ShiftTransitionable.swift in Sources */,
+				B44B228C231A3E8C00A2E80B /* TimingProvider.swift in Sources */,
+				B44B2287231A397700A2E80B /* CATransform3D+Equatable.swift in Sources */,
 				B4D70F4420A8DD7A00EBB707 /* Action.swift in Sources */,
-				B4D70F2D20A8DD7200EBB707 /* ShiftAnimator.swift in Sources */,
+				B44B228A231A3D1400A2E80B /* ShiftAnimator.swift in Sources */,
+				B4D70F2D20A8DD7200EBB707 /* MultiShiftAnimator.swift in Sources */,
 				B4D70F2A20A8DD6D00EBB707 /* ShiftCoordinator.swift in Sources */,
-				B4D70F4920A8DD7A00EBB707 /* ShiftAnimator+UIViewImplicitlyAnimating.swift in Sources */,
 				B4D70F4A20A8DD7A00EBB707 /* Prospector.swift in Sources */,
+				B44B2279231A21C200A2E80B /* ReplicationStrategy.swift in Sources */,
 				B4D70F4B20A8DD7A00EBB707 /* SnapshotView.swift in Sources */,
+				B44B2283231A323400A2E80B /* Shift.Identifier.swift in Sources */,
 				B4D70F4620A8DD7A00EBB707 /* TransitionRespondable.swift in Sources */,
 				B4D70F4120A8DD7A00EBB707 /* Snapshot.swift in Sources */,
+				B47C8D98231AD107000AF742 /* Replicable.swift in Sources */,
 				B4D70F3F20A8DD7A00EBB707 /* ActionGroup.swift in Sources */,
-				B4D70F4220A8DD7A00EBB707 /* State.swift in Sources */,
+				B4D70F4220A8DD7A00EBB707 /* Shift.Target.swift in Sources */,
 				B4D70F4820A8DD7A00EBB707 /* UIView+Shiftable.swift in Sources */,
 				B4D70F4320A8DD7A00EBB707 /* TimingContext.swift in Sources */,
 				B4D70F4020A8DD7A00EBB707 /* Shift.swift in Sources */,
@@ -557,9 +640,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B44B229C231A48B000A2E80B /* SnapshotViewTests.swift in Sources */,
 				B4D70F2520A8DD3600EBB707 /* CoordinatorTests.swift in Sources */,
+				B44B2297231A45BF00A2E80B /* TimingProviderTests.swift in Sources */,
+				B44B2299231A45D700A2E80B /* ShiftTargetTests.swift in Sources */,
+				B44B2280231A25E800A2E80B /* ReplicantStrategyTests.swift in Sources */,
+				B44B2298231A45D200A2E80B /* ShiftIdentifierTests.swift in Sources */,
 				B4D70F2320A8DD3600EBB707 /* ShiftTests.swift in Sources */,
-				B4D70F2720A8DD3600EBB707 /* ShiftableTests.swift in Sources */,
 				B4D70F2620A8DD3600EBB707 /* SnapshotTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -588,6 +675,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		B44B227B231A257D00A2E80B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B4D70F5720A8DDCB00EBB707 /* Shifty-iOSExample */;
+			targetProxy = B44B227A231A257D00A2E80B /* PBXContainerItemProxy */;
+		};
 		B4D70F0620A8DCF600EBB707 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B4D70EFA20A8DCF500EBB707 /* Shifty-iOS */;
@@ -642,7 +734,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -665,7 +757,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSION = 2.1.0;
 			};
 			name = Debug;
@@ -714,7 +806,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.2;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 				VERSION = 2.1.0;
 			};
@@ -733,12 +826,12 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 9W2C69WDZE;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -748,8 +841,6 @@
 				PRODUCT_NAME = Shifty;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -774,6 +865,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -782,8 +874,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mcginty.will.Shifty-iOS";
 				PRODUCT_NAME = Shifty;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -793,7 +883,6 @@
 		B4D70F1020A8DCF600EBB707 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -804,6 +893,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9W2C69WDZE;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
@@ -818,7 +911,6 @@
 		B4D70F1120A8DCF600EBB707 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -828,13 +920,16 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9W2C69WDZE;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mcginty.will.Shifty-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -19,9 +19,9 @@ class ShiftExampleViewControllerB: UIViewController, ShiftTransitionable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        yellowView.shiftID = "yellow"
-        orangeView.shiftID = "orange"
-        backButton.actions = [.translate(byX: 0, y: 50), .fade(to: 0)]
+//        yellowView.shiftID = "yellow"
+//        orangeView.shiftID = "orange"
+//        backButton.actions = [.translate(byX: 0, y: 50), .fade(to: 0)]
     }
     
     // MARK: IBActions

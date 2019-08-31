@@ -10,7 +10,7 @@ import UIKit
 public protocol ShiftTransitionable {
     
     /// The view that acts as a superview for all other shift-eligible views.
-    var shiftContentView: UIView { get }
+    var contentView: UIView { get }
     
     /// Denotes whether or not the conforming object contains any shiftables.
     var isShiftingEnabled: Bool { get }
@@ -31,5 +31,5 @@ public extension ShiftTransitionable {
 public extension ShiftTransitionable where Self: UIViewController {
     
     /// Provides a default value of .view to all conforming UIViewControllers.
-    var shiftContentView: UIView { return view }
+    var contentView: UIView { return view }
 }
