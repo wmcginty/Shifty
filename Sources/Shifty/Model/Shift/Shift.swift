@@ -10,56 +10,81 @@ import UIKit
 /// Represents the shift of a single `UIView` object.
 public struct Shift: Hashable {
     
+    // MARK: Subtype
+    public struct NativeViewRestorationBehavior: OptionSet, Hashable {
+        public let rawValue: Int
+        public init(rawValue: Int) { self.rawValue = rawValue }
+        
+        public static let source = NativeViewRestorationBehavior(rawValue: 1 << 0)
+        public static let destination = NativeViewRestorationBehavior(rawValue: 1 << 1)
+        public static let none: NativeViewRestorationBehavior = []
+        public static let all: NativeViewRestorationBehavior = [.source, .destination]
+    }
+    
     // MARK: Properties
     public let source: Target
     public let destination: Target
-    public let timingContext: TimingContext
+    
+    public var isPositionalOnly: Bool = false
+    public var nativeViewRestorationBehavior: NativeViewRestorationBehavior = .all
     
     // MARK: Initializers
-    public init(source: Target, destination: Target, timingContext: TimingContext = CubicAnimationContext.default) {
+    public init(source: Target, destination: Target) {
         self.source = source
         self.destination = destination
-        self.timingContext = timingContext
     }
     
-    // MARK: Hashable
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(source)
-        hasher.combine(destination)
-    }
-    
-    // MARK: Equatable
-    public static func == (lhs: Shift, rhs: Shift) -> Bool {
-        return lhs.source == rhs.source && lhs.destination == rhs.destination
+    var debug: Shift {
+        var shift = Shift(source: source.debug, destination: destination.debug)
+        shift.isPositionalOnly = true
+        
+        return shift
     }
 }
 
 // MARK: Container Management
-extension Shift {
+public extension Shift {
     
-    func configuredShiftingView(inContainer container: UIView) -> UIView {
-        //Create, add and place the shiftingView with respect to the container
-        let shiftingView = source.configuredReplicantView(inContainer: container, afterScreenUpdates: true)
+    func configuredReplicant(in container: UIView) -> UIView {
+        let replicant = source.configuredReplicant(in: container, afterScreenUpdates: true)
         configureNativeViews(hidden: true)
         
-        return shiftingView
+        return replicant
     }
     
-    func shiftAnimations(for shiftingView: UIView, in container: UIView, target: Snapshot?) {
-        if let destinationSuperview = destination.view.superview {
-            timingContext.animate {
-                target?.applyState(to: shiftingView, in: container, withReferenceTo: destinationSuperview)
+    func layoutDestinationIfNeeded() {
+        destination.view.superview?.layoutIfNeeded()
+    }
+    
+    func shift(for replicant: UIView) {
+        positionalShift(for: replicant)
+        visualShift(for: replicant)
+    }
+    
+    func positionalShift(for replicant: UIView) {
+        destinationSnapshot().applyPositionalState(to: replicant)
+    }
+    
+    func visualShift(for replicant: UIView) {
+        if !isPositionalOnly {
+            #if DEBUG
+            if !source.replicationStrategy.canVisuallyShift {
+                debugPrint("Shifty Warning: Using the snapshot replication strategy can not accomodate visual shifts (only positional).")
             }
+            #endif
+            
+            destinationSnapshot().applyVisualState(to: replicant)
         }
     }
     
-    func cleanupShiftingView(_ shiftingView: UIView) {
-        [source, destination].forEach { $0.cleanupReplicantView(shiftingView) }
+    func cleanup(replicant: UIView) {
+        source.cleanup(replicant: replicant, restoreNativeView: nativeViewRestorationBehavior.contains(.source))
+        destination.cleanup(replicant: replicant, restoreNativeView: nativeViewRestorationBehavior.contains(.destination))
     }
 }
 
 // MARK: Snapshots
-extension Shift {
+public extension Shift {
     
     func destinationSnapshot() -> Snapshot {
         return destination.snapshot()
