@@ -14,15 +14,15 @@ open class ShiftAnimator: NSObject {
     public let timingProvider: TimingProvider
     public private(set) var shift: Shift
     public private(set) var destination: Snapshot?
+    var shiftAnimator: UIViewPropertyAnimator
     
     public var isDebugEnabled: Bool = false
-    
-    private var shiftAnimator: UIViewPropertyAnimator?
     
     // MARK: Initializers
     public init(shift: Shift, timingProvider: TimingProvider) {
         self.shift = shift
         self.timingProvider = timingProvider
+        self.shiftAnimator = UIViewPropertyAnimator(duration: timingProvider.duration, timingParameters: timingProvider.parameters)
     }
  
     // MARK: Interface
@@ -34,9 +34,28 @@ open class ShiftAnimator: NSObject {
         commitIfNeeded()
         assert(destination != nil, "ShiftAnimator [\(self)] could not commit a destination snapshot for shifting.")
         
-        let animator = shiftAnimator(in: container, completion: completion)
-        animator.startAnimation()
-        shiftAnimator = animator
+        configureShiftAnimations(in: container, completion: completion)
+        startAnimation()
+    }
+    
+    func configureShiftAnimations(in container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
+        let currentShift = isDebugEnabled ? shift.debug : shift
+        let replicant = currentShift.configuredReplicant(in: container)
+        currentShift.layoutDestinationIfNeeded()
+        
+        shiftAnimator.addAnimations {
+            currentShift.shift(for: replicant)
+        }
+        
+        shiftAnimator.addCompletion { position in
+            guard position != .current else {
+                debugPrint("Shifty Warning: The shift animation did not end at either the start or end position. Abandoning automatic cleanup.")
+                completion?(position); return
+            }
+            
+            currentShift.cleanup(replicant: replicant)
+            completion?(position)
+        }
     }
 }
 
@@ -47,29 +66,5 @@ extension ShiftAnimator {
         if destination == nil {
             commit()
         }
-    }
-    
-    func shiftAnimator(in container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) -> UIViewPropertyAnimator {
-        let currentShift = isDebugEnabled ? shift.debug : shift
-        let animator = UIViewPropertyAnimator(duration: timingProvider.duration, timingParameters: timingProvider.parameters)
-        let replicant = currentShift.configuredReplicant(in: container)
-        
-        currentShift.layoutDestinationIfNeeded()
-        
-        animator.addAnimations {
-            currentShift.shift(for: replicant)
-        }
-        
-        animator.addCompletion { position in
-            guard position != .current else {
-                debugPrint("Shifty Warning: The shift animation did not end at either the start or end position. Abandoning automatic cleanup.")
-                completion?(position); return
-            }
-            
-            currentShift.cleanup(replicant: replicant)
-            completion?(position)
-        }
-        
-        return animator
     }
 }

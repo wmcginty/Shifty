@@ -19,6 +19,7 @@
 		B44B2299231A45D700A2E80B /* ShiftTargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B2291231A445100A2E80B /* ShiftTargetTests.swift */; };
 		B44B229C231A48B000A2E80B /* SnapshotViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B229A231A48AB00A2E80B /* SnapshotViewTests.swift */; };
 		B47C8D98231AD107000AF742 /* Replicable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47C8D97231AD107000AF742 /* Replicable.swift */; };
+		B47C8D9A231B1765000AF742 /* ShiftAnimator+UIViewImplicitlyAnimating.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47C8D99231B1765000AF742 /* ShiftAnimator+UIViewImplicitlyAnimating.swift */; };
 		B48612BB20A8E028003B8152 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B48612BA20A8E028003B8152 /* Main.storyboard */; };
 		B4D70F0420A8DCF600EBB707 /* Shifty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D70EFB20A8DCF500EBB707 /* Shifty.framework */; };
 		B4D70F2320A8DD3600EBB707 /* ShiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F1E20A8DD3600EBB707 /* ShiftTests.swift */; };
@@ -110,6 +111,7 @@
 		B44B2295231A448B00A2E80B /* TimingProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimingProviderTests.swift; sourceTree = "<group>"; };
 		B44B229A231A48AB00A2E80B /* SnapshotViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotViewTests.swift; sourceTree = "<group>"; };
 		B47C8D97231AD107000AF742 /* Replicable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Replicable.swift; sourceTree = "<group>"; };
+		B47C8D99231B1765000AF742 /* ShiftAnimator+UIViewImplicitlyAnimating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShiftAnimator+UIViewImplicitlyAnimating.swift"; sourceTree = "<group>"; };
 		B48612BA20A8E028003B8152 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B4D70EFB20A8DCF500EBB707 /* Shifty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Shifty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4D70F0320A8DCF600EBB707 /* Shifty-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shifty-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -255,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				B44B2289231A3D1400A2E80B /* ShiftAnimator.swift */,
+				B47C8D99231B1765000AF742 /* ShiftAnimator+UIViewImplicitlyAnimating.swift */,
 				B4D70F2920A8DD6D00EBB707 /* ActionAnimator.swift */,
 				B4D70F2C20A8DD7100EBB707 /* MultiShiftAnimator.swift */,
 			);
@@ -632,6 +635,7 @@
 				B4D70F4220A8DD7A00EBB707 /* Shift.Target.swift in Sources */,
 				B4D70F4820A8DD7A00EBB707 /* UIView+Shiftable.swift in Sources */,
 				B4D70F4320A8DD7A00EBB707 /* TimingContext.swift in Sources */,
+				B47C8D9A231B1765000AF742 /* ShiftAnimator+UIViewImplicitlyAnimating.swift in Sources */,
 				B4D70F4020A8DD7A00EBB707 /* Shift.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
