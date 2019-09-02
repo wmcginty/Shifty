@@ -65,7 +65,6 @@ class ShiftExampleViewControllerA: UIViewController, ShiftTransitionable {
             animator?.startAnimation()
         }
         
-        
 //        yellowView.shiftID = "yellow"
 //        orangeView.shiftID = "orange"
 //        shiftButton.actions = [.translate(byX: 0, y: 50), .fade(to: 0)]

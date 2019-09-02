@@ -9,3 +9,7 @@ identifier_name:
   excluded:
     - x
     - y
+
+excluded:
+  - Carthage
+  - Pods

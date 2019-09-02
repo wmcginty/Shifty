@@ -25,7 +25,8 @@ public struct Snapshot: Equatable {
     /// The backgroundColor of the `UIView` at the time of snapshotting.
     let backgroundColor: UIColor?
     
-    /// The transform3d of the view's `CALayer` at the time of snapshotting. This property also includes any changes made to the `UIView.transform` property, as they are converted from an affine transform into a 3-dimensional `CATransform3D` when set on the view.
+    /// The transform3d of the view's `CALayer` at the time of snapshotting. This property also includes any changes made to the `UIView.transform`
+    /// property, as they are converted from an affine transform into a 3-dimensional `CATransform3D` when set on the view.
     let transform3D: CATransform3D
     
     /// The corner radius of the view's `CALayer` at the time of snapshotting.

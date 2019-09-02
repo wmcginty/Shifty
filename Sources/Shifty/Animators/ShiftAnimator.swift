@@ -53,7 +53,7 @@ private extension ShiftAnimator {
                 self?.animations(for: currentShift, with: replicant, using: destination)
             }
             
-            shiftAnimator.addCompletion { position in
+            shiftAnimator.addCompletion { _ in
                 currentShift.cleanup(replicant: replicant)
             }
         }
