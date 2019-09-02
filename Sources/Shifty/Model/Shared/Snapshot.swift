@@ -35,7 +35,8 @@ public struct Snapshot: Equatable {
     let superview: UIView?
     
     // MARK: Initializers
-    init(center: CGPoint, bounds: CGRect, alpha: CGFloat, backgroundColor: UIColor? = nil, transform3D: CATransform3D, cornerRadius: CGFloat, superview: UIView?) {
+    init(center: CGPoint, bounds: CGRect, alpha: CGFloat, backgroundColor: UIColor? = nil, transform3D: CATransform3D,
+         cornerRadius: CGFloat, superview: UIView?) {
         self.center = center
         self.bounds = bounds
         self.alpha = alpha

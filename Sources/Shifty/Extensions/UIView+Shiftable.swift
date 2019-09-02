@@ -16,23 +16,22 @@ extension UIView {
     
     /** The shift identifier for this `UIView`. If this identifier matches the identifier for another `UIView` in the destination of a
      transition, Shifty can animate the view from it's source position to it's destination position. This property simply creates a
-     default 'Target' object and assigns it to the view's `shiftState` property. */
+     default 'Target' object and assigns it to the view's `shiftTarget` property. */
     public var shiftID: Shift.Identifier? {
-        get { return shiftState?.identifier }
+        get { return shiftTarget?.identifier }
         set {
             guard let shiftID = newValue else { return }
-            shiftState = Shift.Target(view: self, identifier: shiftID)
+            shiftTarget = Shift.Target(view: self, identifier: shiftID)
         }
     }
     
     /** The shift state object associated with this `UIView`. Contains the information necessary for the animator to create and execute
      the transition from it's position and state in the source to that in the destination. */
-    public var shiftState: Shift.Target? {
+    public var shiftTarget: Shift.Target? {
         get { return getAssociatedObject(associatedKey: &AssociatedKeys.shiftID) }
         set {
-            guard let shiftable = newValue else { return }
-            setAssociatedObject(shiftable, associatedKey: &AssociatedKeys.shiftID, policy: .OBJC_ASSOCIATION_RETAIN)
-            //actions = nil
+            guard let target = newValue else { return }
+            setAssociatedObject(target, associatedKey: &AssociatedKeys.shiftID, policy: .OBJC_ASSOCIATION_RETAIN)
         }
     }
     
@@ -47,7 +46,7 @@ extension UIView {
 }
 
 // MARK: NSObject + Associated Values
-fileprivate extension NSObject {
+private extension NSObject {
     final private class AssociatedBox<T> {
         let value: T
         init(_ val: T) { value = val }

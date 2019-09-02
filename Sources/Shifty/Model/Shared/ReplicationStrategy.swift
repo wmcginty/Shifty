@@ -45,7 +45,6 @@ private extension ReplicationStrategy {
         
         //Apply the known corner radius to both the replicant view and the base view
         snapshot.layer.cornerRadius = cornerRadius
-        snapshot.layer.maskedCorners = baseView.layer.maskedCorners
         snapshot.layer.masksToBounds = cornerRadius > 0
         
         baseView.layer.cornerRadius = cornerRadius
@@ -65,7 +64,6 @@ public extension ReplicationStrategy {
         let copy = UIView(frame: baseView.frame)
         copy.backgroundColor = UIColor.red.withAlphaComponent(0.5)
         copy.layer.cornerRadius = baseView.layer.cornerRadius
-        copy.layer.maskedCorners = baseView.layer.maskedCorners
         copy.layer.masksToBounds = baseView.layer.masksToBounds
         
         return copy

@@ -22,6 +22,9 @@ class ShiftExampleViewControllerA: UIViewController, ShiftTransitionable {
     override func viewDidLoad() {
         super.viewDidLoad()
         definesPresentationContext = true
+        
+        orangeView.isHidden = true
+        orangeView.layer.cornerRadius = 16
     }
     
     // MARK: IBActions
@@ -33,9 +36,15 @@ class ShiftExampleViewControllerA: UIViewController, ShiftTransitionable {
         var shift = Shift(source: source, destination: dest)
         shift.nativeViewRestorationBehavior = .destination
         
-        animator = ShiftAnimator(shift: shift, timingProvider: CubicTimingProvider(duration: 1.0, curve: .easeInOut))
-        animator?.animate(in: view) { position in
-            print(position)
+        if animator == nil {
+            animator = ShiftAnimator(shift: shift, timingProvider: CubicTimingProvider(duration: 1.0, curve: .easeInOut, keyframe: .init(startTime: 0.2, endTime: 1)))
+            animator?.pausesOnCompletion = true
+            animator?.animate(in: view) { position in
+                debugPrint(position.rawValue)
+            }
+        } else {
+            animator?.isReversed.toggle()
+            animator?.startAnimation()
         }
         
         

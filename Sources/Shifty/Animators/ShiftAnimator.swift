@@ -14,7 +14,7 @@ open class ShiftAnimator: NSObject {
     public let timingProvider: TimingProvider
     public private(set) var shift: Shift
     public private(set) var destination: Snapshot?
-    var shiftAnimator: UIViewPropertyAnimator
+    public private(set) var shiftAnimator: UIViewPropertyAnimator
     
     public var isDebugEnabled: Bool = false
     
@@ -44,7 +44,7 @@ open class ShiftAnimator: NSObject {
         currentShift.layoutDestinationIfNeeded()
         
         shiftAnimator.addAnimations {
-            currentShift.shift(for: replicant)
+            return currentShift.shift(for: replicant)
         }
         
         shiftAnimator.addCompletion { position in

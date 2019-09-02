@@ -12,10 +12,10 @@ public protocol ShiftTransitionable {
     /// The view that acts as a superview for all other shift-eligible views.
     var contentView: UIView { get }
     
-    /// Denotes whether or not the conforming object contains any shiftables.
+    /// Denotes whether or not the conforming object contains any shift-eligible objects.
     var isShiftingEnabled: Bool { get }
     
-    /// A list of views that should be excluded from shifting. These views, and their subviews, will be excluded from shiftable evaluation.
+    /// A list of views that should be excluded from shifting. These views, and their subviews, will be excluded from shift-eligible evaluation.
     var shiftExclusions: [UIView] { get }
 }
 

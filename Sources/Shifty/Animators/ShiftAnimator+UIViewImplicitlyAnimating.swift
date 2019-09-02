@@ -55,6 +55,10 @@ extension ShiftAnimator: UIViewImplicitlyAnimating {
         shiftAnimator.pauseAnimation()
     }
     
+    public func continueAnimation(withTimingParameters parameters: UITimingCurveProvider?, durationFactor: CGFloat) {
+        shiftAnimator.continueAnimation(withTimingParameters: parameters, durationFactor: durationFactor)
+    }
+    
     public func stopAnimation(_ withoutFinishing: Bool) {
         shiftAnimator.stopAnimation(withoutFinishing)
     }
