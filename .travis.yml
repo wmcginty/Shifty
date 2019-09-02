@@ -13,6 +13,18 @@ env:
 
 #before_install:
 #  - brew upgrade swiftlint
+cache:
+  directories:
+    - Carthage
+    - ~/.danger-swift
+    - .build
+addons:
+  homebrew:
+    update: true
+    packages:
+      - carthage
+before_install:
+  - carthage bootstrap --verbose --no-use-binaries --platform iOS,tvOS,watchOS --cache-builds
 
 script:
   - swiftlint

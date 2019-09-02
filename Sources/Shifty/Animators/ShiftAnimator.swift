@@ -43,8 +43,16 @@ open class ShiftAnimator: NSObject {
         let replicant = currentShift.configuredReplicant(in: container)
         currentShift.layoutDestinationIfNeeded()
         
-        shiftAnimator.addAnimations {
-            return currentShift.shift(for: replicant)
+        shiftAnimator.addAnimations { [weak self] in
+            guard let keyframe = self?.timingProvider.keyframe else {
+                return currentShift.shift(for: replicant)
+            }
+            
+            UIView.animateKeyframes(withDuration: 0.0, delay: 0.0, options: [], animations: {
+                UIView.addKeyframe(withRelativeStartTime: keyframe.startTime, relativeDuration: keyframe.duration) {
+                    currentShift.shift(for: replicant)
+                }
+            }, completion: nil)
         }
         
         shiftAnimator.addCompletion { position in

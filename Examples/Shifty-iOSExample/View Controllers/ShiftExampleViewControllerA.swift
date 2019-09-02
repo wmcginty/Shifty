@@ -17,6 +17,7 @@ class ShiftExampleViewControllerA: UIViewController, ShiftTransitionable {
     private var shiftTransitioningManager = SimpleShiftTransitioningDelegate()
     
     private var animator: ShiftAnimator?
+    private var animator2: UIViewPropertyAnimator?
     
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -30,12 +31,29 @@ class ShiftExampleViewControllerA: UIViewController, ShiftTransitionable {
     // MARK: IBActions
     @IBAction func shiftItButtonPressed(sender: AnyObject) {
         
+//        if animator2 == nil {
+//            animator2 = UIViewPropertyAnimator(duration: 0.5, curve: .easeInOut, animations: {
+//                UIView.animateKeyframes(withDuration: 0.0, delay: 0.0, options: [], animations: {
+//                    UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.75, animations: {
+//                        self.yellowView.alpha = 0.5
+//                    })
+//                }, completion: nil)
+//            })
+//            animator2?.pausesOnCompletion = true
+//            animator2?.startAnimation()
+//
+//        } else {
+//            animator2?.isReversed.toggle()
+//                        animator2?.continueAnimation(withTimingParameters: nil, durationFactor: 1)
+//            //animator2?.startAnimation()
+//        }
+    
         let source = Shift.Target(view: yellowView, identifier: .init(rawValue: "1"), replicationStrategy: .replication)
         let dest = Shift.Target(view: orangeView, identifier: .init(rawValue: "1"), replicationStrategy: .replication)
-        
+
         var shift = Shift(source: source, destination: dest)
         shift.nativeViewRestorationBehavior = .destination
-        
+
         if animator == nil {
             animator = ShiftAnimator(shift: shift, timingProvider: CubicTimingProvider(duration: 1.0, curve: .easeInOut, keyframe: .init(startTime: 0.2, endTime: 1)))
             animator?.pausesOnCompletion = true
