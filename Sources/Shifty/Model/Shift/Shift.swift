@@ -56,16 +56,16 @@ public extension Shift {
         destination.view.superview?.layoutIfNeeded()
     }
     
-    func shift(for replicant: UIView) {
-        positionalShift(for: replicant)
-        visualShift(for: replicant)
+    func shift(for replicant: UIView, using snapshot: Snapshot?) {
+        positionalShift(for: replicant, using: snapshot)
+        visualShift(for: replicant, using: snapshot)
     }
     
-    func positionalShift(for replicant: UIView) {
-        destinationSnapshot().applyPositionalState(to: replicant)
+    func positionalShift(for replicant: UIView, using snapshot: Snapshot?) {
+        (snapshot ?? destinationSnapshot()).applyPositionalState(to: replicant)
     }
     
-    func visualShift(for replicant: UIView) {
+    func visualShift(for replicant: UIView, using snapshot: Snapshot?) {
         if !isPositionalOnly {
             #if DEBUG
             if !source.replicationStrategy.canVisuallyShift {
@@ -73,7 +73,7 @@ public extension Shift {
             }
             #endif
             
-            destinationSnapshot().applyVisualState(to: replicant)
+            (snapshot ?? destinationSnapshot()).applyVisualState(to: replicant)
         }
     }
     

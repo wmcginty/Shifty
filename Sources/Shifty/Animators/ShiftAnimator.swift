@@ -12,67 +12,64 @@ open class ShiftAnimator: NSObject {
     
     // MARK: Properties
     public let timingProvider: TimingProvider
-    public private(set) var shift: Shift
-    public private(set) var destination: Snapshot?
+    public private(set) var destinations: [Shift: Snapshot] = [:]
     public private(set) var shiftAnimator: UIViewPropertyAnimator
     
     public var isDebugEnabled: Bool = false
     
     // MARK: Initializers
-    public init(shift: Shift, timingProvider: TimingProvider) {
-        self.shift = shift
+    public init(timingProvider: TimingProvider) {
         self.timingProvider = timingProvider
         self.shiftAnimator = UIViewPropertyAnimator(duration: timingProvider.duration, timingParameters: timingProvider.parameters)
     }
  
     // MARK: Interface
-    open func commit() {
-        destination = shift.destinationSnapshot()
+    open func commit(_ shifts: Shift...) {
+        shifts.forEach { destinations[$0] = $0.destinationSnapshot() }
     }
     
-    public func animate(in container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
-        commitIfNeeded()
-        assert(destination != nil, "ShiftAnimator [\(self)] could not commit a destination snapshot for shifting.")
-        
-        configureShiftAnimations(in: container, completion: completion)
+    open func animate(_ shifts: Shift..., in container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
+        configureShiftAnimations(for: shifts, in: container, completion: completion)
         startAnimation()
     }
     
-    func configureShiftAnimations(in container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
-        let currentShift = isDebugEnabled ? shift.debug : shift
-        let replicant = currentShift.configuredReplicant(in: container)
-        currentShift.layoutDestinationIfNeeded()
-        
-        shiftAnimator.addAnimations { [weak self] in
-            guard let keyframe = self?.timingProvider.keyframe else {
-                return currentShift.shift(for: replicant)
-            }
-            
-            UIView.animateKeyframes(withDuration: 0.0, delay: 0.0, options: [], animations: {
-                UIView.addKeyframe(withRelativeStartTime: keyframe.startTime, relativeDuration: keyframe.duration) {
-                    currentShift.shift(for: replicant)
-                }
-            }, completion: nil)
-        }
-        
-        shiftAnimator.addCompletion { position in
-            guard position != .current else {
-                debugPrint("Shifty Warning: The shift animation did not end at either the start or end position. Abandoning automatic cleanup.")
-                completion?(position); return
-            }
-            
-            currentShift.cleanup(replicant: replicant)
-            completion?(position)
-        }
+    open func configureShiftAnimations(for shifts: Shift..., in container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
+        configureShiftAnimations(for: shifts, in: container, completion: completion)
     }
 }
 
 // MARK: Helper
-extension ShiftAnimator {
+private extension ShiftAnimator {
     
-    func commitIfNeeded() {
-        if destination == nil {
-            commit()
+    func configureShiftAnimations(for shifts: [Shift], in container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
+        shifts.forEach { shift in
+            let destination = destinations[shift]
+            let currentShift = isDebugEnabled ? shift.debug : shift
+            
+            let replicant = currentShift.configuredReplicant(in: container)
+            currentShift.layoutDestinationIfNeeded()
+            
+            shiftAnimator.addAnimations { [weak self] in
+                self?.animations(for: currentShift, with: replicant, using: destination)
+            }
+            
+            shiftAnimator.addCompletion { position in
+                currentShift.cleanup(replicant: replicant)
+            }
         }
+        
+        completion.map(shiftAnimator.addCompletion)
+    }
+    
+    func animations(for shift: Shift, with replicant: UIView, using destination: Snapshot?) {
+        guard let keyframe = timingProvider.keyframe else {
+            return shift.shift(for: replicant, using: destination)
+        }
+        
+        UIView.animateKeyframes(withDuration: 0.0, delay: 0.0, options: [], animations: {
+            UIView.addKeyframe(withRelativeStartTime: keyframe.startTime, relativeDuration: keyframe.duration) {
+                shift.shift(for: replicant, using: destination)
+            }
+        }, completion: nil)
     }
 }

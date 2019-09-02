@@ -55,9 +55,9 @@ class ShiftExampleViewControllerA: UIViewController, ShiftTransitionable {
         shift.nativeViewRestorationBehavior = .destination
 
         if animator == nil {
-            animator = ShiftAnimator(shift: shift, timingProvider: CubicTimingProvider(duration: 1.0, curve: .easeInOut, keyframe: .init(startTime: 0.2, endTime: 1)))
+            animator = ShiftAnimator(timingProvider: CubicTimingProvider(duration: 1.0, curve: .easeInOut))
             animator?.pausesOnCompletion = true
-            animator?.animate(in: view) { position in
+            animator?.animate(shift, in: view) { position in
                 debugPrint(position.rawValue)
             }
         } else {
