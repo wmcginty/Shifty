@@ -34,7 +34,7 @@ public struct Shift: Hashable {
         self.destination = destination
     }
     
-    var debug: Shift {
+    public var debug: Shift {
         var shift = Shift(source: source.debug, destination: destination.debug)
         shift.isPositionalOnly = true
         

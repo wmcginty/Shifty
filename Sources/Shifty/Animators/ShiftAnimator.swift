@@ -15,8 +15,6 @@ open class ShiftAnimator: NSObject {
     public private(set) var destinations: [Shift: Snapshot] = [:]
     public private(set) var shiftAnimator: UIViewPropertyAnimator
     
-    public var isDebugEnabled: Bool = false
-    
     // MARK: Initializers
     public init(timingProvider: TimingProvider) {
         self.timingProvider = timingProvider
@@ -44,17 +42,15 @@ private extension ShiftAnimator {
     func configureShiftAnimations(for shifts: [Shift], in container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
         shifts.forEach { shift in
             let destination = destinations[shift]
-            let currentShift = isDebugEnabled ? shift.debug : shift
-            
-            let replicant = currentShift.configuredReplicant(in: container)
-            currentShift.layoutDestinationIfNeeded()
+            let replicant = shift.configuredReplicant(in: container)
+            shift.layoutDestinationIfNeeded()
             
             shiftAnimator.addAnimations { [weak self] in
-                self?.animations(for: currentShift, with: replicant, using: destination)
+                self?.animations(for: shift, with: replicant, using: destination)
             }
             
             shiftAnimator.addCompletion { _ in
-                currentShift.cleanup(replicant: replicant)
+                shift.cleanup(replicant: replicant)
             }
         }
         
