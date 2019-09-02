@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Shifty'
-  s.version          = '2.2.0'
+  s.version          = '3.0.0'
   s.summary          = 'A small transitioning library that aims to make performing frame shifts easier.'
   s.description      = <<-DESC
 Shifty is a small transitioning library designed to make creating frame shift view controller transitions much simpler.
@@ -23,7 +23,7 @@ on creating the transition that is custom to your app.
   s.source           = { :git => 'https://github.com/wmcginty/Shifty.git', :tag => s.version.to_s }
   s.swift_version    = '5.0'
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '11.0'
   s.source_files = 'Sources/Shifty/**/*'
   s.frameworks = 'UIKit'
 
