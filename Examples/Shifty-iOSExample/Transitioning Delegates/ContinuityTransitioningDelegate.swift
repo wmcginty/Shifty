@@ -3,7 +3,7 @@
 //  Shifty_Example
 //
 //  Created by William McGinty on 12/25/17.
-//  Copyright © 2017 CocoaPods. All rights reserved.
+//  Copyright © 2017 Will McGinty. All rights reserved.
 //
 
 import UIKit

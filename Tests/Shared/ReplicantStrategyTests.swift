@@ -3,7 +3,7 @@
 //  Shifty-Tests
 //
 //  Created by William McGinty on 8/30/19.
-//  Copyright © 2019 CocoaPods. All rights reserved.
+//  Copyright © 2019 Will McGinty. All rights reserved.
 //
 
 import XCTest
