@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol TargetLocator {
+public protocol TargetLocator {
     
     /// Searches the view hierarchy of a given source and destination to find possible `Shift.Target` objects.
     ///
@@ -19,10 +19,10 @@ protocol TargetLocator {
     func locatedTargetsForShift(from source: ShiftTransitionable, to destination: ShiftTransitionable) -> (sources: [Shift.Target], destinations: [Shift.Target])
 }
 
-struct DefaultTargetLocator: TargetLocator {
+public struct DefaultTargetLocator: TargetLocator {
 
     // MARK: Interface
-    func locatedTargetsForShift(from source: ShiftTransitionable, to destination: ShiftTransitionable) -> (sources: [Shift.Target], destinations: [Shift.Target]) {
+    public func locatedTargetsForShift(from source: ShiftTransitionable, to destination: ShiftTransitionable) -> (sources: [Shift.Target], destinations: [Shift.Target]) {
         guard source.isShiftingEnabled && destination.isShiftingEnabled else { return (sources: [], destinations: []) }
         
         let sourceViews = flattenedHierarchy(for: source.contentView, withExclusions: source.shiftExclusions)
