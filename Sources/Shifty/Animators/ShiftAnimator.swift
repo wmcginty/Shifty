@@ -28,13 +28,13 @@ open class ShiftAnimator: NSObject {
         shifts.forEach { destinations[$0] = $0.destinationSnapshot() }
     }
     
+    open func configureShiftAnimations(for shifts: Shift..., in container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
+        configureShiftAnimations(for: shifts, in: container, completion: completion)
+    }
+    
     open func animate(_ shifts: Shift..., in container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
         configureShiftAnimations(for: shifts, in: container, completion: completion)
         startAnimation()
-    }
-    
-    open func configureShiftAnimations(for shifts: Shift..., in container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
-        configureShiftAnimations(for: shifts, in: container, completion: completion)
     }
 }
 
