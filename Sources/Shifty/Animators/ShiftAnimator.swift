@@ -12,8 +12,8 @@ open class ShiftAnimator: NSObject {
     
     // MARK: Properties
     public let timingProvider: TimingProvider
+    public let shiftAnimator: UIViewPropertyAnimator
     public private(set) var destinations: [Shift: Snapshot] = [:]
-    public private(set) var shiftAnimator: UIViewPropertyAnimator
     
     // MARK: Initializers
     public init(timingProvider: TimingProvider) {
@@ -37,7 +37,7 @@ open class ShiftAnimator: NSObject {
 }
 
 // MARK: Helper
-private extension ShiftAnimator {
+extension ShiftAnimator {
     
     func configureShiftAnimations(for shifts: [Shift], in container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
         shifts.forEach { shift in

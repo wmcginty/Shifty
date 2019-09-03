@@ -47,8 +47,6 @@ public extension Shift.Target {
         
         applyPositionalState(to: replicant, in: container)
         
-        //Configure the native view as hidden so the replicantView is the only visible copy, then return it
-        configureNativeView(hidden: true)
         return replicant
     }
     

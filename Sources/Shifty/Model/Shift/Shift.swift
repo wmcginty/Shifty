@@ -60,6 +60,10 @@ public extension Shift {
         positionalShift(for: replicant, using: snapshot)
         visualShift(for: replicant, using: snapshot)
     }
+}
+
+// MARK: Helper
+extension Shift {
     
     func positionalShift(for replicant: UIView, using snapshot: Snapshot? = nil) {
         (snapshot ?? destinationSnapshot()).applyPositionalState(to: replicant)
@@ -81,10 +85,6 @@ public extension Shift {
         source.cleanup(replicant: replicant, restoreNativeView: nativeViewRestorationBehavior.contains(.source))
         destination.cleanup(replicant: replicant, restoreNativeView: nativeViewRestorationBehavior.contains(.destination))
     }
-}
-
-// MARK: Snapshots
-public extension Shift {
     
     func destinationSnapshot() -> Snapshot {
         return destination.snapshot()

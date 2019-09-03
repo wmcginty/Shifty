@@ -35,14 +35,22 @@ extension UIView {
         }
     }
     
-//    public var actions: ActionGroup? {
-//        get { return getAssociatedObject(associatedKey: &AssociatedKeys.actions) }
-//        set {
-//            guard let actions = newValue else { return }
-//            setAssociatedObject(actions, associatedKey: &AssociatedKeys.actions, policy: .OBJC_ASSOCIATION_RETAIN)
-//            shiftState = nil
-//        }
-//    }
+    public var actionModifier: Action.Modifier? {
+        get { return action?.modifier }
+        set {
+            guard let modifier = newValue else { return }
+            action = Action(view: self, modifier: modifier)
+        }
+    }
+    
+    public var action: Action? {
+        get {
+            return getAssociatedObject(associatedKey: &AssociatedKeys.actions) }
+        set {
+            guard let action = newValue else { return }
+            setAssociatedObject(action, associatedKey: &AssociatedKeys.actions, policy: .OBJC_ASSOCIATION_RETAIN)
+        }
+    }
 }
 
 // MARK: NSObject + Associated Values

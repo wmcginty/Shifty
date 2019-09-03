@@ -25,7 +25,7 @@ class ContinuityTransitionAnimator: NSObject, UIViewControllerAnimatedTransition
         let container = transitionContext.containerView
         guard let sourceController = transitionContext.viewController(forKey: .from), let destinationController = transitionContext.viewController(forKey: .to) else { return }
         guard let destinationView = transitionContext.view(forKey: .to) else { return }
-        guard let source = sourceController as? ShiftTransitionable, let destination = destinationController as? ShiftTransitionable else { return }
+//        guard let source = sourceController as? ShiftTransitionable, let destination = destinationController as? ShiftTransitionable else { return }
         
         //Next, add and position the destinationView ABOVE the sourceView
         container.addSubview(destinationView)
@@ -33,14 +33,16 @@ class ContinuityTransitionAnimator: NSObject, UIViewControllerAnimatedTransition
         
         /** Next, we will create a source animator, and instruct it to animate. This will gather all the subviews of `source` with associated `actions` and
          animate them simultaneously using the options specified to the animator. As soon as the source's actions have completed, the transition can finish. */
-//        let sourceAnimator = ActionAnimator(transitionable: source)
-//        sourceAnimator.animate(withDuration: transitionDuration(using: transitionContext), inContainer: container) { position in
-//            transitionContext.completeTransition(position == .end)
-//        }
-//        
-//        /** Finally, we'll create another animator for the destination. Because these animations have no bearing on the final state of this transition, they can be
-//         carried out regardless of the state of the transition itself (ie, the transition does not need to finish AFTER these animations finish). */
-//        let destinationAnimator = ActionAnimator(transitionable: destination, isInverted: true)
-//        destinationAnimator.animate(withDuration: self.transitionDuration(using: transitionContext), inContainer: container)
+        
+        let actionLocator = ActionLocator()
+        
+        let sourceAnimator = ActionAnimator(timingProvider: CubicTimingProvider(duration: transitionDuration(using: transitionContext), curve: .easeInOut))
+        sourceAnimator.animate(actionLocator.actions(in: sourceController.view), in: container) { position in
+             transitionContext.completeTransition(position == .end)
+        }
+        
+        let destinationAnimator = ActionAnimator(timingProvider: CubicTimingProvider(duration: transitionDuration(using: transitionContext), curve: .easeInOut))
+        destinationAnimator.isReversed = true
+        destinationAnimator.animate(actionLocator.actions(in: destinationView), in: container)
     }
 }

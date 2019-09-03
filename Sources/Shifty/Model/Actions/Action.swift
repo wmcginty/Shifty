@@ -7,53 +7,68 @@
 
 import UIKit
 
-//public struct Action {
-//    
-//    // MARK: Properties
-//    public let handler: (UIView) -> Void
-//    
-//    // MARK: Initializers
-//    public init(handler: @escaping (UIView) -> Void) {
-//        self.handler = handler
-//    }
-//}
-//
-//// MARK: Presets
-//public extension Action {
-//    
-//    static func fade(to alpha: CGFloat) -> Action {
-//        return Action { $0.alpha = alpha }
-//    }
-//    
-//    static func transform(to transform: CGAffineTransform) -> Action {
-//        return Action { $0.transform = $0.transform.concatenating(transform) }
-//    }
-//    
-//    static func scale(toX x: CGFloat, y: CGFloat) -> Action {
-//        return transform(to: CGAffineTransform(scaleX: x, y: y))
-//    }
-//    
-//    static func rotate(to angle: CGFloat) -> Action {
-//        return transform(to: CGAffineTransform(rotationAngle: angle))
-//    }
-//    
-//    static func translate(byX x: CGFloat, y: CGFloat) -> Action {
-//        return transform(to: CGAffineTransform(translationX: x, y: y))
-//    }
-//}
-//
-//// MARK: [Action] Extensions
-//public extension Array where Element == Action {
-//    
-//    func modifying(delayFactor: CGFloat) -> ActionGroup {
-//        return ActionGroup(delayFactor: delayFactor, actions: self)
-//    }
-//    
-//    func modifying(timingContext: TimingContext) -> ActionGroup {
-//        return ActionGroup(animationContext: timingContext, actions: self)
-//    }
-//    
-//    func adding(action: Action) -> ActionGroup {
-//        return ActionGroup(actions: self + [action])
-//    }
-//}
+public struct Action {
+    
+    /* TODO
+        -Groups to modify timing (I want to cascade these 4 actions when i animate them with X Y Z parameters
+     */
+    
+    // MARK: Properties
+    public let view: UIView
+    public let modifier: Modifier
+    
+    // MARK: Initializers
+    public init(view: UIView, modifier: Modifier) {
+        self.view = view
+        self.modifier = modifier
+    }
+}
+
+// MARK: Interface
+public extension Action {
+    
+    func configuredReplicant(in container: UIView) -> UIView {
+        //Create, add and place the replicantView with respect to the container
+        let replicant = modifier.configuredShiftingView(for: view)
+        container.addSubview(replicant)
+        
+        applyPositionalState(to: replicant, in: container)
+        
+        //Configure the native view as hidden so the replicantView is the only visible copy, then return it
+        configureNativeView(hidden: true)
+        return replicant
+    }
+    
+    func layoutContainerIfNeeded() {
+        view.superview?.layoutIfNeeded()
+    }
+    
+    func animate(with replicant: UIView) {
+        modifier.modify(replicant)
+    }
+}
+
+// MARK: Helper
+extension Action {
+    
+    func applyPositionalState(to view: UIView, in container: UIView) {
+        snapshot().applyPositionalState(to: view)
+    }
+    
+    func cleanup(replicant: UIView) {
+        replicant.removeFromSuperview()
+        
+        if modifier.restoreNativewView {
+            configureNativeView(hidden: false)
+        }
+    }
+    
+    /// Returns a `Snapshot` of the current state of the `Target`.
+    func snapshot() -> Snapshot {
+        return Snapshot(view: view)
+    }
+    
+    func configureNativeView(hidden: Bool) {
+        view.isHidden = hidden
+    }
+}

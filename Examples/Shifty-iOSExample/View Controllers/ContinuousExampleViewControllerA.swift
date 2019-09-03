@@ -27,12 +27,12 @@ class ContinuousExampleViewControllerA: UIViewController, ShiftTransitionable {
     // MARK: IBActions
     @IBAction func shiftItButtonPressed(sender: AnyObject) {
         
-//        yellowView.actions = [.translate(byX: -300, y: 0)].modifying(delayFactor: 0.0)
-//        orangeView.actions = [.translate(byX: -300, y: 0)].modifying(delayFactor: 0.1)
-//        yellowView2.actions = [.translate(byX: -300, y: 0)].modifying(delayFactor: 0.2)
-//        orangeView2.actions = [.translate(byX: -300, y: 0)].modifying(delayFactor: 0.3)
+        yellowView.actionModifier = .translate(byX: -300, y: 0)
+        orangeView.actionModifier = .translate(byX: -300, y: 0)
+        yellowView2.actionModifier = .translate(byX: -300, y: 0)
+        orangeView2.actionModifier = .translate(byX: -300, y: 0)
         
-//        shiftButton.actions = [.fade(to: 0), .scale(toX: 0.33, y: 0.33)].modifying(timingContext: SpringAnimationContext(timingParameters: UISpringTimingParameters(dampingRatio: 0.8)))
+        shiftButton.actionModifier = Action.Modifier.scale(toX: 0.33, y: 0.33).fade(to: 0)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let controller = storyboard.instantiateViewController(withIdentifier: "ContinuousExampleViewControllerB") as? ContinuousExampleViewControllerB else { return }
