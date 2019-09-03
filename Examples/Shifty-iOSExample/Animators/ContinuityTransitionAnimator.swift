@@ -24,25 +24,23 @@ class ContinuityTransitionAnimator: NSObject, UIViewControllerAnimatedTransition
          This being a basic example - exit if this fails, no fallbacks. YMMV with more complicated examples. */
         let container = transitionContext.containerView
         guard let sourceController = transitionContext.viewController(forKey: .from), let destinationController = transitionContext.viewController(forKey: .to) else { return }
-        guard let destinationView = transitionContext.view(forKey: .to) else { return }
-//        guard let source = sourceController as? ShiftTransitionable, let destination = destinationController as? ShiftTransitionable else { return }
         
         //Next, add and position the destinationView ABOVE the sourceView
-        container.addSubview(destinationView)
-        destinationView.frame = transitionContext.finalFrame(for: destinationController)
+        container.addSubview(destinationController.view)
+        destinationController.view.frame = transitionContext.finalFrame(for: destinationController)
         
         /** Next, we will create a source animator, and instruct it to animate. This will gather all the subviews of `source` with associated `actions` and
          animate them simultaneously using the options specified to the animator. As soon as the source's actions have completed, the transition can finish. */
         
         let actionLocator = ActionLocator()
         
-        let sourceAnimator = ActionAnimator(timingProvider: CubicTimingProvider(duration: transitionDuration(using: transitionContext), curve: .easeInOut))
+        let sourceAnimator = ActionAnimator(timingProvider: CubicTimingProvider(duration: transitionDuration(using: transitionContext), curve: .easeIn))
         sourceAnimator.animate(actionLocator.actions(in: sourceController.view), in: container) { position in
              transitionContext.completeTransition(position == .end)
         }
         
-        let destinationAnimator = ActionAnimator(timingProvider: CubicTimingProvider(duration: transitionDuration(using: transitionContext), curve: .easeInOut))
+        let destinationAnimator = ActionAnimator(timingProvider: CubicTimingProvider(duration: transitionDuration(using: transitionContext), curve: .easeOut))
         destinationAnimator.isReversed = true
-        destinationAnimator.animate(actionLocator.actions(in: destinationView), in: container)
+        destinationAnimator.animate(actionLocator.actions(in: destinationController.view), in: container)
     }
 }
