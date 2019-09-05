@@ -15,7 +15,7 @@ class ContinuityTransitionAnimator: NSObject, UIViewControllerAnimatedTransition
         
     // MARK: UIViewControllerAnimatedTransitioning
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.4
+        return 0.3
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -35,12 +35,12 @@ class ContinuityTransitionAnimator: NSObject, UIViewControllerAnimatedTransition
         let actionLocator = ActionLocator()
         
         let sourceAnimator = ActionAnimator(timingProvider: CubicTimingProvider(duration: transitionDuration(using: transitionContext), curve: .easeIn))
-        sourceAnimator.animate(actionLocator.actions(in: sourceController.view), in: container) { position in
+        sourceAnimator.animate(actionLocator.actions(in: sourceController.view), in: container, inverted: false) { position in
              transitionContext.completeTransition(position == .end)
         }
         
         let destinationAnimator = ActionAnimator(timingProvider: CubicTimingProvider(duration: transitionDuration(using: transitionContext), curve: .easeOut))
-        destinationAnimator.isReversed = true
+        
         destinationAnimator.animate(actionLocator.actions(in: destinationController.view), in: container)
     }
 }

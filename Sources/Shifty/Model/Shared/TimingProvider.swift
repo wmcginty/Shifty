@@ -26,24 +26,24 @@ public protocol TimingProvider {
     var keyframe: Keyframe? { get }
 }
 
-public struct SpringTimingProvider: TimingProvider {
-    
-    // MARK: Properties
-    public let duration: TimeInterval
-    public let parameters: UITimingCurveProvider
-    public var keyframe: Keyframe? { return nil }
-    
-    // MARK: Initializers
-    public init(duration: TimeInterval, dampingRatio: CGFloat = 1.0, initialVelocity: CGVector = .zero) {
-        self.duration = duration
-        self.parameters = UISpringTimingParameters(dampingRatio: dampingRatio, initialVelocity: initialVelocity)
-    }
-    
-    public init(mass: CGFloat, stiffness: CGFloat, damping: CGFloat, initialVelocity: CGVector) {
-        self.duration = 0
-        self.parameters = UISpringTimingParameters(mass: mass, stiffness: stiffness, damping: damping, initialVelocity: initialVelocity)
-    }
-}
+//public struct SpringTimingProvider: TimingProvider {
+//    
+//    // MARK: Properties
+//    public let duration: TimeInterval
+//    public let parameters: UITimingCurveProvider
+//    public var keyframe: Keyframe? { return nil }
+//    
+//    // MARK: Initializers
+//    public init(duration: TimeInterval, dampingRatio: CGFloat = 1.0, initialVelocity: CGVector = .zero) {
+//        self.duration = duration
+//        self.parameters = UISpringTimingParameters(dampingRatio: dampingRatio, initialVelocity: initialVelocity)
+//    }
+//    
+//    public init(mass: CGFloat, stiffness: CGFloat, damping: CGFloat, initialVelocity: CGVector) {
+//        self.duration = 0
+//        self.parameters = UISpringTimingParameters(mass: mass, stiffness: stiffness, damping: damping, initialVelocity: initialVelocity)
+//    }
+//}
 
 public struct CubicTimingProvider: TimingProvider {
 

@@ -12,8 +12,7 @@ public class ActionAnimator: NSObject {
     // MARK: Properties
     public let timingProvider: TimingProvider
     public let actionAnimator: UIViewPropertyAnimator
-    public var isReversed: Bool = false
-
+  
     // MARK: Initializers
     public init(timingProvider: TimingProvider) {
         self.timingProvider = timingProvider
@@ -21,8 +20,8 @@ public class ActionAnimator: NSObject {
     }
 
     // MARK: Interface
-    open func animate(_ actions: [Action], in container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
-        configureActionAnimators(for: actions, in: container, completion: completion)
+    open func animate(_ actions: [Action], in container: UIView, inverted: Bool = true, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
+        configureActionAnimators(for: actions, in: container, inverted: inverted, completion: completion)
         startAnimation()
     }
 }
@@ -30,7 +29,7 @@ public class ActionAnimator: NSObject {
 // MARK: Helper
 private extension ActionAnimator {
     
-    func configureActionAnimators(for actions: [Action], in container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
+    func configureActionAnimators(for actions: [Action], in container: UIView, inverted: Bool = true, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
         actions.forEach { action in
             
             let replicant = action.configuredReplicant(in: container)
@@ -45,7 +44,11 @@ private extension ActionAnimator {
             }
         }
         
-        actionAnimator.isReversed = isReversed
+        if inverted {
+            actionAnimator.isReversed = true
+            actionAnimator.fractionComplete = 0
+        }
+        
         completion.map(actionAnimator.addCompletion)
     }
  

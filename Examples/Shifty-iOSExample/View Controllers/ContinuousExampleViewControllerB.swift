@@ -21,10 +21,10 @@ class ContinuousExampleViewControllerB: UIViewController, ShiftTransitionable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        yellowView.actionModifier = .translate(byX: 200, y: 0)
-        orangeView.actionModifier = .translate(byX: 200, y: 0)
-        yellowView2.actionModifier = .translate(byX: 200, y: 0)
-        orangeView2.actionModifier = .translate(byX: 200, y: 0)
+        yellowView.actionModifier = .translate(byX: 300, y: 0)
+        orangeView.actionModifier = .translate(byX: 300, y: 0)
+        yellowView2.actionModifier = .translate(byX: 300, y: 0)
+        orangeView2.actionModifier = .translate(byX: 300, y: 0)
         
         backButton.actionModifier = Action.Modifier.fade(to: 0).scale(toX: 0.33, y: 0.33)
     }

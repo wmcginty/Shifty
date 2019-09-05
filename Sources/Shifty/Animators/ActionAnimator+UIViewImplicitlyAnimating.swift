@@ -38,6 +38,11 @@ extension ActionAnimator: UIViewImplicitlyAnimating {
         set(fractionComplete) { actionAnimator.fractionComplete = fractionComplete }
     }
     
+    public var isReversed: Bool {
+        get { return actionAnimator.isReversed }
+        set(reversed) { actionAnimator.isReversed = reversed }
+    }
+    
     public func startAnimation() {
         actionAnimator.startAnimation()
     }
