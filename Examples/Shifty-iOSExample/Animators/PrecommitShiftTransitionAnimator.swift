@@ -56,6 +56,6 @@ class PrecommitShiftTransitionAnimator: NSObject, UIViewControllerAnimatedTransi
         sourceAnimator.animate(actionLocator.actions(in: sourceController.view), in: container, inverted: false)
         
         let destinationAnimator = ActionAnimator(timingProvider: timing)
-        sourceAnimator.animate(actionLocator.actions(in: destinationController.view), in: container, inverted: true)
+        destinationAnimator.animate(actionLocator.actions(in: destinationController.view), in: container, inverted: true)
     }
 }
