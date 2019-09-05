@@ -27,27 +27,35 @@ class PrecommitShiftTransitionAnimator: NSObject, UIViewControllerAnimatedTransi
         guard let sourceController = transitionContext.viewController(forKey: .from), let destinationController = transitionContext.viewController(forKey: .to) else { return }
         guard let destinationView = transitionContext.view(forKey: .to) else { return }
         guard let source = sourceController as? ShiftTransitionable, let destination = destinationController as? ShiftTransitionable else { return }
-//        guard let shiftAnimator = ShiftAnimator(source: source, destination: destination, coordinator: EvenShiftCoordinator()) else { return }
-//        
-//        container.addSubview(destinationView)
-//        destinationView.frame = transitionContext.finalFrame(for: destinationController)
-//        destinationView.layoutIfNeeded()
-//            
-//        shiftAnimator.commitShifts()
-//        destinationView.transform = CGAffineTransform(translationX: 0, y: container.bounds.height)
-//        
-//        UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0.0, options: .curveEaseInOut, animations: {
-//            destinationView.transform = .identity
-//        }, completion: nil)
-//        
-//        shiftAnimator.animate(withDuration: transitionDuration(using: transitionContext), inContainer: container) { position in
-//            transitionContext.completeTransition(position == .end)
-//        }
-//        
-//        let sourceAnimator = ActionAnimator(transitionable: source)
-//        sourceAnimator.animate(withDuration: transitionDuration(using: transitionContext), inContainer: container)
-//        
-//        let destinationAnimator = ActionAnimator(transitionable: destination, isInverted: true)
-//        destinationAnimator.animate(withDuration: transitionDuration(using: transitionContext), inContainer: container)
+        
+        let timing = CubicTimingProvider(duration: transitionDuration(using: transitionContext), curve: .easeInOut)
+        
+        let shiftLocator = DefaultShiftLocator()
+        let shifts = shiftLocator.shifts(from: source, to: destination)
+        
+        let shiftAnimator = ShiftAnimator(timingProvider: timing)
+        
+        container.addSubview(destinationView)
+        destinationView.frame = transitionContext.finalFrame(for: destinationController)
+        destinationView.layoutIfNeeded()
+        
+        shiftAnimator.commit(shifts)
+        destinationView.transform = CGAffineTransform(translationX: 0, y: container.bounds.height)
+        
+        UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0.0, options: .curveEaseInOut, animations: {
+            destinationView.transform = .identity
+        }, completion: nil)
+        
+        shiftAnimator.animate(shifts, in: container) { position in
+            transitionContext.completeTransition(position == .end)
+        }
+        
+        let actionLocator = ActionLocator()
+        
+        let sourceAnimator = ActionAnimator(timingProvider: timing)
+        sourceAnimator.animate(actionLocator.actions(in: sourceController.view), in: container, inverted: false)
+        
+        let destinationAnimator = ActionAnimator(timingProvider: timing)
+        sourceAnimator.animate(actionLocator.actions(in: destinationController.view), in: container, inverted: true)
     }
 }

@@ -20,6 +20,9 @@ public protocol TargetLocator {
 }
 
 public struct DefaultTargetLocator: TargetLocator {
+    
+    // MARK: Initializer
+    public init() { /* No op */ }
 
     // MARK: Interface
     public func locatedTargetsForShift(from source: ShiftTransitionable, to destination: ShiftTransitionable) -> (sources: [Shift.Target], destinations: [Shift.Target]) {

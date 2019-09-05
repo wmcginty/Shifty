@@ -27,7 +27,7 @@ public extension ShiftLocator {
     ///   - destination: The destination of the shift transition
     ///   - targetLocator: The object used to locate the viable `Shift.Target` objects inside `source and `destination`.
     /// - Returns: An array of `Shift objects suitable for animation.
-    func shifts(from source: ShiftTransitionable, to destination: ShiftTransitionable, using targetLocator: TargetLocator) -> [Shift] {
+    func shifts(from source: ShiftTransitionable, to destination: ShiftTransitionable, using targetLocator: TargetLocator = DefaultTargetLocator()) -> [Shift] {
         let result = targetLocator.locatedTargetsForShift(from: source, to: destination)
         return shifts(from: result.sources, to: result.destinations)
     }
@@ -35,13 +35,8 @@ public extension ShiftLocator {
 
 public struct DefaultShiftLocator: ShiftLocator {
     
-    // MARK: Properties
-    public let timingProvider: TimingProvider
-    
     // MARK: Initializers
-    public init(timingProvider: TimingProvider) {
-        self.timingProvider = timingProvider
-    }
+    public init() { /* No op */ }
 
     // MARK: ShiftCoordinator
     public func shifts(from sources: [Shift.Target], to destinations: [Shift.Target]) -> [Shift] {

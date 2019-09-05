@@ -16,7 +16,7 @@ class SimpleShiftTransitionAnimator: NSObject, UIViewControllerAnimatedTransitio
     
     // MARK: UIViewControllerAnimatedTransitioning
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.7
+        return 0.3
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -32,19 +32,22 @@ class SimpleShiftTransitionAnimator: NSObject, UIViewControllerAnimatedTransitio
         destinationView.frame = transitionContext.finalFrame(for: destinationController)
         destinationView.layoutIfNeeded()
         
-//        let context = SpringAnimationContext(timingParameters: UISpringTimingParameters(dampingRatio: 0.8))
-//        let coordinator = DefaultCoordinator(animationContext: context)
-//        
-//        let shiftAnimator = ShiftAnimator(source: source, destination: destination, coordinator: coordinator)! //In this example, we're confident that both the source and destination have an available Shift.
-//        shiftAnimator.animate(withDuration: transitionDuration(using: transitionContext), inContainer: container) { position in
-//            transitionContext.completeTransition(position == .end)
-//        }
-//
-//        
-//        let sourceAnimator = ActionAnimator(transitionable: source)
-//        sourceAnimator.animate(withDuration: transitionDuration(using: transitionContext), inContainer: container)
-//        
-//        let destinationAnimator = ActionAnimator(transitionable: destination, isInverted: true)
-//        destinationAnimator.animate(withDuration: transitionDuration(using: transitionContext), inContainer: container)
+        let timing = CubicTimingProvider(duration: transitionDuration(using: transitionContext), curve: .easeInOut)
+        
+        let shiftLocator = DefaultShiftLocator()
+        let shifts = shiftLocator.shifts(from: source, to: destination)
+        
+        let shiftAnimator = ShiftAnimator(timingProvider: timing)
+        shiftAnimator.animate(shifts, in: container) { position in
+            transitionContext.completeTransition(position == .end)
+        }
+        
+        let actionLocator = ActionLocator()
+        
+        let sourceAnimator = ActionAnimator(timingProvider: timing)
+        sourceAnimator.animate(actionLocator.actions(in: sourceController.view), in: container, inverted: false)
+        
+        let destinationAnimator = ActionAnimator(timingProvider: timing)
+        destinationAnimator.animate(actionLocator.actions(in: destinationController.view), in: container, inverted: true)
     }
 }

@@ -19,9 +19,9 @@ class CommitShiftExampleViewControllerB: UIViewController, ShiftTransitionable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        yellowView.shiftID = "yellow"
-//        orangeView.shiftID = "orange"
-//        backButton.actions = [.fade(to: 0)]
+        yellowView.shiftID = .yellow
+        orangeView.shiftID = .orange
+        backButton.actionModifier = .fade(to: 0)
     }
     
     // MARK: IBActions

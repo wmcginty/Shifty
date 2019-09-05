@@ -8,6 +8,10 @@
 
 import Foundation
 
+/* TODO
+ -Determine what is causing the brief layout glitch occasionally
+ */
+
 open class ShiftAnimator: NSObject {
     
     // MARK: Properties
@@ -22,24 +26,11 @@ open class ShiftAnimator: NSObject {
     }
  
     // MARK: Interface
-    open func commit(_ shifts: Shift...) {
+    open func commit(_ shifts: [Shift]) {
         shifts.forEach { destinations[$0] = $0.destinationSnapshot() }
     }
     
-    open func configureShiftAnimations(for shifts: Shift..., in container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
-        configureShiftAnimations(for: shifts, in: container, completion: completion)
-    }
-    
-    open func animate(_ shifts: Shift..., in container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
-        configureShiftAnimations(for: shifts, in: container, completion: completion)
-        startAnimation()
-    }
-}
-
-// MARK: Helper
-extension ShiftAnimator {
-    
-    func configureShiftAnimations(for shifts: [Shift], in container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
+    open func configureShiftAnimations(for shifts: [Shift], in container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
         shifts.forEach { shift in
             let destination = destinations[shift]
             let replicant = shift.configuredReplicant(in: container)
@@ -56,6 +47,15 @@ extension ShiftAnimator {
         
         completion.map(shiftAnimator.addCompletion)
     }
+        
+    open func animate(_ shifts: [Shift], in container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
+        configureShiftAnimations(for: shifts, in: container, completion: completion)
+        startAnimation()
+    }
+}
+
+// MARK: Helper
+extension ShiftAnimator {
     
     func animations(for shift: Shift, with replicant: UIView, using destination: Snapshot?) {
         guard let keyframe = timingProvider.keyframe else {

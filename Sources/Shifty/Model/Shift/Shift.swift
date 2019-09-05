@@ -71,12 +71,6 @@ extension Shift {
     
     func visualShift(for replicant: UIView, using snapshot: Snapshot? = nil) {
         if !isPositionalOnly {
-            #if DEBUG
-            if !source.replicationStrategy.canVisuallyShift {
-                debugPrint("Shifty Warning: Using the snapshot replication strategy can not accomodate visual shifts (only positional).")
-            }
-            #endif
-            
             (snapshot ?? destinationSnapshot()).applyVisualState(to: replicant)
         }
     }

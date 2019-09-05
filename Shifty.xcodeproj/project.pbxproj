@@ -44,7 +44,6 @@
 		B4D70F8B20A8DE1800EBB707 /* ShiftExampleViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F7B20A8DE1800EBB707 /* ShiftExampleViewControllerB.swift */; };
 		B4D70F8C20A8DE1800EBB707 /* PrecommitShiftTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F7C20A8DE1800EBB707 /* PrecommitShiftTransitionAnimator.swift */; };
 		B4D70F8D20A8DE1800EBB707 /* ContinuousExampleViewControllerA.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F7D20A8DE1800EBB707 /* ContinuousExampleViewControllerA.swift */; };
-		B4D70F8E20A8DE1800EBB707 /* EvenShiftCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F7E20A8DE1800EBB707 /* EvenShiftCoordinator.swift */; };
 		B4D70F8F20A8DE1800EBB707 /* SimpleShiftTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F7F20A8DE1800EBB707 /* SimpleShiftTransitioningDelegate.swift */; };
 		B4D70F9020A8DE1800EBB707 /* ShiftExampleViewControllerA.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F8020A8DE1800EBB707 /* ShiftExampleViewControllerA.swift */; };
 		B4D70F9120A8DE1800EBB707 /* ContinuousExampleViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F8120A8DE1800EBB707 /* ContinuousExampleViewControllerB.swift */; };
@@ -140,7 +139,6 @@
 		B4D70F7B20A8DE1800EBB707 /* ShiftExampleViewControllerB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftExampleViewControllerB.swift; sourceTree = "<group>"; };
 		B4D70F7C20A8DE1800EBB707 /* PrecommitShiftTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrecommitShiftTransitionAnimator.swift; sourceTree = "<group>"; };
 		B4D70F7D20A8DE1800EBB707 /* ContinuousExampleViewControllerA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContinuousExampleViewControllerA.swift; sourceTree = "<group>"; };
-		B4D70F7E20A8DE1800EBB707 /* EvenShiftCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvenShiftCoordinator.swift; sourceTree = "<group>"; };
 		B4D70F7F20A8DE1800EBB707 /* SimpleShiftTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleShiftTransitioningDelegate.swift; sourceTree = "<group>"; };
 		B4D70F8020A8DE1800EBB707 /* ShiftExampleViewControllerA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftExampleViewControllerA.swift; sourceTree = "<group>"; };
 		B4D70F8120A8DE1800EBB707 /* ContinuousExampleViewControllerB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContinuousExampleViewControllerB.swift; sourceTree = "<group>"; };
@@ -400,8 +398,8 @@
 				B4D70F7B20A8DE1800EBB707 /* ShiftExampleViewControllerB.swift */,
 				B4D70F7D20A8DE1800EBB707 /* ContinuousExampleViewControllerA.swift */,
 				B4D70F8120A8DE1800EBB707 /* ContinuousExampleViewControllerB.swift */,
-				B4D70F8820A8DE1800EBB707 /* CommitShiftExampleViewControllerB.swift */,
 				B4D70F8920A8DE1800EBB707 /* CommitShiftExampleViewControllerA.swift */,
+				B4D70F8820A8DE1800EBB707 /* CommitShiftExampleViewControllerB.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -409,7 +407,6 @@
 		B4D70FA020A8DF4800EBB707 /* Animators */ = {
 			isa = PBXGroup;
 			children = (
-				B4D70F7E20A8DE1800EBB707 /* EvenShiftCoordinator.swift */,
 				B4D70F7A20A8DE1800EBB707 /* SimpleShiftTransitionAnimator.swift */,
 				B4D70F7C20A8DE1800EBB707 /* PrecommitShiftTransitionAnimator.swift */,
 				B4D70F8620A8DE1800EBB707 /* ContinuityTransitionAnimator.swift */,
@@ -659,7 +656,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4D70F8E20A8DE1800EBB707 /* EvenShiftCoordinator.swift in Sources */,
 				B4D70F9220A8DE1800EBB707 /* PrecommitShiftTransitioningDelegate.swift in Sources */,
 				B4D70F8C20A8DE1800EBB707 /* PrecommitShiftTransitionAnimator.swift in Sources */,
 				B4D70F9020A8DE1800EBB707 /* ShiftExampleViewControllerA.swift in Sources */,
