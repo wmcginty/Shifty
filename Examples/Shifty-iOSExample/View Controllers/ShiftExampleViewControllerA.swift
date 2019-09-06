@@ -28,30 +28,10 @@ class ShiftExampleViewControllerA: UIViewController, ShiftTransitionable {
     override func viewDidLoad() {
         super.viewDidLoad()
         definesPresentationContext = true
-        
-//        orangeView.isHidden = true
-//        orangeView.layer.cornerRadius = 16
     }
     
     // MARK: IBActions
     @IBAction func shiftItButtonPressed(sender: AnyObject) {
-        
-//        let source = Shift.Target(view: yellowView, identifier: .init(rawValue: "1"), replicationStrategy: .replication)
-//        let dest = Shift.Target(view: orangeView, identifier: .init(rawValue: "1"), replicationStrategy: .replication)
-//
-//        var shift = Shift(source: source, destination: dest)
-//        shift.nativeViewRestorationBehavior = .destination
-//
-//        if animator == nil {
-//            animator = ShiftAnimator(timingProvider: CubicTimingProvider(duration: 1.0, curve: .easeInOut))
-//            animator?.pausesOnCompletion = true
-//            animator?.animate(shift, in: view) { position in
-//                debugPrint(position.rawValue)
-//            }
-//        } else {
-//            animator?.isReversed.toggle()
-//            animator?.startAnimation()
-//        }
         
         yellowView.shiftID = .yellow
         orangeView.shiftID = .orange

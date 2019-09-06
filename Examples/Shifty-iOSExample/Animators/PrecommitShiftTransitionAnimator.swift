@@ -28,11 +28,10 @@ class PrecommitShiftTransitionAnimator: NSObject, UIViewControllerAnimatedTransi
         guard let destinationView = transitionContext.view(forKey: .to) else { return }
         guard let source = sourceController as? ShiftTransitionable, let destination = destinationController as? ShiftTransitionable else { return }
         
-        let timing = CubicTimingProvider(duration: transitionDuration(using: transitionContext), curve: .easeInOut)
-        
         let shiftLocator = ShiftLocator()
         let shifts = shiftLocator.shifts(from: source, to: destination)
         
+        let timing = CubicTimingProvider(duration: transitionDuration(using: transitionContext), curve: .easeInOut)
         let shiftAnimator = ShiftAnimator(timingProvider: timing)
         
         container.addSubview(destinationView)
@@ -40,8 +39,8 @@ class PrecommitShiftTransitionAnimator: NSObject, UIViewControllerAnimatedTransi
         destinationView.layoutIfNeeded()
         
         shiftAnimator.commit(shifts)
-        destinationView.transform = CGAffineTransform(translationX: 0, y: container.bounds.height)
         
+        destinationView.transform = CGAffineTransform(translationX: 0, y: container.bounds.height)
         UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0.0, options: .curveEaseInOut, animations: {
             destinationView.transform = .identity
         }, completion: nil)
