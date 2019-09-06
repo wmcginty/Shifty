@@ -10,7 +10,7 @@ import UIKit
 /// Represents the shift of a single `UIView` object.
 public struct Shift: Hashable {
     
-    // MARK: Subtype
+    // MARK: Subtypes
     public struct NativeViewRestorationBehavior: OptionSet, Hashable {
         public let rawValue: Int
         public init(rawValue: Int) { self.rawValue = rawValue }
@@ -21,12 +21,18 @@ public struct Shift: Hashable {
         public static let all: NativeViewRestorationBehavior = [.source, .destination]
     }
     
+    public enum VisualAnimationBehavior {
+        case none
+        case automatic
+        case custom(() -> Void)
+    }
+    
     // MARK: Properties
     public let source: Target
     public let destination: Target
     
-    public var isPositionalOnly: Bool = false
     public var nativeViewRestorationBehavior: NativeViewRestorationBehavior = .all
+    public var visualAnimationBehavior: VisualAnimationBehavior = .none
     
     // MARK: Initializers
     public init(source: Target, destination: Target) {
@@ -35,10 +41,7 @@ public struct Shift: Hashable {
     }
     
     public var debug: Shift {
-        var shift = Shift(source: source.debug, destination: destination.debug)
-        shift.isPositionalOnly = true
-        
-        return shift
+        return Shift(source: source.debug, destination: destination.debug)
     }
 }
 
@@ -70,8 +73,10 @@ extension Shift {
     }
     
     func visualShift(for replicant: UIView, using snapshot: Snapshot? = nil) {
-        if !isPositionalOnly {
-            (snapshot ?? destinationSnapshot()).applyVisualState(to: replicant)
+        switch visualAnimationBehavior {
+        case .none: break
+        case .automatic: (snapshot ?? destinationSnapshot()).applyVisualState(to: replicant)
+        case .custom(let animations): animations()
         }
     }
     
@@ -86,5 +91,18 @@ extension Shift {
     
     func configureNativeViews(hidden: Bool) {
         [source, destination].forEach { $0.configureNativeView(hidden: hidden) }
+    }
+}
+
+// MARK: Hashable
+extension Shift {
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(source)
+        hasher.combine(destination)
+    }
+    
+    public static func == (lhs: Shift, rhs: Shift) -> Bool {
+        return lhs.source == rhs.source && lhs.destination == rhs.destination
     }
 }

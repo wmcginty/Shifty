@@ -8,11 +8,6 @@
 
 import Foundation
 
-/* TODO
- - Determine what is causing the brief layout glitch occasionally
- - Alongside animations (like a cross fade, so non-replicable things can 'transition' during shift
- */
-
 open class ShiftAnimator: NSObject {
     
     // MARK: Properties
@@ -40,7 +35,7 @@ open class ShiftAnimator: NSObject {
             shiftAnimator.addAnimations { [weak self] in
                 self?.animations(for: shift, with: replicant, using: destination)
             }
-            
+
             shiftAnimator.addCompletion { _ in
                 shift.cleanup(replicant: replicant)
             }

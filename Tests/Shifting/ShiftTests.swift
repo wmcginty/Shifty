@@ -141,7 +141,9 @@ class ShiftTests: XCTestCase {
         
         let s = Shift.Target(view: UIView(), identifier: .mock, replicationStrategy: .debug)
         let d = Shift.Target(view: destination, identifier: .mock)
-        let shift = Shift(source: s, destination: d)
+        
+        var shift = Shift(source: s, destination: d)
+        shift.visualAnimationBehavior = .automatic
        
         let replicant = UIView()
         shift.visualShift(for: replicant)
