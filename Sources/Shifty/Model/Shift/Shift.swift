@@ -24,7 +24,7 @@ public struct Shift: Hashable {
     public enum VisualAnimationBehavior {
         case none
         case automatic
-        case custom(() -> Void)
+        case custom((_ replicant: UIView, _ destination: Snapshot) -> Void)
     }
     
     // MARK: Properties
@@ -73,10 +73,12 @@ extension Shift {
     }
     
     func visualShift(for replicant: UIView, using snapshot: Snapshot? = nil) {
+        let destination = snapshot ?? destinationSnapshot()
+        
         switch visualAnimationBehavior {
         case .none: break
-        case .automatic: (snapshot ?? destinationSnapshot()).applyVisualState(to: replicant)
-        case .custom(let animations): animations()
+        case .automatic: destination.applyVisualState(to: replicant)
+        case .custom(let animations): animations(replicant, destination)
         }
     }
     
