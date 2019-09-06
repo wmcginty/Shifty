@@ -337,8 +337,8 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lQR-U5-5ew">
-                                <rect key="frame" x="133.5" y="568" width="108" height="30"/>
-                                <state key="normal" title="Shift Transition!"/>
+                                <rect key="frame" x="169" y="568" width="37" height="30"/>
+                                <state key="normal" title="Shift!"/>
                                 <connections>
                                     <action selector="shiftItButtonPressedWithSender:" destination="Pft-1h-35L" eventType="touchUpInside" id="ABN-9o-Y8j"/>
                                 </connections>

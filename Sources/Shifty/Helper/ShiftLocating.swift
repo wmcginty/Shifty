@@ -1,24 +1,25 @@
 //
-//  ShiftCoordinator.swift
+//  ShiftLocating.swift
 //  Shifty-iOS
 //
 //  Created by William McGinty on 12/28/17.
+//  Copyright © 2019 Will McGinty. All rights reserved.
 //
 
 import UIKit
 
-public protocol ShiftLocator {
+public protocol ShiftLocating {
     
     /// Creates the `Shift` objects that can be animated from the given `Target` objects.
     ///
     /// - Parameters:
     ///   - sources: The `Target` objects residing the source's view hierarchy.
     ///   - destinations: The `Target` objects residing the source's view hierarchy.
-    /// - Returns: An array of `Shift objects suitable for animation.
+    /// - Returns: An array of `Shift` objects suitable for animation.
     func shifts(from sources: [Shift.Target], to destinations: [Shift.Target]) -> [Shift]
 }
 
-public extension ShiftLocator {
+public extension ShiftLocating {
     
     /// Creates the `Shift` objects that can be animated from the `Target` objects found in the `source` and `destination`..
     ///
@@ -27,13 +28,13 @@ public extension ShiftLocator {
     ///   - destination: The destination of the shift transition
     ///   - targetLocator: The object used to locate the viable `Shift.Target` objects inside `source and `destination`.
     /// - Returns: An array of `Shift objects suitable for animation.
-    func shifts(from source: ShiftTransitionable, to destination: ShiftTransitionable, using targetLocator: TargetLocator = DefaultTargetLocator()) -> [Shift] {
+    func shifts(from source: ShiftTransitionable, to destination: ShiftTransitionable, using targetLocator: TargetLocating = TargetLocator()) -> [Shift] {
         let result = targetLocator.locatedTargetsForShift(from: source, to: destination)
         return shifts(from: result.sources, to: result.destinations)
     }
 }
 
-public struct DefaultShiftLocator: ShiftLocator {
+public struct ShiftLocator: ShiftLocating {
     
     // MARK: Initializers
     public init() { /* No op */ }

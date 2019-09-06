@@ -30,7 +30,7 @@ class PrecommitShiftTransitionAnimator: NSObject, UIViewControllerAnimatedTransi
         
         let timing = CubicTimingProvider(duration: transitionDuration(using: transitionContext), curve: .easeInOut)
         
-        let shiftLocator = DefaultShiftLocator()
+        let shiftLocator = ShiftLocator()
         let shifts = shiftLocator.shifts(from: source, to: destination)
         
         let shiftAnimator = ShiftAnimator(timingProvider: timing)
@@ -50,12 +50,10 @@ class PrecommitShiftTransitionAnimator: NSObject, UIViewControllerAnimatedTransi
             transitionContext.completeTransition(position == .end)
         }
         
-        let actionLocator = ActionLocator()
-        
         let sourceAnimator = ActionAnimator(timingProvider: timing)
-        sourceAnimator.animate(actionLocator.actions(in: sourceController.view), in: container, inverted: false)
+        sourceAnimator.animateActions(from: sourceController.view, in: container, inverted: false)
         
         let destinationAnimator = ActionAnimator(timingProvider: timing)
-        destinationAnimator.animate(actionLocator.actions(in: destinationController.view), in: container, inverted: true)
+        destinationAnimator.animateActions(from: destinationController.view, in: container, inverted: true)
     }
 }

@@ -34,20 +34,15 @@ class SimpleShiftTransitionAnimator: NSObject, UIViewControllerAnimatedTransitio
         
         let timing = CubicTimingProvider(duration: transitionDuration(using: transitionContext), curve: .easeInOut)
         
-        let shiftLocator = DefaultShiftLocator()
-        let shifts = shiftLocator.shifts(from: source, to: destination)
-        
         let shiftAnimator = ShiftAnimator(timingProvider: timing)
-        shiftAnimator.animate(shifts, in: container) { position in
+        shiftAnimator.animateShifts(from: source, to: destination, in: container) { position in
             transitionContext.completeTransition(position == .end)
         }
         
-        let actionLocator = ActionLocator()
-        
         let sourceAnimator = ActionAnimator(timingProvider: timing)
-        sourceAnimator.animate(actionLocator.actions(in: sourceController.view), in: container, inverted: false)
+        sourceAnimator.animateActions(from: sourceController.view, in: container, inverted: false)
         
         let destinationAnimator = ActionAnimator(timingProvider: timing)
-        destinationAnimator.animate(actionLocator.actions(in: destinationController.view), in: container, inverted: true)
+        destinationAnimator.animateActions(from: destinationController.view, in: container, inverted: true)
     }
 }

@@ -42,6 +42,24 @@ extension UIImageView {
     }
 }
 
+// MARK: UIButton + Replicable
+extension UIButton {
+    
+    @objc public override var replicant: UIView {
+        let replicant = UIButton(type: buttonType)
+        replicant.setTitle(title(for: .normal), for: .normal)
+       
+//        replicant.titleLabel?.textColor = titleLabel?.textColor
+//        r eplicant.titleLabel?.font = titleLabel?.font
+        replicant.alpha = alpha
+        replicant.backgroundColor = backgroundColor
+        replicant.layer.cornerRadius = layer.cornerRadius
+        replicant.layer.maskedCorners = layer.maskedCorners
+        
+        return replicant
+    }
+}
+
 // MARK: UILabel + Replicable
 extension UILabel {
 

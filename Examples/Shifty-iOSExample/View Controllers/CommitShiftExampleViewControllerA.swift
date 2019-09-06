@@ -9,6 +9,10 @@
 import UIKit
 import Shifty
 
+extension Shift.Identifier {
+    static let button = Shift.Identifier(rawValue: "button")
+}
+
 class CommitShiftExampleViewControllerA: UIViewController, ShiftTransitionable {
     
     @IBOutlet var yellowView: UIView!
@@ -27,7 +31,7 @@ class CommitShiftExampleViewControllerA: UIViewController, ShiftTransitionable {
         
         yellowView.shiftID = .yellow
         orangeView.shiftID = .orange
-        shiftButton.actionModifier = .fade(to: 0)
+        shiftButton.shiftTarget = Shift.Target(view: shiftButton, identifier: .button, replicationStrategy: .replication)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let controller = storyboard.instantiateViewController(withIdentifier: "CommitShiftExampleViewControllerB") as? CommitShiftExampleViewControllerB else { return }

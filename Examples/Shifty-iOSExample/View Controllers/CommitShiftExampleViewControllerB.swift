@@ -21,7 +21,7 @@ class CommitShiftExampleViewControllerB: UIViewController, ShiftTransitionable {
         
         yellowView.shiftID = .yellow
         orangeView.shiftID = .orange
-        backButton.actionModifier = .fade(to: 0)
+        backButton.shiftTarget = Shift.Target(view: backButton, identifier: .button, replicationStrategy: .replication)
     }
     
     // MARK: IBActions

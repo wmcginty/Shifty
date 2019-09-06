@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B41E25C62320C6810031AD7D /* ShiftAnimator+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41E25C52320C6810031AD7D /* ShiftAnimator+Convenience.swift */; };
+		B41E25C82320C79D0031AD7D /* ActionAnimator+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41E25C72320C79D0031AD7D /* ActionAnimator+Convenience.swift */; };
+		B41E25CA2320C7FD0031AD7D /* UIView+Flattened.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41E25C92320C7FD0031AD7D /* UIView+Flattened.swift */; };
 		B44B2279231A21C200A2E80B /* ReplicationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B2278231A21C200A2E80B /* ReplicationStrategy.swift */; };
 		B44B227E231A259700A2E80B /* SnapshotTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B44B227D231A259700A2E80B /* SnapshotTesting.framework */; };
 		B44B2280231A25E800A2E80B /* ReplicantStrategyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B227F231A25E800A2E80B /* ReplicantStrategyTests.swift */; };
@@ -19,17 +22,17 @@
 		B44B2299231A45D700A2E80B /* ShiftTargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B2291231A445100A2E80B /* ShiftTargetTests.swift */; };
 		B44B229C231A48B000A2E80B /* SnapshotViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B229A231A48AB00A2E80B /* SnapshotViewTests.swift */; };
 		B47A33F3231E08CC003E58D0 /* ActionAnimator+UIViewImplicitlyAnimating.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A33F2231E08CC003E58D0 /* ActionAnimator+UIViewImplicitlyAnimating.swift */; };
-		B47A33F5231E1251003E58D0 /* ActionLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A33F4231E1251003E58D0 /* ActionLocator.swift */; };
+		B47A33F5231E1251003E58D0 /* ActionLocating.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A33F4231E1251003E58D0 /* ActionLocating.swift */; };
 		B47A33F7231E1C92003E58D0 /* Action.Modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A33F6231E1C92003E58D0 /* Action.Modifier.swift */; };
 		B47C8D98231AD107000AF742 /* Replicable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47C8D97231AD107000AF742 /* Replicable.swift */; };
 		B47C8D9A231B1765000AF742 /* ShiftAnimator+UIViewImplicitlyAnimating.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47C8D99231B1765000AF742 /* ShiftAnimator+UIViewImplicitlyAnimating.swift */; };
-		B47C8D9C231B2ED9000AF742 /* TargetLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47C8D9B231B2ED9000AF742 /* TargetLocator.swift */; };
+		B47C8D9C231B2ED9000AF742 /* TargetLocating.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47C8D9B231B2ED9000AF742 /* TargetLocating.swift */; };
 		B48612BB20A8E028003B8152 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B48612BA20A8E028003B8152 /* Main.storyboard */; };
 		B4D70F0420A8DCF600EBB707 /* Shifty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D70EFB20A8DCF500EBB707 /* Shifty.framework */; };
 		B4D70F2320A8DD3600EBB707 /* ShiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F1E20A8DD3600EBB707 /* ShiftTests.swift */; };
 		B4D70F2520A8DD3600EBB707 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2020A8DD3600EBB707 /* CoordinatorTests.swift */; };
 		B4D70F2620A8DD3600EBB707 /* SnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2120A8DD3600EBB707 /* SnapshotTests.swift */; };
-		B4D70F2A20A8DD6D00EBB707 /* ShiftLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2820A8DD6D00EBB707 /* ShiftLocator.swift */; };
+		B4D70F2A20A8DD6D00EBB707 /* ShiftLocating.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2820A8DD6D00EBB707 /* ShiftLocating.swift */; };
 		B4D70F2B20A8DD6D00EBB707 /* ActionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2920A8DD6D00EBB707 /* ActionAnimator.swift */; };
 		B4D70F4020A8DD7A00EBB707 /* Shift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3020A8DD7900EBB707 /* Shift.swift */; };
 		B4D70F4120A8DD7A00EBB707 /* Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3120A8DD7900EBB707 /* Snapshot.swift */; };
@@ -98,6 +101,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B41E25C52320C6810031AD7D /* ShiftAnimator+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShiftAnimator+Convenience.swift"; sourceTree = "<group>"; };
+		B41E25C72320C79D0031AD7D /* ActionAnimator+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionAnimator+Convenience.swift"; sourceTree = "<group>"; };
+		B41E25C92320C7FD0031AD7D /* UIView+Flattened.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Flattened.swift"; sourceTree = "<group>"; };
 		B44B2278231A21C200A2E80B /* ReplicationStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplicationStrategy.swift; sourceTree = "<group>"; };
 		B44B227D231A259700A2E80B /* SnapshotTesting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapshotTesting.framework; path = Carthage/Build/iOS/SnapshotTesting.framework; sourceTree = "<group>"; };
 		B44B227F231A25E800A2E80B /* ReplicantStrategyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplicantStrategyTests.swift; sourceTree = "<group>"; };
@@ -110,11 +116,11 @@
 		B44B2295231A448B00A2E80B /* TimingProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimingProviderTests.swift; sourceTree = "<group>"; };
 		B44B229A231A48AB00A2E80B /* SnapshotViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotViewTests.swift; sourceTree = "<group>"; };
 		B47A33F2231E08CC003E58D0 /* ActionAnimator+UIViewImplicitlyAnimating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionAnimator+UIViewImplicitlyAnimating.swift"; sourceTree = "<group>"; };
-		B47A33F4231E1251003E58D0 /* ActionLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionLocator.swift; sourceTree = "<group>"; };
+		B47A33F4231E1251003E58D0 /* ActionLocating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionLocating.swift; sourceTree = "<group>"; };
 		B47A33F6231E1C92003E58D0 /* Action.Modifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.Modifier.swift; sourceTree = "<group>"; };
 		B47C8D97231AD107000AF742 /* Replicable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Replicable.swift; sourceTree = "<group>"; };
 		B47C8D99231B1765000AF742 /* ShiftAnimator+UIViewImplicitlyAnimating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShiftAnimator+UIViewImplicitlyAnimating.swift"; sourceTree = "<group>"; };
-		B47C8D9B231B2ED9000AF742 /* TargetLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetLocator.swift; sourceTree = "<group>"; };
+		B47C8D9B231B2ED9000AF742 /* TargetLocating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetLocating.swift; sourceTree = "<group>"; };
 		B48612BA20A8E028003B8152 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B4D70EFB20A8DCF500EBB707 /* Shifty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Shifty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4D70F0320A8DCF600EBB707 /* Shifty-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shifty-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,7 +128,7 @@
 		B4D70F1E20A8DD3600EBB707 /* ShiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftTests.swift; sourceTree = "<group>"; };
 		B4D70F2020A8DD3600EBB707 /* CoordinatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
 		B4D70F2120A8DD3600EBB707 /* SnapshotTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotTests.swift; sourceTree = "<group>"; };
-		B4D70F2820A8DD6D00EBB707 /* ShiftLocator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftLocator.swift; sourceTree = "<group>"; };
+		B4D70F2820A8DD6D00EBB707 /* ShiftLocating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftLocating.swift; sourceTree = "<group>"; };
 		B4D70F2920A8DD6D00EBB707 /* ActionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionAnimator.swift; sourceTree = "<group>"; };
 		B4D70F3020A8DD7900EBB707 /* Shift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shift.swift; sourceTree = "<group>"; };
 		B4D70F3120A8DD7900EBB707 /* Snapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snapshot.swift; sourceTree = "<group>"; };
@@ -256,8 +262,10 @@
 			children = (
 				B44B2289231A3D1400A2E80B /* ShiftAnimator.swift */,
 				B47C8D99231B1765000AF742 /* ShiftAnimator+UIViewImplicitlyAnimating.swift */,
+				B41E25C52320C6810031AD7D /* ShiftAnimator+Convenience.swift */,
 				B4D70F2920A8DD6D00EBB707 /* ActionAnimator.swift */,
 				B47A33F2231E08CC003E58D0 /* ActionAnimator+UIViewImplicitlyAnimating.swift */,
+				B41E25C72320C79D0031AD7D /* ActionAnimator+Convenience.swift */,
 			);
 			path = Animators;
 			sourceTree = "<group>";
@@ -353,6 +361,7 @@
 			children = (
 				B4D70F3A20A8DD7A00EBB707 /* UIView+Shiftable.swift */,
 				B44B2286231A397700A2E80B /* CATransform3D+Equatable.swift */,
+				B41E25C92320C7FD0031AD7D /* UIView+Flattened.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -361,9 +370,9 @@
 			isa = PBXGroup;
 			children = (
 				B4D70F3E20A8DD7A00EBB707 /* SnapshotView.swift */,
-				B47C8D9B231B2ED9000AF742 /* TargetLocator.swift */,
-				B4D70F2820A8DD6D00EBB707 /* ShiftLocator.swift */,
-				B47A33F4231E1251003E58D0 /* ActionLocator.swift */,
+				B47C8D9B231B2ED9000AF742 /* TargetLocating.swift */,
+				B4D70F2820A8DD6D00EBB707 /* ShiftLocating.swift */,
+				B47A33F4231E1251003E58D0 /* ActionLocating.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -616,13 +625,16 @@
 				B4D70F2B20A8DD6D00EBB707 /* ActionAnimator.swift in Sources */,
 				B4D70F4520A8DD7A00EBB707 /* ShiftTransitionable.swift in Sources */,
 				B44B228C231A3E8C00A2E80B /* TimingProvider.swift in Sources */,
-				B47C8D9C231B2ED9000AF742 /* TargetLocator.swift in Sources */,
+				B41E25C82320C79D0031AD7D /* ActionAnimator+Convenience.swift in Sources */,
+				B47C8D9C231B2ED9000AF742 /* TargetLocating.swift in Sources */,
 				B47A33F7231E1C92003E58D0 /* Action.Modifier.swift in Sources */,
-				B47A33F5231E1251003E58D0 /* ActionLocator.swift in Sources */,
+				B41E25C62320C6810031AD7D /* ShiftAnimator+Convenience.swift in Sources */,
+				B47A33F5231E1251003E58D0 /* ActionLocating.swift in Sources */,
 				B44B2287231A397700A2E80B /* CATransform3D+Equatable.swift in Sources */,
 				B4D70F4420A8DD7A00EBB707 /* Action.swift in Sources */,
 				B44B228A231A3D1400A2E80B /* ShiftAnimator.swift in Sources */,
-				B4D70F2A20A8DD6D00EBB707 /* ShiftLocator.swift in Sources */,
+				B4D70F2A20A8DD6D00EBB707 /* ShiftLocating.swift in Sources */,
+				B41E25CA2320C7FD0031AD7D /* UIView+Flattened.swift in Sources */,
 				B44B2279231A21C200A2E80B /* ReplicationStrategy.swift in Sources */,
 				B4D70F4B20A8DD7A00EBB707 /* SnapshotView.swift in Sources */,
 				B44B2283231A323400A2E80B /* Shift.Identifier.swift in Sources */,
