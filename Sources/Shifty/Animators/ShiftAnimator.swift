@@ -9,7 +9,7 @@
 import Foundation
 
 /* TODO
- -Determine what is causing the brief layout glitch occasionally
+ - Determine what is causing the brief layout glitch occasionally
  - Alongside animations (like a cross fade, so non-replicable things can 'transition' during shift
  */
 

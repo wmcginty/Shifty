@@ -28,7 +28,7 @@ public extension Action {
         let replicant = modifier.configuredShiftingView(for: view)
         container.addSubview(replicant)
         
-        applyPositionalState(to: replicant, in: container)
+        applyPositionalState(to: replicant)
         
         //Configure the native view as hidden so the replicantView is the only visible copy, then return it
         configureNativeView(hidden: true)
@@ -47,7 +47,7 @@ public extension Action {
 // MARK: Helper
 extension Action {
     
-    func applyPositionalState(to view: UIView, in container: UIView) {
+    func applyPositionalState(to view: UIView) {
         snapshot().applyPositionalState(to: view)
     }
     
