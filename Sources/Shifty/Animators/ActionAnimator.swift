@@ -16,17 +16,23 @@ public class ActionAnimator: NSObject {
 
     // MARK: Properties
     public let timingProvider: TimingProvider
+    public let isInverted: Bool
     public let actionAnimator: UIViewPropertyAnimator
   
     // MARK: Initializers
-    public init(timingProvider: TimingProvider) {
+    public init(timingProvider: TimingProvider, isInverted: Bool = false) {
         self.timingProvider = timingProvider
+        self.isInverted = isInverted
         self.actionAnimator = UIViewPropertyAnimator(duration: timingProvider.duration, timingParameters: timingProvider.parameters)
     }
 
     // MARK: Interface
-    open func animate(_ actions: [Action], in container: UIView, inverted: Bool = true, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
-        configureActionAnimators(for: actions, in: container, inverted: inverted, completion: completion)
+    open func inverted() -> ActionAnimator {
+        return ActionAnimator(timingProvider: timingProvider, isInverted: !isInverted)
+    }
+    
+    open func animate(_ actions: [Action], in container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
+        configureActionAnimator(for: actions, in: container, completion: completion)
         startAnimation()
     }
 }
@@ -34,7 +40,7 @@ public class ActionAnimator: NSObject {
 // MARK: Helper
 private extension ActionAnimator {
     
-    func configureActionAnimators(for actions: [Action], in container: UIView, inverted: Bool = true, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
+    func configureActionAnimator(for actions: [Action], in container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
         actions.forEach { action in
             
             let replicant = action.configuredReplicant(in: container)
@@ -49,7 +55,7 @@ private extension ActionAnimator {
             }
         }
         
-        if inverted {
+        if isInverted {
             actionAnimator.isReversed = true
             actionAnimator.fractionComplete = 0
         }

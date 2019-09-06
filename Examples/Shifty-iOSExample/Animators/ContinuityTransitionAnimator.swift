@@ -33,11 +33,11 @@ class ContinuityTransitionAnimator: NSObject, UIViewControllerAnimatedTransition
          animate them simultaneously using the options specified to the animator. As soon as the source's actions have completed, the transition can finish. */
         
         let sourceAnimator = ActionAnimator(timingProvider: CubicTimingProvider(duration: transitionDuration(using: transitionContext), curve: .easeIn))
-        sourceAnimator.animate(actionLocator.actions(in: sourceController.view), in: container, inverted: false) { position in
+        sourceAnimator.animateActions(from: sourceController.view, in: container) { position in
              transitionContext.completeTransition(position == .end)
         }
         
-        let destinationAnimator = ActionAnimator(timingProvider: CubicTimingProvider(duration: transitionDuration(using: transitionContext), curve: .easeOut))
-        destinationAnimator.animate(actionLocator.actions(in: destinationController.view), in: container)
+        let destinationAnimator = sourceAnimator.inverted()
+        destinationAnimator.animateActions(from: destinationController.view, in: container)
     }
 }

@@ -40,9 +40,9 @@ class SimpleShiftTransitionAnimator: NSObject, UIViewControllerAnimatedTransitio
         }
         
         let sourceAnimator = ActionAnimator(timingProvider: timing)
-        sourceAnimator.animateActions(from: sourceController.view, in: container, inverted: false)
+        sourceAnimator.animateActions(from: sourceController.view, in: container)
         
-        let destinationAnimator = ActionAnimator(timingProvider: timing)
-        destinationAnimator.animateActions(from: destinationController.view, in: container, inverted: true)
+        let destinationAnimator = sourceAnimator.inverted()
+        destinationAnimator.animateActions(from: destinationController.view, in: container)
     }
 }

@@ -10,8 +10,8 @@ import Foundation
 
 public extension ActionAnimator {
     
-    func animateActions(from source: UIView, in container: UIView, inverted: Bool = true, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
+    func animateActions(from source: UIView, in container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
         let locator = ActionLocator()
-        animate(locator.actions(in: source), in: container, inverted: inverted, completion: completion)
+        animate(locator.actions(in: source), in: container, completion: completion)
     }
 }
