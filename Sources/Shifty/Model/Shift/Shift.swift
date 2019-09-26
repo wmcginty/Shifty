@@ -48,8 +48,8 @@ public struct Shift: Hashable {
 // MARK: Container Management
 public extension Shift {
     
-    func configuredReplicant(in container: UIView) -> UIView {
-        let replicant = source.configuredReplicant(in: container, afterScreenUpdates: true)
+    func configuredReplicant(in container: UIView, with insertionStrategy: Target.ReplicantInsertionStrategy = .standard) -> UIView {
+        let replicant = source.configuredReplicant(in: container, with: insertionStrategy, afterScreenUpdates: true)
         configureNativeViews(hidden: true)
         
         return replicant

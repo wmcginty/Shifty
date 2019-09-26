@@ -26,10 +26,11 @@ open class ShiftAnimator: NSObject {
         shifts.forEach { destinations[$0] = $0.destinationSnapshot() }
     }
     
-    open func configureShiftAnimations(for shifts: [Shift], in container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
+    open func configureShiftAnimations(for shifts: [Shift], in container: UIView,
+                                       with insertionStrategy: Shift.Target.ReplicantInsertionStrategy = .standard, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
         shifts.forEach { shift in
             let destination = destinations[shift]
-            let replicant = shift.configuredReplicant(in: container)
+            let replicant = shift.configuredReplicant(in: container, with: insertionStrategy)
             shift.layoutDestinationIfNeeded()
             
             shiftAnimator.addAnimations { [weak self] in
@@ -44,8 +45,9 @@ open class ShiftAnimator: NSObject {
         completion.map(shiftAnimator.addCompletion)
     }
         
-    open func animate(_ shifts: [Shift], in container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
-        configureShiftAnimations(for: shifts, in: container, completion: completion)
+    open func animate(_ shifts: [Shift], in container: UIView,
+                      with insertionStrategy: Shift.Target.ReplicantInsertionStrategy = .standard, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
+        configureShiftAnimations(for: shifts, in: container, with: insertionStrategy, completion: completion)
         startAnimation()
     }
 }

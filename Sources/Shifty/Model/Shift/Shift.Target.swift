@@ -13,6 +13,23 @@ public extension Shift {
     /// Represents a single target of a shifting `UIView` - usually either the source or the destination.
     struct Target {
         
+        // MARK: Subtype
+        public enum ReplicantInsertionStrategy {
+            case standard
+            case above(UIView)
+            case below(UIView)
+            case custom((_ replicant: UIView, _ container: UIView) -> Void)
+            
+            func insert(replicant: UIView, into container: UIView) {
+                switch self {
+                case .standard: container.addSubview(replicant)
+                case .above(let other): container.insertSubview(replicant, aboveSubview: other)
+                case .below(let other): container.insertSubview(replicant, belowSubview: other)
+                case .custom(let handler): handler(replicant, container)
+                }
+            }
+        }
+        
         // MARK: Properties
         
         /// The view acting as a target of the shift. This view can be either the source or the destination.
@@ -40,11 +57,11 @@ public extension Shift {
 // MARK: Interface
 public extension Shift.Target {
     
-    func configuredReplicant(in container: UIView, afterScreenUpdates: Bool) -> UIView {
+    func configuredReplicant(in container: UIView, with insertionStrategy: ReplicantInsertionStrategy = .standard, afterScreenUpdates: Bool) -> UIView {
         //Create, add and place the replicantView with respect to the container
         let replicant = replicationStrategy.configuredShiftingView(for: view, afterScreenUpdates: afterScreenUpdates)
-        container.addSubview(replicant)
-        
+        insertionStrategy.insert(replicant: replicant, into: container)
+    
         applyPositionalState(to: replicant, in: container)
         
         return replicant
