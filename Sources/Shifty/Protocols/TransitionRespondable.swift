@@ -7,6 +7,8 @@
 
 import Foundation
 
+public typealias ShiftRespondable = TransitionRespondable & ShiftTransitionable
+
 public protocol TransitionRespondable {
     func prepareForTransition(to destination: TransitionRespondable?, withDuration duration: TimeInterval, completion: @escaping (Bool) -> Void)
     func completeTransition(to destination: TransitionRespondable?)
