@@ -13,7 +13,7 @@ public struct Snapshot: Equatable {
     
     // MARK: Properties
     
-    /// The center of the `UIView` at the time of snapshotting.
+    /// The center of the `UIView` at the time of snapshotting, relative to the window.
     let center: CGPoint
     
     /// The bounds of the `UIView` at the time of snapshotting.
@@ -32,24 +32,21 @@ public struct Snapshot: Equatable {
     /// The corner radius of the view's `CALayer` at the time of snapshotting.
     let cornerRadius: CGFloat
     
-    /// The superview to which all positional properties are relative.
-    let superview: UIView?
-    
     // MARK: Initializers
     init(center: CGPoint, bounds: CGRect, alpha: CGFloat, backgroundColor: UIColor? = nil, transform3D: CATransform3D,
-         cornerRadius: CGFloat, superview: UIView?) {
+         cornerRadius: CGFloat) {
         self.center = center
         self.bounds = bounds
         self.alpha = alpha
         self.backgroundColor = backgroundColor
         self.transform3D = transform3D
         self.cornerRadius = cornerRadius
-        self.superview = superview
     }
     
     public init(view: UIView) {
-        self.init(center: view.center, bounds: view.bounds, alpha: view.alpha, backgroundColor: view.backgroundColor,
-                  transform3D: view.layer.transform, cornerRadius: view.layer.cornerRadius, superview: view.superview)
+        let windowCenter = view.superview?.convert(view.center, to: nil) ?? view.center
+        self.init(center: windowCenter, bounds: view.bounds, alpha: view.alpha, backgroundColor: view.backgroundColor,
+                  transform3D: view.layer.transform, cornerRadius: view.layer.cornerRadius)
     }
     
     // MARK: Interface
@@ -60,13 +57,7 @@ public struct Snapshot: Equatable {
     ///
     /// - returns: The center of `view` in the coordinate space of `container`.
     public func center(in container: UIView) -> CGPoint {
-        #if DEBUG
-        if superview == nil {
-            debugPrint("Shifty Warning: The snapshot was not able to capture a superview- this may cause positional miscalculations related to the snapshotted view.")
-        }
-        #endif
-        
-        return container.convert(center, from: superview)
+        return container.convert(center, from: nil)
     }
     
     /// Apply the positional state of Snapshot to the provided view in the container.

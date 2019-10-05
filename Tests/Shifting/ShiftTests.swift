@@ -154,7 +154,7 @@ class ShiftTests: XCTestCase {
     }
     
     func testShift_correctlyAppliesPositionalSnapshotToReplicantView() {
-        let container = UIView(frame: CGRect(x: 0, y: 0, width: 500, height: 500))
+        let container = UIWindow(frame: CGRect(x: 0, y: 0, width: 500, height: 500))
         let superview = UIView(frame: CGRect(x: 300, y: 300, width: 200, height: 200))
         container.addSubview(superview)
         
