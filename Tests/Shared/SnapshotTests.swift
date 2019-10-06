@@ -93,7 +93,8 @@ class SnapshotTests: XCTestCase {
         view.backgroundColor = .red
         view.alpha = 0.4
         view.layer.cornerRadius = 3
-        let snap = snapshot
+        let snap = Snapshot(center: CGPoint(x: 50, y: 50), bounds: CGRect(origin: .zero, size: CGSize(width: 100, height: 100)),
+        alpha: 0.4, backgroundColor: .red, transform3D: CATransform3DIdentity, cornerRadius: 3)
         
         snap.applyVisualState(to: view)
         XCTAssertEqual(view.backgroundColor, snap.backgroundColor)
@@ -143,9 +144,24 @@ class SnapshotTests: XCTestCase {
         XCTAssertEqual(replicant.layer.transform, transform)
     }
     
-    // MARK: Helper
-    private var snapshot: Snapshot {
-        return Snapshot(center: CGPoint(x: 50, y: 50), bounds: CGRect(origin: .zero, size: CGSize(width: 100, height: 100)),
-                        alpha: 0.4, backgroundColor: .red, transform3D: CATransform3DIdentity, cornerRadius: 3)
+    func testSnapshot_appliesPositionalStateCorrectlyAfterTransformingParent() {
+        let container = UIWindow(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        let child = UIView(frame: CGRect(x: 50, y: 50, width: 50, height: 50))
+        container.addSubview(child)
+        
+        let native = UIView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
+        child.addSubview(native)
+        
+        let snap = Snapshot(view: native)
+        
+        let replicant = UIView()
+        container.addSubview(replicant)
+        
+        child.transform = CGAffineTransform(translationX: 100, y: 100)
+        
+        snap.applyPositionalState(to: replicant)
+        
+        XCTAssertEqual(replicant.center, CGPoint(x: 62.5, y: 62.5))
+        XCTAssertEqual(replicant.bounds, CGRect(origin: .zero, size: CGSize(width: 25, height: 25)))
     }
 }
