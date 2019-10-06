@@ -38,8 +38,8 @@
 		B4D70F4120A8DD7A00EBB707 /* Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3120A8DD7900EBB707 /* Snapshot.swift */; };
 		B4D70F4220A8DD7A00EBB707 /* Shift.Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3220A8DD7900EBB707 /* Shift.Target.swift */; };
 		B4D70F4420A8DD7A00EBB707 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3420A8DD7900EBB707 /* Action.swift */; };
-		B4D70F4520A8DD7A00EBB707 /* ShiftTransitionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3620A8DD7900EBB707 /* ShiftTransitionable.swift */; };
-		B4D70F4620A8DD7A00EBB707 /* TransitionRespondable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3720A8DD7900EBB707 /* TransitionRespondable.swift */; };
+		B4D70F4520A8DD7A00EBB707 /* ShiftTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3620A8DD7900EBB707 /* ShiftTransitioning.swift */; };
+		B4D70F4620A8DD7A00EBB707 /* TransitionDriving.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3720A8DD7900EBB707 /* TransitionDriving.swift */; };
 		B4D70F4820A8DD7A00EBB707 /* UIView+Shiftable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3A20A8DD7A00EBB707 /* UIView+Shiftable.swift */; };
 		B4D70F4B20A8DD7A00EBB707 /* SnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F3E20A8DD7A00EBB707 /* SnapshotView.swift */; };
 		B4D70F5220A8DDA900EBB707 /* Shifty.h in Headers */ = {isa = PBXBuildFile; fileRef = B4D70F5020A8DDA900EBB707 /* Shifty.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -134,8 +134,8 @@
 		B4D70F3120A8DD7900EBB707 /* Snapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snapshot.swift; sourceTree = "<group>"; };
 		B4D70F3220A8DD7900EBB707 /* Shift.Target.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shift.Target.swift; sourceTree = "<group>"; };
 		B4D70F3420A8DD7900EBB707 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
-		B4D70F3620A8DD7900EBB707 /* ShiftTransitionable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftTransitionable.swift; sourceTree = "<group>"; };
-		B4D70F3720A8DD7900EBB707 /* TransitionRespondable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionRespondable.swift; sourceTree = "<group>"; };
+		B4D70F3620A8DD7900EBB707 /* ShiftTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftTransitioning.swift; sourceTree = "<group>"; };
+		B4D70F3720A8DD7900EBB707 /* TransitionDriving.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionDriving.swift; sourceTree = "<group>"; };
 		B4D70F3A20A8DD7A00EBB707 /* UIView+Shiftable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Shiftable.swift"; sourceTree = "<group>"; };
 		B4D70F3E20A8DD7A00EBB707 /* SnapshotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotView.swift; sourceTree = "<group>"; };
 		B4D70F5020A8DDA900EBB707 /* Shifty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shifty.h; sourceTree = "<group>"; };
@@ -350,8 +350,8 @@
 			isa = PBXGroup;
 			children = (
 				B47C8D97231AD107000AF742 /* Replicable.swift */,
-				B4D70F3620A8DD7900EBB707 /* ShiftTransitionable.swift */,
-				B4D70F3720A8DD7900EBB707 /* TransitionRespondable.swift */,
+				B4D70F3620A8DD7900EBB707 /* ShiftTransitioning.swift */,
+				B4D70F3720A8DD7900EBB707 /* TransitionDriving.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -623,7 +623,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4D70F2B20A8DD6D00EBB707 /* ActionAnimator.swift in Sources */,
-				B4D70F4520A8DD7A00EBB707 /* ShiftTransitionable.swift in Sources */,
+				B4D70F4520A8DD7A00EBB707 /* ShiftTransitioning.swift in Sources */,
 				B44B228C231A3E8C00A2E80B /* TimingProvider.swift in Sources */,
 				B41E25C82320C79D0031AD7D /* ActionAnimator+Convenience.swift in Sources */,
 				B47C8D9C231B2ED9000AF742 /* TargetLocating.swift in Sources */,
@@ -638,7 +638,7 @@
 				B44B2279231A21C200A2E80B /* ReplicationStrategy.swift in Sources */,
 				B4D70F4B20A8DD7A00EBB707 /* SnapshotView.swift in Sources */,
 				B44B2283231A323400A2E80B /* Shift.Identifier.swift in Sources */,
-				B4D70F4620A8DD7A00EBB707 /* TransitionRespondable.swift in Sources */,
+				B4D70F4620A8DD7A00EBB707 /* TransitionDriving.swift in Sources */,
 				B4D70F4120A8DD7A00EBB707 /* Snapshot.swift in Sources */,
 				B47C8D98231AD107000AF742 /* Replicable.swift in Sources */,
 				B4D70F4220A8DD7A00EBB707 /* Shift.Target.swift in Sources */,

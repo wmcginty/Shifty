@@ -16,7 +16,7 @@ public protocol TargetLocating {
     ///   - source: The source content view whose subview will be searched for `Target`s.
     ///   - destination: The destination content view whose subview will be searched for `Target`s.
     /// - Returns: A tuple of possible `Shift.Target` objects who can be matched with a corresponding target in the destination.
-    func locatedTargetsForShift(from source: ShiftTransitionable, to destination: ShiftTransitionable) -> (sources: [Shift.Target], destinations: [Shift.Target])
+    func locatedTargetsForShift(from source: ShiftTransitioning, to destination: ShiftTransitioning) -> (sources: [Shift.Target], destinations: [Shift.Target])
 }
 
 public struct TargetLocator: TargetLocating {
@@ -25,7 +25,7 @@ public struct TargetLocator: TargetLocating {
     public init() { /* No op */ }
 
     // MARK: Interface
-    public func locatedTargetsForShift(from source: ShiftTransitionable, to destination: ShiftTransitionable) -> (sources: [Shift.Target], destinations: [Shift.Target]) {
+    public func locatedTargetsForShift(from source: ShiftTransitioning, to destination: ShiftTransitioning) -> (sources: [Shift.Target], destinations: [Shift.Target]) {
         guard source.isShiftingEnabled && destination.isShiftingEnabled else { return (sources: [], destinations: []) }
         
         let sourceViews = source.contentView.flattenedHierarchy(withExclusions: source.shiftExclusions)

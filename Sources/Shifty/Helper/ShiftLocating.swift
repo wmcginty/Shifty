@@ -28,7 +28,7 @@ public extension ShiftLocating {
     ///   - destination: The destination of the shift transition
     ///   - targetLocator: The object used to locate the viable `Shift.Target` objects inside `source and `destination`.
     /// - Returns: An array of `Shift objects suitable for animation.
-    func shifts(from source: ShiftTransitionable, to destination: ShiftTransitionable, using targetLocator: TargetLocating = TargetLocator()) -> [Shift] {
+    func shifts(from source: ShiftTransitioning, to destination: ShiftTransitioning, using targetLocator: TargetLocating = TargetLocator()) -> [Shift] {
         let result = targetLocator.locatedTargetsForShift(from: source, to: destination)
         return shifts(from: result.sources, to: result.destinations)
     }

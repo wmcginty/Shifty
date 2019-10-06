@@ -1,5 +1,5 @@
 //
-//  ShiftTransitionable.swift
+//  ShiftTransitioning.swift
 //  Shifty
 //
 //  Created by William McGinty on 12/25/17.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-public protocol ShiftTransitionable {
+public protocol ShiftTransitioning {
     
     /// The view that acts as a superview for all other shift-eligible views.
     var contentView: UIView { get }
@@ -19,7 +19,7 @@ public protocol ShiftTransitionable {
     var shiftExclusions: [UIView] { get }
 }
 
-public extension ShiftTransitionable {
+public extension ShiftTransitioning {
     
     /// Provides a default value of 'true' to all conformers.
     var isShiftingEnabled: Bool { return true }
@@ -28,7 +28,7 @@ public extension ShiftTransitionable {
     var shiftExclusions: [UIView] { return [] }
 }
 
-public extension ShiftTransitionable where Self: UIViewController {
+public extension ShiftTransitioning where Self: UIViewController {
     
     /// Provides a default value of .view to all conforming UIViewControllers.
     var contentView: UIView { return view }

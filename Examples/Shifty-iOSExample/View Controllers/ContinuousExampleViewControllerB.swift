@@ -9,7 +9,7 @@
 import UIKit
 import Shifty
 
-class ContinuousExampleViewControllerB: UIViewController, ShiftTransitionable {
+class ContinuousExampleViewControllerB: UIViewController, ShiftTransitioning {
     
     @IBOutlet var yellowView: UIView!
     @IBOutlet var orangeView: UIView!

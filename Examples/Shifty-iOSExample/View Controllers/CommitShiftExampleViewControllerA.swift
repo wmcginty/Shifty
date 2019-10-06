@@ -13,7 +13,7 @@ extension Shift.Identifier {
     static let button = Shift.Identifier(rawValue: "button")
 }
 
-class CommitShiftExampleViewControllerA: UIViewController, ShiftTransitionable {
+class CommitShiftExampleViewControllerA: UIViewController, ShiftTransitioning {
     
     @IBOutlet var yellowView: UIView!
     @IBOutlet var orangeView: UIView!

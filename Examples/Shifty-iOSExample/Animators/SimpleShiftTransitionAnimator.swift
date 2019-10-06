@@ -26,7 +26,7 @@ class SimpleShiftTransitionAnimator: NSObject, UIViewControllerAnimatedTransitio
         let container = transitionContext.containerView
         guard let sourceController = transitionContext.viewController(forKey: .from), let destinationController = transitionContext.viewController(forKey: .to) else { return }
         guard let destinationView = transitionContext.view(forKey: .to) else { return }
-        guard let source = sourceController as? ShiftTransitionable, let destination = destinationController as? ShiftTransitionable else { return }
+        guard let source = sourceController as? ShiftTransitioning, let destination = destinationController as? ShiftTransitioning else { return }
         
         container.addSubview(destinationView)
         destinationView.frame = transitionContext.finalFrame(for: destinationController)

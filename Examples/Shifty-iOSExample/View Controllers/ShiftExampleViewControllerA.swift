@@ -14,7 +14,7 @@ extension Shift.Identifier {
     static let orange = Shift.Identifier(rawValue: "ornage")
 }
 
-class ShiftExampleViewControllerA: UIViewController, ShiftTransitionable {
+class ShiftExampleViewControllerA: UIViewController, ShiftTransitioning {
     
     @IBOutlet var yellowView: UIView!
     @IBOutlet var orangeView: UIView!
