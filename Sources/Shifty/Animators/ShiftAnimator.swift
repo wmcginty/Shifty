@@ -13,8 +13,12 @@ open class ShiftAnimator: NSObject {
     // MARK: Properties
     public let timingProvider: TimingProvider
     public let shiftAnimator: UIViewPropertyAnimator
-    public private(set) var destinations: [Shift: Snapshot] = [:]
     
+    public var shouldCompleteManually: Bool = false
+    private var completion: (UIViewAnimatingPosition) -> Void = { _ in }
+    
+    public private(set) var destinations: [Shift: Snapshot] = [:]
+
     // MARK: Initializers
     public init(timingProvider: TimingProvider) {
         self.timingProvider = timingProvider
@@ -37,18 +41,44 @@ open class ShiftAnimator: NSObject {
                 self?.animations(for: shift, with: replicant, using: destination)
             }
 
-            shiftAnimator.addCompletion { _ in
-                shift.cleanup(replicant: replicant)
+            if shouldCompleteManually {
+                addCompletion { _ in
+                    shift.cleanup(replicant: replicant)
+                }
+            } else {
+                shiftAnimator.addCompletion { _ in
+                    shift.cleanup(replicant: replicant)
+                }
             }
         }
         
-        completion.map(shiftAnimator.addCompletion)
+        if shouldCompleteManually {
+            completion.map(addCompletion)
+        } else {
+            completion.map(shiftAnimator.addCompletion)
+        }
     }
         
     open func animate(_ shifts: [Shift], in container: UIView,
                       with insertionStrategy: Shift.Target.ReplicantInsertionStrategy = .standard, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
         configureShiftAnimations(for: shifts, in: container, with: insertionStrategy, completion: completion)
         startAnimation()
+    }
+    
+    public func addCompletion(_ handler: @escaping (UIViewAnimatingPosition) -> Void) {
+        let current = completion
+        completion = {
+            current($0)
+            handler($0)
+        }
+    }
+    
+    public func finishAnimation(at position: UIViewAnimatingPosition) {
+        guard shouldCompleteManually else {
+            return shiftAnimator.finishAnimation(at: position)
+        }
+        
+        completion(position)
     }
 }
 

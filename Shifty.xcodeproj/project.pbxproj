@@ -21,6 +21,7 @@
 		B44B2298231A45D200A2E80B /* ShiftIdentifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B228F231A443A00A2E80B /* ShiftIdentifierTests.swift */; };
 		B44B2299231A45D700A2E80B /* ShiftTargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B2291231A445100A2E80B /* ShiftTargetTests.swift */; };
 		B44B229C231A48B000A2E80B /* SnapshotViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B229A231A48AB00A2E80B /* SnapshotViewTests.swift */; };
+		B46EAF35234AD7AB00D2DF57 /* ShiftConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46EAF34234AD7AB00D2DF57 /* ShiftConfigurator.swift */; };
 		B47A33F3231E08CC003E58D0 /* ActionAnimator+UIViewImplicitlyAnimating.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A33F2231E08CC003E58D0 /* ActionAnimator+UIViewImplicitlyAnimating.swift */; };
 		B47A33F5231E1251003E58D0 /* ActionLocating.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A33F4231E1251003E58D0 /* ActionLocating.swift */; };
 		B47A33F7231E1C92003E58D0 /* Action.Modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A33F6231E1C92003E58D0 /* Action.Modifier.swift */; };
@@ -115,6 +116,7 @@
 		B44B2291231A445100A2E80B /* ShiftTargetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftTargetTests.swift; sourceTree = "<group>"; };
 		B44B2295231A448B00A2E80B /* TimingProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimingProviderTests.swift; sourceTree = "<group>"; };
 		B44B229A231A48AB00A2E80B /* SnapshotViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotViewTests.swift; sourceTree = "<group>"; };
+		B46EAF34234AD7AB00D2DF57 /* ShiftConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftConfigurator.swift; sourceTree = "<group>"; };
 		B47A33F2231E08CC003E58D0 /* ActionAnimator+UIViewImplicitlyAnimating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionAnimator+UIViewImplicitlyAnimating.swift"; sourceTree = "<group>"; };
 		B47A33F4231E1251003E58D0 /* ActionLocating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionLocating.swift; sourceTree = "<group>"; };
 		B47A33F6231E1C92003E58D0 /* Action.Modifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.Modifier.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 		B44B2288231A3CE400A2E80B /* Animators */ = {
 			isa = PBXGroup;
 			children = (
+				B46EAF34234AD7AB00D2DF57 /* ShiftConfigurator.swift */,
 				B44B2289231A3D1400A2E80B /* ShiftAnimator.swift */,
 				B47C8D99231B1765000AF742 /* ShiftAnimator+UIViewImplicitlyAnimating.swift */,
 				B41E25C52320C6810031AD7D /* ShiftAnimator+Convenience.swift */,
@@ -623,6 +626,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4D70F2B20A8DD6D00EBB707 /* ActionAnimator.swift in Sources */,
+				B46EAF35234AD7AB00D2DF57 /* ShiftConfigurator.swift in Sources */,
 				B4D70F4520A8DD7A00EBB707 /* ShiftTransitioning.swift in Sources */,
 				B44B228C231A3E8C00A2E80B /* TimingProvider.swift in Sources */,
 				B41E25C82320C79D0031AD7D /* ActionAnimator+Convenience.swift in Sources */,

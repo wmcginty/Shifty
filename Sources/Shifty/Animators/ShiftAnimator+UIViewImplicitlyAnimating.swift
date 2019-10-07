@@ -62,8 +62,4 @@ extension ShiftAnimator: UIViewImplicitlyAnimating {
     public func stopAnimation(_ withoutFinishing: Bool) {
         shiftAnimator.stopAnimation(withoutFinishing)
     }
-    
-    public func finishAnimation(at finalPosition: UIViewAnimatingPosition) {
-        shiftAnimator.finishAnimation(at: finalPosition)
-    }
 }
