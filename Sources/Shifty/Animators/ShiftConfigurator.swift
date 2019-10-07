@@ -8,9 +8,9 @@
 
 import Foundation
 
-/// The `ShiftConfigurator` class is responsible for configuring the replicant that performs each `Shift` animation,
-/// though it does not perform any animation itself. This class can be useful for when you want to perform a `Shift` transition
-/// where none of the components move. This is preferable to using the `ShiftAnimator` as Core Animation will not generate any animations in this scenario.
+/// The `ShiftConfigurator` is capable of creating and configuring a replicant for a `Shift` animation, but is not capable of performing the animation itself.
+/// This can be useful when the `Shift` being performed is stationary, or would otherwise not generate a Core Animation object. Instead of relying on the automatic completion
+/// of the animation, this configured replicant will remain stationary until manually cleaned up.
 open class ShiftConfigurator {
     
     // MARK: Properties
@@ -30,7 +30,7 @@ open class ShiftConfigurator {
         }
     }
     
-    open func cleanupShifts(_ shifts: [Shift]) {
+    open func cleanupAfter(shifts: [Shift]) {
         shifts.forEach { shift in
             configuredReplicants[shift].map { shift.cleanup(replicant: $0) }
         }

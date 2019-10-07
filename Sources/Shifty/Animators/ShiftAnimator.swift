@@ -8,14 +8,12 @@
 
 import Foundation
 
+/// The `ShiftAnimator` is capable of creating, configuring an animating a replicant for a `Shift` animation from its source to its destination. The `Shift` animation will be cleaned up on completion of the animation to the `Shift`s destination.
 open class ShiftAnimator: NSObject {
     
     // MARK: Properties
     public let timingProvider: TimingProvider
     public let shiftAnimator: UIViewPropertyAnimator
-    
-    public var shouldCompleteManually: Bool = false
-    private var completion: (UIViewAnimatingPosition) -> Void = { _ in }
     
     public private(set) var destinations: [Shift: Snapshot] = [:]
 
@@ -41,44 +39,18 @@ open class ShiftAnimator: NSObject {
                 self?.animations(for: shift, with: replicant, using: destination)
             }
 
-            if shouldCompleteManually {
-                addCompletion { _ in
-                    shift.cleanup(replicant: replicant)
-                }
-            } else {
-                shiftAnimator.addCompletion { _ in
-                    shift.cleanup(replicant: replicant)
-                }
+            shiftAnimator.addCompletion { _ in
+                shift.cleanup(replicant: replicant)
             }
         }
         
-        if shouldCompleteManually {
-            completion.map(addCompletion)
-        } else {
-            completion.map(shiftAnimator.addCompletion)
-        }
+        completion.map(shiftAnimator.addCompletion)
     }
         
     open func animate(_ shifts: [Shift], in container: UIView,
                       with insertionStrategy: Shift.Target.ReplicantInsertionStrategy = .standard, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {
         configureShiftAnimations(for: shifts, in: container, with: insertionStrategy, completion: completion)
         startAnimation()
-    }
-    
-    public func addCompletion(_ handler: @escaping (UIViewAnimatingPosition) -> Void) {
-        let current = completion
-        completion = {
-            current($0)
-            handler($0)
-        }
-    }
-    
-    public func finishAnimation(at position: UIViewAnimatingPosition) {
-        guard shouldCompleteManually else {
-            return shiftAnimator.finishAnimation(at: position)
-        }
-        
-        completion(position)
     }
 }
 
