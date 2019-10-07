@@ -40,8 +40,19 @@ public struct Shift: Hashable {
         self.destination = destination
     }
     
-    public var debug: Shift {
-        return Shift(source: source.debug, destination: destination.debug)
+    // MARK: Modification
+    public var debug: Shift { return Shift(source: source.debug, destination: destination.debug) }
+    
+    public func visuallyAnimating(using behavior: VisualAnimationBehavior) -> Shift {
+        var shift = Shift(source: source, destination: destination)
+        shift.visualAnimationBehavior = behavior
+        return shift
+    }
+    
+    public func restoringNativeViews(using behavior: NativeViewRestorationBehavior) -> Shift {
+        var shift = Shift(source: source, destination: destination)
+        shift.nativeViewRestorationBehavior = behavior
+        return shift
     }
 }
 

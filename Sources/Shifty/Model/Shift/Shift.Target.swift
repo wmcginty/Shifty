@@ -48,8 +48,11 @@ public extension Shift {
             self.replicationStrategy = replicationStrategy
         }
         
-        var debug: Target {
-            return Target(view: view, identifier: identifier, replicationStrategy: .debug)
+        // MARK: Modification
+        var debug: Target { return Target(view: view, identifier: identifier, replicationStrategy: .debug) }
+        
+        func replicating(using strategy: ReplicationStrategy) -> Shift.Target {
+            return Shift.Target(view: view, identifier: identifier, replicationStrategy: strategy)
         }
     }
 }
