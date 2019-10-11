@@ -15,7 +15,7 @@ public protocol Replicable {
 // MARK: UIView + Replicable
 extension UIView: Replicable {
     
-    @objc public var replicant: UIView {
+    @objc open var replicant: UIView {
         let replicant = UIView(frame: bounds)
         replicant.backgroundColor = backgroundColor
         replicant.layer.cornerRadius = layer.cornerRadius
@@ -29,7 +29,7 @@ extension UIView: Replicable {
 // MARK: UIImageView + Replicable
 extension UIImageView {
     
-    @objc public override var replicant: UIView {
+    @objc open override var replicant: UIView {
         let replicant = UIImageView(frame: bounds)
         replicant.image = image
         replicant.contentMode = contentMode
@@ -45,12 +45,12 @@ extension UIImageView {
 // MARK: UIButton + Replicable
 extension UIButton {
     
-    @objc public override var replicant: UIView {
+    @objc open override var replicant: UIView {
         let replicant = UIButton(type: buttonType)
         replicant.setTitle(title(for: .normal), for: .normal)
-       
-//        replicant.titleLabel?.textColor = titleLabel?.textColor
-//        r eplicant.titleLabel?.font = titleLabel?.font
+        replicant.titleLabel?.font = titleLabel?.font
+        replicant.titleLabel?.textAlignment = titleLabel?.textAlignment ?? .left
+        
         replicant.alpha = alpha
         replicant.backgroundColor = backgroundColor
         replicant.layer.cornerRadius = layer.cornerRadius
@@ -63,7 +63,7 @@ extension UIButton {
 // MARK: UILabel + Replicable
 extension UILabel {
 
-    @objc public override var replicant: UIView {
+    @objc open override var replicant: UIView {
         let replicant = UILabel(frame: bounds)
         replicant.text = text
         replicant.textColor = textColor
