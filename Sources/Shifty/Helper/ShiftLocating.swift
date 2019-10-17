@@ -21,16 +21,26 @@ public protocol ShiftLocating {
 
 public extension ShiftLocating {
     
-    /// Creates the `Shift` objects that can be animated from the `Target` objects found in the `source` and `destination`..
+    /// Creates the `Shift` objects that can be animated from the `Target` objects found in the `source` and `destination`.
     ///
     /// - Parameters:
     ///   - source: The source of the shift transition.
-    ///   - destination: The destination of the shift transition
+    ///   - destination: The destination of the shift transition.
     ///   - targetLocator: The object used to locate the viable `Shift.Target` objects inside `source and `destination`.
-    /// - Returns: An array of `Shift objects suitable for animation.
+    /// - Returns: An array of `Shift` objects suitable for animation.
     func shifts(from source: ShiftTransitioning, to destination: ShiftTransitioning, using targetLocator: TargetLocating = TargetLocator()) -> [Shift] {
         let result = targetLocator.locatedTargetsForShift(from: source, to: destination)
         return shifts(from: result.sources, to: result.destinations)
+    }
+    
+    /// Creates the `Shift` object that can be animated from the `Target` objects found in the `source` and `destination` matching the given `Shift.Identifier`.
+    /// - Parameter source: The source of the shift transition.
+    /// - Parameter destination: The destination of the shift transition.
+    /// - Parameter targetLocator: The object used to locate the viable `Shift.Target` objects inside `source and `destination`.
+    /// - Parameter identifier: The identifier to search for.
+    /// - Returns: A `Shift` object, matching the given identifier, suitable for animation.
+    func shift(from source: ShiftTransitioning, to destination: ShiftTransitioning, using targetLocator: TargetLocating = TargetLocator(), with identifier: Shift.Identifier) -> Shift? {
+        return shifts(from: source, to: destination, using: targetLocator).first { $0.source.identifier == identifier }
     }
 }
 
