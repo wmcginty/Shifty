@@ -18,6 +18,9 @@ public protocol TransitionDriving {
 }
 
 public extension TransitionDriving {
+    func prepareForTransition(to destination: TransitionDriving?, withDuration duration: TimeInterval, completion: @escaping (Bool) -> Void) { completion(true) }
     func completeTransition(to destination: TransitionDriving?) { /* No op */ }
+    
     func prepareForTransition(from source: TransitionDriving?) { /* No op */ }
+    func completeTransition(from source: TransitionDriving?) { /* No op */ }
 }
