@@ -69,6 +69,10 @@ public struct Shift: Hashable {
     // MARK: Modification
     public var debug: Shift { return Shift(source: source.debug, destination: destination.debug) }
     
+    public func replicating(using strategy: ReplicationStrategy) -> Shift {
+        return Shift(source: source.replicating(using: strategy), destination: destination.replicating(using: strategy))
+    }
+    
     public func visuallyAnimating(using behavior: VisualAnimationBehavior) -> Shift {
         var shift = Shift(source: source, destination: destination)
         shift.visualAnimationBehavior = behavior
