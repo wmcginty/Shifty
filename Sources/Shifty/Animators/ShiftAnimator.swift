@@ -8,7 +8,8 @@
 
 import Foundation
 
-/// The `ShiftAnimator` is capable of creating, configuring an animating a replicant for a `Shift` animation from its source to its destination. The `Shift` animation will be cleaned up on completion of the animation to the `Shift`s destination.
+/// The `ShiftAnimator` is capable of creating, configuring an animating a replicant for a `Shift` animation from its source to its destination. The `Shift` animation
+/// will be cleaned up on completion of the animation to the `Shift`s destination.
 open class ShiftAnimator: NSObject {
     
     // MARK: Properties
@@ -34,6 +35,9 @@ open class ShiftAnimator: NSObject {
             let destination = destinations[shift]
             let replicant = shift.configuredReplicant(in: container, with: insertionStrategy)
             shift.layoutDestinationIfNeeded()
+            
+            //For certain positional animations, a brief configuration period is required pre-animation
+            shift.preshift(for: replicant, using: destination)
             
             shiftAnimator.addAnimations { [weak self] in
                 self?.animations(for: shift, with: replicant, using: destination)

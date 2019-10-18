@@ -10,7 +10,7 @@ import UIKit
 /// Represents the shift of a single `UIView` object.
 public struct Shift: Hashable {
     
-    // MARK: Subtypes
+    // MARK: NativeViewRestorationBehavior
     public struct NativeViewRestorationBehavior: OptionSet, Hashable {
         public let rawValue: Int
         public init(rawValue: Int) { self.rawValue = rawValue }
@@ -21,10 +21,36 @@ public struct Shift: Hashable {
         public static let all: NativeViewRestorationBehavior = [.source, .destination]
     }
     
+    // MARK: VisualAnimationBehavior
     public enum VisualAnimationBehavior {
+        
+        // MARK: Custom
+        public struct Custom {
+            public typealias Handler = (_ replicant: UIView, _ destination: Snapshot) -> Void
+            
+            // MARK: Properties
+            private let configurator: Handler?
+            private let animations: Handler
+            
+            // MARK: Initializers
+            public init(configurator: Handler? = nil, animations: @escaping Handler) {
+                self.configurator = configurator
+                self.animations = animations
+            }
+            
+            // MARK: Interface
+            func configure(replicant: UIView, with snapshot: Snapshot) {
+                configurator?(replicant, snapshot)
+            }
+            
+            func animate(replicant: UIView, to snapshot: Snapshot) {
+                animations(replicant, snapshot)
+            }
+        }
+        
         case none
         case automatic
-        case custom((_ replicant: UIView, _ destination: Snapshot) -> Void)
+        case custom(Custom)
     }
     
     // MARK: Properties
@@ -49,6 +75,10 @@ public struct Shift: Hashable {
         return shift
     }
     
+    public func visuallyAnimating(using configurator: Shift.VisualAnimationBehavior.Custom.Handler?, animations: @escaping Shift.VisualAnimationBehavior.Custom.Handler) -> Shift {
+        return visuallyAnimating(using: .custom(VisualAnimationBehavior.Custom(configurator: configurator, animations: animations)))
+    }
+    
     public func restoringNativeViews(using behavior: NativeViewRestorationBehavior) -> Shift {
         var shift = Shift(source: source, destination: destination)
         shift.nativeViewRestorationBehavior = behavior
@@ -70,6 +100,10 @@ public extension Shift {
         destination.view.superview?.layoutIfNeeded()
     }
     
+    func preshift(for replicant: UIView, using snapshot: Snapshot?) {
+        visualShiftPreparations(for: replicant, using: snapshot)
+    }
+    
     func shift(for replicant: UIView, using snapshot: Snapshot?) {
         positionalShift(for: replicant, using: snapshot)
         visualShift(for: replicant, using: snapshot)
@@ -79,8 +113,13 @@ public extension Shift {
 // MARK: Helper
 extension Shift {
     
-    func positionalShift(for replicant: UIView, using snapshot: Snapshot? = nil) {
-        (snapshot ?? destinationSnapshot()).applyPositionalState(to: replicant)
+    func visualShiftPreparations(for replicant: UIView, using snapshot: Snapshot? = nil) {
+        let destination = snapshot ?? destinationSnapshot()
+        
+        switch visualAnimationBehavior {
+        case .custom(let custom): custom.configure(replicant: replicant, with: destination)
+        default: break
+        }
     }
     
     func visualShift(for replicant: UIView, using snapshot: Snapshot? = nil) {
@@ -89,8 +128,12 @@ extension Shift {
         switch visualAnimationBehavior {
         case .none: break
         case .automatic: destination.applyVisualState(to: replicant)
-        case .custom(let animations): animations(replicant, destination)
+        case .custom(let custom): custom.animate(replicant: replicant, to: destination)
         }
+    }
+    
+    func positionalShift(for replicant: UIView, using snapshot: Snapshot? = nil) {
+        (snapshot ?? destinationSnapshot()).applyPositionalState(to: replicant)
     }
     
     func cleanup(replicant: UIView) {
