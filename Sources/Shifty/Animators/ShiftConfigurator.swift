@@ -13,13 +13,13 @@ import Foundation
 /// of the animation, this configured replicant will remain stationary until manually cleaned up.
 open class ShiftConfigurator {
     
-    // MARK: Properties
+    // MARK: - Properties
     private var configuredReplicants: [Shift: UIView] = [:]
     
-    // MARK: Initializers
+    // MARK: - Initializers
     public init() { /* No op */ }
     
-    // MARK: Interface
+    // MARK: - Interface
     open func configureShifts(_ shifts: [Shift], in container: UIView,
                               with insertionStrategy: Shift.Target.ReplicantInsertionStrategy = .standard) {
         shifts.forEach { shift in

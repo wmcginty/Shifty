@@ -12,19 +12,19 @@ public extension Action {
     
     struct Modifier {
         
-        // MARK: Properties
+        // MARK: - Properties
         public let replicationStrategy: ReplicationStrategy
         public let restoreNativewView: Bool
         public let handler: (UIView) -> Void
         
-        // MARK: Initializers
+        // MARK: - Initializers
         public init(replicationStrategy: ReplicationStrategy = .snapshot, restoreNativeView: Bool = true, handler: @escaping (UIView) -> Void) {
             self.replicationStrategy = replicationStrategy
             self.restoreNativewView = restoreNativeView
             self.handler = handler
         }
         
-        // MARK: Interface
+        // MARK: - Interface
         public func modify(_ view: UIView) {
             handler(view)
         }
@@ -33,7 +33,7 @@ public extension Action {
             return replicationStrategy.configuredShiftingView(for: view, afterScreenUpdates: true)
         }
         
-        // MARK: Concatenation
+        // MARK: - Concatenation
         public func concatenating(_ modifier: Modifier) -> Modifier {
             return Modifier(replicationStrategy: replicationStrategy) { view in
                 self.modify(view)
@@ -43,7 +43,7 @@ public extension Action {
     }
 }
 
-// MARK: Convenience
+// MARK: - Convenience
 public extension Action.Modifier {
     
     func fade(to alpha: CGFloat) -> Action.Modifier {
@@ -67,7 +67,7 @@ public extension Action.Modifier {
     }
 }
 
-// MARK: Presets
+// MARK: - Presets
 public extension Action.Modifier {
     
     static func fade(to alpha: CGFloat) -> Action.Modifier {

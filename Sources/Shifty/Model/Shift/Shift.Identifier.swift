@@ -12,15 +12,15 @@ public extension Shift {
     
     struct Identifier: RawRepresentable, Hashable {
         
-        // MARK: Properties
+        // MARK: - Properties
         public let rawValue: String
         
-        // MARK: Initializers
+        // MARK: - Initializers
         public init(rawValue: String) {
             self.rawValue = rawValue
         }
         
-        // MARK: Hashable
+        // MARK: - Hashable
         public func hash(into hasher: inout Hasher) {
             hasher.combine(rawValue)
         }

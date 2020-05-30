@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: CATransform3D + Equatable
+// MARK: - CATransform3D + Equatable
 extension CATransform3D: Equatable {
     
     public static func == (lhs: CATransform3D, rhs: CATransform3D) -> Bool {

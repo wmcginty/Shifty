@@ -24,7 +24,7 @@ class ContinuousExampleViewControllerA: UIViewController, ShiftTransitioning {
         definesPresentationContext = true
     }
         
-    // MARK: IBActions
+    // MARK: - IBActions
     @IBAction func shiftItButtonPressed(sender: AnyObject) {
         
         yellowView.actionModifier = .translate(byX: -300, y: 0)

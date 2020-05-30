@@ -13,7 +13,7 @@ import Shifty
  as a single screen. This animator functions in many scenarios, but functions best with view controllers with similar backgrounds. */
 class ContinuityTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         
-    // MARK: UIViewControllerAnimatedTransitioning
+    // MARK: - UIViewControllerAnimatedTransitioning
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.3
     }

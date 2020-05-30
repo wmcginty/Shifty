@@ -15,7 +15,7 @@ public enum ReplicationStrategy {
     case configured(Configurator)
     case none
     
-    // MARK: Interface
+    // MARK: - Interface
     var canVisuallyShift: Bool {
         switch self {
         case .snapshot: return false
@@ -32,7 +32,7 @@ public enum ReplicationStrategy {
     }
 }
 
-// MARK: Helper
+// MARK: - Helper
 private extension ReplicationStrategy {
     
     func snapshot(of baseView: UIView, afterScreenUpdates: Bool) -> SnapshotView {
@@ -53,7 +53,7 @@ private extension ReplicationStrategy {
     }
 }
 
-// MARK: Convenience
+// MARK: - Convenience
 public extension ReplicationStrategy {
     
     static let replication = ReplicationStrategy.configured { baseView -> UIView in

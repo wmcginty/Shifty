@@ -21,10 +21,10 @@ public protocol TargetLocating {
 
 public struct TargetLocator: TargetLocating {
     
-    // MARK: Initializer
+    // MARK: - Initializer
     public init() { /* No op */ }
 
-    // MARK: Interface
+    // MARK: - Interface
     public func locatedTargetsForShift(from source: ShiftTransitioning, to destination: ShiftTransitioning) -> (sources: [Shift.Target], destinations: [Shift.Target]) {
         guard source.isShiftingEnabled && destination.isShiftingEnabled else { return (sources: [], destinations: []) }
         

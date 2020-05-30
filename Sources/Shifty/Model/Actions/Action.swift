@@ -9,18 +9,18 @@ import UIKit
 
 public struct Action {
 
-    // MARK: Properties
+    // MARK: - Properties
     public let view: UIView
     public let modifier: Modifier
     
-    // MARK: Initializers
+    // MARK: - Initializers
     public init(view: UIView, modifier: Modifier) {
         self.view = view
         self.modifier = modifier
     }
 }
 
-// MARK: Interface
+// MARK: - Interface
 public extension Action {
     
     func configuredReplicant(in container: UIView) -> UIView {
@@ -44,7 +44,7 @@ public extension Action {
     }
 }
 
-// MARK: Helper
+// MARK: - Helper
 extension Action {
     
     func applyPositionalState(to view: UIView) {

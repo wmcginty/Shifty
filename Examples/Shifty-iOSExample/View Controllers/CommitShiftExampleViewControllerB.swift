@@ -15,7 +15,7 @@ class CommitShiftExampleViewControllerB: UIViewController, ShiftTransitioning {
     @IBOutlet var orangeView: UIView!
     @IBOutlet var backButton: UIButton!
     
-    // MARK: Lifecycle
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,7 +28,7 @@ class CommitShiftExampleViewControllerB: UIViewController, ShiftTransitioning {
         }
     }
     
-    // MARK: IBActions
+    // MARK: - IBActions
     @IBAction func dismiss() {
         dismiss(animated: true, completion: nil)
     }

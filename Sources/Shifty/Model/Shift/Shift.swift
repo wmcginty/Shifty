@@ -10,7 +10,7 @@ import UIKit
 /// Represents the shift of a single `UIView` object.
 public struct Shift: Hashable {
     
-    // MARK: NativeViewRestorationBehavior Subtype
+    // MARK: - NativeViewRestorationBehavior Subtype
     public struct NativeViewRestorationBehavior: OptionSet, Hashable {
         public let rawValue: Int
         public init(rawValue: Int) { self.rawValue = rawValue }
@@ -21,26 +21,26 @@ public struct Shift: Hashable {
         public static let all: NativeViewRestorationBehavior = [.source, .destination]
     }
     
-    // MARK: VisualAnimationBehavior Subtype
+    // MARK: - VisualAnimationBehavior Subtype
     public enum VisualAnimationBehavior {
         
-        // MARK: Custom Subtype
+        // MARK: - Custom Subtype
         public struct Custom {
             
-            // MARK: Typealias
+            // MARK: - Typealias
             public typealias Handler = (_ replicant: UIView, _ destination: Snapshot) -> Void
             
-            // MARK: Properties
+            // MARK: - Properties
             private let preparations: Handler?
             private let animations: Handler
             
-            // MARK: Initializers
+            // MARK: - Initializers
             public init(preparations: Handler? = nil, animations: @escaping Handler) {
                 self.preparations = preparations
                 self.animations = animations
             }
             
-            // MARK: Interface
+            // MARK: - Interface
             func prepare(replicant: UIView, with snapshot: Snapshot) {
                 preparations?(replicant, snapshot)
             }
@@ -55,7 +55,7 @@ public struct Shift: Hashable {
         case custom(Custom)
     }
     
-    // MARK: Properties
+    // MARK: - Properties
     public let identifier: Shift.Identifier
     public let source: Target
     public let destination: Target
@@ -63,14 +63,14 @@ public struct Shift: Hashable {
     public var nativeViewRestorationBehavior: NativeViewRestorationBehavior = .all
     public var visualAnimationBehavior: VisualAnimationBehavior = .none
     
-    // MARK: Initializers
+    // MARK: - Initializers
     public init(identifier: Shift.Identifier, source: Target, destination: Target) {
         self.identifier = identifier
         self.source = source
         self.destination = destination
     }
     
-    // MARK: Modification
+    // MARK: - Modification
     public var debug: Shift { return Shift(identifier: identifier, source: source.debug, destination: destination.debug) }
     
     public func replicating(using strategy: ReplicationStrategy) -> Shift {
@@ -94,7 +94,7 @@ public struct Shift: Hashable {
     }
 }
 
-// MARK: Container Management
+// MARK: - Container Management
 public extension Shift {
     
     func configuredReplicant(in container: UIView, with insertionStrategy: Target.ReplicantInsertionStrategy = .standard) -> UIView {
@@ -118,7 +118,7 @@ public extension Shift {
     }
 }
 
-// MARK: Helper
+// MARK: - Helper
 extension Shift {
     
     func visualShiftPreparations(for replicant: UIView, using snapshot: Snapshot? = nil) {
@@ -161,7 +161,7 @@ extension Shift {
     }
 }
 
-// MARK: Hashable
+// MARK: - Hashable
 extension Shift {
     
     public func hash(into hasher: inout Hasher) {

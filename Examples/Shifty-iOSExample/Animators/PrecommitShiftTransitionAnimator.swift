@@ -14,7 +14,7 @@ import Shifty
  complete any entrance animations to reach it's final visual state. **/
 class PrecommitShiftTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
-    // MARK: UIViewControllerAnimatedTransitioning
+    // MARK: - UIViewControllerAnimatedTransitioning
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.7
     }

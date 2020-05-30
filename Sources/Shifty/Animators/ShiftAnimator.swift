@@ -12,19 +12,19 @@ import Foundation
 /// will be cleaned up on completion of the animation to the `Shift`s destination.
 open class ShiftAnimator: NSObject {
     
-    // MARK: Properties
+    // MARK: - Properties
     public let timingProvider: TimingProvider
     public let shiftAnimator: UIViewPropertyAnimator
     
     public private(set) var destinations: [Shift: Snapshot] = [:]
 
-    // MARK: Initializers
+    // MARK: - Initializers
     public init(timingProvider: TimingProvider) {
         self.timingProvider = timingProvider
         self.shiftAnimator = UIViewPropertyAnimator(duration: timingProvider.duration, timingParameters: timingProvider.parameters)
     }
  
-    // MARK: Interface
+    // MARK: - Interface
     open func commit(_ shifts: [Shift]) {
         shifts.forEach { destinations[$0] = $0.destinationSnapshot() }
     }
@@ -58,7 +58,7 @@ open class ShiftAnimator: NSObject {
     }
 }
 
-// MARK: Helper
+// MARK: - Helper
 extension ShiftAnimator {
     
     func animations(for shift: Shift, with replicant: UIView, using destination: Snapshot?) {

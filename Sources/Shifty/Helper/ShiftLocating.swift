@@ -46,10 +46,10 @@ public extension ShiftLocating {
 
 public struct ShiftLocator: ShiftLocating {
         
-    // MARK: Initializers
+    // MARK: - Initializers
     public init() { /* No op */ }
 
-    // MARK: ShiftCoordinator
+    // MARK: - ShiftCoordinator
     public func shifts(from sources: [Shift.Target], to destinations: [Shift.Target]) -> [Shift] {
         var modifiableDestinations = destinations
         return sources.compactMap { source in
@@ -59,7 +59,7 @@ public struct ShiftLocator: ShiftLocating {
     }
 }
 
-// MARK: Helper
+// MARK: - Helper
 private extension Array where Element: Equatable {
     
     mutating func removeFirst(matching element: Element) -> Element? {

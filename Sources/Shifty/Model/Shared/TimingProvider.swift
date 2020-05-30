@@ -16,12 +16,12 @@ public protocol TimingProvider {
 
 public struct Keyframe {
     
-    // MARK: Properties
+    // MARK: - Properties
     public let startTime: Double
     public let endTime: Double
     public var duration: Double { return endTime - startTime }
     
-    // MARK: Initializer
+    // MARK: - Initializer
     public init(startTime: Double, endTime: Double) {
         self.startTime = startTime
         self.endTime = endTime
@@ -30,12 +30,12 @@ public struct Keyframe {
 
 public struct SpringTimingProvider: TimingProvider {
 
-    // MARK: Properties
+    // MARK: - Properties
     public let duration: TimeInterval
     public let parameters: UITimingCurveProvider
     public var keyframe: Keyframe? { return nil }
 
-    // MARK: Initializers
+    // MARK: - Initializers
     public init(duration: TimeInterval, dampingRatio: CGFloat = 1.0, initialVelocity: CGVector = .zero) {
         self.duration = duration
         self.parameters = UISpringTimingParameters(dampingRatio: dampingRatio, initialVelocity: initialVelocity)
@@ -49,12 +49,12 @@ public struct SpringTimingProvider: TimingProvider {
 
 public struct CubicTimingProvider: TimingProvider {
 
-    // MARK: Properties
+    // MARK: - Properties
     public let duration: TimeInterval
     public let parameters: UITimingCurveProvider
     public let keyframe: Keyframe?
     
-    // MARK: Initializers
+    // MARK: - Initializers
     public init(duration: TimeInterval, parameters: UICubicTimingParameters, keyframe: Keyframe? = nil) {
         self.duration = duration
         self.parameters = parameters

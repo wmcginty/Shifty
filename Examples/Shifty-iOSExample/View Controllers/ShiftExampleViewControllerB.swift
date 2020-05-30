@@ -15,7 +15,7 @@ class ShiftExampleViewControllerB: UIViewController, ShiftTransitioning {
     @IBOutlet var orangeView: UIView!
     @IBOutlet var backButton: UIButton!
     
-    // MARK: Lifecycle
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,7 +24,7 @@ class ShiftExampleViewControllerB: UIViewController, ShiftTransitioning {
         backButton.actionModifier = Action.Modifier.translate(byX: 0, y: 50).fade(to: 0)
     }
     
-    // MARK: IBActions
+    // MARK: - IBActions
     @IBAction func dismiss() {
         dismiss(animated: true, completion: nil)
     }

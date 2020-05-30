@@ -13,10 +13,10 @@ public extension Shift {
     /// Represents a single target of a shifting `UIView` - usually either the source or the destination.
     struct Target {
         
-        // MARK: Typealias
+        // MARK: - Typealias
         public typealias AlongsideAnimation = (_ replicant: UIView, _ destination: Shift.Target, _ snapshot: Snapshot) -> Void
         
-        // MARK: ReplicantInsertionStrategy Subtype
+        // MARK: - ReplicantInsertionStrategy Subtype
         public enum ReplicantInsertionStrategy {
             case standard
             case above(UIView)
@@ -33,7 +33,7 @@ public extension Shift {
             }
         }
         
-        // MARK: Properties
+        // MARK: - Properties
         
         /// The view acting as a target of the shift. This view can be either the source or the destination.
         public let view: UIView
@@ -49,7 +49,7 @@ public extension Shift {
         ///  animation that contradicts an animation created by the `VisualAnimationBehavior` may produce undesirable visual side effects.
         public var alongsideAnimations: AlongsideAnimation?
         
-        // MARK: Initializers
+        // MARK: - Initializers
         public init(view: UIView, identifier: Identifier, replicationStrategy: ReplicationStrategy = .snapshot, alongsideAnimations: AlongsideAnimation? = nil) {
             self.view = view
             self.identifier = identifier
@@ -57,7 +57,7 @@ public extension Shift {
             self.alongsideAnimations = alongsideAnimations
         }
         
-        // MARK: Modification
+        // MARK: - Modification
         var debug: Target { return Target(view: view, identifier: identifier, replicationStrategy: .debug) }
         
         public func replicating(using strategy: ReplicationStrategy) -> Shift.Target {
@@ -66,7 +66,7 @@ public extension Shift {
     }
 }
 
-// MARK: Interface
+// MARK: - Interface
 public extension Shift.Target {
     
     func configuredReplicant(in container: UIView, with insertionStrategy: ReplicantInsertionStrategy = .standard, afterScreenUpdates: Bool) -> UIView {
@@ -101,7 +101,7 @@ public extension Shift.Target {
     }
 }
 
-// MARK: Hashable
+// MARK: - Hashable
 extension Shift.Target: Hashable {
     
     public func hash(into hasher: inout Hasher) {

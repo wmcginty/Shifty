@@ -14,19 +14,19 @@ import Foundation
 
 public class ActionAnimator: NSObject {
 
-    // MARK: Properties
+    // MARK: - Properties
     public let timingProvider: TimingProvider
     public let isInverted: Bool
     public let actionAnimator: UIViewPropertyAnimator
   
-    // MARK: Initializers
+    // MARK: - Initializers
     public init(timingProvider: TimingProvider, isInverted: Bool = false) {
         self.timingProvider = timingProvider
         self.isInverted = isInverted
         self.actionAnimator = UIViewPropertyAnimator(duration: timingProvider.duration, timingParameters: timingProvider.parameters)
     }
 
-    // MARK: Interface
+    // MARK: - Interface
     open func inverted() -> ActionAnimator {
         return ActionAnimator(timingProvider: timingProvider, isInverted: !isInverted)
     }
@@ -37,7 +37,7 @@ public class ActionAnimator: NSObject {
     }
 }
 
-// MARK: Helper
+// MARK: - Helper
 private extension ActionAnimator {
     
     func configureActionAnimator(for actions: [Action], in container: UIView, completion: ((UIViewAnimatingPosition) -> Void)? = nil) {

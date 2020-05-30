@@ -24,13 +24,13 @@ class ShiftExampleViewControllerA: UIViewController, ShiftTransitioning {
     private var animator: ShiftAnimator?
     private var animator2: UIViewPropertyAnimator?
     
-    // MARK: Lifecycle
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         definesPresentationContext = true
     }
     
-    // MARK: IBActions
+    // MARK: - IBActions
     @IBAction func shiftItButtonPressed(sender: AnyObject) {
         
         yellowView.shiftID = .yellow

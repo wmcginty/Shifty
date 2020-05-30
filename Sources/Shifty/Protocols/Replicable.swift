@@ -12,7 +12,7 @@ public protocol Replicable {
     var replicant: UIView { get }
 }
 
-// MARK: UIView + Replicable
+// MARK: - UIView + Replicable
 extension UIView: Replicable {
     
     @objc open var replicant: UIView {
@@ -26,7 +26,7 @@ extension UIView: Replicable {
     }
 }
 
-// MARK: UIImageView + Replicable
+// MARK: - UIImageView + Replicable
 extension UIImageView {
     
     @objc open override var replicant: UIView {
@@ -42,7 +42,7 @@ extension UIImageView {
     }
 }
 
-// MARK: UIButton + Replicable
+// MARK: - UIButton + Replicable
 extension UIButton {
     
     @objc open override var replicant: UIView {
@@ -61,7 +61,7 @@ extension UIButton {
     }
 }
 
-// MARK: UILabel + Replicable
+// MARK: - UILabel + Replicable
 extension UILabel {
 
     @objc open override var replicant: UIView {

@@ -11,7 +11,7 @@ import Foundation
 /// Represents the state of a `UIView` object at any given moment in time.
 public struct Snapshot: Equatable {
     
-    // MARK: Properties
+    // MARK: - Properties
     
     /// The center of the `UIView` at the time of snapshotting, relative to the window.
     let center: CGPoint
@@ -32,7 +32,7 @@ public struct Snapshot: Equatable {
     /// The corner radius of the view's `CALayer` at the time of snapshotting.
     let cornerRadius: CGFloat
     
-    // MARK: Initializers
+    // MARK: - Initializers
     init(center: CGPoint, bounds: CGRect, alpha: CGFloat, backgroundColor: UIColor? = nil, transform3D: CATransform3D,
          cornerRadius: CGFloat) {
         self.center = center
@@ -49,7 +49,7 @@ public struct Snapshot: Equatable {
                   transform3D: view.layer.transform, cornerRadius: view.layer.cornerRadius)
     }
     
-    // MARK: Interface
+    // MARK: - Interface
     
     /// The center of the `Snapshot` with respect to the provided container.
     ///

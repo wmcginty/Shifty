@@ -29,7 +29,7 @@ class ContinuousExampleViewControllerB: UIViewController, ShiftTransitioning {
         backButton.actionModifier = Action.Modifier.fade(to: 0).scale(toX: 0.33, y: 0.33)
     }
     
-    // MARK: IBActions
+    // MARK: - IBActions
     @IBAction func dismiss() {
         dismiss(animated: true, completion: nil)
     }
