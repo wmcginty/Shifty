@@ -15,9 +15,16 @@ public struct Shift: Hashable {
         public let rawValue: Int
         public init(rawValue: Int) { self.rawValue = rawValue }
         
+        /// The source native view will be restored (and visible) after the shift has completed.
         public static let source = NativeViewRestorationBehavior(rawValue: 1 << 0)
+        
+        /// The destination native view will be restored (and visible) after the shift has completed.
         public static let destination = NativeViewRestorationBehavior(rawValue: 1 << 1)
+        
+        /// Neither native view will be restored (and visible) after the shift has completed.
         public static let none: NativeViewRestorationBehavior = []
+        
+        /// Both native views will be restored (and visible) after the shift has completed.
         public static let all: NativeViewRestorationBehavior = [.source, .destination]
     }
     
@@ -50,8 +57,13 @@ public struct Shift: Hashable {
             }
         }
         
+        /// Any visual differences between the source and destination targets are ignored.
         case none
+        
+        /// Any visual difference between the source and destination `alpha`, `backgroundColor` or `cornerRadius` are automatically animated between along the same timing curve as the shift.
         case automatic
+        
+        /// Allows for completely custom animations to account for visual differences between the source and destination targets.
         case custom(Custom)
     }
     
@@ -60,7 +72,10 @@ public struct Shift: Hashable {
     public let source: Target
     public let destination: Target
     
+    /// The behavior describing how the native views being replicated are restored to their previous state after the `Shift`. has completed.
     public var nativeViewRestorationBehavior: NativeViewRestorationBehavior = .all
+    
+    /// The behavior describing the way any visual differences between the `source` and `target` are shifted.
     public var visualAnimationBehavior: VisualAnimationBehavior = .none
     
     // MARK: - Initializers
@@ -109,42 +124,40 @@ public extension Shift {
     }
     
     func preshift(for replicant: UIView, using snapshot: Snapshot?) {
-        visualShiftPreparations(for: replicant, using: snapshot)
+        let snap = snapshot ?? destinationSnapshot()
+        visualShiftPreparations(for: replicant, using: snap)
     }
     
     func shift(for replicant: UIView, using snapshot: Snapshot?) {
-        positionalShift(for: replicant, using: snapshot)
-        visualShift(for: replicant, using: snapshot)
+        let snap = snapshot ?? destinationSnapshot()
+        positionalShift(for: replicant, using: snap)
+        visualShift(for: replicant, using: snap)
+        
+        //Execute any alongside animations necessary when shifting from the source to the destination
+        source.alongsideAnimations?(replicant, destination, snap)
     }
 }
 
 // MARK: - Helper
 extension Shift {
     
-    func visualShiftPreparations(for replicant: UIView, using snapshot: Snapshot? = nil) {
-        let destination = snapshot ?? destinationSnapshot()
-        
+    func visualShiftPreparations(for replicant: UIView, using snapshot: Snapshot) {
         switch visualAnimationBehavior {
-        case .custom(let custom): custom.prepare(replicant: replicant, with: destination)
+        case .custom(let custom): custom.prepare(replicant: replicant, with: snapshot)
         default: break
         }
     }
     
-    func visualShift(for replicant: UIView, using snapshot: Snapshot? = nil) {
-        let destination = snapshot ?? destinationSnapshot()
-        
+    func visualShift(for replicant: UIView, using snapshot: Snapshot) {
         switch visualAnimationBehavior {
         case .none: break
-        case .automatic: destination.applyVisualState(to: replicant)
-        case .custom(let custom): custom.animate(replicant: replicant, to: destination)
+        case .automatic: snapshot.applyVisualState(to: replicant)
+        case .custom(let custom): custom.animate(replicant: replicant, to: snapshot)
         }
-        
-        //Execute any alongside animations necessary when shifting from the source to the destination
-        source.alongsideAnimations?(replicant, self.destination, destination)
     }
     
-    func positionalShift(for replicant: UIView, using snapshot: Snapshot? = nil) {
-        (snapshot ?? destinationSnapshot()).applyPositionalState(to: replicant)
+    func positionalShift(for replicant: UIView, using snapshot: Snapshot) {
+        snapshot.applyPositionalState(to: replicant)
     }
     
     func cleanup(replicant: UIView) {

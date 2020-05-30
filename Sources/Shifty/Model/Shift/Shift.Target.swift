@@ -70,7 +70,6 @@ public extension Shift {
 public extension Shift.Target {
     
     func configuredReplicant(in container: UIView, with insertionStrategy: ReplicantInsertionStrategy = .standard, afterScreenUpdates: Bool) -> UIView {
-        //Create, add and place the replicantView with respect to the container
         let replicant = replicationStrategy.configuredShiftingView(for: view, afterScreenUpdates: afterScreenUpdates)
         insertionStrategy.insert(replicant: replicant, into: container)
     

@@ -146,7 +146,7 @@ class ShiftTests: XCTestCase {
         shift.visualAnimationBehavior = .automatic
        
         let replicant = UIView()
-        shift.visualShift(for: replicant)
+        shift.visualShift(for: replicant, using: d.snapshot())
         
         XCTAssertEqual(replicant.backgroundColor, .red)
         XCTAssertEqual(replicant.alpha, 0.25, accuracy: 0.01)
@@ -169,7 +169,7 @@ class ShiftTests: XCTestCase {
 
         let replicant = UIView()
         container.addSubview(replicant)
-        shift.positionalShift(for: replicant)
+        shift.positionalShift(for: replicant, using: d.snapshot())
   
         XCTAssertEqual(replicant.center, CGPoint(x: 400, y: 400))
         XCTAssertEqual(replicant.bounds, CGRect(x: 0, y: 0, width: 150, height: 200))
