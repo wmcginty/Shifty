@@ -23,9 +23,9 @@ class ShiftTests: XCTestCase {
         let s = Shift.Target(view: UIView(), identifier: .mock)
         let d = Shift.Target(view: UIView(), identifier: .mock)
         
-        let a = Shift(source: s, destination: d)
-        let b = Shift(source: s, destination: d)
-        let c = Shift(source: s, destination: d)
+        let a = Shift(identifier: .mock, source: s, destination: d)
+        let b = Shift(identifier: .mock, source: s, destination: d)
+        let c = Shift(identifier: .mock, source: s, destination: d)
         
         XCTAssertEqual(a, b)
         XCTAssertEqual(a, c)
@@ -39,10 +39,10 @@ class ShiftTests: XCTestCase {
         let s2 = Shift.Target(view: view, identifier: .other)
         let d2 = Shift.Target(view: view, identifier: .other)
         
-        let a = Shift(source: s, destination: d)
-        let b = Shift(source: s2, destination: d)
-        let c = Shift(source: s, destination: d2)
-        let e = Shift(source: s2, destination: d2)
+        let a = Shift(identifier: .mock, source: s, destination: d)
+        let b = Shift(identifier: .mock, source: s2, destination: d)
+        let c = Shift(identifier: .mock, source: s, destination: d2)
+        let e = Shift(identifier: .mock, source: s2, destination: d2)
         
         XCTAssertNotEqual(a, b)
         XCTAssertNotEqual(a, c)
@@ -53,8 +53,8 @@ class ShiftTests: XCTestCase {
         let s = Shift.Target(view: UIView(), identifier: .mock)
         let d = Shift.Target(view: UIView(), identifier: .mock)
         
-        let a = Shift(source: s, destination: d)
-        let b = Shift(source: s, destination: d)
+        let a = Shift(identifier: .mock, source: s, destination: d)
+        let b = Shift(identifier: .mock, source: s, destination: d)
         
         XCTAssertEqual(a.hashValue, b.hashValue)
     }
@@ -64,8 +64,8 @@ class ShiftTests: XCTestCase {
         let d = Shift.Target(view: UIView(), identifier: .third)
         let d2 = Shift.Target(view: UIView(), identifier: .mock)
         
-        let a = Shift(source: s, destination: d)
-        let b = Shift(source: s, destination: d2)
+        let a = Shift(identifier: .mock, source: s, destination: d)
+        let b = Shift(identifier: .mock, source: s, destination: d2)
         
         XCTAssertNotEqual(a.hashValue, b.hashValue)
     }
@@ -73,7 +73,7 @@ class ShiftTests: XCTestCase {
     func testShift_correctlySnapshotsDestinationTarget() {
         let s = Shift.Target(view: UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50)), identifier: .mock)
         let d = Shift.Target(view: UIView(frame: CGRect(x: 50, y: 0, width: 50, height: 50)), identifier: .mock)
-        let a = Shift(source: s, destination: d)
+        let a = Shift(identifier: .mock, source: s, destination: d)
         
         let snap1 = a.destinationSnapshot()
         let snap2 = a.destination.snapshot()
@@ -85,7 +85,7 @@ class ShiftTests: XCTestCase {
     func testShift_correctlyHidesBothNativeViews() {
         let v1 = UIView()
         let v2 = UIView()
-        let a = Shift(source: Shift.Target(view: v1, identifier: .mock), destination: Shift.Target(view: v2, identifier: .mock))
+        let a = Shift(identifier: .mock, source: Shift.Target(view: v1, identifier: .mock), destination: Shift.Target(view: v2, identifier: .mock))
         
         XCTAssertFalse(v1.isHidden)
         XCTAssertFalse(v2.isHidden)
@@ -104,7 +104,7 @@ class ShiftTests: XCTestCase {
         let dView = UIView()
         let s = Shift.Target(view: sView, identifier: .mock)
         let d = Shift.Target(view: dView, identifier: .mock)
-        let shift = Shift(source: s, destination: d)
+        let shift = Shift(identifier: .mock, source: s, destination: d)
         
         let replicant = UIView()
         let superview = UIView()
@@ -125,7 +125,7 @@ class ShiftTests: XCTestCase {
         
         let s = Shift.Target(view: view, identifier: .mock, replicationStrategy: .debug)
         let d = Shift.Target(view: UIView(), identifier: .mock)
-        let shift = Shift(source: s, destination: d)
+        let shift = Shift(identifier: .mock, source: s, destination: d)
         
         let replicant = shift.configuredReplicant(in: superview)
         
@@ -142,7 +142,7 @@ class ShiftTests: XCTestCase {
         let s = Shift.Target(view: UIView(), identifier: .mock, replicationStrategy: .debug)
         let d = Shift.Target(view: destination, identifier: .mock)
         
-        var shift = Shift(source: s, destination: d)
+        var shift = Shift(identifier: .mock, source: s, destination: d)
         shift.visualAnimationBehavior = .automatic
        
         let replicant = UIView()
@@ -165,7 +165,7 @@ class ShiftTests: XCTestCase {
         
         let s = Shift.Target(view: UIView(), identifier: .mock, replicationStrategy: .debug)
         let d = Shift.Target(view: destination, identifier: .mock)
-        let shift = Shift(source: s, destination: d)
+        let shift = Shift(identifier: .mock, source: s, destination: d)
 
         let replicant = UIView()
         container.addSubview(replicant)
@@ -184,7 +184,7 @@ class ShiftTests: XCTestCase {
         
         let s = Shift.Target(view: UIView(), identifier: .mock, replicationStrategy: .debug)
         let d = Shift.Target(view: child, identifier: .mock)
-        let shift = Shift(source: s, destination: d)
+        let shift = Shift(identifier: .mock, source: s, destination: d)
         shift.layoutDestinationIfNeeded()
         
         XCTAssertTrue(view.hasLaidOutSubviews)
@@ -197,7 +197,7 @@ class ShiftTests: XCTestCase {
         
         let s = Shift.Target(view: view, identifier: .mock)
         let d = Shift.Target(view: UIView(), identifier: .mock)
-        let shift = Shift(source: s, destination: d)
+        let shift = Shift(identifier: .mock, source: s, destination: d)
         let debug = shift.debug
         
         let testReplicant = debug.configuredReplicant(in: container)
