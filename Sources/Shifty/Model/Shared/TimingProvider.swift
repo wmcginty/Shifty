@@ -8,22 +8,24 @@
 
 import Foundation
 
-// MARK: Subtype
-public struct Keyframe {
-    public let startTime: Double
-    public let endTime: Double
-    public var duration: Double { return endTime - startTime }
-    
-    public init(startTime: Double, endTime: Double) {
-        self.startTime = startTime
-        self.endTime = endTime
-    }
-}
-
 public protocol TimingProvider {
     var duration: TimeInterval { get }
     var parameters: UITimingCurveProvider { get }
     var keyframe: Keyframe? { get }
+}
+
+public struct Keyframe {
+    
+    // MARK: Properties
+    public let startTime: Double
+    public let endTime: Double
+    public var duration: Double { return endTime - startTime }
+    
+    // MARK: Initializer
+    public init(startTime: Double, endTime: Double) {
+        self.startTime = startTime
+        self.endTime = endTime
+    }
 }
 
 public struct SpringTimingProvider: TimingProvider {

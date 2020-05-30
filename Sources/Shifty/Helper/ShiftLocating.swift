@@ -45,7 +45,7 @@ public extension ShiftLocating {
 }
 
 public struct ShiftLocator: ShiftLocating {
-    
+        
     // MARK: Initializers
     public init() { /* No op */ }
 
@@ -54,7 +54,7 @@ public struct ShiftLocator: ShiftLocating {
         var modifiableDestinations = destinations
         return sources.compactMap { source in
             let match = modifiableDestinations.removeFirst(matching: source)
-            return match.map { Shift(source: source, destination: $0) }
+            return match.map { Shift(identifier: $0.identifier, source: source, destination: $0) }
         }
     }
 }

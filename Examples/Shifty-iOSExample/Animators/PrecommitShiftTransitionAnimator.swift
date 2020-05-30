@@ -16,7 +16,7 @@ class PrecommitShiftTransitionAnimator: NSObject, UIViewControllerAnimatedTransi
     
     // MARK: UIViewControllerAnimatedTransitioning
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.4
+        return 0.7
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -29,7 +29,7 @@ class PrecommitShiftTransitionAnimator: NSObject, UIViewControllerAnimatedTransi
         guard let source = sourceController as? ShiftTransitioning, let destination = destinationController as? ShiftTransitioning else { return }
         
         let shiftLocator = ShiftLocator()
-        let shifts = shiftLocator.shifts(from: source, to: destination)
+        let shifts = shiftLocator.shifts(from: source, to: destination).map { $0.visuallyAnimating(using: .automatic) }
         
         let timing = CubicTimingProvider(duration: transitionDuration(using: transitionContext), curve: .easeInOut)
         let shiftAnimator = ShiftAnimator(timingProvider: timing)

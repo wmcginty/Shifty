@@ -48,6 +48,7 @@ extension UIButton {
     @objc open override var replicant: UIView {
         let replicant = UIButton(type: buttonType)
         replicant.setTitle(title(for: .normal), for: .normal)
+        replicant.setTitleColor(titleColor(for: .normal), for: .normal)
         replicant.titleLabel?.font = titleLabel?.font
         replicant.titleLabel?.textAlignment = titleLabel?.textAlignment ?? .left
         

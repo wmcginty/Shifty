@@ -9,11 +9,14 @@
 import UIKit
 
 public extension Shift {
-
+    
     /// Represents a single target of a shifting `UIView` - usually either the source or the destination.
     struct Target {
         
-        // MARK: Subtype
+        // MARK: Typealias
+        public typealias AlongsideAnimation = (_ replicant: UIView, _ destination: Shift.Target, _ snapshot: Snapshot) -> Void
+        
+        // MARK: ReplicantInsertionStrategy Subtype
         public enum ReplicantInsertionStrategy {
             case standard
             case above(UIView)
@@ -40,12 +43,18 @@ public extension Shift {
         
         /// The method used to configure the view. Defaults to .snapshot.
         public let replicationStrategy: ReplicationStrategy
+
+        /// A set of animations that will be executed simultaneously with animations that drive the shift (both positional and visual).
+        /// - Important: In the case that the `Shift` is utilizing a `VisualAnimationBehavior` not equal to `.none`, these animations will take precendence - though creating an
+        ///  animation that contradicts an animation created by the `VisualAnimationBehavior` may produce undesirable visual side effects.
+        public var alongsideAnimations: AlongsideAnimation?
         
         // MARK: Initializers
-        public init(view: UIView, identifier: Identifier, replicationStrategy: ReplicationStrategy = .snapshot) {
+        public init(view: UIView, identifier: Identifier, replicationStrategy: ReplicationStrategy = .snapshot, alongsideAnimations: AlongsideAnimation? = nil) {
             self.view = view
             self.identifier = identifier
             self.replicationStrategy = replicationStrategy
+            self.alongsideAnimations = alongsideAnimations
         }
         
         // MARK: Modification
@@ -69,7 +78,7 @@ public extension Shift.Target {
         
         return replicant
     }
-    
+
     func applyPositionalState(to view: UIView, in container: UIView) {
         snapshot().applyPositionalState(to: view)
     }

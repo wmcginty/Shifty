@@ -21,7 +21,11 @@ class CommitShiftExampleViewControllerB: UIViewController, ShiftTransitioning {
         
         yellowView.shiftID = .yellow
         orangeView.shiftID = .orange
-        backButton.shiftTarget = Shift.Target(view: backButton, identifier: .button, replicationStrategy: .replication)
+        backButton.shiftTarget = Shift.Target(view: backButton, identifier: .button, replicationStrategy: .replication) { replicant, target, _ in
+            if let repButton = replicant as? UIButton, let tarButton = target.view as? UIButton {
+                repButton.setTitle(tarButton.title(for: .normal), for: .normal)
+            }
+        }
     }
     
     // MARK: IBActions
