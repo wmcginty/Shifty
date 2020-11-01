@@ -9,7 +9,7 @@
 import UIKit
 
 /// Represents the state of a `UIView` object at any given moment in time.
-public struct Snapshot: Equatable {
+public struct Snapshot {
     
     // MARK: - Properties
     
@@ -80,4 +80,14 @@ public struct Snapshot: Equatable {
         new.backgroundColor = backgroundColor
         new.layer.cornerRadius = cornerRadius
     }
+}
+
+extension Snapshot: Equatable {
+    
+    public static func == (lhs: Snapshot, rhs: Snapshot) -> Bool {
+        return lhs.center == rhs.center && lhs.bounds == rhs.bounds && lhs.alpha == rhs.alpha
+            && lhs.backgroundColor == rhs.backgroundColor &&  lhs.cornerRadius == rhs.cornerRadius
+                && CATransform3DEqualToTransform(lhs.transform3D, rhs.transform3D)
+    }
+    
 }

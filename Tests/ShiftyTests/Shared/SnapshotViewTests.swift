@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import SnapshotTesting
 @testable import Shifty
 
 class SnapshotViewTests: XCTestCase {
@@ -19,8 +18,6 @@ class SnapshotViewTests: XCTestCase {
         
         let snapshot = SnapshotView(contentView: content)
         snapshot.bounds = CGRect(origin: .zero, size: CGSize(width: 100, height: 30))
-        
-        //assertSnapshot(matching: snapshot, as: .image)
     }
     
     func testSnapshotView_maintainsContentViewInSelf() {
@@ -33,18 +30,12 @@ class SnapshotViewTests: XCTestCase {
         snapshot.bounds = CGRect(origin: .zero, size: CGSize(width: 100, height: 30))
         XCTAssertEqual(snapshot.contentView.frame, snapshot.bounds)
         
-        //assertSnapshot(matching: snapshot, as: .image)
-        
         snapshot.bounds = CGRect(origin: .zero, size: CGSize(width: 200, height: 60))
         snapshot.layoutIfNeeded()
         XCTAssertEqual(snapshot.contentView.frame, snapshot.bounds)
         
-        //assertSnapshot(matching: snapshot, as: .image)
-        
         snapshot.bounds = CGRect(origin: .zero, size: CGSize(width: 150, height: 60))
         snapshot.layoutIfNeeded()
         XCTAssertEqual(snapshot.contentView.frame, snapshot.bounds)
-        
-        //assertSnapshot(matching: snapshot, as: .image)
     }
 }

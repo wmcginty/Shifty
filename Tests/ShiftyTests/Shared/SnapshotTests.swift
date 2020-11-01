@@ -141,7 +141,7 @@ class SnapshotTests: XCTestCase {
         
         XCTAssertEqual(replicant.center, CGPoint(x: 62.5, y: 62.5))
         XCTAssertEqual(replicant.bounds, CGRect(origin: .zero, size: CGSize(width: 25, height: 25)))
-        XCTAssertEqual(replicant.layer.transform, transform)
+        XCTAssert(CATransform3DEqualToTransform(replicant.layer.transform, transform))
     }
     
     func testSnapshot_appliesPositionalStateCorrectlyAfterTransformingParent() {

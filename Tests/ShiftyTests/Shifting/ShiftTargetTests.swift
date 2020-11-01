@@ -60,7 +60,7 @@ class ShiftTargetTests: XCTestCase {
         let snap = a.snapshot()
         XCTAssertEqual(snap.center, .zero)
         XCTAssertEqual(snap.bounds, .zero)
-        XCTAssertEqual(snap.transform3D, CATransform3DIdentity)
+        XCTAssert(CATransform3DEqualToTransform(snap.transform3D, CATransform3DIdentity))
         
         //Modify then snapshot view properties
         let c = CGPoint(x: 50, y: 50)
@@ -74,7 +74,7 @@ class ShiftTargetTests: XCTestCase {
         let snap2 = a.snapshot()
         XCTAssertEqual(snap2.center, c)
         XCTAssertEqual(snap2.bounds, b)
-        XCTAssertEqual(snap2.transform3D, CATransform3DMakeAffineTransform(t))
+        XCTAssert(CATransform3DEqualToTransform(snap2.transform3D, CATransform3DMakeAffineTransform(t)))
     }
     
     func testShiftTarget_correctlyAltersNativeView() {
@@ -121,7 +121,7 @@ class ShiftTargetTests: XCTestCase {
         let view = UIView(frame: CGRect(x: 50, y: 50, width: 50, height: 50))
         superview.addSubview(view)
         
-        let a = Shift.Target(view: view, identifier: .mock, replicationStrategy: .debug)
+        let a = Shift.Target(view: view, identifier: .mock, replicationStrategy: .debug())
         let replicant = a.configuredReplicant(in: superview, afterScreenUpdates: true)
         
         XCTAssertEqual(replicant.bounds.size, CGSize(width: 50, height: 50))
@@ -140,7 +140,7 @@ class ShiftTargetTests: XCTestCase {
         XCTAssert(target.view === debug.view)
         
         let debugReplicant = debug.configuredReplicant(in: container, afterScreenUpdates: false)
-        let testReplicant = ReplicationStrategy.debug.configuredShiftingView(for: view, afterScreenUpdates: false)
+        let testReplicant = ReplicationStrategy.debug().configuredShiftingView(for: view, afterScreenUpdates: false)
         
         XCTAssertEqual(testReplicant.backgroundColor, debugReplicant.backgroundColor)
         XCTAssertEqual(testReplicant.bounds, debugReplicant.bounds)

@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import SnapshotTesting
 import Shifty
 
 class ReplicantStrategyTests: XCTestCase {
@@ -44,26 +43,5 @@ class ReplicantStrategyTests: XCTestCase {
         XCTAssertEqual(snapshot.frame.width, 50)
         XCTAssertEqual(snapshot.frame.height, 200)
         XCTAssertEqual(snapshot.backgroundColor, .purple)
-        
-        //assertSnapshot(matching: snapshot, as: .image)
     }
-
-    /*
-    func testReplicantStrategy_testDebugStrategyWithView() {
-        let original = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 100, height: 100)))
-        original.backgroundColor = .purple
-        
-        let strategy = ReplicationStrategy.debug
-        assertSnapshot(matching: strategy.configuredShiftingView(for: original, afterScreenUpdates: true), as: .image)
-    }
-    
-    func testReplicantStrategy_testDebugStrategyWithLabel() {
-        let original = UILabel(frame: CGRect(origin: .zero, size: CGSize(width: 100, height: 25)))
-        original.text = "hello world"
-        original.backgroundColor = .purple
-        
-        let strategy = ReplicationStrategy.debug
-        assertSnapshot(matching: strategy.configuredShiftingView(for: original, afterScreenUpdates: true), as: .image)
-    }
-    */
 }

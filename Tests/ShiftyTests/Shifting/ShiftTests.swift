@@ -123,7 +123,7 @@ class ShiftTests: XCTestCase {
         let view = UIView(frame: CGRect(x: 50, y: 50, width: 50, height: 50))
         superview.addSubview(view)
         
-        let s = Shift.Target(view: view, identifier: .mock, replicationStrategy: .debug)
+        let s = Shift.Target(view: view, identifier: .mock, replicationStrategy: .debug())
         let d = Shift.Target(view: UIView(), identifier: .mock)
         let shift = Shift(identifier: .mock, source: s, destination: d)
         
@@ -139,7 +139,7 @@ class ShiftTests: XCTestCase {
         destination.alpha = 0.25
         destination.layer.cornerRadius = 3
         
-        let s = Shift.Target(view: UIView(), identifier: .mock, replicationStrategy: .debug)
+        let s = Shift.Target(view: UIView(), identifier: .mock, replicationStrategy: .debug())
         let d = Shift.Target(view: destination, identifier: .mock)
         
         var shift = Shift(identifier: .mock, source: s, destination: d)
@@ -163,7 +163,7 @@ class ShiftTests: XCTestCase {
         destination.center = CGPoint(x: 100, y: 100)
         superview.addSubview(destination)
         
-        let s = Shift.Target(view: UIView(), identifier: .mock, replicationStrategy: .debug)
+        let s = Shift.Target(view: UIView(), identifier: .mock, replicationStrategy: .debug())
         let d = Shift.Target(view: destination, identifier: .mock)
         let shift = Shift(identifier: .mock, source: s, destination: d)
 
@@ -182,7 +182,7 @@ class ShiftTests: XCTestCase {
         
         XCTAssertEqual(child.frame, .zero)
         
-        let s = Shift.Target(view: UIView(), identifier: .mock, replicationStrategy: .debug)
+        let s = Shift.Target(view: UIView(), identifier: .mock, replicationStrategy: .debug())
         let d = Shift.Target(view: child, identifier: .mock)
         let shift = Shift(identifier: .mock, source: s, destination: d)
         shift.layoutDestinationIfNeeded()
@@ -201,7 +201,7 @@ class ShiftTests: XCTestCase {
         let debug = shift.debug
         
         let testReplicant = debug.configuredReplicant(in: container)
-        let debugReplicant = ReplicationStrategy.debug.configuredShiftingView(for: s.view, afterScreenUpdates: false)
+        let debugReplicant = ReplicationStrategy.debug().configuredShiftingView(for: s.view, afterScreenUpdates: false)
         
         XCTAssertEqual(testReplicant.backgroundColor, debugReplicant.backgroundColor)
         XCTAssertEqual(testReplicant.bounds, debugReplicant.bounds)

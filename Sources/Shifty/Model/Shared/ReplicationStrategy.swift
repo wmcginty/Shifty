@@ -59,13 +59,15 @@ public extension ReplicationStrategy {
     static let replication = ReplicationStrategy.configured { baseView -> UIView in
         return baseView.replicant
     }
-    
-    static let debug = ReplicationStrategy.configured { baseView -> UIView in
-        let copy = UIView(frame: baseView.frame)
-        copy.backgroundColor = UIColor.red.withAlphaComponent(0.5)
-        copy.layer.cornerRadius = baseView.layer.cornerRadius
-        copy.layer.masksToBounds = baseView.layer.masksToBounds
         
-        return copy
+    static func debug(with backgroundColor: UIColor = .red, alpha: CGFloat = 0.5) -> ReplicationStrategy {
+        return ReplicationStrategy.configured { baseView -> UIView in
+            let copy = UIView(frame: baseView.frame)
+            copy.backgroundColor = backgroundColor.withAlphaComponent(alpha)
+            copy.layer.cornerRadius = baseView.layer.cornerRadius
+            copy.layer.masksToBounds = baseView.layer.masksToBounds
+            
+            return copy
+        }
     }
 }

@@ -27,7 +27,6 @@ public extension Action {
         //Create, add and place the replicantView with respect to the container
         let replicant = modifier.configuredShiftingView(for: view)
         container.addSubview(replicant)
-        
         applyPositionalState(to: replicant)
         
         //Configure the native view as hidden so the replicantView is the only visible copy, then return it
