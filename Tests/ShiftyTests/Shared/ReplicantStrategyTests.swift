@@ -40,12 +40,15 @@ class ReplicantStrategyTests: XCTestCase {
         }
         
         let snapshot = strategy.configuredShiftingView(for: original, afterScreenUpdates: true)
-        assertSnapshot(matching: snapshot, as: .image)
+
         XCTAssertEqual(snapshot.frame.width, 50)
         XCTAssertEqual(snapshot.frame.height, 200)
         XCTAssertEqual(snapshot.backgroundColor, .purple)
+        
+        //assertSnapshot(matching: snapshot, as: .image)
     }
 
+    /*
     func testReplicantStrategy_testDebugStrategyWithView() {
         let original = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 100, height: 100)))
         original.backgroundColor = .purple
@@ -62,6 +65,5 @@ class ReplicantStrategyTests: XCTestCase {
         let strategy = ReplicationStrategy.debug
         assertSnapshot(matching: strategy.configuredShiftingView(for: original, afterScreenUpdates: true), as: .image)
     }
-    
-    // TODO: Determine a way to test the snapshot strategy
+    */
 }

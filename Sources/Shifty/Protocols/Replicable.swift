@@ -6,7 +6,7 @@
 //  Copyright © 2019 Will McGinty. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public protocol Replicable {
     var replicant: UIView { get }

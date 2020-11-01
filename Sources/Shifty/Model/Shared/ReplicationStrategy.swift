@@ -6,7 +6,7 @@
 //  Copyright © 2019 Will McGinty. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public enum ReplicationStrategy {
     public typealias Configurator = (_ baseView: UIView) -> UIView

@@ -5,7 +5,7 @@
 //  Created by William McGinty on 12/31/17.
 //
 
-import Foundation
+import UIKit
 
 // MARK: - UIView + Target
 extension UIView {

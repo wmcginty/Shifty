@@ -5,7 +5,7 @@
 //  Created by William McGinty on 1/6/18.
 //
 
-import Foundation
+import UIKit
 
 /* TODO
  - Groups to modify timing (I want to cascade these 4 actions when i animate them with X Y Z parameters

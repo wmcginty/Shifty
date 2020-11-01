@@ -3,15 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		B41E25C62320C6810031AD7D /* ShiftAnimator+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41E25C52320C6810031AD7D /* ShiftAnimator+Convenience.swift */; };
 		B41E25C82320C79D0031AD7D /* ActionAnimator+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41E25C72320C79D0031AD7D /* ActionAnimator+Convenience.swift */; };
 		B41E25CA2320C7FD0031AD7D /* UIView+Flattened.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41E25C92320C7FD0031AD7D /* UIView+Flattened.swift */; };
+		B4269C58254E3ED300A8DA00 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = B4269C57254E3ED300A8DA00 /* SnapshotTesting */; };
 		B44B2279231A21C200A2E80B /* ReplicationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B2278231A21C200A2E80B /* ReplicationStrategy.swift */; };
-		B44B227E231A259700A2E80B /* SnapshotTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B44B227D231A259700A2E80B /* SnapshotTesting.framework */; };
 		B44B2280231A25E800A2E80B /* ReplicantStrategyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B227F231A25E800A2E80B /* ReplicantStrategyTests.swift */; };
 		B44B2283231A323400A2E80B /* Shift.Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B2282231A323400A2E80B /* Shift.Identifier.swift */; };
 		B44B2287231A397700A2E80B /* CATransform3D+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B2286231A397700A2E80B /* CATransform3D+Equatable.swift */; };
@@ -31,7 +31,6 @@
 		B48612BB20A8E028003B8152 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B48612BA20A8E028003B8152 /* Main.storyboard */; };
 		B4D70F0420A8DCF600EBB707 /* Shifty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D70EFB20A8DCF500EBB707 /* Shifty.framework */; };
 		B4D70F2320A8DD3600EBB707 /* ShiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F1E20A8DD3600EBB707 /* ShiftTests.swift */; };
-		B4D70F2520A8DD3600EBB707 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2020A8DD3600EBB707 /* CoordinatorTests.swift */; };
 		B4D70F2620A8DD3600EBB707 /* SnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2120A8DD3600EBB707 /* SnapshotTests.swift */; };
 		B4D70F2A20A8DD6D00EBB707 /* ShiftLocating.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2820A8DD6D00EBB707 /* ShiftLocating.swift */; };
 		B4D70F2B20A8DD6D00EBB707 /* ActionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D70F2920A8DD6D00EBB707 /* ActionAnimator.swift */; };
@@ -128,7 +127,6 @@
 		B4D70F0320A8DCF600EBB707 /* Shifty-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shifty-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4D70F1320A8DD0100EBB707 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Tests/Supporting Files/Info.plist"; sourceTree = SOURCE_ROOT; };
 		B4D70F1E20A8DD3600EBB707 /* ShiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftTests.swift; sourceTree = "<group>"; };
-		B4D70F2020A8DD3600EBB707 /* CoordinatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
 		B4D70F2120A8DD3600EBB707 /* SnapshotTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotTests.swift; sourceTree = "<group>"; };
 		B4D70F2820A8DD6D00EBB707 /* ShiftLocating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftLocating.swift; sourceTree = "<group>"; };
 		B4D70F2920A8DD6D00EBB707 /* ActionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionAnimator.swift; sourceTree = "<group>"; };
@@ -173,8 +171,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B44B227E231A259700A2E80B /* SnapshotTesting.framework in Frameworks */,
 				B4D70F0420A8DCF600EBB707 /* Shifty.framework in Frameworks */,
+				B4269C58254E3ED300A8DA00 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,7 +314,6 @@
 			children = (
 				B44B2294231A447E00A2E80B /* Shared */,
 				B44B2293231A447900A2E80B /* Shifting */,
-				B4D70F2020A8DD3600EBB707 /* CoordinatorTests.swift */,
 				B4D70EF420A8DCC900EBB707 /* Supporting Files */,
 			);
 			path = Tests;
@@ -465,6 +462,8 @@
 			dependencies = (
 			);
 			name = "Shifty-iOS";
+			packageProductDependencies = (
+			);
 			productName = "Shifty-iOS";
 			productReference = B4D70EFB20A8DCF500EBB707 /* Shifty.framework */;
 			productType = "com.apple.product-type.framework";
@@ -476,7 +475,6 @@
 				B4D70EFF20A8DCF600EBB707 /* Sources */,
 				B4D70F0020A8DCF600EBB707 /* Frameworks */,
 				B4D70F0120A8DCF600EBB707 /* Resources */,
-				B44B2281231A2A1200A2E80B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -485,6 +483,9 @@
 				B44B227B231A257D00A2E80B /* PBXTargetDependency */,
 			);
 			name = "Shifty-iOSTests";
+			packageProductDependencies = (
+				B4269C57254E3ED300A8DA00 /* SnapshotTesting */,
+			);
 			productName = "Shifty-iOSTests";
 			productReference = B4D70F0320A8DCF600EBB707 /* Shifty-iOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -546,6 +547,9 @@
 				Base,
 			);
 			mainGroup = 607FACC71AFB9204008FA782;
+			packageReferences = (
+				B4269C52254E3E9400A8DA00 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+			);
 			productRefGroup = 607FACD11AFB9204008FA782 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -585,25 +589,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B44B2281231A2A1200A2E80B /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/SnapshotTesting.framework",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SnapshotTesting.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
 		B48612BD20A8E0ED003B8152 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -658,7 +643,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B44B229C231A48B000A2E80B /* SnapshotViewTests.swift in Sources */,
-				B4D70F2520A8DD3600EBB707 /* CoordinatorTests.swift in Sources */,
 				B44B2297231A45BF00A2E80B /* TimingProviderTests.swift in Sources */,
 				B44B2299231A45D700A2E80B /* ShiftTargetTests.swift in Sources */,
 				B44B2280231A25E800A2E80B /* ReplicantStrategyTests.swift in Sources */,
@@ -852,7 +836,11 @@
 				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mcginty.will.Shifty-iOS";
 				PRODUCT_NAME = Shifty;
 				SKIP_INSTALL = YES;
@@ -886,7 +874,11 @@
 				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mcginty.will.Shifty-iOS";
 				PRODUCT_NAME = Shifty;
 				SKIP_INSTALL = YES;
@@ -909,14 +901,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9W2C69WDZE;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mcginty.will.Shifty-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -936,14 +929,15 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9W2C69WDZE;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mcginty.will.Shifty-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -968,7 +962,10 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Examples/Shifty-iOSExample/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mcginty.will.Shifty-iOSExample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -994,10 +991,14 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Examples/Shifty-iOSExample/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mcginty.will.Shifty-iOSExample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1043,6 +1044,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B4269C52254E3E9400A8DA00 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.8.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B4269C57254E3ED300A8DA00 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B4269C52254E3E9400A8DA00 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 607FACC81AFB9204008FA782 /* Project object */;
 }

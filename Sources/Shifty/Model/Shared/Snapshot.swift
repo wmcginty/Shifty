@@ -6,7 +6,7 @@
 //  Copyright © 2016 will.mcginty. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 /// Represents the state of a `UIView` object at any given moment in time.
 public struct Snapshot: Equatable {

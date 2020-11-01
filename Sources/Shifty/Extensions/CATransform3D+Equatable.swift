@@ -6,7 +6,7 @@
 //  Copyright © 2019 Will McGinty. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 // MARK: - CATransform3D + Equatable
 extension CATransform3D: Equatable {
