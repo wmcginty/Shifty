@@ -754,7 +754,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				VERSION = 3.1.0;
+				VERSION = 3.3.0;
 			};
 			name = Debug;
 		};
@@ -805,7 +805,7 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
-				VERSION = 3.1.0;
+				VERSION = 3.3.0;
 			};
 			name = Release;
 		};
