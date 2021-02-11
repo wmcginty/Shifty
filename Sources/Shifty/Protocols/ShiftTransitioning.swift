@@ -17,6 +17,9 @@ public protocol ShiftTransitioning {
     
     /// A list of views that should be excluded from shifting. These views, and their subviews, will be excluded from shift-eligible evaluation.
     var shiftExclusions: [UIView] { get }
+    
+    /// A closure that is evaluated on each potential shifting view. If this closure returns true, the view will not be eligible for shifting.
+    var shiftExcluder: (UIView) -> Bool { get }
 }
 
 public extension ShiftTransitioning {
@@ -26,6 +29,8 @@ public extension ShiftTransitioning {
     
     /// Provides a default value of an empty array to all conformers.
     var shiftExclusions: [UIView] { return [] }
+    
+    var shiftExcluder: (UIView) -> Bool { return { _ in false } }
 }
 
 public extension ShiftTransitioning where Self: UIViewController {

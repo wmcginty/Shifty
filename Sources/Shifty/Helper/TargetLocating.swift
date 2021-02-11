@@ -28,8 +28,8 @@ public struct TargetLocator: TargetLocating {
     public func locatedTargetsForShift(from source: ShiftTransitioning, to destination: ShiftTransitioning) -> (sources: [Shift.Target], destinations: [Shift.Target]) {
         guard source.isShiftingEnabled && destination.isShiftingEnabled else { return (sources: [], destinations: []) }
         
-        let sourceViews = source.contentView.flattenedHierarchy(withExclusions: source.shiftExclusions)
-        let destinationViews = destination.contentView.flattenedHierarchy(withExclusions: destination.shiftExclusions)
+        let sourceViews = source.contentView.flattenedHierarchy(withExclusions: source.shiftExclusions, excluder: source.shiftExcluder)
+        let destinationViews = destination.contentView.flattenedHierarchy(withExclusions: destination.shiftExclusions, excluder: destination.shiftExcluder)
         return (sources: sourceViews.compactMap { $0.shiftTarget }, destinations: destinationViews.compactMap { $0.shiftTarget })
     }
 }

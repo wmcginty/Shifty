@@ -10,8 +10,13 @@ import UIKit
 
 extension UIView {
     
-    func flattenedHierarchy(withExclusions exclusions: [UIView]) -> [UIView] {
+    func flattenedHierarchy(withExclusions exclusions: [UIView], excluder: ((UIView) -> Bool)? = nil) -> [UIView] {
         guard !exclusions.contains(self) else { return [] }
-        return [self] + subviews.flatMap { $0.flattenedHierarchy(withExclusions: exclusions) }
+        
+        if let excluder = excluder, excluder(self) {
+            return []
+        }
+        
+        return [self] + subviews.flatMap { $0.flattenedHierarchy(withExclusions: exclusions, excluder: excluder) }
     }
 }

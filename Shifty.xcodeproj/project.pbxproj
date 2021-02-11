@@ -14,7 +14,6 @@
 		B44B2279231A21C200A2E80B /* ReplicationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B2278231A21C200A2E80B /* ReplicationStrategy.swift */; };
 		B44B2280231A25E800A2E80B /* ReplicantStrategyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B227F231A25E800A2E80B /* ReplicantStrategyTests.swift */; };
 		B44B2283231A323400A2E80B /* Shift.Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B2282231A323400A2E80B /* Shift.Identifier.swift */; };
-		B44B2287231A397700A2E80B /* CATransform3D+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B2286231A397700A2E80B /* CATransform3D+Equatable.swift */; };
 		B44B228A231A3D1400A2E80B /* ShiftAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B2289231A3D1400A2E80B /* ShiftAnimator.swift */; };
 		B44B228C231A3E8C00A2E80B /* TimingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B228B231A3E8C00A2E80B /* TimingProvider.swift */; };
 		B44B2297231A45BF00A2E80B /* TimingProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B2295231A448B00A2E80B /* TimingProviderTests.swift */; };
@@ -108,7 +107,6 @@
 		B44B227D231A259700A2E80B /* SnapshotTesting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapshotTesting.framework; path = Carthage/Build/iOS/SnapshotTesting.framework; sourceTree = "<group>"; };
 		B44B227F231A25E800A2E80B /* ReplicantStrategyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplicantStrategyTests.swift; sourceTree = "<group>"; };
 		B44B2282231A323400A2E80B /* Shift.Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shift.Identifier.swift; sourceTree = "<group>"; };
-		B44B2286231A397700A2E80B /* CATransform3D+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CATransform3D+Equatable.swift"; sourceTree = "<group>"; };
 		B44B2289231A3D1400A2E80B /* ShiftAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftAnimator.swift; sourceTree = "<group>"; };
 		B44B228B231A3E8C00A2E80B /* TimingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimingProvider.swift; sourceTree = "<group>"; };
 		B44B228F231A443A00A2E80B /* ShiftIdentifierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftIdentifierTests.swift; sourceTree = "<group>"; };
@@ -360,7 +358,6 @@
 			isa = PBXGroup;
 			children = (
 				B4D70F3A20A8DD7A00EBB707 /* UIView+Shiftable.swift */,
-				B44B2286231A397700A2E80B /* CATransform3D+Equatable.swift */,
 				B41E25C92320C7FD0031AD7D /* UIView+Flattened.swift */,
 			);
 			path = Extensions;
@@ -619,7 +616,6 @@
 				B47A33F7231E1C92003E58D0 /* Action.Modifier.swift in Sources */,
 				B41E25C62320C6810031AD7D /* ShiftAnimator+Convenience.swift in Sources */,
 				B47A33F5231E1251003E58D0 /* ActionLocating.swift in Sources */,
-				B44B2287231A397700A2E80B /* CATransform3D+Equatable.swift in Sources */,
 				B4D70F4420A8DD7A00EBB707 /* Action.swift in Sources */,
 				B44B228A231A3D1400A2E80B /* ShiftAnimator.swift in Sources */,
 				B4D70F2A20A8DD6D00EBB707 /* ShiftLocating.swift in Sources */,
