@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        name: ["iOS", "tvOS"]
+        name: ["iOS"]
         include:
             - name: "iOS"
               scheme: "Shifty iOS"
@@ -54,7 +54,7 @@ jobs:
         if [[ ${{ env.spm }} == true ]]; then
           swift package describe
         fi
-        
+
         if [[ ${{ env.cocoapods }} == true ]]; then
           pod lib lint
         fi
