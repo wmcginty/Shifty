@@ -1,23 +1,15 @@
 // swift-tools-version:5.3
-// The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
     name: "Shifty",
-    platforms: [.iOS(.v11)],
+    platforms: [.iOS(.v12)],
     products: [
-        .library(
-            name: "Shifty",
-            targets: ["Shifty"]),
+        .library(name: "Shifty", targets: ["Shifty"]),
     ],
-    dependencies: [],
     targets: [
-        .target(
-            name: "Shifty",
-            dependencies: []),
-        .testTarget(
-            name: "ShiftyTests",
-            dependencies: ["Shifty"]),
+        .target(name: "Shifty", dependencies: []),
+        .testTarget(name: "ShiftyTests", dependencies: ["Shifty"], path: "Tests"),
     ]
 )

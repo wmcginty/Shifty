@@ -113,6 +113,9 @@
 		B44B2291231A445100A2E80B /* ShiftTargetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftTargetTests.swift; sourceTree = "<group>"; };
 		B44B2295231A448B00A2E80B /* TimingProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimingProviderTests.swift; sourceTree = "<group>"; };
 		B44B229A231A48AB00A2E80B /* SnapshotViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotViewTests.swift; sourceTree = "<group>"; };
+		B468F4A927BB674E00D03EEC /* Shifty.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Shifty.podspec; sourceTree = "<group>"; };
+		B468F4AA27BB674E00D03EEC /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		B468F4AB27BB674E00D03EEC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B46EAF34234AD7AB00D2DF57 /* ShiftConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftConfigurator.swift; sourceTree = "<group>"; };
 		B47A33F2231E08CC003E58D0 /* ActionAnimator+UIViewImplicitlyAnimating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionAnimator+UIViewImplicitlyAnimating.swift"; sourceTree = "<group>"; };
 		B47A33F4231E1251003E58D0 /* ActionLocating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionLocating.swift; sourceTree = "<group>"; };
@@ -123,7 +126,6 @@
 		B48612BA20A8E028003B8152 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B4D70EFB20A8DCF500EBB707 /* Shifty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Shifty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4D70F0320A8DCF600EBB707 /* Shifty-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shifty-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B4D70F1320A8DD0100EBB707 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Tests/Supporting Files/Info.plist"; sourceTree = SOURCE_ROOT; };
 		B4D70F1E20A8DD3600EBB707 /* ShiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftTests.swift; sourceTree = "<group>"; };
 		B4D70F2120A8DD3600EBB707 /* SnapshotTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotTests.swift; sourceTree = "<group>"; };
 		B4D70F2820A8DD6D00EBB707 /* ShiftLocating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftLocating.swift; sourceTree = "<group>"; };
@@ -200,6 +202,9 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				B468F4AA27BB674E00D03EEC /* Package.swift */,
+				B468F4AB27BB674E00D03EEC /* README.md */,
+				B468F4A927BB674E00D03EEC /* Shifty.podspec */,
 				B4D70EF220A8DCAB00EBB707 /* Examples */,
 				B4D70EF120A8DCA300EBB707 /* Sources */,
 				B4D70EF320A8DCAF00EBB707 /* Tests */,
@@ -276,7 +281,8 @@
 				B44B2291231A445100A2E80B /* ShiftTargetTests.swift */,
 				B4D70F1E20A8DD3600EBB707 /* ShiftTests.swift */,
 			);
-			path = Shifting;
+			name = Shifting;
+			path = ShiftyTests/Shifting;
 			sourceTree = "<group>";
 		};
 		B44B2294231A447E00A2E80B /* Shared */ = {
@@ -287,7 +293,8 @@
 				B44B2295231A448B00A2E80B /* TimingProviderTests.swift */,
 				B4D70F2120A8DD3600EBB707 /* SnapshotTests.swift */,
 			);
-			path = Shared;
+			name = Shared;
+			path = ShiftyTests/Shared;
 			sourceTree = "<group>";
 		};
 		B4D70EF120A8DCA300EBB707 /* Sources */ = {
@@ -312,17 +319,8 @@
 			children = (
 				B44B2294231A447E00A2E80B /* Shared */,
 				B44B2293231A447900A2E80B /* Shifting */,
-				B4D70EF420A8DCC900EBB707 /* Supporting Files */,
 			);
 			path = Tests;
-			sourceTree = "<group>";
-		};
-		B4D70EF420A8DCC900EBB707 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				B4D70F1320A8DD0100EBB707 /* Info.plist */,
-			);
-			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		B4D70EF520A8DCD300EBB707 /* Supporting Files */ = {
@@ -444,9 +442,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		B4D70EFA20A8DCF500EBB707 /* Shifty-iOS */ = {
+		B4D70EFA20A8DCF500EBB707 /* Shifty iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B4D70F0C20A8DCF600EBB707 /* Build configuration list for PBXNativeTarget "Shifty-iOS" */;
+			buildConfigurationList = B4D70F0C20A8DCF600EBB707 /* Build configuration list for PBXNativeTarget "Shifty iOS" */;
 			buildPhases = (
 				B4D70EF620A8DCF500EBB707 /* Sources */,
 				B4D70EF720A8DCF500EBB707 /* Frameworks */,
@@ -458,7 +456,7 @@
 			);
 			dependencies = (
 			);
-			name = "Shifty-iOS";
+			name = "Shifty iOS";
 			packageProductDependencies = (
 			);
 			productName = "Shifty-iOS";
@@ -513,7 +511,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1320;
 				ORGANIZATIONNAME = "Will McGinty";
 				TargetAttributes = {
 					B4D70EFA20A8DCF500EBB707 = {
@@ -526,6 +524,7 @@
 						CreatedOnToolsVersion = 9.3.1;
 						DevelopmentTeam = 9W2C69WDZE;
 						ProvisioningStyle = Automatic;
+						TestTargetID = B4D70F5720A8DDCB00EBB707;
 					};
 					B4D70F5720A8DDCB00EBB707 = {
 						CreatedOnToolsVersion = 9.3.1;
@@ -551,7 +550,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B4D70EFA20A8DCF500EBB707 /* Shifty-iOS */,
+				B4D70EFA20A8DCF500EBB707 /* Shifty iOS */,
 				B4D70F0220A8DCF600EBB707 /* Shifty-iOSTests */,
 				B4D70F5720A8DDCB00EBB707 /* Shifty-iOSExample */,
 			);
@@ -678,12 +677,12 @@
 		};
 		B4D70F0620A8DCF600EBB707 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B4D70EFA20A8DCF500EBB707 /* Shifty-iOS */;
+			target = B4D70EFA20A8DCF500EBB707 /* Shifty iOS */;
 			targetProxy = B4D70F0520A8DCF600EBB707 /* PBXContainerItemProxy */;
 		};
 		B4D70FA520A8DF9C00EBB707 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B4D70EFA20A8DCF500EBB707 /* Shifty-iOS */;
+			target = B4D70EFA20A8DCF500EBB707 /* Shifty iOS */;
 			targetProxy = B4D70FA420A8DF9C00EBB707 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -723,6 +722,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -748,13 +748,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 3.3.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				VERSION = 3.3.0;
 			};
 			name = Debug;
 		};
@@ -781,6 +781,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -799,19 +800,20 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 3.3.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
-				VERSION = 3.3.0;
 			};
 			name = Release;
 		};
 		B4D70F0D20A8DCF600EBB707 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -831,15 +833,16 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mcginty.will.Shifty-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mcginty.will.Shifty;
 				PRODUCT_NAME = Shifty;
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -850,6 +853,7 @@
 		B4D70F0E20A8DCF600EBB707 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -869,15 +873,16 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mcginty.will.Shifty-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mcginty.will.Shifty;
 				PRODUCT_NAME = Shifty;
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -899,8 +904,8 @@
 				DEVELOPMENT_TEAM = 9W2C69WDZE;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -910,6 +915,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shifty-iOSExample.app/Shifty-iOSExample";
 			};
 			name = Debug;
 		};
@@ -927,8 +933,8 @@
 				DEVELOPMENT_TEAM = 9W2C69WDZE;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -937,6 +943,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mcginty.will.Shifty-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shifty-iOSExample.app/Shifty-iOSExample";
 			};
 			name = Release;
 		};
@@ -957,7 +964,7 @@
 				DEVELOPMENT_TEAM = 9W2C69WDZE;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Examples/Shifty-iOSExample/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -986,7 +993,7 @@
 				DEVELOPMENT_TEAM = 9W2C69WDZE;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Examples/Shifty-iOSExample/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1012,7 +1019,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B4D70F0C20A8DCF600EBB707 /* Build configuration list for PBXNativeTarget "Shifty-iOS" */ = {
+		B4D70F0C20A8DCF600EBB707 /* Build configuration list for PBXNativeTarget "Shifty iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B4D70F0D20A8DCF600EBB707 /* Debug */,

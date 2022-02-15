@@ -1,6 +1,6 @@
 # Shifty
 
-![CI Status](https://github.com/wmcginty/Shifty/actions/workflows/Actions.yml/badge.svg)
+![CI Status](https://github.com/wmcginty/Shifty/actions/workflows/main.yml/badge.svg)
 [![Version](https://img.shields.io/cocoapods/v/Shifty.svg?style=flat)](http://cocoapods.org/pods/Shifty)
 [![License](https://img.shields.io/cocoapods/l/Shifty.svg?style=flat)](http://cocoapods.org/pods/Shifty)
 [![Platform](https://img.shields.io/cocoapods/p/Shifty.svg?style=flat)](http://cocoapods.org/pods/Shifty)
@@ -147,25 +147,25 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-Requires iOS 10.0 +, Swift 4.0
+Requires iOS 12.0
 
-## Installation - CocoaPods
+## Installation
 
-[CocoaPods]: http://cocoapods.org
+Add this to your project using Swift Package Manager. In Xcode, that is simply: File > Swift Packages > Add Package Dependency... and you're done. Alternative installations options are shown below for legacy projects.
 
-Add the following to your [Podfile](http://guides.cocoapods.org/using/the-podfile.html):
+### CocoaPods
 
-```ruby
-pod 'Shifty'
+If you are already using [CocoaPods](http://cocoapods.org), just add 'Shifty' to your `Podfile`, then run `pod install`.
+
+### Carthage
+
+If you are already using [Carthage](https://github.com/Carthage/Carthage), just add to your `Cartfile`:
+
+```ogdl
+github "wmcginty/Shifty" ~> 3.0.0
 ```
 
-You will also need to make sure you're opting into using frameworks:
-
-```ruby
-use_frameworks!
-```
-
-Then run `pod install` with CocoaPods 0.36 or newer.
+Then run `carthage bootstrap` to build the framework and drag the built `Shifty.framework` into your Xcode project.
 
 ## Contributing
 
@@ -173,8 +173,3 @@ See the [CONTRIBUTING] document. Thank you, [contributors]!
 
 [CONTRIBUTING]: CONTRIBUTING.md
 [contributors]: https://github.com/wmcginty/Shifty/graphs/contributors
-
-## Roadmap
-* Expand upon the default set of `Action`s provided
-* Provide a method in which an `Action` can be prepared (the native view hidden), but executed at a later time
-* Provide a way to add 'alongside' animations to `Action`s (cross-dissolve, rotate, etc)
