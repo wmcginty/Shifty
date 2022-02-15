@@ -54,6 +54,7 @@ jobs:
         if [[ ${{ env.spm }} == true ]]; then
           swift package describe
         fi
+        
         if [[ ${{ env.cocoapods }} == true ]]; then
           pod lib lint
         fi
